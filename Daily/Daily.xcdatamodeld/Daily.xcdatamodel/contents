@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dayRate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="month" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Record" syncable="YES"/>
+    </entity>
+    <entity name="Record" representedClassName=".Record" syncable="YES" codeGenerationType="category">
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Day" positionX="-443.93359375" positionY="-66.03125" width="128" height="105"/>
+        <element name="Record" positionX="-54" positionY="9" width="128" height="90"/>
+    </elements>
+</model>
