@@ -15,10 +15,11 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func openDay(_ sender: UIButton) {
-        
-        
-        
         performSegue(withIdentifier: "openDayView", sender: sender)
+        
+//        if let dayViewController = storyboard?.instantiateViewController(withIdentifier: "DayViewController") {
+//            navigationController?.pushViewController(dayViewController, animated: true)
+//        }
     }
     
     @IBOutlet weak var monthLabel: UILabel!
