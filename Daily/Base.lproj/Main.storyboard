@@ -13,7 +13,7 @@
         <!--Calendar View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CalendarViewController" storyboardIdentifier="CalendarViewController" id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -642,8 +642,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bHj-dy-prL"/>
                     <connections>
-                        <outlet property="CalendarView" destination="ud1-Y6-KzV" id="efZ-iJ-bfA"/>
-                        <outlet property="calendarView" destination="ud1-Y6-KzV" id="RlS-q1-S8L"/>
+                        <outlet property="allPageView" destination="8bC-Xf-vdC" id="5TG-2t-fk0"/>
                         <outlet property="monthLabel" destination="Pla-jm-6xC" id="rcK-RR-CLC"/>
                         <outletCollection property="dayButtons" destination="BSE-NA-uUX" collectionClass="NSMutableArray" id="r82-gj-le9"/>
                         <outletCollection property="dayButtons" destination="srF-t7-kt2" collectionClass="NSMutableArray" id="3bB-y6-zDL"/>
@@ -694,12 +693,13 @@
                         <outletCollection property="weekDayLabel" destination="hnI-4G-O3y" collectionClass="NSMutableArray" id="JaK-nD-sKY"/>
                         <outletCollection property="weekDayLabel" destination="5Ea-4N-SpQ" collectionClass="NSMutableArray" id="ffd-64-s7u"/>
                         <outletCollection property="dayButtons" destination="LRs-ID-rGB" collectionClass="NSMutableArray" id="KZy-0c-xLb"/>
-                        <segue destination="zO3-jO-gXD" kind="show" identifier="openDayView" id="ggN-as-f59"/>
+                        <segue destination="wpP-M9-tRl" kind="show" identifier="openDayView" id="4Gs-ng-Kuo"/>
+                        <segue destination="DcU-Jy-MVR" kind="show" id="P0i-xg-Awp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-762" y="242"/>
         </scene>
         <!--Day View Controller-->
         <scene sceneID="ys0-s3-IVA">
@@ -709,27 +709,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br3-T2-kmg">
-                                <rect key="frame" x="164" y="64" width="46" height="30"/>
-                                <state key="normal" title="Create new day"/>
-                                <connections>
-                                    <action selector="craateADay:" destination="wpP-M9-tRl" eventType="touchUpInside" id="uzw-lH-iCv"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="271-Fy-7zp">
                                 <rect key="frame" x="0.0" y="115" width="375" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В РАЗРАБОТКЕ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LDa-rr-IQC">
+                                    <rect key="frame" x="0.0" y="205" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="recirdItem" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="txS-gq-tCM">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="recirdItem" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="177" id="txS-gq-tCM">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="txS-gq-tCM" id="C4g-13-E3l">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="176.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hw-5v-L6O">
+                                                    <rect key="frame" x="15" y="26" width="345" height="63"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIt-XH-Gvu">
+                                <rect key="frame" x="16" y="32" width="220" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br3-T2-kmg">
+                                <rect key="frame" x="8" y="61" width="149" height="30"/>
+                                <state key="normal" title="Create day"/>
+                                <connections>
+                                    <action selector="craateADay:" destination="wpP-M9-tRl" eventType="touchUpInside" id="uzw-lH-iCv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQV-s0-brS">
+                                <rect key="frame" x="16" y="86" width="141" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Remove day "/>
+                                <connections>
+                                    <action selector="removeDay:" destination="wpP-M9-tRl" eventType="touchUpInside" id="dBE-SL-Foh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -743,28 +774,61 @@
                     <navigationItem key="navigationItem" id="doi-Hc-fXa">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="h9e-yN-lYC"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="allPageView" destination="AJM-rr-3Zg" id="sTN-CL-tAD"/>
+                        <outlet property="dayDateLabel" destination="aIt-XH-Gvu" id="tcV-nc-Tnx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v49-FL-CqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2908" y="135.38230884557723"/>
+            <point key="canvasLocation" x="282" y="-528"/>
+        </scene>
+        <!--Day Table View Controller-->
+        <scene sceneID="TxS-gv-yi7">
+            <objects>
+                <tableViewController id="rVh-SV-5Mh" customClass="DayTableViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GmC-x1-r5V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Wrf-hs-3aA">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wrf-hs-3aA" id="OqJ-N0-slt">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rVh-SV-5Mh" id="Mtq-i2-uqF"/>
+                            <outlet property="delegate" destination="rVh-SV-5Mh" id="jW3-dS-hiW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="vFp-0G-R71"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tMn-au-jFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1290" y="242"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="chz-4T-3H2">
+        <scene sceneID="e8G-Md-oOg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zO3-jO-gXD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DcU-Jy-MVR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="68C-lH-cnx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hQa-eP-Nah">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wpP-M9-tRl" kind="relationship" relationship="rootViewController" id="5MT-7s-7t5"/>
+                        <segue destination="rVh-SV-5Mh" kind="relationship" relationship="rootViewController" id="Z2k-Wh-Mvl"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s1G-SM-Ce1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Tb-uw-6XE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1968.8" y="135.38230884557723"/>
+            <point key="canvasLocation" x="281" y="242"/>
         </scene>
     </scenes>
     <resources>

@@ -25,6 +25,10 @@ public class Day: NSManagedObject {
         return day
     }
     
+    static func removeDay(day: Day, context: NSManagedObjectContext) {
+        context.delete(day)
+    }
+    
     static func getAllDaysOfMounth(_ month: Date) -> [Day] {
         let monthForFind = month.firstDayOfMonth()
         

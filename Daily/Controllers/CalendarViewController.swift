@@ -3,6 +3,7 @@ import UIKit
 class CalendarViewController: UIViewController {
 
     var month = Date().firstDayOfMonth()
+    var dayButtonMatch: [UIButton: Date] = [:]
     let calendarDrawer = CalendarDrawer.drawer
     
     @IBAction func changeMonth(_ sender: UIButton) {
@@ -14,6 +15,9 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func openDay(_ sender: UIButton) {
+        
+        
+        
         performSegue(withIdentifier: "openDayView", sender: sender)
     }
     
@@ -21,15 +25,11 @@ class CalendarViewController: UIViewController {
     @IBOutlet var weekDayLabel: [UILabel]!
     @IBOutlet var dayButtons: [UIButton]!
     
-    @IBOutlet weak var calendarView: UIStackView!{
+    @IBOutlet weak var allPageView: UIView! {
         didSet {
-            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(nextMonth))
-            swipeLeft.direction = .left
-            calendarView.addGestureRecognizer(swipeLeft)
-            
-            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(previousMonth))
-            swipeRight.direction = .right
-            calendarView.addGestureRecognizer(swipeRight)
+            addGestureToAllPageView(target: self, selector: #selector(nextMonth), direction: .left)
+            addGestureToAllPageView(target: self, selector: #selector(previousMonth), direction: .right)
+
         }
     }
     
@@ -39,6 +39,12 @@ class CalendarViewController: UIViewController {
     
     @objc func previousMonth() {
         handelChangeMonth(by: -1)
+    }
+    
+    private func addGestureToAllPageView(target: Any?, selector: Selector, direction: UISwipeGestureRecognizer.Direction) {
+        let swipe = UISwipeGestureRecognizer(target: target, action: selector)
+        swipe.direction = direction
+        allPageView.addGestureRecognizer(swipe)
     }
     
     private func handelChangeMonth(by: Int) {
@@ -59,6 +65,8 @@ class CalendarViewController: UIViewController {
     
     
     private func drawCalendarDayButtons() {
+        dayButtonMatch = [:]
+        
         let daysOfMonth     = Day.getAllDaysOfMounth(month)
         let firstDayOfMonth = month.firstDayOfMonth()
         let lastDayOfMonth  = month.lastDayOfMonth()
@@ -84,7 +92,8 @@ class CalendarViewController: UIViewController {
                     hideTheLastButtons = true
                 }
             } else {
-                day     = getDay(daysOfMonth: daysOfMonth, date: drawingDay)
+                dayButtonMatch[button] = drawingDay
+                day = getDay(daysOfMonth: daysOfMonth, date: drawingDay)
                 dayType = drawingDay == Date().getStartDay() ? "today" : "usual"
             }
             calendarDrawer.drawDayButton(button: button, dayDate: drawingDay, dayType: dayType, day: day)
@@ -129,9 +138,10 @@ class CalendarViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as UIViewController
-        let button = sender as! UIButton
-        destinationVC.title = button.currentTitle!
+        if segue.identifier == "openDayView" {
+            let desitatonVC = segue.destination as! DayViewController
+            desitatonVC.dayDate = dayButtonMatch[sender as! UIButton] ?? Date().getStartDay()
+        }
     }
 }
 

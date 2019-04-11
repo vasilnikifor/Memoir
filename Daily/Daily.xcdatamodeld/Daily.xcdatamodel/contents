@@ -4,12 +4,12 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dayRate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="month" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="records" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Record" syncable="YES"/>
+        <relationship name="records" toMany="YES" deletionRule="Cascade" destinationEntity="Record" inverseName="day" inverseEntity="Record" syncable="YES"/>
     </entity>
     <entity name="Record" representedClassName=".Record" syncable="YES" codeGenerationType="category">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" syncable="YES"/>
+        <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="records" inverseEntity="Day" syncable="YES"/>
     </entity>
     <elements>
         <element name="Day" positionX="-443.93359375" positionY="-66.03125" width="128" height="105"/>

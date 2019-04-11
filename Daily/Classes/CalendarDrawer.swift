@@ -20,7 +20,7 @@ class CalendarDrawer {
             button.tintColor = UIColor.darkText
         case "today":
             button.isEnabled = true
-            button.layer.borderWidth = 4
+            button.layer.borderWidth = 3
             button.tintColor = UIColor.darkText
         case "inactive":
             button.isEnabled = false
