@@ -15,11 +15,22 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func openDay(_ sender: UIButton) {
-        performSegue(withIdentifier: "openDayView", sender: sender)
+        performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
         
 //        if let dayViewController = storyboard?.instantiateViewController(withIdentifier: "DayViewController") {
-//            navigationController?.pushViewController(dayViewController, animated: true)
+//            self.present(dayViewController, animated: true, completion: nil)
+//
+//            //self.navigationController?.pushViewController(dayViewController, animated: true)
+//            //navigationController?.pushViewController(dayViewController animated: true)
 //        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openerDayView" {
+            if let dayTableViewController = segue.destination as? DayTableViewController {
+                dayTableViewController.dayDate = sender as? Date ?? Date()
+            }
+        }
     }
     
     @IBOutlet weak var monthLabel: UILabel!
@@ -135,13 +146,6 @@ class CalendarViewController: UIViewController {
         for index in weekDayLabel.indices {
             let label = weekDayLabel[index]
             label.text = Calendar.current.shortWeekdaySymbols[index]
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openDayView" {
-            let desitatonVC = segue.destination as! DayViewController
-            desitatonVC.dayDate = dayButtonMatch[sender as! UIButton] ?? Date().getStartDay()
         }
     }
 }

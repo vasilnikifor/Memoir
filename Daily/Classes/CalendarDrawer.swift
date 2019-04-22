@@ -13,15 +13,27 @@ class CalendarDrawer {
         button.layer.borderColor = UIColor.darkText.cgColor
         button.backgroundColor = getDayRateColor(day)
         
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        button.layer.shadowOpacity = 0.0
+        button.layer.shadowRadius = 0.0
+        button.layer.masksToBounds = false
+        
         switch dayType {
         case "usual":
             button.isEnabled = true
             button.layer.borderWidth = 1
             button.tintColor = UIColor.darkText
+            
+            button.layer.shadowOpacity = 1.0
+            button.layer.shadowRadius = 2.0
         case "today":
             button.isEnabled = true
-            button.layer.borderWidth = 3
+            button.layer.borderWidth = 2
             button.tintColor = UIColor.darkText
+            
+            button.layer.shadowOpacity = 1.0
+            button.layer.shadowRadius = 8.0
         case "inactive":
             button.isEnabled = false
             button.layer.borderWidth = 0
@@ -63,10 +75,12 @@ class CalendarDrawer {
     
     private struct dayEvaluation {
         static let eval0 = UIColor.white
-        static let eval1 = UIColor.red
-        static let eval2 = UIColor.orange
-        static let eval3 = UIColor.yellow
-        static let eval4 = UIColor.green
-        static let eval5 = UIColor.red
+        static let eval1 = UIColor(red:0.97, green:0.73, blue:0.82, alpha:1.0) // #f8bbd0
+        static let eval2 = UIColor(red:0.97, green:0.73, blue:0.82, alpha:1.0) // #f8bbd0
+        static let eval3 = UIColor(red:0.77, green:0.79, blue:0.91, alpha:1.0) // #c5cae9
+        static let eval4 = UIColor(red:0.86, green:0.93, blue:0.78, alpha:1.0) // #dcedc8
+        static let eval5 = UIColor(red:0.86, green:0.93, blue:0.78, alpha:1.0) // #dcedc8
+        
+        
     }
 }

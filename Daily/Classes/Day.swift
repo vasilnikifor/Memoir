@@ -3,7 +3,9 @@ import CoreData
 
 
 public class Day: NSManagedObject {
-    static func findOrCreateDay(date: Date, in context: NSManagedObjectContext) -> Day {
+    static func findOrCreateDay(date: Date) -> Day {
+        let context = AppDelegate.persistentContainer.viewContext
+        
         let dateForFind = date.getStartDay()
         
         let request: NSFetchRequest<Day> = Day.fetchRequest()
@@ -25,8 +27,8 @@ public class Day: NSManagedObject {
         return day
     }
     
-    static func removeDay(day: Day, context: NSManagedObjectContext) {
-        context.delete(day)
+    static func removeDay(day: Day) {
+        AppDelegate.persistentContainer.viewContext.delete(day)
     }
     
     static func getAllDaysOfMounth(_ month: Date) -> [Day] {
