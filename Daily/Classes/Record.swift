@@ -3,19 +3,11 @@ import CoreData
 
 
 public class Record: NSManagedObject {
-    static func createNewRecord(note: String, time: Date, day: Day, context: NSManagedObjectContext) -> Record {
-        let context = AppDelegate.persistentContainer.viewContext
-        let record = Record(context: context)
-       
-        record.note = note
+    static func createNewRecord(day: Day, time: Date) -> Record {
+        let record = Record(context: AppDelegate.persistentContainer.viewContext)
+        
         record.time = time
         record.day  = day
-        
-        do {
-            try context.save()
-        } catch {
-            print("\(error)")
-        }
         
         return record
     }

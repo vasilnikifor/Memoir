@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ViewController.drawCalendar():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dayButtons">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Date.firstDayOfMonth():Date.swift">
          <PersistentStrings>
             <PersistentString
@@ -20,6 +12,14 @@
       </ContextState>
       <ContextState
          contextName = "CalendarViewController.drawCalendar(month:):CalendarViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.drawCalendar():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dayButtons">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

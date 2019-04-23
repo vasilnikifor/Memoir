@@ -23,7 +23,7 @@ public class Day: NSManagedObject {
         let day = Day(context: context)
         day.date = dateForFind
         day.month = dateForFind.firstDayOfMonth()
-        day.dayRate = 1
+        day.dayRate = 0
         return day
     }
     

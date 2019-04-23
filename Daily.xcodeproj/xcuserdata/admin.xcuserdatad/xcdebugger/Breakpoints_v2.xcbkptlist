@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Daily/Controllers/DayTableViewController.swift"
-            timestampString = "577630483.908608"
+            filePath = "Daily/Controllers/NoteRecordViewController.swift"
+            timestampString = "577722631.831533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "goBack()"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "fillInViewFromRecord()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

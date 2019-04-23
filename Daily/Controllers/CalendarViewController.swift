@@ -16,13 +16,6 @@ class CalendarViewController: UIViewController {
     
     @IBAction func openDay(_ sender: UIButton) {
         performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
-        
-//        if let dayViewController = storyboard?.instantiateViewController(withIdentifier: "DayViewController") {
-//            self.present(dayViewController, animated: true, completion: nil)
-//
-//            //self.navigationController?.pushViewController(dayViewController, animated: true)
-//            //navigationController?.pushViewController(dayViewController animated: true)
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

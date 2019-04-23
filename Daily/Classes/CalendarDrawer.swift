@@ -42,11 +42,11 @@ class CalendarDrawer {
         }
     }
     
-    private func getDayRate(_ day: Day?) -> Int {
+    private func getDayRate(_ day: Day?) -> Int? {
         if let day = day {
             return Int(day.dayRate)
         } else {
-            return 0
+            return nil
         }
     }
     
@@ -58,6 +58,8 @@ class CalendarDrawer {
         let dayRate = getDayRate(day)
         
         switch dayRate {
+        case 0:
+            return dayEvaluation.eval0
         case 1:
             return dayEvaluation.eval1
         case 2:
@@ -69,18 +71,17 @@ class CalendarDrawer {
         case 5:
             return dayEvaluation.eval5
         default:
-            return dayEvaluation.eval0
+            return dayEvaluation.defaultEval
         }
     }
     
     private struct dayEvaluation {
-        static let eval0 = UIColor.white
-        static let eval1 = UIColor(red:0.97, green:0.73, blue:0.82, alpha:1.0) // #f8bbd0
-        static let eval2 = UIColor(red:0.97, green:0.73, blue:0.82, alpha:1.0) // #f8bbd0
-        static let eval3 = UIColor(red:0.77, green:0.79, blue:0.91, alpha:1.0) // #c5cae9
-        static let eval4 = UIColor(red:0.86, green:0.93, blue:0.78, alpha:1.0) // #dcedc8
-        static let eval5 = UIColor(red:0.86, green:0.93, blue:0.78, alpha:1.0) // #dcedc8
-        
-        
+        static let eval0 = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0) // #f5f5f5 Grey
+        static let eval1 = UIColor(red:0.97, green:0.73, blue:0.82, alpha:1.0) // #f8bbd0 Pink
+        static let eval2 = UIColor(red:0.97, green:0.73, blue:0.82, alpha:1.0) // #f8bbd0 Pink
+        static let eval3 = UIColor(red:0.77, green:0.79, blue:0.91, alpha:1.0) // #c5cae9 Indigo
+        static let eval4 = UIColor(red:0.86, green:0.93, blue:0.78, alpha:1.0) // #dcedc8 Light Green
+        static let eval5 = UIColor(red:0.86, green:0.93, blue:0.78, alpha:1.0) // #dcedc8 Light Green
+        static let defaultEval = UIColor.white
     }
 }

@@ -739,24 +739,11 @@
                                         <constraint firstItem="ipq-T8-cnf" firstAttribute="top" secondItem="ske-Bh-SMm" secondAttribute="bottom" constant="8" id="xKc-s5-uQe"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="noteTextLabel" destination="ipq-T8-cnf" id="oSW-Fn-g6V"/>
                                     <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
                                 </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageRecord" rowHeight="124" id="Wrf-hs-3aA">
-                                <rect key="frame" x="0.0" y="181" width="375" height="124"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wrf-hs-3aA" id="OqJ-N0-slt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="123.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mPS-cZ-rxM">
-                                            <rect key="frame" x="78" y="68" width="175" height="55"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -767,11 +754,12 @@
                     <navigationItem key="navigationItem" title="Title" id="NOj-Ux-xTu">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6NM-OB-vjb">
                             <connections>
-                                <segue destination="bOK-Nn-dGV" kind="show" id="keg-HT-rgP"/>
+                                <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="keg-HT-rgP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dayNI" destination="NOj-Ux-xTu" id="2Cc-Bd-vNH"/>
                         <outlet property="tableViewForm" destination="GmC-x1-r5V" id="IlY-bo-cbc"/>
                     </connections>
                 </tableViewController>
@@ -779,16 +767,47 @@
             </objects>
             <point key="canvasLocation" x="873" y="241"/>
         </scene>
-        <!--View Controller-->
+        <!--Note Record View Controller-->
         <scene sceneID="P8F-Sg-rso">
             <objects>
-                <viewController id="bOK-Nn-dGV" sceneMemberID="viewController">
+                <viewController id="bOK-Nn-dGV" customClass="NoteRecordViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xxo-Mr-64a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-ZE-706">
+                                <rect key="frame" x="8" y="72" width="359" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DzX-b6-8I7"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
+                                <rect key="frame" x="8" y="110" width="359" height="549"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iUl-Hd-bjL" firstAttribute="trailing" secondItem="fQG-mw-Tu9" secondAttribute="trailing" constant="8" id="969-gh-hVg"/>
+                            <constraint firstItem="fQG-mw-Tu9" firstAttribute="leading" secondItem="iUl-Hd-bjL" secondAttribute="leading" constant="8" id="Bo3-0Y-jEU"/>
+                            <constraint firstItem="fQG-mw-Tu9" firstAttribute="top" secondItem="mvg-ZE-706" secondAttribute="bottom" constant="8" id="RqX-E4-BKh"/>
+                            <constraint firstItem="iUl-Hd-bjL" firstAttribute="trailing" secondItem="mvg-ZE-706" secondAttribute="trailing" constant="8" id="RxL-vy-qif"/>
+                            <constraint firstItem="mvg-ZE-706" firstAttribute="leading" secondItem="iUl-Hd-bjL" secondAttribute="leading" constant="8" id="UEO-WK-dMV"/>
+                            <constraint firstItem="mvg-ZE-706" firstAttribute="top" secondItem="iUl-Hd-bjL" secondAttribute="top" constant="8" id="gSe-RD-itY"/>
+                            <constraint firstItem="iUl-Hd-bjL" firstAttribute="bottom" secondItem="fQG-mw-Tu9" secondAttribute="bottom" constant="8" id="vSE-XH-b4p"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
+                    <connections>
+                        <outlet property="noteTextView" destination="fQG-mw-Tu9" id="HLv-vO-UFI"/>
+                        <outlet property="timeButton" destination="mvg-ZE-706" id="CyD-U6-Mkh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWA-NK-dax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -797,7 +816,6 @@
         <!--Navigation Controller-->
         <scene sceneID="pnP-AG-VzT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="irn-KG-DxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dJM-ZY-2nP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ls7-sy-T40">
@@ -809,6 +827,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CdQ-LW-G5g"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="irn-KG-DxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-762.39999999999998" y="241.52923538230885"/>
         </scene>

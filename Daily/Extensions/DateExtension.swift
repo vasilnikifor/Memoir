@@ -22,4 +22,14 @@ extension Date {
     func getStartDay() -> Date {
         return Calendar.current.startOfDay(for: self)
     }
+    
+    func getTimeRepresentation() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: self)
+    }
+    
+    func getTime() -> Date {
+        return Date(timeIntervalSinceNow: TimeInterval(timeIntervalSince(self)) - TimeInterval(timeIntervalSince(self.getStartDay())))
+    }
 }
