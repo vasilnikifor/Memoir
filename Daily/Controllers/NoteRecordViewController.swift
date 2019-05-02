@@ -9,6 +9,17 @@ class NoteRecordViewController: UIViewController {
 
     @IBOutlet weak var noteTextView: UITextView!
     
+    @IBOutlet weak var navigationVCTitle: UINavigationItem!
+    
+    @IBAction func onClickSaveRecord(_ sender: Any) {
+        saveRecord()
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    private func saveRecord() {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fillInViewFromRecord()

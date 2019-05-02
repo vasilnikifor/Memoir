@@ -23,12 +23,28 @@ public class Day: NSManagedObject {
         let day = Day(context: context)
         day.date = dateForFind
         day.month = dateForFind.firstDayOfMonth()
-        day.dayRate = 0
+        
+        // TO-DO: TEST
+        //day.dayRate = 0
+        day.dayRate = Int16.random(in: 0...5)
+        
+        do {
+            try AppDelegate.persistentContainer.viewContext.save()
+        } catch {
+            print("\(error)")
+        }
+        
         return day
     }
     
     static func removeDay(day: Day) {
         AppDelegate.persistentContainer.viewContext.delete(day)
+        
+        do {
+            try AppDelegate.persistentContainer.viewContext.save()
+        } catch {
+            print("\(error)")
+        }
     }
     
     static func getAllDaysOfMounth(_ month: Date) -> [Day] {

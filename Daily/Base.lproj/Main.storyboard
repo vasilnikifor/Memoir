@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -606,23 +606,23 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8aY-Pa-f4n">
-                                <rect key="frame" x="16" y="66.5" width="343" height="37"/>
+                                <rect key="frame" x="16" y="68.5" width="343" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
-                                        <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                        <rect key="frame" x="0.0" y="5" width="25" height="25"/>
                                         <state key="normal" image="previous"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkU-D6-8eV"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-jm-6xC">
-                                        <rect key="frame" x="93.5" y="1" width="156" height="35"/>
+                                        <rect key="frame" x="93.5" y="0.0" width="156" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
-                                        <rect key="frame" x="306" y="0.0" width="37" height="37"/>
+                                        <rect key="frame" x="318" y="5" width="25" height="25"/>
                                         <state key="normal" image="next"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
@@ -767,7 +767,7 @@
             </objects>
             <point key="canvasLocation" x="873" y="241"/>
         </scene>
-        <!--Note Record View Controller-->
+        <!--Title-->
         <scene sceneID="P8F-Sg-rso">
             <objects>
                 <viewController id="bOK-Nn-dGV" customClass="NoteRecordViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
@@ -804,7 +804,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="l2A-Ko-VQB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Pps-GP-Tjb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="IID-cy-3Gf">
+                            <connections>
+                                <action selector="onClickSaveRecord:" destination="bOK-Nn-dGV" id="WQu-44-Or3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="navigationVCTitle" destination="l2A-Ko-VQB" id="q5r-9u-nhh"/>
                         <outlet property="noteTextView" destination="fQG-mw-Tu9" id="HLv-vO-UFI"/>
                         <outlet property="timeButton" destination="mvg-ZE-706" id="CyD-U6-Mkh"/>
                     </connections>
@@ -833,7 +842,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="next" width="37.5" height="37.5"/>
-        <image name="previous" width="37.5" height="37.5"/>
+        <image name="next" width="25" height="25"/>
+        <image name="previous" width="25" height="25"/>
     </resources>
 </document>
