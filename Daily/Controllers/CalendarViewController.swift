@@ -34,7 +34,6 @@ class CalendarViewController: UIViewController {
         didSet {
             addGestureToAllPageView(target: self, selector: #selector(nextMonth), direction: .left)
             addGestureToAllPageView(target: self, selector: #selector(previousMonth), direction: .right)
-
         }
     }
     
@@ -44,6 +43,13 @@ class CalendarViewController: UIViewController {
     
     @objc func previousMonth() {
         handelChangeMonth(by: -1)
+    }
+    
+    private func setTransparencyOnNavigationController() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     
     private func addGestureToAllPageView(target: Any?, selector: Selector, direction: UISwipeGestureRecognizer.Direction) {
@@ -60,6 +66,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawCalendar()
+        setTransparencyOnNavigationController()
     }
     
     private func drawCalendar() {

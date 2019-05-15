@@ -616,13 +616,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-jm-6xC">
-                                        <rect key="frame" x="93.5" y="0.0" width="156" height="35"/>
+                                        <rect key="frame" x="94" y="0.0" width="156" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
-                                        <rect key="frame" x="318" y="5" width="25" height="25"/>
+                                        <rect key="frame" x="319" y="5.5" width="24" height="24"/>
                                         <state key="normal" image="next"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
@@ -641,7 +641,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bHj-dy-prL"/>
+                    <navigationItem key="navigationItem" id="bHj-dy-prL">
+                        <barButtonItem key="backBarButtonItem" title=" " id="7tI-T8-Ym2"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="allPageView" destination="8bC-Xf-vdC" id="5TG-2t-fk0"/>
                         <outlet property="monthLabel" destination="Pla-jm-6xC" id="rcK-RR-CLC"/>
@@ -700,10 +702,10 @@
             </objects>
             <point key="canvasLocation" x="49" y="242"/>
         </scene>
-        <!--Title-->
+        <!-- -->
         <scene sceneID="TxS-gv-yi7">
             <objects>
-                <tableViewController storyboardIdentifier="DayViewController" id="rVh-SV-5Mh" customClass="DayTableViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DayViewController" title=" " id="rVh-SV-5Mh" customClass="DayTableViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GmC-x1-r5V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -752,11 +754,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="NOj-Ux-xTu">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6NM-OB-vjb">
-                            <connections>
-                                <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="keg-HT-rgP"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="b1Z-4s-uI7"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="add" id="6NM-OB-vjb">
+                                <connections>
+                                    <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="keg-HT-rgP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="mood" id="GW8-y4-GVh"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="dayNI" destination="NOj-Ux-xTu" id="2Cc-Bd-vNH"/>
@@ -785,7 +791,7 @@
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
-                                <rect key="frame" x="8" y="110" width="359" height="549"/>
+                                <rect key="frame" x="8" y="110" width="359" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -805,8 +811,8 @@
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="l2A-Ko-VQB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Pps-GP-Tjb"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="IID-cy-3Gf">
+                        <barButtonItem key="leftBarButtonItem" image="before" id="Pps-GP-Tjb"/>
+                        <barButtonItem key="rightBarButtonItem" image="save" id="IID-cy-3Gf">
                             <connections>
                                 <action selector="onClickSaveRecord:" destination="bOK-Nn-dGV" id="WQu-44-Or3"/>
                             </connections>
@@ -825,7 +831,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pnP-AG-VzT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dJM-ZY-2nP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="dJM-ZY-2nP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ls7-sy-T40">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -842,7 +848,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="next" width="25" height="25"/>
+        <image name="add" width="24" height="24"/>
+        <image name="before" width="24" height="24"/>
+        <image name="mood" width="24" height="24"/>
+        <image name="next" width="24" height="24"/>
         <image name="previous" width="25" height="25"/>
+        <image name="save" width="24" height="24"/>
     </resources>
 </document>
