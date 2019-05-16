@@ -11,6 +11,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DayTableViewController.tableView(_:cellForRowAt:):DayTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "records.count + 1">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CalendarViewController.drawCalendar(month:):CalendarViewController.swift">
       </ContextState>
       <ContextState

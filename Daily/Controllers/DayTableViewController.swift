@@ -71,17 +71,19 @@ class DayTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return records.count
+        return records.count + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRecord", for: indexPath) as! NoteRecordTableViewCell
+        if indexPath.row == records.count {
+            return tableView.dequeueReusableCell(withIdentifier: "AddingRecord", for: indexPath) as! AddingRecordTableViewCell
+        }
         
         let record = records[indexPath.row]
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRecord", for: indexPath) as! NoteRecordTableViewCell
         cell.recordTimeTextLabel?.text = record.time?.getTimeRepresentation()
         cell.noteTextLabel?.text = record.note ?? ""
-
+        
         return cell
     }
     

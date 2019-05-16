@@ -747,6 +747,39 @@
                                     <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddingRecord" id="s1u-Ce-grr" customClass="AddingRecordTableViewCell" customModule="Daily" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="181" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s1u-Ce-grr" id="IfJ-yJ-tgc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPz-6q-xeA">
+                                            <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akk-0o-5K7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="22"/>
+                                                    <state key="normal" title="Add note" image="note"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-ND-noy">
+                                                    <rect key="frame" x="123" y="0.0" width="109" height="22"/>
+                                                    <state key="normal" title="Add photo" image="camera"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfC-yX-K8l">
+                                                    <rect key="frame" x="232" y="0.0" width="111" height="22"/>
+                                                    <state key="normal" title="Add image" image="image"/>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OPz-6q-xeA" secondAttribute="bottom" id="0B6-nk-FiP"/>
+                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="top" secondItem="IfJ-yJ-tgc" secondAttribute="topMargin" id="Ia5-ED-YxT"/>
+                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="leading" secondItem="IfJ-yJ-tgc" secondAttribute="leadingMargin" id="jmv-m4-gah"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="OPz-6q-xeA" secondAttribute="trailing" id="kQD-s3-gL0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="rVh-SV-5Mh" id="Mtq-i2-uqF"/>
@@ -850,8 +883,11 @@
     <resources>
         <image name="add" width="24" height="24"/>
         <image name="before" width="24" height="24"/>
+        <image name="camera" width="24" height="24"/>
+        <image name="image" width="24" height="24"/>
         <image name="mood" width="24" height="24"/>
         <image name="next" width="24" height="24"/>
+        <image name="note" width="24" height="24"/>
         <image name="previous" width="25" height="25"/>
         <image name="save" width="24" height="24"/>
     </resources>
