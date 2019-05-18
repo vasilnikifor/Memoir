@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calendar View Controller-->
+        <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController restorationIdentifier="CalendarViewController" storyboardIdentifier="CalendarViewController" id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CalendarViewController" storyboardIdentifier="CalendarViewController" title="Calendar" id="BYZ-38-t0r" customClass="CalendarVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,13 +616,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-jm-6xC">
-                                        <rect key="frame" x="94" y="0.0" width="156" height="35"/>
+                                        <rect key="frame" x="93.5" y="0.0" width="156" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
-                                        <rect key="frame" x="319" y="5.5" width="24" height="24"/>
+                                        <rect key="frame" x="318" y="5" width="25" height="25"/>
                                         <state key="normal" image="next"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
@@ -645,7 +645,6 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="7tI-T8-Ym2"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="allPageView" destination="8bC-Xf-vdC" id="5TG-2t-fk0"/>
                         <outlet property="monthLabel" destination="Pla-jm-6xC" id="rcK-RR-CLC"/>
                         <outletCollection property="dayButtons" destination="BSE-NA-uUX" collectionClass="NSMutableArray" id="r82-gj-le9"/>
                         <outletCollection property="dayButtons" destination="srF-t7-kt2" collectionClass="NSMutableArray" id="3bB-y6-zDL"/>
@@ -702,16 +701,16 @@
             </objects>
             <point key="canvasLocation" x="49" y="242"/>
         </scene>
-        <!-- -->
+        <!-- Day-->
         <scene sceneID="TxS-gv-yi7">
             <objects>
-                <tableViewController storyboardIdentifier="DayViewController" title=" " id="rVh-SV-5Mh" customClass="DayTableViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DayViewController" title=" Day" id="rVh-SV-5Mh" customClass="DayVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GmC-x1-r5V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="153" id="VQo-q4-831" customClass="NoteRecordTableViewCell" customModule="Daily" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="153" id="VQo-q4-831" customClass="RecordCell" customModule="Daily" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="153"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQo-q4-831" id="J9f-oV-RQE">
@@ -747,38 +746,73 @@
                                     <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddingRecord" id="s1u-Ce-grr" customClass="AddingRecordTableViewCell" customModule="Daily" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="181" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddingRecord" rowHeight="118" id="s1u-Ce-grr" customClass="AddRecordCell" customModule="Daily" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="181" width="375" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s1u-Ce-grr" id="IfJ-yJ-tgc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPz-6q-xeA">
-                                            <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OPz-6q-xeA">
+                                            <rect key="frame" x="24" y="27" width="327" height="72"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akk-0o-5K7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="22"/>
-                                                    <state key="normal" title="Add note" image="note"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wD4-SG-eOM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="82" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <state key="normal" title="Rate day" image="mood">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="rateDayAction:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="p6F-72-kA0"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-ND-noy">
-                                                    <rect key="frame" x="123" y="0.0" width="109" height="22"/>
-                                                    <state key="normal" title="Add photo" image="camera"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akk-0o-5K7">
+                                                    <rect key="frame" x="82" y="0.0" width="81.5" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <state key="normal" title="Add note" image="note">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addNoteAction:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="YR3-H4-Tmu"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfC-yX-K8l">
-                                                    <rect key="frame" x="232" y="0.0" width="111" height="22"/>
-                                                    <state key="normal" title="Add image" image="image"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-ND-noy">
+                                                    <rect key="frame" x="163.5" y="0.0" width="82" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <state key="normal" title="Take photo" image="camera">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addPhotoAction:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="PpF-ti-ALE"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfC-yX-K8l">
+                                                    <rect key="frame" x="245.5" y="0.0" width="81.5" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <state key="normal" title="Add from library" image="image">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addImage:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="DR1-xu-cW1"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="OPz-6q-xeA" secondAttribute="bottom" id="0B6-nk-FiP"/>
-                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="top" secondItem="IfJ-yJ-tgc" secondAttribute="topMargin" id="Ia5-ED-YxT"/>
-                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="leading" secondItem="IfJ-yJ-tgc" secondAttribute="leadingMargin" id="jmv-m4-gah"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="OPz-6q-xeA" secondAttribute="trailing" id="kQD-s3-gL0"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OPz-6q-xeA" secondAttribute="bottom" constant="8" id="0B6-nk-FiP"/>
+                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="top" secondItem="IfJ-yJ-tgc" secondAttribute="topMargin" constant="16" id="Ia5-ED-YxT"/>
+                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="leading" secondItem="IfJ-yJ-tgc" secondAttribute="leadingMargin" constant="8" id="jmv-m4-gah"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="OPz-6q-xeA" secondAttribute="trailing" constant="8" id="kQD-s3-gL0"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="addImageButton" destination="EfC-yX-K8l" id="AXA-Eg-WW8"/>
+                                    <outlet property="addNoteButton" destination="Akk-0o-5K7" id="V4D-Wh-kW4"/>
+                                    <outlet property="addPhotoButton" destination="FBN-ND-noy" id="rT2-pj-jEe"/>
+                                    <outlet property="rateDayButton" destination="wD4-SG-eOM" id="t5I-3I-1RW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -789,27 +823,31 @@
                     <navigationItem key="navigationItem" title="Title" id="NOj-Ux-xTu">
                         <barButtonItem key="backBarButtonItem" title=" " id="b1Z-4s-uI7"/>
                         <rightBarButtonItems>
-                            <barButtonItem image="add" id="6NM-OB-vjb">
+                            <barButtonItem title="Add record" image="add" id="6NM-OB-vjb">
                                 <connections>
-                                    <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="keg-HT-rgP"/>
+                                    <action selector="addRecordButton:" destination="rVh-SV-5Mh" id="u4t-PY-O7X"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="mood" id="GW8-y4-GVh"/>
+                            <barButtonItem title="Rate day" image="mood" id="GW8-y4-GVh">
+                                <connections>
+                                    <action selector="rateDayAction:" destination="rVh-SV-5Mh" id="MZb-x0-tyc"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="dayNI" destination="NOj-Ux-xTu" id="2Cc-Bd-vNH"/>
-                        <outlet property="tableViewForm" destination="GmC-x1-r5V" id="IlY-bo-cbc"/>
+                        <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="Ha2-pe-4AN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMn-au-jFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="873" y="241"/>
+            <point key="canvasLocation" x="872.79999999999995" y="240.62968515742131"/>
         </scene>
-        <!--Title-->
+        <!--Note-->
         <scene sceneID="P8F-Sg-rso">
             <objects>
-                <viewController id="bOK-Nn-dGV" customClass="NoteRecordViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Note" id="bOK-Nn-dGV" customClass="NoteVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xxo-Mr-64a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -824,7 +862,7 @@
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
-                                <rect key="frame" x="8" y="110" width="359" height="505"/>
+                                <rect key="frame" x="8" y="110" width="359" height="549"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -844,7 +882,6 @@
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="l2A-Ko-VQB">
-                        <barButtonItem key="leftBarButtonItem" image="before" id="Pps-GP-Tjb"/>
                         <barButtonItem key="rightBarButtonItem" image="save" id="IID-cy-3Gf">
                             <connections>
                                 <action selector="onClickSaveRecord:" destination="bOK-Nn-dGV" id="WQu-44-Or3"/>
@@ -864,7 +901,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pnP-AG-VzT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="dJM-ZY-2nP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dJM-ZY-2nP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ls7-sy-T40">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -882,11 +919,10 @@
     </scenes>
     <resources>
         <image name="add" width="24" height="24"/>
-        <image name="before" width="24" height="24"/>
         <image name="camera" width="24" height="24"/>
         <image name="image" width="24" height="24"/>
         <image name="mood" width="24" height="24"/>
-        <image name="next" width="24" height="24"/>
+        <image name="next" width="25" height="25"/>
         <image name="note" width="24" height="24"/>
         <image name="previous" width="25" height="25"/>
         <image name="save" width="24" height="24"/>

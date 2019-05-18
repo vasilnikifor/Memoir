@@ -1,39 +1,41 @@
 import UIKit
 
-class CalendarViewController: UIViewController {
+class CalendarVC: UIViewController {
 
     var month = Date().firstDayOfMonth()
     var dayButtonMatch: [UIButton: Date] = [:]
     let calendarDrawer = CalendarDrawer.drawer
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setInitialViewSettings()
+        drawCalendar()
+        setTransparencyOnNavigationController()
+    }
+    
+    private func setTransparencyOnNavigationController() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
+    
+    private func setInitialViewSettings() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(previousMonth))
+        rightSwipe.direction = .right
+        view.addGestureRecognizer(rightSwipe)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(nextMonth))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+    }
     
     @IBAction func changeMonth(_ sender: UIButton) {
         if sender.restorationIdentifier == "previousMonth" {
             previousMonth()
         } else if sender.restorationIdentifier == "nextMonth" {
             nextMonth()
-        }
-    }
-    
-    @IBAction func openDay(_ sender: UIButton) {
-        performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openerDayView" {
-            if let dayTableViewController = segue.destination as? DayTableViewController {
-                dayTableViewController.dayDate = sender as? Date ?? Date()
-            }
-        }
-    }
-    
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet var weekDayLabel: [UILabel]!
-    @IBOutlet var dayButtons: [UIButton]!
-    
-    @IBOutlet weak var allPageView: UIView! {
-        didSet {
-            addGestureToAllPageView(target: self, selector: #selector(nextMonth), direction: .left)
-            addGestureToAllPageView(target: self, selector: #selector(previousMonth), direction: .right)
         }
     }
     
@@ -45,36 +47,20 @@ class CalendarViewController: UIViewController {
         handelChangeMonth(by: -1)
     }
     
-    private func setTransparencyOnNavigationController() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-    }
-    
-    private func addGestureToAllPageView(target: Any?, selector: Selector, direction: UISwipeGestureRecognizer.Direction) {
-        let swipe = UISwipeGestureRecognizer(target: target, action: selector)
-        swipe.direction = direction
-        allPageView.addGestureRecognizer(swipe)
-    }
-    
     private func handelChangeMonth(by: Int) {
         month = month.addMonths(by)
         drawCalendar()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        drawCalendar()
-        setTransparencyOnNavigationController()
-    }
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet var weekDayLabel: [UILabel]!
+    @IBOutlet var dayButtons: [UIButton]!
     
     private func drawCalendar() {
         drawWeekDays()
         fillMonthLabel(month: month)
         drawCalendarDayButtons()
     }
-    
     
     private func drawCalendarDayButtons() {
         dayButtonMatch = [:]
@@ -146,6 +132,20 @@ class CalendarViewController: UIViewController {
         for index in weekDayLabel.indices {
             let label = weekDayLabel[index]
             label.text = Calendar.current.shortWeekdaySymbols[index]
+        }
+    }
+    
+    // MARK: navigate
+    
+    @IBAction func openDay(_ sender: UIButton) {
+        performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openerDayView" {
+            if let dayTableViewController = segue.destination as? DayVC {
+                dayTableViewController.dayDate = sender as? Date ?? Date()
+            }
         }
     }
 }

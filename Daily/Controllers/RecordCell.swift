@@ -1,15 +1,11 @@
-//
-//  AddingRecordTableViewCellController.swift
-//  Daily
-//
-//  Created by Admin on 16/05/2019.
-//  Copyright © 2019 buldog.team. All rights reserved.
-//
-
 import UIKit
 
-class AddingRecordTableViewCell: UITableViewCell {
-
+class RecordCell: UITableViewCell {
+    
+    @IBOutlet weak var noteTextLabel: UILabel!
+    
+    @IBOutlet weak var recordTimeTextLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +16,4 @@ class AddingRecordTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

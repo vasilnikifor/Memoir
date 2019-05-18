@@ -42,9 +42,9 @@ class CalendarDrawer {
         }
     }
     
-    private func getDayRate(_ day: Day?) -> Int? {
+    private func getDayRate(_ day: Day?) -> Double? {
         if let day = day {
-            return Int(day.dayRate)
+            return day.dayRate
         } else {
             return nil
         }
@@ -58,17 +58,17 @@ class CalendarDrawer {
         let dayRate = getDayRate(day)
         
         switch dayRate {
-        case 0:
+        case 0.0:
             return dayEvaluation.eval0
-        case 1:
+        case 1.0:
             return dayEvaluation.eval1
-        case 2:
+        case 2.0:
             return dayEvaluation.eval2
-        case 3:
+        case 3.0:
             return dayEvaluation.eval3
-        case 4:
+        case 4.0:
             return dayEvaluation.eval4
-        case 5:
+        case 5.0:
             return dayEvaluation.eval5
         default:
             return dayEvaluation.defaultEval
