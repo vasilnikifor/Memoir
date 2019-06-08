@@ -2,6 +2,11 @@ import UIKit
 
 class AddRecordCell: UITableViewCell {
 
+    @IBOutlet weak var rateDayButton: UIButton!
+    @IBOutlet weak var addNoteButton: UIButton!
+    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var addImageButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -15,11 +20,4 @@ class AddRecordCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBOutlet weak var rateDayButton: UIButton!
-    
-    @IBOutlet weak var addNoteButton: UIButton!
-    
-    @IBOutlet weak var addPhotoButton: UIButton!
-    
-    @IBOutlet weak var addImageButton: UIButton!
 }

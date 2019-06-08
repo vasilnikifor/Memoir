@@ -42,18 +42,6 @@ class CalendarDrawer {
         }
     }
     
-    private func getDayRate(_ day: Day?) -> Double? {
-        if let day = day {
-            return day.dayRate
-        } else {
-            return nil
-        }
-    }
-    
-    private func getStringOfNumberOfDay(from day: Date) -> String {
-        return String(Calendar.current.component(.day, from: day))
-    }
-    
     func getDayRateColor(_ day: Day?) -> UIColor {
         let dayRate = getDayRate(day)
         
@@ -73,6 +61,18 @@ class CalendarDrawer {
         default:
             return dayEvaluation.defaultEval
         }
+    }
+    
+    private func getDayRate(_ day: Day?) -> Double? {
+        if let day = day {
+            return day.dayRate
+        } else {
+            return nil
+        }
+    }
+    
+    private func getStringOfNumberOfDay(from day: Date) -> String {
+        return String(Calendar.current.component(.day, from: day))
     }
     
     private struct dayEvaluation {
