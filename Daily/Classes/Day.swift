@@ -3,6 +3,15 @@ import CoreData
 
 
 public class Day: NSManagedObject {
+    
+    static func setDayRate(dayDate: Date, rate: Double) {
+        let day = Day.findOrCreateDay(date: dayDate)
+        
+        day.dayRate = rate
+        
+        AppDelegate.saveContext()
+    }
+    
     static func getDay(date: Date) -> Day? {
         let context = AppDelegate.persistentContainer.viewContext
         let dateForFind = date.getStartDay()
@@ -60,4 +69,5 @@ public class Day: NSManagedObject {
         
         return []
     }
+    
 }

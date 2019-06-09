@@ -18,11 +18,20 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openRecordView", let NoteRecordTableViewCell = segue.destination as? NoteVC {
-            NoteRecordTableViewCell.dayDate = dayDate
-            if let selectedRecord = sender as? Record {
-                NoteRecordTableViewCell.record = selectedRecord
+        switch segue.identifier {
+        case "openRecordView":
+            if let noteRecordTableViewCell = segue.destination as? NoteVC {
+                noteRecordTableViewCell.dayDate = dayDate
+                if let selectedRecord = sender as? Record {
+                    noteRecordTableViewCell.record = selectedRecord
+                }
             }
+        case "goToDayRater":
+            if let dayRateVC = segue.destination as? DayRateVC {
+                dayRateVC.dayDate = dayDate
+            }
+        default:
+            return
         }
     }
     
@@ -114,14 +123,8 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
     private func rateDay() {
-        let alert = UIAlertController(title: "Rate the Day please",
-                                      message: "O",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
+        performSegue(withIdentifier: "goToDayRater", sender: nil)
     }
-    
-    private func setDayRate() {}
     
     private func addNote() {
         performSegue(withIdentifier: "openRecordView", sender: nil)

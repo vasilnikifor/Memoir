@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--dayRater-->
+        <scene sceneID="TxB-x5-NUx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tools" referencedIdentifier="dayRater" id="vtG-Qu-6Jd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hmx-lB-kKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="753" y="-404"/>
+        </scene>
         <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -153,7 +161,6 @@
                                                 <state key="normal" title="6"/>
                                                 <connections>
                                                     <action selector="openDay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2DU-gT-gdQ"/>
-                                                    <segue destination="rVh-SV-5Mh" kind="show" identifier="openerDayView" id="638-Mx-NMN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -609,7 +616,7 @@
                                 <rect key="frame" x="16" y="68.5" width="343" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
-                                        <rect key="frame" x="0.0" y="5" width="25" height="25"/>
+                                        <rect key="frame" x="0.0" y="6.5" width="16" height="22"/>
                                         <state key="normal" image="previous"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkU-D6-8eV"/>
@@ -622,7 +629,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
-                                        <rect key="frame" x="318" y="5" width="25" height="25"/>
+                                        <rect key="frame" x="327" y="6.5" width="16" height="22"/>
                                         <state key="normal" image="next"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
@@ -695,6 +702,7 @@
                         <outletCollection property="weekDayLabel" destination="hnI-4G-O3y" collectionClass="NSMutableArray" id="JaK-nD-sKY"/>
                         <outletCollection property="weekDayLabel" destination="5Ea-4N-SpQ" collectionClass="NSMutableArray" id="ffd-64-s7u"/>
                         <outletCollection property="dayButtons" destination="LRs-ID-rGB" collectionClass="NSMutableArray" id="KZy-0c-xLb"/>
+                        <segue destination="rVh-SV-5Mh" kind="show" identifier="openerDayView" id="VRm-uw-yR5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -830,7 +838,7 @@
                             </barButtonItem>
                             <barButtonItem title="Rate day" image="mood" id="GW8-y4-GVh">
                                 <connections>
-                                    <action selector="rateDayAction:" destination="rVh-SV-5Mh" id="MZb-x0-tyc"/>
+                                    <action selector="rateDayAction:" destination="rVh-SV-5Mh" id="3mP-Kh-luF"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -838,6 +846,7 @@
                     <connections>
                         <outlet property="dayNI" destination="NOj-Ux-xTu" id="2Cc-Bd-vNH"/>
                         <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="Ha2-pe-4AN"/>
+                        <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRater" id="2lP-LW-ckF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMn-au-jFT" userLabel="First Responder" sceneMemberID="firstResponder"/>

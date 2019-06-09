@@ -26,6 +26,12 @@ class CalendarVC: UIViewController {
         }
     }
     
+    func drawCalendar() {
+        drawWeekDays()
+        fillMonthLabel(month: month)
+        drawCalendarDayButtons()
+    }
+    
     private func setTransparencyOnNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -56,12 +62,6 @@ class CalendarVC: UIViewController {
         drawCalendar()
     }
 
-    private func drawCalendar() {
-        drawWeekDays()
-        fillMonthLabel(month: month)
-        drawCalendarDayButtons()
-    }
-    
     private func drawCalendarDayButtons() {
         dayButtonMatch = [:]
         

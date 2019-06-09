@@ -1,22 +1,24 @@
-
 import UIKit
 
 class NoteVC: UIViewController {
-
+    
     var dayDate: Date!
     var recordTime: Date!
     var record: Record?
     
     @IBOutlet weak var timeButton: UIButton!
-
     @IBOutlet weak var noteTextView: UITextView!
-    
     @IBOutlet weak var navigationVCTitle: UINavigationItem!
     
-    @IBAction func onClickSaveRecord(_ sender: Any) {
-        saveRecord()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setInitialViewSettings()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.noteTextView?.becomeFirstResponder()
+    }
+    
     private func saveRecord() {
         if record == nil {
             record = Record.createNewRecord(day: Day.findOrCreateDay(date: dayDate), time: recordTime)
@@ -26,17 +28,8 @@ class NoteVC: UIViewController {
         record!.note = noteTextView.text
         
         AppDelegate.saveContext()
-
+        
         goBack()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setInitialViewSettings()
-    }
-    
-    func viewDidAppear() {
-        self.noteTextView?.becomeFirstResponder()
     }
     
     private func setInitialViewSettings() {
@@ -85,9 +78,12 @@ class NoteVC: UIViewController {
         return false
     }
     
-    // MARK: navigate
-    
     private func goBack() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func onClickSaveRecord(_ sender: Any) {
+        saveRecord()
+    }
 }
+
