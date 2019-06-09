@@ -14,6 +14,7 @@
 		8472597422ABFCB800BCBA42 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597322ABFCB800BCBA42 /* ViewManager.swift */; };
 		8472597722AC02A100BCBA42 /* NoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597622AC02A100BCBA42 /* NoteVC.swift */; };
 		8472597922AC119600BCBA42 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597822AC119600BCBA42 /* UIImageExtension.swift */; };
+		8472597C22AD3C7400BCBA42 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597B22AD3C7400BCBA42 /* Note.swift */; };
 		84F04BD4228DCDCD00BBD68D /* AddRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F04BD3228DCDCD00BBD68D /* AddRecordCell.swift */; };
 		84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916C22290E8D00956265 /* AppDelegate.swift */; };
 		84F8916F22290E8D00956265 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916E22290E8D00956265 /* CalendarVC.swift */; };
@@ -36,6 +37,7 @@
 		8472597322ABFCB800BCBA42 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		8472597622AC02A100BCBA42 /* NoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteVC.swift; sourceTree = "<group>"; };
 		8472597822AC119600BCBA42 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		8472597B22AD3C7400BCBA42 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		84F04BD3228DCDCD00BBD68D /* AddRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddRecordCell.swift; path = ../AddRecordCell.swift; sourceTree = "<group>"; };
 		84F8916922290E8D00956265 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8916C22290E8D00956265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		8472597122ABFC8700BCBA42 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				846BA3982256443200595D61 /* CalendarDrawer.swift */,
 				8472597322ABFCB800BCBA42 /* ViewManager.swift */,
 			);
 			path = Other;
@@ -77,6 +80,22 @@
 				84FB729822ABF58900DA7CE2 /* DayRateVC.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		8472597A22AD2E0A00BCBA42 /* Records */ = {
+			isa = PBXGroup;
+			children = (
+				8472597622AC02A100BCBA42 /* NoteVC.swift */,
+			);
+			path = Records;
+			sourceTree = "<group>";
+		};
+		8472597D22AD3C9900BCBA42 /* Records */ = {
+			isa = PBXGroup;
+			children = (
+				8472597B22AD3C7400BCBA42 /* Note.swift */,
+			);
+			path = Records;
 			sourceTree = "<group>";
 		};
 		84D6840F222D6AD5003F08F9 /* Extensions */ = {
@@ -92,9 +111,9 @@
 		84F796A12233A58E00596CD5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				84008BF5224A11B8000CB9A2 /* Record.swift */,
 				84008BF7224A11B8000CB9A2 /* Day.swift */,
-				846BA3982256443200595D61 /* CalendarDrawer.swift */,
+				84008BF5224A11B8000CB9A2 /* Record.swift */,
+				8472597D22AD3C9900BCBA42 /* Records */,
 				8472597122ABFC8700BCBA42 /* Other */,
 			);
 			path = Classes;
@@ -105,7 +124,7 @@
 			children = (
 				84F8916E22290E8D00956265 /* CalendarVC.swift */,
 				84FCD16022355F3800A8826E /* DayVC.swift */,
-				8472597622AC02A100BCBA42 /* NoteVC.swift */,
+				8472597A22AD2E0A00BCBA42 /* Records */,
 				8472597522AC009F00BCBA42 /* Tools */,
 				84FE422E228FD5FF00769F2B /* RecordCells */,
 			);
@@ -253,6 +272,7 @@
 				8472597922AC119600BCBA42 /* UIImageExtension.swift in Sources */,
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
 				8472597722AC02A100BCBA42 /* NoteVC.swift in Sources */,
+				8472597C22AD3C7400BCBA42 /* Note.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				84F04BD4228DCDCD00BBD68D /* AddRecordCell.swift in Sources */,
 				8472597422ABFCB800BCBA42 /* ViewManager.swift in Sources */,

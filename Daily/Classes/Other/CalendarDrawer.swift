@@ -2,9 +2,6 @@ import Foundation
 import UIKit
 
 class CalendarDrawer {
-    static let drawer = CalendarDrawer()
-    
-    private init(){}
     
     func drawDayButton(button: UIButton, dayDate: Date, dayType: String, day: Day?) {
         button.setTitle(getStringOfNumberOfDay(from: dayDate), for: UIControl.State.normal)

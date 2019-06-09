@@ -890,13 +890,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="l2A-Ko-VQB">
-                        <barButtonItem key="rightBarButtonItem" image="save" id="IID-cy-3Gf">
-                            <connections>
-                                <action selector="onClickSaveRecord:" destination="bOK-Nn-dGV" id="WQu-44-Or3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="l2A-Ko-VQB"/>
                     <connections>
                         <outlet property="navigationVCTitle" destination="l2A-Ko-VQB" id="q5r-9u-nhh"/>
                         <outlet property="noteTextView" destination="fQG-mw-Tu9" id="HLv-vO-UFI"/>
@@ -934,6 +928,5 @@
         <image name="next" width="25" height="25"/>
         <image name="note" width="24" height="24"/>
         <image name="previous" width="25" height="25"/>
-        <image name="save" width="24" height="24"/>
     </resources>
 </document>

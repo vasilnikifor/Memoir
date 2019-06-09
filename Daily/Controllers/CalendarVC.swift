@@ -4,7 +4,7 @@ class CalendarVC: UIViewController {
 
     var month = Date().firstDayOfMonth()
     var dayButtonMatch: [UIButton: Date] = [:]
-    let calendarDrawer = CalendarDrawer.drawer
+    let calendarDrawer = CalendarDrawer()
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var weekDayLabel: [UILabel]!
@@ -14,8 +14,13 @@ class CalendarVC: UIViewController {
         super.viewDidLoad()
         
         setInitialViewSettings()
-        drawCalendar()
         setTransparencyOnNavigationController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        drawCalendar()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

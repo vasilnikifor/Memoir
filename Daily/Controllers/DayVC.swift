@@ -7,6 +7,8 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
     var day: Day?
     var dayRate: Double?
     var records: [Record]?
+
+    var isViewExist: Bool?
     
     var picker = UIImagePickerController()
     
@@ -14,52 +16,44 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setInitialViweSettings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isViewExist == nil {
+            isViewExist = true
+        } else {
+            redarwRecords()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "openRecordView":
-            if let noteRecordTableViewCell = segue.destination as? NoteVC {
-                noteRecordTableViewCell.dayDate = dayDate
-                if let selectedRecord = sender as? Record {
-                    noteRecordTableViewCell.record = selectedRecord
+            if let noteVC = segue.destination as? NoteVC {
+                noteVC.dayDate = dayDate
+                if let note = sender as? Note {
+                    noteVC.note = note
                 }
             }
+            
         case "goToDayRater":
             if let dayRateVC = segue.destination as? DayRateVC {
                 dayRateVC.dayDate = dayDate
             }
+            
         default:
             return
+            
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let records = records {
-            return records.count + 1
-        }
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let records = records, indexPath.row < records.count {
-            let record = records[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRecord", for: indexPath) as! RecordCell
-            cell.recordTimeTextLabel?.text = record.time?.getTimeRepresentation()
-            cell.noteTextLabel?.text = record.note ?? ""
-            return cell
-        }
-        
-        return tableView.dequeueReusableCell(withIdentifier: "AddingRecord", for: indexPath) as! AddRecordCell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var sender: Record?
-        if let records = records, indexPath.row < records.count {
-            sender = records[indexPath.row]
-        }
-        performSegue(withIdentifier: "openRecordView", sender: sender)
+    func redarwRecords() {
+        setDayData()
+        tableView.reloadData()
     }
     
     private func setInitialViweSettings() {
@@ -68,9 +62,6 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
         
         tableView.tableFooterView = UIView()
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(goBack))
-        view.addGestureRecognizer(rightSwipe)
-        
         setViewSettings()
     }
     
@@ -78,12 +69,13 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
         if dayDate == nil {
             dayDate = Date()
         }
-        dayDateHasChanged()
-    }
-    
-    private func dayDateHasChanged() {
+        
         dayNI.title = getDayDateLable(date: dayDate)
         
+        setDayData()
+    }
+    
+    private func setDayData() {
         day = Day.getDay(date: dayDate)
         if let day = day {
             records = day.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record]
@@ -156,3 +148,36 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
     
 }
 
+
+extension DayVC {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let records = records {
+            return records.count + 1
+        }
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let records = records, indexPath.row < records.count {
+            let record = records[indexPath.row]
+            
+            if let noteRecord = record as? Note {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRecord", for: indexPath) as! RecordCell
+                cell.recordTimeTextLabel?.text = noteRecord.time?.getTimeRepresentation()
+                cell.noteTextLabel?.text = noteRecord.text
+                return cell
+            }
+        }
+        
+        return tableView.dequeueReusableCell(withIdentifier: "AddingRecord", for: indexPath) as! AddRecordCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let records = records, indexPath.row < records.count {
+            if let noteRecord = records[indexPath.row] as? Note {
+                performSegue(withIdentifier: "openRecordView", sender: noteRecord)
+            }
+        }
+    }
+
+}

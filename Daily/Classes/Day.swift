@@ -1,8 +1,12 @@
 import Foundation
 import CoreData
 
-
 public class Day: NSManagedObject {
+    
+    func removeDay() {
+        AppDelegate.persistentContainer.viewContext.delete(self)
+        AppDelegate.saveContext()
+    }
     
     static func setDayRate(dayDate: Date, rate: Double) {
         let day = Day.findOrCreateDay(date: dayDate)
@@ -49,11 +53,6 @@ public class Day: NSManagedObject {
         AppDelegate.saveContext()
         
         return day
-    }
-    
-    static func removeDay(day: Day) {
-        AppDelegate.persistentContainer.viewContext.delete(day)
-        AppDelegate.saveContext()
     }
     
     static func getAllDaysOfMounth(_ month: Date) -> [Day] {
