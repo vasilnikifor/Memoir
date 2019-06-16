@@ -16,7 +16,7 @@
                 <viewControllerPlaceholder storyboardName="Tools" referencedIdentifier="dayRater" id="vtG-Qu-6Jd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmx-lB-kKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="753" y="-404"/>
+            <point key="canvasLocation" x="484" y="697"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
@@ -26,6 +26,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8aY-Pa-f4n">
+                                <rect key="frame" x="16" y="68.5" width="343" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
+                                        <rect key="frame" x="0.0" y="5" width="25" height="25"/>
+                                        <state key="normal" image="previous"/>
+                                        <connections>
+                                            <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkU-D6-8eV"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-jm-6xC">
+                                        <rect key="frame" x="93.5" y="0.0" width="156" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
+                                        <rect key="frame" x="318" y="5" width="25" height="25"/>
+                                        <state key="normal" image="next"/>
+                                        <connections>
+                                            <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ud1-Y6-KzV">
                                 <rect key="frame" x="14.5" y="133.5" width="346" height="400"/>
                                 <subviews>
@@ -612,39 +637,68 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8aY-Pa-f4n">
-                                <rect key="frame" x="16" y="68.5" width="343" height="35"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
-                                        <rect key="frame" x="0.0" y="6.5" width="16" height="22"/>
-                                        <state key="normal" image="previous"/>
-                                        <connections>
-                                            <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkU-D6-8eV"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-jm-6xC">
-                                        <rect key="frame" x="93.5" y="0.0" width="156" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
-                                        <rect key="frame" x="327" y="6.5" width="16" height="22"/>
-                                        <state key="normal" image="next"/>
-                                        <connections>
-                                            <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR1-V2-YjN">
+                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="J3r-6J-Mqm"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Rate day" style="plain" id="Fba-Am-0PI">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5EN-gp-GMY">
+                                            <rect key="frame" x="16" y="15.5" width="95" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <state key="normal" title="Rate day" image="mood">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gx5-Ra-ZXF"/>
+                                    <barButtonItem title="Add note" style="plain" id="SE8-6g-ztJ">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MmD-08-hEp">
+                                            <rect key="frame" x="111" y="15.5" width="98" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <state key="normal" title="Add note" image="note">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9FE-Oo-MpJ"/>
+                                    <barButtonItem title="Take photo" style="plain" id="NAT-XO-prH">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9yZ-0E-WYe">
+                                            <rect key="frame" x="209" y="15.5" width="114" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <state key="normal" title="Take photo" image="camera">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hu5-Dd-FQX"/>
+                                    <barButtonItem title="Add form library" style="plain" id="Mkp-4e-y6b">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJ6-Q0-MpT">
+                                            <rect key="frame" x="323" y="15.5" width="36" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <state key="normal" title="Add image" image="image">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8aY-Pa-f4n" secondAttribute="trailing" constant="16" id="Eqd-Tg-Z6D"/>
                             <constraint firstItem="8aY-Pa-f4n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GJD-bj-yFJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gR1-V2-YjN" secondAttribute="bottom" id="GuB-Xt-RM5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gR1-V2-YjN" secondAttribute="trailing" id="IpD-GK-9XA"/>
                             <constraint firstItem="ud1-Y6-KzV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RVi-kr-Jnx"/>
                             <constraint firstItem="ud1-Y6-KzV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bMe-9I-h4a"/>
                             <constraint firstItem="ud1-Y6-KzV" firstAttribute="top" secondItem="8aY-Pa-f4n" secondAttribute="bottom" constant="30" id="dW7-L0-4uN"/>
+                            <constraint firstItem="gR1-V2-YjN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gDw-5o-4pz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -652,7 +706,11 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="7tI-T8-Ym2"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addImageButton" destination="cJ6-Q0-MpT" id="pnx-iS-1OY"/>
+                        <outlet property="addNoteButton" destination="MmD-08-hEp" id="aRT-ZM-ck3"/>
                         <outlet property="monthLabel" destination="Pla-jm-6xC" id="rcK-RR-CLC"/>
+                        <outlet property="rateDayButton" destination="5EN-gp-GMY" id="B51-aE-PiQ"/>
+                        <outlet property="takePhotoButton" destination="9yZ-0E-WYe" id="5Fh-2q-5AS"/>
                         <outletCollection property="dayButtons" destination="BSE-NA-uUX" collectionClass="NSMutableArray" id="r82-gj-le9"/>
                         <outletCollection property="dayButtons" destination="srF-t7-kt2" collectionClass="NSMutableArray" id="3bB-y6-zDL"/>
                         <outletCollection property="dayButtons" destination="d3t-oE-l8P" collectionClass="NSMutableArray" id="FwS-jR-yZF"/>
@@ -702,156 +760,171 @@
                         <outletCollection property="weekDayLabel" destination="hnI-4G-O3y" collectionClass="NSMutableArray" id="JaK-nD-sKY"/>
                         <outletCollection property="weekDayLabel" destination="5Ea-4N-SpQ" collectionClass="NSMutableArray" id="ffd-64-s7u"/>
                         <outletCollection property="dayButtons" destination="LRs-ID-rGB" collectionClass="NSMutableArray" id="KZy-0c-xLb"/>
-                        <segue destination="rVh-SV-5Mh" kind="show" identifier="openerDayView" id="VRm-uw-yR5"/>
+                        <segue destination="lfX-gW-mgb" kind="show" identifier="openerDayView" id="8ot-zX-vGS"/>
+                        <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRaterFromCalendar" id="vDd-aZ-qzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="49" y="242"/>
         </scene>
-        <!-- Day-->
-        <scene sceneID="TxS-gv-yi7">
+        <!-- -->
+        <scene sceneID="rtc-L2-Qe7">
             <objects>
-                <tableViewController storyboardIdentifier="DayViewController" title=" Day" id="rVh-SV-5Mh" customClass="DayVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GmC-x1-r5V">
+                <viewController id="lfX-gW-mgb" customClass="DayVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2FI-S6-1M1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="153" id="VQo-q4-831" customClass="RecordCell" customModule="Daily" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="153"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQo-q4-831" id="J9f-oV-RQE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="152.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="noteText" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-T8-cnf">
-                                            <rect key="frame" x="16" y="47" width="343" height="105"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ske-Bh-SMm">
-                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEL-9a-KV3">
+                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="8wf-fd-5Lp"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Rate day" style="plain" id="Z2i-Ug-l0W">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="00r-Lg-CKM">
+                                            <rect key="frame" x="16" y="15.5" width="95" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="ske-Bh-SMm" firstAttribute="trailing" secondItem="J9f-oV-RQE" secondAttribute="trailingMargin" id="0jS-3o-ppk"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ipq-T8-cnf" secondAttribute="bottom" id="GxT-be-TNz"/>
-                                        <constraint firstItem="ske-Bh-SMm" firstAttribute="top" secondItem="J9f-oV-RQE" secondAttribute="topMargin" id="ltv-lc-vog"/>
-                                        <constraint firstItem="ipq-T8-cnf" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="mEk-wE-tjt"/>
-                                        <constraint firstItem="ske-Bh-SMm" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="o7R-al-LoG"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ipq-T8-cnf" secondAttribute="trailing" id="w3S-tE-EAi"/>
-                                        <constraint firstItem="ipq-T8-cnf" firstAttribute="top" secondItem="ske-Bh-SMm" secondAttribute="bottom" constant="8" id="xKc-s5-uQe"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="noteTextLabel" destination="ipq-T8-cnf" id="oSW-Fn-g6V"/>
-                                    <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddingRecord" rowHeight="118" id="s1u-Ce-grr" customClass="AddRecordCell" customModule="Daily" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="181" width="375" height="118"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s1u-Ce-grr" id="IfJ-yJ-tgc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OPz-6q-xeA">
-                                            <rect key="frame" x="24" y="27" width="327" height="72"/>
+                                            <state key="normal" title="Rate day" image="mood">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="rateDayTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="WNz-ly-34M"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="CPg-Z3-Mqq"/>
+                                    <barButtonItem title="Add note" style="plain" id="NIg-Z8-nHV">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Yb-65-Zig">
+                                            <rect key="frame" x="111" y="15.5" width="98" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <state key="normal" title="Add note" image="note">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addNoteTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="m2m-oA-TWf"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dIp-5J-epQ"/>
+                                    <barButtonItem title="Take photo" style="plain" id="de6-Sp-Vdp">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YJ1-Oc-dVJ">
+                                            <rect key="frame" x="209" y="15.5" width="114" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <state key="normal" title="Take photo" image="camera">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="takePhotoTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="s0D-to-Ml7"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3AC-8c-SHb"/>
+                                    <barButtonItem title="Add image" style="plain" id="qDR-ec-wzd">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xXz-E9-A6E">
+                                            <rect key="frame" x="323" y="15.5" width="36" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <state key="normal" title="Add image" image="image">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addImageTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="o8F-pf-8Nk"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-jY-IXQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="153" id="VQo-q4-831" customClass="RecordCell" customModule="Daily" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="153"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQo-q4-831" id="J9f-oV-RQE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="152.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wD4-SG-eOM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="82" height="72"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="noteText" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-T8-cnf">
+                                                    <rect key="frame" x="15" y="47" width="345" height="105"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ske-Bh-SMm">
+                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="Rate day" image="mood">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="rateDayAction:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="p6F-72-kA0"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akk-0o-5K7">
-                                                    <rect key="frame" x="82" y="0.0" width="81.5" height="72"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="Add note" image="note">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addNoteAction:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="YR3-H4-Tmu"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-ND-noy">
-                                                    <rect key="frame" x="163.5" y="0.0" width="82" height="72"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="Take photo" image="camera">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addPhotoAction:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="PpF-ti-ALE"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfC-yX-K8l">
-                                                    <rect key="frame" x="245.5" y="0.0" width="81.5" height="72"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="Add from library" image="image">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addImage:" destination="rVh-SV-5Mh" eventType="touchUpInside" id="DR1-xu-cW1"/>
-                                                    </connections>
-                                                </button>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="OPz-6q-xeA" secondAttribute="bottom" constant="8" id="0B6-nk-FiP"/>
-                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="top" secondItem="IfJ-yJ-tgc" secondAttribute="topMargin" constant="16" id="Ia5-ED-YxT"/>
-                                        <constraint firstItem="OPz-6q-xeA" firstAttribute="leading" secondItem="IfJ-yJ-tgc" secondAttribute="leadingMargin" constant="8" id="jmv-m4-gah"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="OPz-6q-xeA" secondAttribute="trailing" constant="8" id="kQD-s3-gL0"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <constraints>
+                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="trailing" secondItem="J9f-oV-RQE" secondAttribute="trailingMargin" id="0jS-3o-ppk"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ipq-T8-cnf" secondAttribute="bottom" id="GxT-be-TNz"/>
+                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="top" secondItem="J9f-oV-RQE" secondAttribute="topMargin" id="ltv-lc-vog"/>
+                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="mEk-wE-tjt"/>
+                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="o7R-al-LoG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ipq-T8-cnf" secondAttribute="trailing" id="w3S-tE-EAi"/>
+                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="top" secondItem="ske-Bh-SMm" secondAttribute="bottom" constant="8" id="xKc-s5-uQe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="noteTextLabel" destination="ipq-T8-cnf" id="oSW-Fn-g6V"/>
+                                            <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="addImageButton" destination="EfC-yX-K8l" id="AXA-Eg-WW8"/>
-                                    <outlet property="addNoteButton" destination="Akk-0o-5K7" id="V4D-Wh-kW4"/>
-                                    <outlet property="addPhotoButton" destination="FBN-ND-noy" id="rT2-pj-jEe"/>
-                                    <outlet property="rateDayButton" destination="wD4-SG-eOM" id="t5I-3I-1RW"/>
+                                    <outlet property="dataSource" destination="lfX-gW-mgb" id="o7r-RT-Psc"/>
+                                    <outlet property="delegate" destination="lfX-gW-mgb" id="wds-QM-3nG"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="rVh-SV-5Mh" id="Mtq-i2-uqF"/>
-                            <outlet property="delegate" destination="rVh-SV-5Mh" id="jW3-dS-hiW"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="NOj-Ux-xTu">
-                        <barButtonItem key="backBarButtonItem" title=" " id="b1Z-4s-uI7"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qEL-9a-KV3" firstAttribute="trailing" secondItem="FgH-vY-1BK" secondAttribute="trailing" id="8RC-gX-Fyb"/>
+                            <constraint firstItem="qEL-9a-KV3" firstAttribute="bottom" secondItem="FgH-vY-1BK" secondAttribute="bottom" id="FYF-9b-Yky"/>
+                            <constraint firstItem="BhI-jY-IXQ" firstAttribute="top" secondItem="2FI-S6-1M1" secondAttribute="top" id="QyO-md-z3u"/>
+                            <constraint firstItem="BhI-jY-IXQ" firstAttribute="leading" secondItem="FgH-vY-1BK" secondAttribute="leading" id="avd-sJ-p5Z"/>
+                            <constraint firstItem="qEL-9a-KV3" firstAttribute="leading" secondItem="FgH-vY-1BK" secondAttribute="leading" id="bt4-Ny-jDy"/>
+                            <constraint firstItem="BhI-jY-IXQ" firstAttribute="trailing" secondItem="FgH-vY-1BK" secondAttribute="trailing" id="oId-D4-JrF"/>
+                            <constraint firstItem="qEL-9a-KV3" firstAttribute="top" secondItem="BhI-jY-IXQ" secondAttribute="bottom" id="pjg-6f-iad"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FgH-vY-1BK"/>
+                    </view>
+                    <navigationItem key="navigationItem" title=" " id="Br8-g4-KtL">
                         <rightBarButtonItems>
                             <barButtonItem title="Add record" image="add" id="6NM-OB-vjb">
                                 <connections>
-                                    <action selector="addRecordButton:" destination="rVh-SV-5Mh" id="u4t-PY-O7X"/>
+                                    <action selector="addRecordButtonTapped:" destination="lfX-gW-mgb" id="Wzp-wQ-cs4"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Rate day" image="mood" id="GW8-y4-GVh">
                                 <connections>
-                                    <action selector="rateDayAction:" destination="rVh-SV-5Mh" id="3mP-Kh-luF"/>
+                                    <action selector="rateDayButtonTapped:" destination="lfX-gW-mgb" id="c73-0P-fy6"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="dayNI" destination="NOj-Ux-xTu" id="2Cc-Bd-vNH"/>
-                        <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="Ha2-pe-4AN"/>
-                        <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRater" id="2lP-LW-ckF"/>
+                        <outlet property="addImageButton" destination="xXz-E9-A6E" id="l9n-zc-ZZT"/>
+                        <outlet property="addNoteButton" destination="4Yb-65-Zig" id="fxU-0W-HpB"/>
+                        <outlet property="rateDayButton" destination="00r-Lg-CKM" id="sjn-s1-PtB"/>
+                        <outlet property="tableView" destination="BhI-jY-IXQ" id="uAp-UZ-pCg"/>
+                        <outlet property="takePhotoButton" destination="YJ1-Oc-dVJ" id="btm-9l-6Uw"/>
+                        <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRater" id="vW8-JP-BAE"/>
+                        <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="wNM-no-UsY"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tMn-au-jFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tgh-qj-loJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872.79999999999995" y="240.62968515742131"/>
+            <point key="canvasLocation" x="935" y="242"/>
         </scene>
         <!--Note-->
         <scene sceneID="P8F-Sg-rso">
@@ -866,14 +939,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="DzX-b6-8I7"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="time">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteText" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
                                 <rect key="frame" x="8" y="110" width="359" height="549"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -890,7 +962,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="l2A-Ko-VQB"/>
+                    <navigationItem key="navigationItem" title=" " id="l2A-Ko-VQB"/>
                     <connections>
                         <outlet property="navigationVCTitle" destination="l2A-Ko-VQB" id="q5r-9u-nhh"/>
                         <outlet property="noteTextView" destination="fQG-mw-Tu9" id="HLv-vO-UFI"/>
@@ -899,7 +971,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWA-NK-dax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1727" y="242"/>
+            <point key="canvasLocation" x="1793" y="242"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pnP-AG-VzT">
@@ -917,7 +989,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irn-KG-DxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-762.39999999999998" y="241.52923538230885"/>
+            <point key="canvasLocation" x="-842" y="242"/>
         </scene>
     </scenes>
     <resources>
@@ -929,4 +1001,7 @@
         <image name="note" width="24" height="24"/>
         <image name="previous" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="vW8-JP-BAE"/>
+    </inferredMetricsTieBreakers>
 </document>

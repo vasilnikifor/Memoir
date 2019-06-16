@@ -1,22 +1,22 @@
 import UIKit
-import CoreData
 
-class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class DayVC: UIViewController {
 
     var dayDate: Date!
     var day: Day?
     var dayRate: Double?
     var records: [Record]?
-
     var isViewExist: Bool?
-    
     var picker = UIImagePickerController()
     
-    @IBOutlet weak var dayNI: UINavigationItem!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var rateDayButton: UIButton!
+    @IBOutlet weak var addNoteButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var addImageButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setInitialViweSettings()
     }
     
@@ -29,7 +29,7 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
             redarwRecords()
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "openRecordView":
@@ -53,6 +53,7 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
     
     func redarwRecords() {
         setDayData()
+        
         tableView.reloadData()
     }
     
@@ -62,6 +63,11 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
         
         tableView.tableFooterView = UIView()
         
+        rateDayButton.alignTextBelowImage()
+        addNoteButton.alignTextBelowImage()
+        takePhotoButton.alignTextBelowImage()
+        addImageButton.alignTextBelowImage()
+        
         setViewSettings()
     }
     
@@ -70,7 +76,7 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
             dayDate = Date()
         }
         
-        dayNI.title = getDayDateLable(date: dayDate)
+        navigationItem.title = getDayDateLable(date: dayDate)
         
         setDayData()
     }
@@ -92,16 +98,86 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
         return dateFormatter.string(from: date)
     }
     
-    @objc private func goBack() {
-        self.navigationController?.popViewController(animated: true)
-    }
 
+    
+    private func rateDay() {
+        performSegue(withIdentifier: "goToDayRater", sender: nil)
+    }
+    
+    private func addNote() {
+        performSegue(withIdentifier: "openRecordView", sender: nil)
+    }
+    
+    private func takePhoto() {}
+    
+    private func addImage() {}
+
+    @IBAction func rateDayButtonTapped(_ sender: Any) {
+        rateDay()
+    }
+    
+    @IBAction func addRecordButtonTapped(_ sender: Any) {
+        addRecord()
+    }
+    
+    @IBAction func rateDayTapped(_ sender: Any) {
+        rateDay()
+    }
+    
+    @IBAction func addNoteTapped(_ sender: Any) {
+        addNote()
+    }
+    
+    @IBAction func takePhotoTapped(_ sender: Any) {
+        takePhoto()
+    }
+    
+    @IBAction func addImageTapped(_ sender: Any) {
+        addImage()
+    }
+    
+}
+
+extension DayVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let records = records {
+            return records.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let records = records, indexPath.row < records.count {
+            let record = records[indexPath.row]
+            
+            if let noteRecord = record as? Note {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRecord", for: indexPath) as! RecordCell
+                cell.recordTimeTextLabel?.text = noteRecord.time?.getTimeRepresentation()
+                cell.noteTextLabel?.text = noteRecord.text
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let records = records, indexPath.row < records.count {
+            if let noteRecord = records[indexPath.row] as? Note {
+                performSegue(withIdentifier: "openRecordView", sender: noteRecord)
+            }
+        }
+    }
+    
+}
+
+extension DayVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private func addRecord() {
         let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         let addNoteAction   = UIAlertAction(title: "Add note",          style: UIAlertAction.Style.default) {UIAlertAction in self.addNote()}
-        let addCameraAction = UIAlertAction(title: "Take Photo",        style: UIAlertAction.Style.default) {UIAlertAction in self.addPhoto()}
+        let addCameraAction = UIAlertAction(title: "Take Photo",        style: UIAlertAction.Style.default) {UIAlertAction in self.takePhoto()}
         let addImageAction  = UIAlertAction(title: "Add from library",  style: UIAlertAction.Style.default) {UIAlertAction in self.addImage()}
         let cancelAction    = UIAlertAction(title: "Cancel",            style: UIAlertAction.Style.cancel)  {UIAlertAction in }
         
@@ -114,70 +190,4 @@ class DayVC: UITableViewController, UIImagePickerControllerDelegate, UINavigatio
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func rateDay() {
-        performSegue(withIdentifier: "goToDayRater", sender: nil)
-    }
-    
-    private func addNote() {
-        performSegue(withIdentifier: "openRecordView", sender: nil)
-    }
-    
-    private func addPhoto() {}
-    
-    private func addImage() {}
-    
-    @IBAction func addNoteAction(_ sender: Any) {
-        addNote()
-    }
-    
-    @IBAction func addPhotoAction(_ sender: Any) {
-        addPhoto()
-    }
-    
-    @IBAction func addImage(_ sender: Any) {
-        addImage()
-    }
-    
-    @IBAction func rateDayAction(_ sender: Any) {
-        rateDay()
-    }
-    
-    @IBAction func addRecordButton(_ sender: Any) {
-        addRecord()
-    }
-    
-}
-
-
-extension DayVC {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let records = records {
-            return records.count + 1
-        }
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let records = records, indexPath.row < records.count {
-            let record = records[indexPath.row]
-            
-            if let noteRecord = record as? Note {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRecord", for: indexPath) as! RecordCell
-                cell.recordTimeTextLabel?.text = noteRecord.time?.getTimeRepresentation()
-                cell.noteTextLabel?.text = noteRecord.text
-                return cell
-            }
-        }
-        
-        return tableView.dequeueReusableCell(withIdentifier: "AddingRecord", for: indexPath) as! AddRecordCell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let records = records, indexPath.row < records.count {
-            if let noteRecord = records[indexPath.row] as? Note {
-                performSegue(withIdentifier: "openRecordView", sender: noteRecord)
-            }
-        }
-    }
-
 }

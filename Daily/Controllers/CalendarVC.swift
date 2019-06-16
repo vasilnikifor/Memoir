@@ -9,6 +9,10 @@ class CalendarVC: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var weekDayLabel: [UILabel]!
     @IBOutlet var dayButtons: [UIButton]!
+    @IBOutlet weak var rateDayButton: UIButton!
+    @IBOutlet weak var addNoteButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var addImageButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +56,11 @@ class CalendarVC: UIViewController {
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(nextMonth))
         leftSwipe.direction = .left
         view.addGestureRecognizer(leftSwipe)
+        
+        rateDayButton.alignTextBelowImage()
+        addNoteButton.alignTextBelowImage()
+        takePhotoButton.alignTextBelowImage()
+        addImageButton.alignTextBelowImage()
     }
     
     @objc private func nextMonth() {
