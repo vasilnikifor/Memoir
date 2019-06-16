@@ -843,40 +843,83 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="153" id="VQo-q4-831" customClass="RecordCell" customModule="Daily" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="153"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="83" id="VQo-q4-831" customClass="NoteCell" customModule="Daily" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQo-q4-831" id="J9f-oV-RQE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="152.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="noteText" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-T8-cnf">
-                                                    <rect key="frame" x="15" y="47" width="345" height="105"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ske-Bh-SMm">
-                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ske-Bh-SMm">
+                                                    <rect key="frame" x="15" y="11" width="345" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="qI6-8z-Xag"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteText" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-T8-cnf">
+                                                    <rect key="frame" x="15" y="31" width="345" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="trailing" secondItem="J9f-oV-RQE" secondAttribute="trailingMargin" id="0jS-3o-ppk"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ipq-T8-cnf" secondAttribute="bottom" id="GxT-be-TNz"/>
-                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="top" secondItem="J9f-oV-RQE" secondAttribute="topMargin" id="ltv-lc-vog"/>
-                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="mEk-wE-tjt"/>
-                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="o7R-al-LoG"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ipq-T8-cnf" secondAttribute="trailing" id="w3S-tE-EAi"/>
-                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="top" secondItem="ske-Bh-SMm" secondAttribute="bottom" constant="8" id="xKc-s5-uQe"/>
+                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="6jW-48-MFz"/>
+                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="7OJ-8C-naS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ipq-T8-cnf" secondAttribute="bottom" id="DKE-3z-bRQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ske-Bh-SMm" secondAttribute="trailing" id="Gfd-rM-icP"/>
+                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="trailing" secondItem="J9f-oV-RQE" secondAttribute="trailingMargin" id="TFv-98-ye8"/>
+                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="top" secondItem="ske-Bh-SMm" secondAttribute="bottom" constant="8" id="tIW-CV-7qk"/>
+                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="top" secondItem="J9f-oV-RQE" secondAttribute="topMargin" id="uw4-IY-yT8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="noteTextLabel" destination="ipq-T8-cnf" id="oSW-Fn-g6V"/>
                                             <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageRecord" rowHeight="190" id="wng-Nk-hIk" customClass="ImageCell" customModule="Daily" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="111" width="375" height="190"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wng-Nk-hIk" id="ArT-pi-15W">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHZ-AA-0Ul">
+                                                    <rect key="frame" x="15" y="11" width="345" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="vH8-DP-wda"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-04-0oX">
+                                                    <rect key="frame" x="15" y="23" width="345" height="164"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="345" id="05y-EG-Itm"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="vRX-Jr-bqq"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jHZ-AA-0Ul" firstAttribute="leading" secondItem="ArT-pi-15W" secondAttribute="leadingMargin" id="03i-Ge-8UM"/>
+                                                <constraint firstItem="vpX-04-0oX" firstAttribute="leading" secondItem="ArT-pi-15W" secondAttribute="leadingMargin" id="KYP-AT-RgF"/>
+                                                <constraint firstItem="vpX-04-0oX" firstAttribute="bottom" secondItem="ArT-pi-15W" secondAttribute="bottomMargin" constant="8" id="egQ-MH-yKT"/>
+                                                <constraint firstItem="jHZ-AA-0Ul" firstAttribute="top" secondItem="ArT-pi-15W" secondAttribute="topMargin" id="hQb-uT-zRd"/>
+                                                <constraint firstItem="vpX-04-0oX" firstAttribute="trailing" secondItem="ArT-pi-15W" secondAttribute="trailingMargin" id="kD6-YX-GEA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jHZ-AA-0Ul" secondAttribute="trailing" id="q6i-N4-Ajs"/>
+                                                <constraint firstItem="vpX-04-0oX" firstAttribute="top" secondItem="jHZ-AA-0Ul" secondAttribute="bottom" id="zCW-Ev-gok"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="vpX-04-0oX" id="36B-SM-K0z"/>
+                                            <outlet property="recordImageView" destination="vpX-04-0oX" id="o8R-Tv-jOS"/>
+                                            <outlet property="recordTimeTextLabel" destination="jHZ-AA-0Ul" id="pP6-q1-RRy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -924,7 +967,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgh-qj-loJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="242"/>
+            <point key="canvasLocation" x="933.60000000000002" y="241.52923538230885"/>
         </scene>
         <!--Note-->
         <scene sceneID="P8F-Sg-rso">
@@ -962,9 +1005,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="l2A-Ko-VQB"/>
+                    <navigationItem key="navigationItem" title=" " id="l2A-Ko-VQB">
+                        <barButtonItem key="rightBarButtonItem" title="Remove note" image="remove" id="eOe-op-kjW">
+                            <connections>
+                                <action selector="removeNoteButtonTapped:" destination="bOK-Nn-dGV" id="YUH-Rd-i5c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="navigationVCTitle" destination="l2A-Ko-VQB" id="q5r-9u-nhh"/>
                         <outlet property="noteTextView" destination="fQG-mw-Tu9" id="HLv-vO-UFI"/>
                         <outlet property="timeButton" destination="mvg-ZE-706" id="CyD-U6-Mkh"/>
                     </connections>
@@ -1000,6 +1048,7 @@
         <image name="next" width="25" height="25"/>
         <image name="note" width="24" height="24"/>
         <image name="previous" width="25" height="25"/>
+        <image name="remove" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vW8-JP-BAE"/>

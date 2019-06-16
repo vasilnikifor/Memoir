@@ -4,11 +4,10 @@ class NoteVC: UIViewController {
     
     var dayDate: Date!
     var noteTime: Date!
-    var note: Note?
+    var note: NoteRecord?
     
     @IBOutlet weak var timeButton: UIButton!
     @IBOutlet weak var noteTextView: UITextView!
-    @IBOutlet weak var navigationVCTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +25,27 @@ class NoteVC: UIViewController {
     }
     
     private func saveNote() {
-        if !isViewEdited() {
-            return
-        }
-        
         if let note = note {
-            note.save()
+            if (note.text ?? "").isEmpty {
+                note.delete()
+            } else {
+                note.save()
+            }
         } else {
-            _ = Note.createNote(dayDate: dayDate,
-                            time: noteTime,
-                            text: noteTextView.text)
+            if !noteTextView.text.isEmpty {
+                _ = NoteRecord.createNote(dayDate: dayDate,
+                                    time: noteTime,
+                                    text: noteTextView.text)
+            }
+        }
+    }
+    
+    private func removeNote() {
+        if let note = note {
+            note.delete()
+            goBack()
+        } else {
+            goBack()
         }
     }
     
@@ -54,20 +64,12 @@ class NoteVC: UIViewController {
         timeButton.setTitle(noteTime.getTimeRepresentation(), for: .normal)
     }
     
-    private func isViewEdited() -> Bool {
-        return true
-        
-//        if let noteRecord = note {
-////            if noteTextView.text != noteRecord.text
-////                || noteRecordTime != noteRecord.time {
-////                return true
-////            }
-//        } else {
-//            if noteTextView.text != "" {
-//                return true
-//            }
-//        }
-//        return false
+    private func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func removeNoteButtonTapped(_ sender: Any) {
+        removeNote()
     }
     
 }

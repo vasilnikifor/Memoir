@@ -11,12 +11,13 @@
 		84008BFB224A11B8000CB9A2 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF7224A11B8000CB9A2 /* Day.swift */; };
 		846BA3992256443200595D61 /* CalendarDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BA3982256443200595D61 /* CalendarDrawer.swift */; };
 		846DF5B222B6604E0095A065 /* DayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DF5B122B6604E0095A065 /* DayVC.swift */; };
-		847082252260D6DD002A06E7 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847082242260D6DD002A06E7 /* RecordCell.swift */; };
+		846DF5B422B6855C0095A065 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DF5B322B6855C0095A065 /* ImageCell.swift */; };
+		846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DF5B522B6878A0095A065 /* ImageRecord.swift */; };
+		847082252260D6DD002A06E7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847082242260D6DD002A06E7 /* NoteCell.swift */; };
 		8472597422ABFCB800BCBA42 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597322ABFCB800BCBA42 /* ViewManager.swift */; };
 		8472597722AC02A100BCBA42 /* NoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597622AC02A100BCBA42 /* NoteVC.swift */; };
 		8472597922AC119600BCBA42 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597822AC119600BCBA42 /* UIImageExtension.swift */; };
-		8472597C22AD3C7400BCBA42 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597B22AD3C7400BCBA42 /* Note.swift */; };
-		84F04BD4228DCDCD00BBD68D /* AddRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F04BD3228DCDCD00BBD68D /* AddRecordCell.swift */; };
+		8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597B22AD3C7400BCBA42 /* NoteRecord.swift */; };
 		84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916C22290E8D00956265 /* AppDelegate.swift */; };
 		84F8916F22290E8D00956265 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916E22290E8D00956265 /* CalendarVC.swift */; };
 		84F8917222290E8D00956265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8917022290E8D00956265 /* Main.storyboard */; };
@@ -34,12 +35,13 @@
 		84008BF7224A11B8000CB9A2 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		846BA3982256443200595D61 /* CalendarDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDrawer.swift; sourceTree = "<group>"; };
 		846DF5B122B6604E0095A065 /* DayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayVC.swift; sourceTree = "<group>"; };
-		847082242260D6DD002A06E7 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecordCell.swift; path = ../RecordCell.swift; sourceTree = "<group>"; };
+		846DF5B322B6855C0095A065 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		846DF5B522B6878A0095A065 /* ImageRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecord.swift; sourceTree = "<group>"; };
+		847082242260D6DD002A06E7 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteCell.swift; path = ../NoteCell.swift; sourceTree = "<group>"; };
 		8472597322ABFCB800BCBA42 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		8472597622AC02A100BCBA42 /* NoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteVC.swift; sourceTree = "<group>"; };
 		8472597822AC119600BCBA42 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		8472597B22AD3C7400BCBA42 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		84F04BD3228DCDCD00BBD68D /* AddRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddRecordCell.swift; path = ../AddRecordCell.swift; sourceTree = "<group>"; };
+		8472597B22AD3C7400BCBA42 /* NoteRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecord.swift; sourceTree = "<group>"; };
 		84F8916922290E8D00956265 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8916C22290E8D00956265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F8916E22290E8D00956265 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -93,7 +95,8 @@
 		8472597D22AD3C9900BCBA42 /* Records */ = {
 			isa = PBXGroup;
 			children = (
-				8472597B22AD3C7400BCBA42 /* Note.swift */,
+				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
+				846DF5B522B6878A0095A065 /* ImageRecord.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -183,8 +186,8 @@
 		84FE422E228FD5FF00769F2B /* RecordCells */ = {
 			isa = PBXGroup;
 			children = (
-				847082242260D6DD002A06E7 /* RecordCell.swift */,
-				84F04BD3228DCDCD00BBD68D /* AddRecordCell.swift */,
+				847082242260D6DD002A06E7 /* NoteCell.swift */,
+				846DF5B322B6855C0095A065 /* ImageCell.swift */,
 			);
 			path = RecordCells;
 			sourceTree = "<group>";
@@ -264,7 +267,8 @@
 				84F8916F22290E8D00956265 /* CalendarVC.swift in Sources */,
 				846BA3992256443200595D61 /* CalendarDrawer.swift in Sources */,
 				84FE422D228FC73600769F2B /* UIButtonExtention.swift in Sources */,
-				847082252260D6DD002A06E7 /* RecordCell.swift in Sources */,
+				846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */,
+				847082252260D6DD002A06E7 /* NoteCell.swift in Sources */,
 				84F8918622297AE700956265 /* DateExtension.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
@@ -272,9 +276,9 @@
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
 				8472597722AC02A100BCBA42 /* NoteVC.swift in Sources */,
 				846DF5B222B6604E0095A065 /* DayVC.swift in Sources */,
-				8472597C22AD3C7400BCBA42 /* Note.swift in Sources */,
+				8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
-				84F04BD4228DCDCD00BBD68D /* AddRecordCell.swift in Sources */,
+				846DF5B422B6855C0095A065 /* ImageCell.swift in Sources */,
 				8472597422ABFCB800BCBA42 /* ViewManager.swift in Sources */,
 				84FB729922ABF58900DA7CE2 /* DayRateVC.swift in Sources */,
 			);
