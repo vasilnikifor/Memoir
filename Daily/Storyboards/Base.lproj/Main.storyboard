@@ -637,7 +637,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR1-V2-YjN">
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR1-V2-YjN">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="J3r-6J-Mqm"/>
@@ -1051,6 +1051,6 @@
         <image name="remove" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vW8-JP-BAE"/>
+        <segue reference="vDd-aZ-qzV"/>
     </inferredMetricsTieBreakers>
 </document>
