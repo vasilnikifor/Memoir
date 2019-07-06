@@ -67,13 +67,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8472597122ABFC8700BCBA42 /* Other */ = {
+		8472597122ABFC8700BCBA42 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				846BA3982256443200595D61 /* CalendarDrawer.swift */,
 				8472597322ABFCB800BCBA42 /* ViewManager.swift */,
 			);
-			path = Other;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		8472597522AC009F00BCBA42 /* Tools */ = {
@@ -111,15 +111,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		84F796A12233A58E00596CD5 /* Classes */ = {
+		84F796A12233A58E00596CD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				84008BF7224A11B8000CB9A2 /* Day.swift */,
 				84008BF5224A11B8000CB9A2 /* Record.swift */,
 				8472597D22AD3C9900BCBA42 /* Records */,
-				8472597122ABFC8700BCBA42 /* Other */,
 			);
-			path = Classes;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		84F796A22233A5AC00596CD5 /* Controllers */ = {
@@ -155,7 +154,8 @@
 			children = (
 				84FB729722ABF39400DA7CE2 /* Storyboards */,
 				84F796A22233A5AC00596CD5 /* Controllers */,
-				84F796A12233A58E00596CD5 /* Classes */,
+				84F796A12233A58E00596CD5 /* Models */,
+				8472597122ABFC8700BCBA42 /* Managers */,
 				84D6840F222D6AD5003F08F9 /* Extensions */,
 				84F8918122294A2F00956265 /* SupportFiles */,
 				84F8917322290E8D00956265 /* Daily.xcdatamodeld */,
@@ -224,6 +224,7 @@
 				TargetAttributes = {
 					84F8916822290E8D00956265 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -434,7 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = buldog.team.Daily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -451,7 +452,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = buldog.team.Daily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -7,7 +7,7 @@
         <relationship name="records" toMany="YES" deletionRule="Cascade" destinationEntity="Record" inverseName="day" inverseEntity="Record" syncable="YES"/>
     </entity>
     <entity name="ImageRecord" representedClassName=".ImageRecord" parentEntity="Record" syncable="YES" codeGenerationType="category">
-        <attribute name="imageData" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageData" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
     </entity>
     <entity name="NoteRecord" representedClassName=".NoteRecord" parentEntity="Record" syncable="YES" codeGenerationType="category">
         <attribute name="text" attributeType="String" syncable="YES"/>
@@ -18,8 +18,8 @@
     </entity>
     <elements>
         <element name="Day" positionX="-443.93359375" positionY="-66.03125" width="128" height="105"/>
+        <element name="ImageRecord" positionX="-234" positionY="-27" width="128" height="60"/>
         <element name="NoteRecord" positionX="35.93359375" positionY="-31.015625" width="128" height="60"/>
         <element name="Record" positionX="-193.89453125" positionY="-36.02734375" width="128" height="75"/>
-        <element name="ImageRecord" positionX="-234" positionY="-27" width="128" height="60"/>
     </elements>
 </model>

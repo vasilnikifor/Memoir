@@ -82,6 +82,7 @@ class DayVC: UIViewController {
     
     private func setDayData() {
         day = Day.getDay(date: dayDate)
+        
         if let day = day {
             records = day.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record]
             dayRate = day.dayRate
@@ -89,6 +90,8 @@ class DayVC: UIViewController {
             records = nil
             dayRate = nil
         }
+        
+        //rateDayButton.imageView?.image = rateDayButton.imageView?.image?.tintImage(CalendarDrawer.getRateColor(dayRate))
     }
     
     private func getDayDateLable(date: Date) -> String{

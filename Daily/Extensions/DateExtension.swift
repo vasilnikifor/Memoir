@@ -8,7 +8,8 @@ extension Date {
     }
     
     func lastDayOfMonth() -> Date {
-        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth())!.getStartDay()
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1),
+                                     to: self.firstDayOfMonth())!.getStartDay()
     }
     
     func addDays(_ numberOfDays: Int) -> Date {
@@ -30,6 +31,8 @@ extension Date {
     }
     
     func getTime() -> Date {
-        return Date(timeIntervalSinceNow: TimeInterval(timeIntervalSince(self)) - TimeInterval(timeIntervalSince(self.getStartDay())))
+        let timeInerval = TimeInterval(timeIntervalSince(self))  -
+                          TimeInterval(timeIntervalSince(self.getStartDay()))
+        return Date(timeIntervalSince1970: timeInerval)
     }
 }

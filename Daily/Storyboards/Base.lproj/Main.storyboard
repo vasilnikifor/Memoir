@@ -882,11 +882,11 @@
                                             <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageRecord" rowHeight="190" id="wng-Nk-hIk" customClass="ImageCell" customModule="Daily" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="111" width="375" height="190"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageRecord" rowHeight="70" id="wng-Nk-hIk" customClass="ImageCell" customModule="Daily" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="111" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wng-Nk-hIk" id="ArT-pi-15W">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wng-Nk-hIk" id="ArT-pi-15W">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHZ-AA-0Ul">
@@ -899,23 +899,24 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-04-0oX">
-                                                    <rect key="frame" x="15" y="23" width="345" height="164"/>
+                                                    <rect key="frame" x="15" y="31" width="345" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="345" id="05y-EG-Itm"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="vRX-Jr-bqq"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="345" id="R2W-CY-CM0"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="koC-jV-8Yu"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="jHZ-AA-0Ul" firstAttribute="leading" secondItem="ArT-pi-15W" secondAttribute="leadingMargin" id="03i-Ge-8UM"/>
                                                 <constraint firstItem="vpX-04-0oX" firstAttribute="leading" secondItem="ArT-pi-15W" secondAttribute="leadingMargin" id="KYP-AT-RgF"/>
-                                                <constraint firstItem="vpX-04-0oX" firstAttribute="bottom" secondItem="ArT-pi-15W" secondAttribute="bottomMargin" constant="8" id="egQ-MH-yKT"/>
+                                                <constraint firstItem="vpX-04-0oX" firstAttribute="bottom" secondItem="ArT-pi-15W" secondAttribute="bottomMargin" id="egQ-MH-yKT"/>
                                                 <constraint firstItem="jHZ-AA-0Ul" firstAttribute="top" secondItem="ArT-pi-15W" secondAttribute="topMargin" id="hQb-uT-zRd"/>
                                                 <constraint firstItem="vpX-04-0oX" firstAttribute="trailing" secondItem="ArT-pi-15W" secondAttribute="trailingMargin" id="kD6-YX-GEA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jHZ-AA-0Ul" secondAttribute="trailing" id="q6i-N4-Ajs"/>
-                                                <constraint firstItem="vpX-04-0oX" firstAttribute="top" secondItem="jHZ-AA-0Ul" secondAttribute="bottom" id="zCW-Ev-gok"/>
+                                                <constraint firstItem="vpX-04-0oX" firstAttribute="top" secondItem="jHZ-AA-0Ul" secondAttribute="bottom" constant="8" id="zCW-Ev-gok"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="imageView" destination="vpX-04-0oX" id="36B-SM-K0z"/>
                                             <outlet property="recordImageView" destination="vpX-04-0oX" id="o8R-Tv-jOS"/>
@@ -1051,6 +1052,6 @@
         <image name="remove" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vDd-aZ-qzV"/>
+        <segue reference="vW8-JP-BAE"/>
     </inferredMetricsTieBreakers>
 </document>

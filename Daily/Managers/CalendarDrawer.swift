@@ -43,6 +43,25 @@ class CalendarDrawer {
         return CalendarDrawer.getRateColor(getDayRate(day))
     }
     
+    func getDayRateImage(_ day: Day?) -> UIImage {
+        return CalendarDrawer.getDayRateImage(getDayRate(day))
+    }
+    
+    static func getDayRateImage(_ rate: Double?) -> UIImage {
+        switch rate {
+        case 0.0:
+            return UIImage(named: "goodMood")!
+        case 1.0:
+            return UIImage(named: "badMood")!
+        case 2.0:
+            return UIImage(named: "averageMood")!
+        case 3.0:
+            return UIImage(named: "goodMood")!
+        default:
+            return UIImage(named: "goodMood")!
+        }
+    }
+    
     static func getRateColor(_ rate: Double?) -> UIColor {
         switch rate {
         case 0.0:
@@ -53,10 +72,6 @@ class CalendarDrawer {
             return dayEvaluation.eval2
         case 3.0:
             return dayEvaluation.eval3
-        case 4.0:
-            return dayEvaluation.eval4
-        case 5.0:
-            return dayEvaluation.eval5
         default:
             return dayEvaluation.defaultEval
         }
@@ -77,10 +92,8 @@ class CalendarDrawer {
     private struct dayEvaluation {
         static let eval0 = UIColor(red: 0.158, green: 0.158, blue: 0.158, alpha: 0.3) // #9E9E9E Grey
         static let eval1 = UIColor(red: 0.233, green: 0.30,  blue: 0.99,  alpha: 0.5) // #E91E63 Pink
-        static let eval2 = UIColor(red: 0.233, green: 0.30,  blue: 0.99,  alpha: 0.5) // #E91E63 Pink
-        static let eval3 = UIColor(red: 0.63,  green: 0.81,  blue: 0.181, alpha: 0.5) // #3F51B5 Indigo
-        static let eval4 = UIColor(red: 0.139, green: 0.195, blue: 0.74,  alpha: 0.5) // #8BC34A Light Green
-        static let eval5 = UIColor(red: 0.139, green: 0.195, blue: 0.74,  alpha: 0.5) // #8BC34A Light Green
+        static let eval2 = UIColor(red: 0.63,  green: 0.81,  blue: 0.181, alpha: 0.5) // #3F51B5 Indigo
+        static let eval3 = UIColor(red: 0.139, green: 0.195, blue: 0.74,  alpha: 0.5) // #8BC34A Light Green
         static let defaultEval = UIColor.white
     }
 }
