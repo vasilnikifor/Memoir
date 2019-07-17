@@ -1,19 +1,23 @@
 import UIKit
 
-class DayVC: UIViewController {
+class DayViewController: UIViewController {
 
     var dayDate: Date!
-    var day: Day?
-    var dayRate: Double?
-    var records: [Record]?
-    var isViewExist: Bool?
-    var imagePicker = UIImagePickerController()
+    private var day: Day?
+    private var dayRate: Double?
+    private var records: [Record]?
+    private var isViewExist: Bool?
+    private var imagePicker = UIImagePickerController()
+    
+    // MARK: -
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var rateDayButton: UIButton!
     @IBOutlet weak var addNoteButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var addImageButton: UIButton!
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +36,24 @@ class DayVC: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "openRecordView":
-            if let noteVC = segue.destination as? NoteVC {
+        case "openNoteRecordView":
+            if let noteVC = segue.destination as? NoteRecordViewController {
                 noteVC.dayDate = dayDate
-                if let note = sender as? NoteRecord {
-                    noteVC.note = note
+                if let record = sender as? NoteRecord {
+                    noteVC.record = record
                 }
             }
+            
+        case "openImageRecordView":
+            if let imageVC = segue.destination as? ImageRecordViewController {
+                imageVC.dayDate = dayDate
+                if let record = sender as? ImageRecord {
+                    imageVC.record = record
+                }
+            }
+            
         case "goToDayRater":
-            if let dayRateVC = segue.destination as? DayRateVC {
+            if let dayRateVC = segue.destination as? DayRateViewController {
                 dayRateVC.dayDate = dayDate
             }
         default:
@@ -48,11 +61,15 @@ class DayVC: UIViewController {
         }
     }
     
+    // MARK: -
+    
     func redarwRecords() {
         setDayData()
         
         tableView.reloadData()
     }
+    
+    // MARK: - private
     
     private func setInitialViweSettings() {
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -90,8 +107,6 @@ class DayVC: UIViewController {
             records = nil
             dayRate = nil
         }
-        
-        //rateDayButton.imageView?.image = rateDayButton.imageView?.image?.tintImage(CalendarDrawer.getRateColor(dayRate))
     }
     
     private func getDayDateLable(date: Date) -> String{
@@ -105,7 +120,7 @@ class DayVC: UIViewController {
     }
     
     private func addNote() {
-        performSegue(withIdentifier: "openRecordView", sender: nil)
+        performSegue(withIdentifier: "openNoteRecordView", sender: nil)
     }
     
     private func takePhoto() {
@@ -124,6 +139,8 @@ class DayVC: UIViewController {
             redarwRecords()
         }
     }
+    
+    // MARK: -
     
     @IBAction func rateDayButtonTapped(_ sender: Any) {
         rateDay()
@@ -151,7 +168,7 @@ class DayVC: UIViewController {
     
 }
 
-extension DayVC: UITableViewDataSource, UITableViewDelegate {
+extension DayViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let records = records {
@@ -182,14 +199,23 @@ extension DayVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let records = records, indexPath.row < records.count {
             if let noteRecord = records[indexPath.row] as? NoteRecord {
-                performSegue(withIdentifier: "openRecordView", sender: noteRecord)
+                performSegue(withIdentifier: "openNoteRecordView", sender: noteRecord)
+            } else if let imageRecord = records[indexPath.row] as? ImageRecord {
+                performSegue(withIdentifier: "openImageRecordView", sender: imageRecord)
             }
         }
     }
     
 }
 
-extension DayVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+// MARK: -
+
+extension DayViewController: UINavigationControllerDelegate { }
+
+// MARK: - extention UIImagePickerControllerDelegate
+
+extension DayViewController: UIImagePickerControllerDelegate {
+    
     private func addRecord() {
         let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         

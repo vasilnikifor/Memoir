@@ -1,13 +1,20 @@
 import UIKit
 
-class NoteVC: UIViewController {
+class NoteRecordViewController: UIViewController {
     
     var dayDate: Date!
-    var noteTime: Date!
-    var note: NoteRecord?
+    var record: NoteRecord?
+    
+    // MARK: -
+    
+    private var noteTime: Date!
+    
+    // MARK: -
     
     @IBOutlet weak var timeButton: UIButton!
     @IBOutlet weak var noteTextView: UITextView!
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +31,10 @@ class NoteVC: UIViewController {
         saveNote()
     }
     
+    // MARK: -
+    
     private func saveNote() {
-        if let note = note {
+        if let note = record {
             if (note.text ?? "").isEmpty {
                 note.delete()
             } else {
@@ -41,7 +50,7 @@ class NoteVC: UIViewController {
     }
     
     private func removeNote() {
-        if let note = note {
+        if let note = record {
             note.delete()
             goBack()
         } else {
@@ -54,7 +63,7 @@ class NoteVC: UIViewController {
     }
     
     private func fillInView() {
-        if let note = note {
+        if let note = record {
             noteTextView.text = String(note.text ?? "")
             noteTime = note.time
         } else {
@@ -67,6 +76,8 @@ class NoteVC: UIViewController {
     private func goBack() {
         navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: -
     
     @IBAction func removeNoteButtonTapped(_ sender: Any) {
         removeNote()

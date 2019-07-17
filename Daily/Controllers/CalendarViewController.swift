@@ -1,10 +1,12 @@
 import UIKit
 
-class CalendarVC: UIViewController {
+class CalendarViewController: UIViewController {
 
-    var month = Date().firstDayOfMonth()
-    var dayButtonMatch: [UIButton: Date] = [:]
-    let calendarDrawer = CalendarDrawer()
+    private var month = Date().firstDayOfMonth()
+    private var dayButtonMatch: [UIButton: Date] = [:]
+    private let calendarDrawer = CalendarDrawer()
+    
+    // MARK: -
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var weekDayLabel: [UILabel]!
@@ -13,6 +15,8 @@ class CalendarVC: UIViewController {
     @IBOutlet weak var addNoteButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var addImageButton: UIButton!
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +33,21 @@ class CalendarVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openerDayView" {
-            if let dayTableViewController = segue.destination as? DayVC {
+            if let dayTableViewController = segue.destination as? DayViewController {
                 dayTableViewController.dayDate = sender as? Date ?? Date()
             }
         }
     }
+    
+    // MARK: -
     
     func drawCalendar() {
         drawWeekDays()
         fillMonthLabel(month: month)
         drawCalendarDayButtons()
     }
+    
+    // MARK: -
     
     private func setTransparencyOnNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -148,6 +156,8 @@ class CalendarVC: UIViewController {
             label.text = Calendar.current.shortWeekdaySymbols[index]
         }
     }
+    
+    // MARK: -
     
     @IBAction func openDay(_ sender: UIButton) {
         performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])

@@ -21,7 +21,7 @@
         <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController restorationIdentifier="CalendarViewController" storyboardIdentifier="CalendarViewController" title="Calendar" id="BYZ-38-t0r" customClass="CalendarVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CalendarViewController" storyboardIdentifier="CalendarViewController" title="Calendar" id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -677,7 +677,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hu5-Dd-FQX"/>
                                     <barButtonItem title="Add form library" style="plain" id="Mkp-4e-y6b">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJ6-Q0-MpT">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJ6-Q0-MpT">
                                             <rect key="frame" x="323" y="15.5" width="36" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -771,7 +771,7 @@
         <!-- -->
         <scene sceneID="rtc-L2-Qe7">
             <objects>
-                <viewController id="lfX-gW-mgb" customClass="DayVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lfX-gW-mgb" customClass="DayViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2FI-S6-1M1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -825,7 +825,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3AC-8c-SHb"/>
                                     <barButtonItem title="Add image" style="plain" id="qDR-ec-wzd">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xXz-E9-A6E">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xXz-E9-A6E">
                                             <rect key="frame" x="323" y="15.5" width="36" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -843,7 +843,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="83" id="VQo-q4-831" customClass="NoteCell" customModule="Daily" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="83" id="VQo-q4-831" customClass="NoteCell" customModule="Daily" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQo-q4-831" id="J9f-oV-RQE">
@@ -898,7 +898,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-04-0oX">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-04-0oX">
                                                     <rect key="frame" x="15" y="31" width="345" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="345" id="R2W-CY-CM0"/>
@@ -963,17 +963,54 @@
                         <outlet property="tableView" destination="BhI-jY-IXQ" id="uAp-UZ-pCg"/>
                         <outlet property="takePhotoButton" destination="YJ1-Oc-dVJ" id="btm-9l-6Uw"/>
                         <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRater" id="vW8-JP-BAE"/>
-                        <segue destination="bOK-Nn-dGV" kind="show" identifier="openRecordView" id="wNM-no-UsY"/>
+                        <segue destination="bOK-Nn-dGV" kind="show" identifier="openNoteRecordView" id="wNM-no-UsY"/>
+                        <segue destination="ePx-lq-ng2" kind="show" identifier="openImageRecordView" id="qb7-hc-obk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgh-qj-loJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933.60000000000002" y="241.52923538230885"/>
         </scene>
+        <!--Image Record View Controller-->
+        <scene sceneID="JIL-ba-xDc">
+            <objects>
+                <viewController id="ePx-lq-ng2" customClass="ImageRecordViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lvO-1p-xwL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-d4-Xm3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IhH-d4-Xm3" firstAttribute="leading" secondItem="lvO-1p-xwL" secondAttribute="leading" id="3uj-yH-MrN"/>
+                            <constraint firstItem="IhH-d4-Xm3" firstAttribute="top" secondItem="lvO-1p-xwL" secondAttribute="top" id="Gtr-86-Ne9"/>
+                            <constraint firstAttribute="trailing" secondItem="IhH-d4-Xm3" secondAttribute="trailing" id="Ueh-MQ-2jk"/>
+                            <constraint firstAttribute="bottom" secondItem="IhH-d4-Xm3" secondAttribute="bottom" id="pWm-1j-Rvc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z2I-Pg-6a2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qRa-oj-8KO">
+                        <barButtonItem key="rightBarButtonItem" title="Remove" image="remove" id="YZC-UA-kTz">
+                            <connections>
+                                <action selector="removeNoteAction:" destination="ePx-lq-ng2" id="0hv-c7-3zb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="IhH-d4-Xm3" id="Gwh-xV-bmj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BAD-pv-7aR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1881" y="666"/>
+        </scene>
         <!--Note-->
         <scene sceneID="P8F-Sg-rso">
             <objects>
-                <viewController title="Note" id="bOK-Nn-dGV" customClass="NoteVC" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Note" id="bOK-Nn-dGV" customClass="NoteRecordViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xxo-Mr-64a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1006,7 +1043,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="l2A-Ko-VQB">
+                    <navigationItem key="navigationItem" title=" " id="l2A-Ko-VQB" userLabel="Navigation Item">
                         <barButtonItem key="rightBarButtonItem" title="Remove note" image="remove" id="eOe-op-kjW">
                             <connections>
                                 <action selector="removeNoteButtonTapped:" destination="bOK-Nn-dGV" id="YUH-Rd-i5c"/>
@@ -1020,7 +1057,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWA-NK-dax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="242"/>
+            <point key="canvasLocation" x="1889" y="-90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pnP-AG-VzT">

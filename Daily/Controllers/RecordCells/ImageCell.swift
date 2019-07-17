@@ -5,6 +5,8 @@ class ImageCell: UITableViewCell {
     @IBOutlet weak var recordTimeTextLabel: UILabel!
     @IBOutlet weak var recordImageView: UIImageView!
     
+    // MARK: -
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

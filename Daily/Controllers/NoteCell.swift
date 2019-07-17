@@ -5,6 +5,8 @@ class NoteCell: UITableViewCell {
     @IBOutlet weak var noteTextLabel: UILabel!
     @IBOutlet weak var recordTimeTextLabel: UILabel!
     
+    // MARK: -
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

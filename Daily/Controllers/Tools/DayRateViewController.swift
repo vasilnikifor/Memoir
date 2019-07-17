@@ -1,13 +1,17 @@
 import UIKit
 
-class DayRateVC: UITableViewController {
+class DayRateViewController: UITableViewController {
 
     var dayDate: Date?
+    
+    // MARK: -
     
     @IBOutlet weak var noRateImage: UIImageView!
     @IBOutlet weak var badMoodImage: UIImageView!
     @IBOutlet weak var averageMood: UIImageView!
     @IBOutlet weak var goodMoodImage: UIImageView!
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +35,8 @@ class DayRateVC: UITableViewController {
         
         goBack()
     }
+    
+    // MARK: -
     
     private func goBack() {
         navigationController?.popViewController(animated: true)

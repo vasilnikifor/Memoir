@@ -8,6 +8,8 @@ public class Day: NSManagedObject {
         AppDelegate.saveContext()
     }
     
+    // MARK: -
+    
     static func setDayRate(dayDate: Date, rate: Double) {
         let day = Day.findOrCreateDay(date: dayDate)
         

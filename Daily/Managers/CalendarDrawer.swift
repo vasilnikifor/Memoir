@@ -47,6 +47,8 @@ class CalendarDrawer {
         return CalendarDrawer.getDayRateImage(getDayRate(day))
     }
     
+    // MARK: -
+    
     static func getDayRateImage(_ rate: Double?) -> UIImage {
         switch rate {
         case 0.0:
@@ -77,6 +79,8 @@ class CalendarDrawer {
         }
     }
     
+    // MARK: -
+    
     private func getDayRate(_ day: Day?) -> Double? {
         if let day = day {
             return day.dayRate
@@ -96,4 +100,5 @@ class CalendarDrawer {
         static let eval3 = UIColor(red: 0.139, green: 0.195, blue: 0.74,  alpha: 0.5) // #8BC34A Light Green
         static let defaultEval = UIColor.white
     }
+    
 }
