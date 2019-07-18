@@ -17,7 +17,7 @@
 		847082252260D6DD002A06E7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847082242260D6DD002A06E7 /* NoteCell.swift */; };
 		8472597422ABFCB800BCBA42 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597322ABFCB800BCBA42 /* ViewManager.swift */; };
 		8472597722AC02A100BCBA42 /* NoteRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597622AC02A100BCBA42 /* NoteRecordViewController.swift */; };
-		8472597922AC119600BCBA42 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597822AC119600BCBA42 /* UIImageExtension.swift */; };
+		8472597922AC119600BCBA42 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597822AC119600BCBA42 /* UIImage+Extension.swift */; };
 		8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597B22AD3C7400BCBA42 /* NoteRecord.swift */; };
 		84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916C22290E8D00956265 /* AppDelegate.swift */; };
 		84F8916F22290E8D00956265 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916E22290E8D00956265 /* CalendarViewController.swift */; };
@@ -25,10 +25,10 @@
 		84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84F8917322290E8D00956265 /* Daily.xcdatamodeld */; };
 		84F8917722290E9000956265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F8917622290E9000956265 /* Assets.xcassets */; };
 		84F8917A22290E9000956265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8917822290E9000956265 /* LaunchScreen.storyboard */; };
-		84F8918622297AE700956265 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8918522297AE700956265 /* DateExtension.swift */; };
+		84F8918622297AE700956265 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8918522297AE700956265 /* Date+Extension.swift */; };
 		84FB729622ABF38600DA7CE2 /* Tools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FB729522ABF38600DA7CE2 /* Tools.storyboard */; };
 		84FB729922ABF58900DA7CE2 /* DayRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB729822ABF58900DA7CE2 /* DayRateViewController.swift */; };
-		84FE422D228FC73600769F2B /* UIButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE422C228FC73600769F2B /* UIButtonExtention.swift */; };
+		84FE422D228FC73600769F2B /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE422C228FC73600769F2B /* UIButton+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,7 @@
 		847082242260D6DD002A06E7 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteCell.swift; path = ../NoteCell.swift; sourceTree = "<group>"; };
 		8472597322ABFCB800BCBA42 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		8472597622AC02A100BCBA42 /* NoteRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecordViewController.swift; sourceTree = "<group>"; };
-		8472597822AC119600BCBA42 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		8472597822AC119600BCBA42 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		8472597B22AD3C7400BCBA42 /* NoteRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecord.swift; sourceTree = "<group>"; };
 		84F8916922290E8D00956265 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8916C22290E8D00956265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,10 +52,10 @@
 		84F8917622290E9000956265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84F8917922290E9000956265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F8917B22290E9000956265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84F8918522297AE700956265 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		84F8918522297AE700956265 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		84FB729522ABF38600DA7CE2 /* Tools.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Tools.storyboard; path = ../Tools.storyboard; sourceTree = "<group>"; };
 		84FB729822ABF58900DA7CE2 /* DayRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateViewController.swift; sourceTree = "<group>"; };
-		84FE422C228FC73600769F2B /* UIButtonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtention.swift; sourceTree = "<group>"; };
+		84FE422C228FC73600769F2B /* UIButton+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +107,9 @@
 		84D6840F222D6AD5003F08F9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				84F8918522297AE700956265 /* DateExtension.swift */,
-				84FE422C228FC73600769F2B /* UIButtonExtention.swift */,
-				8472597822AC119600BCBA42 /* UIImageExtension.swift */,
+				84F8918522297AE700956265 /* Date+Extension.swift */,
+				84FE422C228FC73600769F2B /* UIButton+Extention.swift */,
+				8472597822AC119600BCBA42 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = buldog.team;
 				TargetAttributes = {
 					84F8916822290E8D00956265 = {
@@ -270,13 +270,13 @@
 			files = (
 				84F8916F22290E8D00956265 /* CalendarViewController.swift in Sources */,
 				846BA3992256443200595D61 /* CalendarDrawer.swift in Sources */,
-				84FE422D228FC73600769F2B /* UIButtonExtention.swift in Sources */,
+				84FE422D228FC73600769F2B /* UIButton+Extention.swift in Sources */,
 				846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */,
 				847082252260D6DD002A06E7 /* NoteCell.swift in Sources */,
-				84F8918622297AE700956265 /* DateExtension.swift in Sources */,
+				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
-				8472597922AC119600BCBA42 /* UIImageExtension.swift in Sources */,
+				8472597922AC119600BCBA42 /* UIImage+Extension.swift in Sources */,
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
 				8472597722AC02A100BCBA42 /* NoteRecordViewController.swift in Sources */,
 				846DF5B222B6604E0095A065 /* DayViewController.swift in Sources */,
@@ -431,14 +431,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
 				INFOPLIST_FILE = Daily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = buldog.team.Daily;
+				PRODUCT_BUNDLE_IDENTIFIER = team.buldog.daily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -448,14 +451,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
 				INFOPLIST_FILE = Daily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = buldog.team.Daily;
+				PRODUCT_BUNDLE_IDENTIFIER = team.buldog.daily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

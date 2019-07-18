@@ -9,7 +9,7 @@ class DayViewController: UIViewController {
     private var isViewExist: Bool?
     private var imagePicker = UIImagePickerController()
     
-    // MARK: -
+    // MARK: - outlets
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var rateDayButton: UIButton!
@@ -17,7 +17,7 @@ class DayViewController: UIViewController {
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var addImageButton: UIButton!
     
-    // MARK: -
+    // MARK: - life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class DayViewController: UIViewController {
         }
     }
     
-    // MARK: -
+    // MARK: - methods
     
     func redarwRecords() {
         setDayData()
@@ -69,7 +69,7 @@ class DayViewController: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: - private
+    // MARK: - private methods
     
     private func setInitialViweSettings() {
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -140,7 +140,7 @@ class DayViewController: UIViewController {
         }
     }
     
-    // MARK: -
+    // MARK: - actions
     
     @IBAction func rateDayButtonTapped(_ sender: Any) {
         rateDay()
@@ -208,7 +208,7 @@ extension DayViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-// MARK: -
+// MARK: - extention UINavigationControllerDelegate
 
 extension DayViewController: UINavigationControllerDelegate { }
 

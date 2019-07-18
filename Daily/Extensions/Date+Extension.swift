@@ -37,7 +37,7 @@ extension Date {
     func getTime() -> Date {
         return Calendar
             .current
-            .date(from: Calendar.current.dateComponents([.hour, .minute, .timeZone], from: self))!
+            .date(from: Calendar.current.dateComponents([.hour, .minute, .second, .timeZone], from: self))!
     }
 
 }

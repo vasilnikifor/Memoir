@@ -7,9 +7,16 @@ public class Record: NSManagedObject {
         AppDelegate.saveContext()
     }
     
-    func delete() {
+    func remove() {
+        
+        let recordDay = self.day
+        
         AppDelegate.persistentContainer.viewContext.delete(self)
         AppDelegate.saveContext()
+        
+        if let recordDay = recordDay, recordDay.isEmpty() {
+            recordDay.remove()
+        }
     }
     
 }

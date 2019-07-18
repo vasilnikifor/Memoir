@@ -3,17 +3,24 @@ import CoreData
 
 public class Day: NSManagedObject {
     
-    func removeDay() {
+    func remove() {
         AppDelegate.persistentContainer.viewContext.delete(self)
         AppDelegate.saveContext()
+    }
+    
+    func isEmpty() -> Bool {
+        return (records ?? NSSet()).count == 0 && dayRate == 0
     }
     
     // MARK: -
     
     static func setDayRate(dayDate: Date, rate: Double) {
         let day = Day.findOrCreateDay(date: dayDate)
-        
         day.dayRate = rate
+        
+        if day.isEmpty() {
+            AppDelegate.persistentContainer.viewContext.delete(day)
+        }
         
         AppDelegate.saveContext()
     }

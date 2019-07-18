@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -645,7 +643,7 @@
                                 <items>
                                     <barButtonItem title="Rate day" style="plain" id="Fba-Am-0PI">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5EN-gp-GMY">
-                                            <rect key="frame" x="16" y="15.5" width="95" height="24"/>
+                                            <rect key="frame" x="16" y="3.5" width="95" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Rate day" image="mood">
@@ -656,7 +654,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gx5-Ra-ZXF"/>
                                     <barButtonItem title="Add note" style="plain" id="SE8-6g-ztJ">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MmD-08-hEp">
-                                            <rect key="frame" x="111" y="15.5" width="98" height="24"/>
+                                            <rect key="frame" x="111" y="3.5" width="98" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Add note" image="note">
@@ -667,7 +665,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9FE-Oo-MpJ"/>
                                     <barButtonItem title="Take photo" style="plain" id="NAT-XO-prH">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9yZ-0E-WYe">
-                                            <rect key="frame" x="209" y="15.5" width="114" height="24"/>
+                                            <rect key="frame" x="209" y="3.5" width="114" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Take photo" image="camera">
@@ -677,8 +675,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hu5-Dd-FQX"/>
                                     <barButtonItem title="Add form library" style="plain" id="Mkp-4e-y6b">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJ6-Q0-MpT">
-                                            <rect key="frame" x="323" y="15.5" width="36" height="24"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJ6-Q0-MpT">
+                                            <rect key="frame" x="323" y="3.5" width="36" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Add image" image="image">
@@ -784,7 +782,7 @@
                                 <items>
                                     <barButtonItem title="Rate day" style="plain" id="Z2i-Ug-l0W">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="00r-Lg-CKM">
-                                            <rect key="frame" x="16" y="15.5" width="95" height="24"/>
+                                            <rect key="frame" x="16" y="3.5" width="95" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Rate day" image="mood">
@@ -798,7 +796,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CPg-Z3-Mqq"/>
                                     <barButtonItem title="Add note" style="plain" id="NIg-Z8-nHV">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Yb-65-Zig">
-                                            <rect key="frame" x="111" y="15.5" width="98" height="24"/>
+                                            <rect key="frame" x="111" y="3.5" width="98" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Add note" image="note">
@@ -812,7 +810,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dIp-5J-epQ"/>
                                     <barButtonItem title="Take photo" style="plain" id="de6-Sp-Vdp">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YJ1-Oc-dVJ">
-                                            <rect key="frame" x="209" y="15.5" width="114" height="24"/>
+                                            <rect key="frame" x="209" y="3.5" width="114" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="Take photo" image="camera">
@@ -825,8 +823,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3AC-8c-SHb"/>
                                     <barButtonItem title="Add image" style="plain" id="qDR-ec-wzd">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xXz-E9-A6E">
-                                            <rect key="frame" x="323" y="15.5" width="36" height="24"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xXz-E9-A6E">
+                                            <rect key="frame" x="323" y="3.5" width="36" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <state key="normal" title="Add image" image="image">
@@ -840,14 +838,14 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-jY-IXQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="83" id="VQo-q4-831" customClass="NoteCell" customModule="Daily" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="83" id="VQo-q4-831" customClass="NoteCell" customModule="Daily" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQo-q4-831" id="J9f-oV-RQE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ske-Bh-SMm">
@@ -886,7 +884,7 @@
                                         <rect key="frame" x="0.0" y="111" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wng-Nk-hIk" id="ArT-pi-15W">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHZ-AA-0Ul">
@@ -934,7 +932,7 @@
                         <constraints>
                             <constraint firstItem="qEL-9a-KV3" firstAttribute="trailing" secondItem="FgH-vY-1BK" secondAttribute="trailing" id="8RC-gX-Fyb"/>
                             <constraint firstItem="qEL-9a-KV3" firstAttribute="bottom" secondItem="FgH-vY-1BK" secondAttribute="bottom" id="FYF-9b-Yky"/>
-                            <constraint firstItem="BhI-jY-IXQ" firstAttribute="top" secondItem="2FI-S6-1M1" secondAttribute="top" id="QyO-md-z3u"/>
+                            <constraint firstItem="BhI-jY-IXQ" firstAttribute="top" secondItem="FgH-vY-1BK" secondAttribute="top" id="QyO-md-z3u"/>
                             <constraint firstItem="BhI-jY-IXQ" firstAttribute="leading" secondItem="FgH-vY-1BK" secondAttribute="leading" id="avd-sJ-p5Z"/>
                             <constraint firstItem="qEL-9a-KV3" firstAttribute="leading" secondItem="FgH-vY-1BK" secondAttribute="leading" id="bt4-Ny-jDy"/>
                             <constraint firstItem="BhI-jY-IXQ" firstAttribute="trailing" secondItem="FgH-vY-1BK" secondAttribute="trailing" id="oId-D4-JrF"/>
@@ -1015,8 +1013,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-ZE-706">
-                                <rect key="frame" x="8" y="72" width="359" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-ZE-706">
+                                <rect key="frame" x="8" y="52" width="359" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="DzX-b6-8I7"/>
                                 </constraints>
@@ -1025,7 +1023,7 @@
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteText" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
-                                <rect key="frame" x="8" y="110" width="359" height="549"/>
+                                <rect key="frame" x="8" y="90" width="359" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1065,7 +1063,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dJM-ZY-2nP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ls7-sy-T40">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1089,6 +1087,6 @@
         <image name="remove" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vW8-JP-BAE"/>
+        <segue reference="vDd-aZ-qzV"/>
     </inferredMetricsTieBreakers>
 </document>

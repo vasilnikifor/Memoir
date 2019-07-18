@@ -2,11 +2,13 @@ import UIKit
 
 class CalendarViewController: UIViewController {
 
+    // MARK: - private propertis
+    
     private var month = Date().firstDayOfMonth()
     private var dayButtonMatch: [UIButton: Date] = [:]
     private let calendarDrawer = CalendarDrawer()
     
-    // MARK: -
+    // MARK: - outlets
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var weekDayLabel: [UILabel]!
@@ -16,7 +18,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var addImageButton: UIButton!
     
-    // MARK: -
+    // MARK: - life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,7 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    // MARK: -
+    // MARK: - methods
     
     func drawCalendar() {
         drawWeekDays()
@@ -47,7 +49,7 @@ class CalendarViewController: UIViewController {
         drawCalendarDayButtons()
     }
     
-    // MARK: -
+    // MARK: - private methods
     
     private func setTransparencyOnNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -108,8 +110,10 @@ class CalendarViewController: UIViewController {
             } else if drawingDay < firstDayOfMonth {
                 
             } else if drawingDay > lastDayOfMonth {
-                if (index == 27 || index == 34) {
+                if (index == 28 || index == 35) {
                     hideTheLastButtons = true
+                    button.isHidden = true
+                    continue
                 }
             } else {
                 dayButtonMatch[button] = drawingDay
@@ -157,7 +161,7 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    // MARK: -
+    // MARK: - actions
     
     @IBAction func openDay(_ sender: UIButton) {
         performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
