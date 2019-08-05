@@ -95,9 +95,15 @@ class CalendarDrawer {
     
     private struct dayEvaluation {
         static let eval0 = UIColor(red: 0.158, green: 0.158, blue: 0.158, alpha: 0.3) // #9E9E9E Grey
-        static let eval1 = UIColor(red: 0.233, green: 0.30,  blue: 0.99,  alpha: 0.5) // #E91E63 Pink
-        static let eval2 = UIColor(red: 0.63,  green: 0.81,  blue: 0.181, alpha: 0.5) // #3F51B5 Indigo
-        static let eval3 = UIColor(red: 0.139, green: 0.195, blue: 0.74,  alpha: 0.5) // #8BC34A Light Green
+        
+        static let eval1 = UIColor(red: 211.0, green: 0.0, blue: 0.0, alpha: 1)
+        static let eval2 = UIColor.blue //  UIColor(red: 255.0, green: 154.0, blue: 0.0, alpha: 1)
+        static let eval3 = UIColor(red: 0.11, green: 1.02, blue: 0.35, alpha: 1)
+        
+        //static let eval1 = UIColor(red: 0.233, green: 0.30,  blue: 0.99,  alpha: 0.5) // #E91E63 Pink
+        //static let eval2 = UIColor(red: 0.63,  green: 0.81,  blue: 0.181, alpha: 0.5) // #3F51B5 Indigo
+        //static let eval3 = UIColor(red: 0.139, green: 0.195, blue: 0.74,  alpha: 0.5) // #8BC34A Light Green
+        
         static let defaultEval = UIColor.white
     }
     

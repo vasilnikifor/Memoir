@@ -2,30 +2,34 @@ import UIKit
 
 class NoteRecordViewController: UIViewController {
     
-    // MARK: - propertis
+    // MARK: - Propertis
     
     var dayDate: Date!
     var record: NoteRecord?
     
-    // MARK: - private propertis
+    // MARK: - Private propertis
     
     private var noteTime: Date!
     private var isKeyboardShowed: Bool = false
     
-    // MARK: - outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var timeButton: UIButton!
     @IBOutlet weak var noteTextView: UITextView!
     
-    // MARK: - life cycle
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setInitialViewSettings()
         addKeyboardActions()
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.noteTextView?.becomeFirstResponder()
     }
     
@@ -35,7 +39,7 @@ class NoteRecordViewController: UIViewController {
         saveNote()
     }
     
-    // MARK: - private methods
+    // MARK: - Private methods
     
     private func addKeyboardActions() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -97,18 +101,23 @@ class NoteRecordViewController: UIViewController {
     }
     
     private func setViewFremeYOrigin(notification: NSNotification, keyboadrdWillShow: Bool) {
-        guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
-        
-        if keyboadrdWillShow, !isKeyboardShowed {
-            self.view.frame.size.height -= keyboardSize.cgRectValue.height
-            isKeyboardShowed = true
+        if let keyboardHeight = getKeyboardHeight(notification: notification) {
+            if keyboadrdWillShow, !isKeyboardShowed {
+                view.frame.size.height -= keyboardHeight
+                isKeyboardShowed = true
+            }
+            
+            if !keyboadrdWillShow, isKeyboardShowed {
+                view.frame.size.height += keyboardHeight
+                isKeyboardShowed = false
+            }
         }
-        
-        if !keyboadrdWillShow, isKeyboardShowed {
-            self.view.frame.size.height += keyboardSize.cgRectValue.height
-            isKeyboardShowed = false
-        }
+    }
+    
+    private func getKeyboardHeight(notification: NSNotification) -> CGFloat? {
+        guard let userInfo = notification.userInfo else { return nil }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil }
+        return keyboardSize.cgRectValue.height
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {

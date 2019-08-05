@@ -27,9 +27,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8aY-Pa-f4n">
                                 <rect key="frame" x="16" y="68.5" width="343" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
-                                        <rect key="frame" x="0.0" y="5" width="25" height="25"/>
-                                        <state key="normal" image="previous"/>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
+                                        <rect key="frame" x="0.0" y="6.5" width="19.5" height="22"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="arrow.left" catalog="system"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkU-D6-8eV"/>
                                         </connections>
@@ -41,8 +42,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
-                                        <rect key="frame" x="318" y="5" width="25" height="25"/>
-                                        <state key="normal" image="next"/>
+                                        <rect key="frame" x="323.5" y="6.5" width="19.5" height="22"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="arrow.right" catalog="system"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
                                         </connections>
@@ -635,68 +637,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR1-V2-YjN">
-                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="J3r-6J-Mqm"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Rate day" style="plain" id="Fba-Am-0PI">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5EN-gp-GMY">
-                                            <rect key="frame" x="16" y="3.5" width="95" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <state key="normal" title="Rate day" image="mood">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gx5-Ra-ZXF"/>
-                                    <barButtonItem title="Add note" style="plain" id="SE8-6g-ztJ">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MmD-08-hEp">
-                                            <rect key="frame" x="111" y="3.5" width="98" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <state key="normal" title="Add note" image="note">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9FE-Oo-MpJ"/>
-                                    <barButtonItem title="Take photo" style="plain" id="NAT-XO-prH">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9yZ-0E-WYe">
-                                            <rect key="frame" x="209" y="3.5" width="114" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <state key="normal" title="Take photo" image="camera">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hu5-Dd-FQX"/>
-                                    <barButtonItem title="Add form library" style="plain" id="Mkp-4e-y6b">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJ6-Q0-MpT">
-                                            <rect key="frame" x="323" y="3.5" width="36" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <state key="normal" title="Add image" image="image">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8aY-Pa-f4n" secondAttribute="trailing" constant="16" id="Eqd-Tg-Z6D"/>
                             <constraint firstItem="8aY-Pa-f4n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GJD-bj-yFJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gR1-V2-YjN" secondAttribute="bottom" id="GuB-Xt-RM5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gR1-V2-YjN" secondAttribute="trailing" id="IpD-GK-9XA"/>
                             <constraint firstItem="ud1-Y6-KzV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RVi-kr-Jnx"/>
                             <constraint firstItem="ud1-Y6-KzV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bMe-9I-h4a"/>
                             <constraint firstItem="ud1-Y6-KzV" firstAttribute="top" secondItem="8aY-Pa-f4n" secondAttribute="bottom" constant="30" id="dW7-L0-4uN"/>
-                            <constraint firstItem="gR1-V2-YjN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gDw-5o-4pz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -704,11 +652,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="7tI-T8-Ym2"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addImageButton" destination="cJ6-Q0-MpT" id="pnx-iS-1OY"/>
-                        <outlet property="addNoteButton" destination="MmD-08-hEp" id="aRT-ZM-ck3"/>
                         <outlet property="monthLabel" destination="Pla-jm-6xC" id="rcK-RR-CLC"/>
-                        <outlet property="rateDayButton" destination="5EN-gp-GMY" id="B51-aE-PiQ"/>
-                        <outlet property="takePhotoButton" destination="9yZ-0E-WYe" id="5Fh-2q-5AS"/>
                         <outletCollection property="dayButtons" destination="BSE-NA-uUX" collectionClass="NSMutableArray" id="r82-gj-le9"/>
                         <outletCollection property="dayButtons" destination="srF-t7-kt2" collectionClass="NSMutableArray" id="3bB-y6-zDL"/>
                         <outletCollection property="dayButtons" destination="d3t-oE-l8P" collectionClass="NSMutableArray" id="FwS-jR-yZF"/>
@@ -775,70 +719,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEL-9a-KV3">
-                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="8wf-fd-5Lp"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Rate day" style="plain" id="Z2i-Ug-l0W">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="00r-Lg-CKM">
-                                            <rect key="frame" x="16" y="3.5" width="95" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <state key="normal" title="Rate day" image="mood">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="rateDayTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="WNz-ly-34M"/>
-                                            </connections>
-                                        </button>
+                                    <barButtonItem title="Rate day" image="smiley" catalog="system" id="peh-Dy-YPB">
+                                        <connections>
+                                            <action selector="rateDayTapped:" destination="lfX-gW-mgb" id="hPQ-y3-8w3"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CPg-Z3-Mqq"/>
-                                    <barButtonItem title="Add note" style="plain" id="NIg-Z8-nHV">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Yb-65-Zig">
-                                            <rect key="frame" x="111" y="3.5" width="98" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <state key="normal" title="Add note" image="note">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="addNoteTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="m2m-oA-TWf"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dIp-5J-epQ"/>
-                                    <barButtonItem title="Take photo" style="plain" id="de6-Sp-Vdp">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YJ1-Oc-dVJ">
-                                            <rect key="frame" x="209" y="3.5" width="114" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <state key="normal" title="Take photo" image="camera">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="takePhotoTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="s0D-to-Ml7"/>
-                                            </connections>
-                                        </button>
+                                    <barButtonItem title="Add note" image="doc.text" catalog="system" id="EUM-Rf-vDt">
+                                        <connections>
+                                            <action selector="addNoteTapped:" destination="lfX-gW-mgb" id="91T-pB-i0M"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3AC-8c-SHb"/>
-                                    <barButtonItem title="Add image" style="plain" id="qDR-ec-wzd">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xXz-E9-A6E">
-                                            <rect key="frame" x="323" y="3.5" width="36" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                            <state key="normal" title="Add image" image="image">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="addImageTapped:" destination="lfX-gW-mgb" eventType="touchUpInside" id="o8F-pf-8Nk"/>
-                                            </connections>
-                                        </button>
+                                    <barButtonItem title="Take photo" image="camera" catalog="system" id="3MF-Y5-U8Z">
+                                        <connections>
+                                            <action selector="takePhotoTapped:" destination="lfX-gW-mgb" id="JB4-XY-MIS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dIp-5J-epQ"/>
+                                    <barButtonItem title="Add image" image="photo" catalog="system" id="8a5-77-bWT">
+                                        <connections>
+                                            <action selector="addImageTapped:" destination="lfX-gW-mgb" id="ijD-9z-xOR"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-jY-IXQ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="83" id="VQo-q4-831" customClass="NoteCell" customModule="Daily" customModuleProvider="target">
@@ -857,7 +766,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteText" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-T8-cnf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteText" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-T8-cnf">
                                                     <rect key="frame" x="15" y="31" width="345" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -916,7 +825,6 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <outlet property="imageView" destination="vpX-04-0oX" id="36B-SM-K0z"/>
                                             <outlet property="recordImageView" destination="vpX-04-0oX" id="o8R-Tv-jOS"/>
                                             <outlet property="recordTimeTextLabel" destination="jHZ-AA-0Ul" id="pP6-q1-RRy"/>
                                         </connections>
@@ -942,12 +850,12 @@
                     </view>
                     <navigationItem key="navigationItem" title=" " id="Br8-g4-KtL">
                         <rightBarButtonItems>
-                            <barButtonItem title="Add record" image="add" id="6NM-OB-vjb">
+                            <barButtonItem title="Add record" image="plus" catalog="system" id="6NM-OB-vjb">
                                 <connections>
                                     <action selector="addRecordButtonTapped:" destination="lfX-gW-mgb" id="Wzp-wQ-cs4"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Rate day" image="mood" id="GW8-y4-GVh">
+                            <barButtonItem title="Rate day" image="smiley" catalog="system" id="GW8-y4-GVh">
                                 <connections>
                                     <action selector="rateDayButtonTapped:" destination="lfX-gW-mgb" id="c73-0P-fy6"/>
                                 </connections>
@@ -955,11 +863,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="addImageButton" destination="xXz-E9-A6E" id="l9n-zc-ZZT"/>
-                        <outlet property="addNoteButton" destination="4Yb-65-Zig" id="fxU-0W-HpB"/>
-                        <outlet property="rateDayButton" destination="00r-Lg-CKM" id="sjn-s1-PtB"/>
+                        <outlet property="addNoteOutlet" destination="EUM-Rf-vDt" id="fZx-wV-tfk"/>
                         <outlet property="tableView" destination="BhI-jY-IXQ" id="uAp-UZ-pCg"/>
-                        <outlet property="takePhotoButton" destination="YJ1-Oc-dVJ" id="btm-9l-6Uw"/>
                         <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRater" id="vW8-JP-BAE"/>
                         <segue destination="bOK-Nn-dGV" kind="show" identifier="openNoteRecordView" id="wNM-no-UsY"/>
                         <segue destination="ePx-lq-ng2" kind="show" identifier="openImageRecordView" id="qb7-hc-obk"/>
@@ -978,20 +883,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-d4-Xm3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IhH-d4-Xm3" firstAttribute="leading" secondItem="lvO-1p-xwL" secondAttribute="leading" id="3uj-yH-MrN"/>
-                            <constraint firstItem="IhH-d4-Xm3" firstAttribute="top" secondItem="lvO-1p-xwL" secondAttribute="top" id="Gtr-86-Ne9"/>
-                            <constraint firstAttribute="trailing" secondItem="IhH-d4-Xm3" secondAttribute="trailing" id="Ueh-MQ-2jk"/>
-                            <constraint firstAttribute="bottom" secondItem="IhH-d4-Xm3" secondAttribute="bottom" id="pWm-1j-Rvc"/>
+                            <constraint firstItem="IhH-d4-Xm3" firstAttribute="leading" secondItem="z2I-Pg-6a2" secondAttribute="leading" id="3uj-yH-MrN"/>
+                            <constraint firstItem="IhH-d4-Xm3" firstAttribute="top" secondItem="z2I-Pg-6a2" secondAttribute="top" id="Gtr-86-Ne9"/>
+                            <constraint firstItem="z2I-Pg-6a2" firstAttribute="trailing" secondItem="IhH-d4-Xm3" secondAttribute="trailing" id="Ueh-MQ-2jk"/>
+                            <constraint firstItem="z2I-Pg-6a2" firstAttribute="bottom" secondItem="IhH-d4-Xm3" secondAttribute="bottom" id="pWm-1j-Rvc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z2I-Pg-6a2"/>
                     </view>
                     <navigationItem key="navigationItem" id="qRa-oj-8KO">
-                        <barButtonItem key="rightBarButtonItem" title="Remove" image="remove" id="YZC-UA-kTz">
+                        <barButtonItem key="rightBarButtonItem" title="Remove" image="trash" catalog="system" id="YZC-UA-kTz">
                             <connections>
                                 <action selector="removeNoteAction:" destination="ePx-lq-ng2" id="0hv-c7-3zb"/>
                             </connections>
@@ -1022,7 +927,7 @@
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteText" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteText" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
                                 <rect key="frame" x="8" y="90" width="359" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1042,7 +947,7 @@
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="l2A-Ko-VQB" userLabel="Navigation Item">
-                        <barButtonItem key="rightBarButtonItem" title="Remove note" image="remove" id="eOe-op-kjW">
+                        <barButtonItem key="rightBarButtonItem" title="Remove note" image="trash" catalog="system" id="eOe-op-kjW">
                             <connections>
                                 <action selector="removeNoteButtonTapped:" destination="bOK-Nn-dGV" id="YUH-Rd-i5c"/>
                             </connections>
@@ -1077,16 +982,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="24" height="24"/>
-        <image name="camera" width="24" height="24"/>
-        <image name="image" width="24" height="24"/>
-        <image name="mood" width="24" height="24"/>
-        <image name="next" width="25" height="25"/>
-        <image name="note" width="24" height="24"/>
-        <image name="previous" width="25" height="25"/>
-        <image name="remove" width="24" height="24"/>
+        <image name="arrow.left" catalog="system" width="64" height="48"/>
+        <image name="arrow.right" catalog="system" width="64" height="48"/>
+        <image name="camera" catalog="system" width="64" height="48"/>
+        <image name="doc.text" catalog="system" width="56" height="64"/>
+        <image name="photo" catalog="system" width="64" height="48"/>
+        <image name="plus" catalog="system" width="64" height="58"/>
+        <image name="smiley" catalog="system" width="64" height="62"/>
+        <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vDd-aZ-qzV"/>
+        <segue reference="vW8-JP-BAE"/>
     </inferredMetricsTieBreakers>
 </document>

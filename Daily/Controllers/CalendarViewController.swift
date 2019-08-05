@@ -13,10 +13,6 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet var weekDayLabel: [UILabel]!
     @IBOutlet var dayButtons: [UIButton]!
-    @IBOutlet weak var rateDayButton: UIButton!
-    @IBOutlet weak var addNoteButton: UIButton!
-    @IBOutlet weak var takePhotoButton: UIButton!
-    @IBOutlet weak var addImageButton: UIButton!
     
     // MARK: - life cycle
     
@@ -66,11 +62,6 @@ class CalendarViewController: UIViewController {
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(nextMonth))
         leftSwipe.direction = .left
         view.addGestureRecognizer(leftSwipe)
-        
-        rateDayButton.alignTextBelowImage()
-        addNoteButton.alignTextBelowImage()
-        takePhotoButton.alignTextBelowImage()
-        addImageButton.alignTextBelowImage()
     }
     
     @objc private func nextMonth() {

@@ -1,23 +1,27 @@
 import UIKit
 
+
+
 class DayViewController: UIViewController {
 
+    // MARK: - Propertis
+    
     var dayDate: Date!
+    
+    // MARK: - Private propertis
+    
     private var day: Day?
     private var dayRate: Double?
     private var records: [Record]?
     private var isViewExist: Bool?
     private var imagePicker = UIImagePickerController()
     
-    // MARK: - outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var rateDayButton: UIButton!
-    @IBOutlet weak var addNoteButton: UIButton!
-    @IBOutlet weak var takePhotoButton: UIButton!
-    @IBOutlet weak var addImageButton: UIButton!
     
-    // MARK: - life cycle
+    @IBOutlet weak var addNoteOutlet: UIBarButtonItem!
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,8 @@ class DayViewController: UIViewController {
             redarwRecords()
         }
     }
+    
+    // MAKR: - Navigations
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -61,7 +67,7 @@ class DayViewController: UIViewController {
         }
     }
     
-    // MARK: - methods
+    // MARK: - Methods
     
     func redarwRecords() {
         setDayData()
@@ -69,18 +75,13 @@ class DayViewController: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: - private methods
+    // MARK: - Private methods
     
     private func setInitialViweSettings() {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         
         tableView.tableFooterView = UIView()
-        
-        rateDayButton.alignTextBelowImage()
-        addNoteButton.alignTextBelowImage()
-        takePhotoButton.alignTextBelowImage()
-        addImageButton.alignTextBelowImage()
         
         imagePicker.delegate = self
         
@@ -216,28 +217,45 @@ extension DayViewController: UINavigationControllerDelegate { }
 
 extension DayViewController: UIImagePickerControllerDelegate {
     
-    private func addRecord() {
-        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        
-        let addNoteAction   = UIAlertAction(title: "Add note",          style: UIAlertAction.Style.default) {UIAlertAction in self.addNote()}
-        let addCameraAction = UIAlertAction(title: "Take Photo",        style: UIAlertAction.Style.default) {UIAlertAction in self.takePhoto()}
-        let addImageAction  = UIAlertAction(title: "Add from library",  style: UIAlertAction.Style.default) {UIAlertAction in self.addImage()}
-        let cancelAction    = UIAlertAction(title: "Cancel",            style: UIAlertAction.Style.cancel)  {UIAlertAction in }
-        
-        imagePicker.delegate = self
-        
-        alert.addAction(addNoteAction)
-        alert.addAction(addCameraAction)
-        alert.addAction(addImageAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.addImageRecord(image: pickedImage)
         }
         imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Private methods
+    
+    private func addRecord() {
+        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        
+        addAction(to: alert, title: "Add note", imageSystemName: "doc.text") {UIAlertAction in self.addNote()}
+        addAction(to: alert, title: "Take photo", imageSystemName: "camera") {UIAlertAction in self.takePhoto()}
+        addAction(to: alert, title: "Add image from library", imageSystemName: "photo") {UIAlertAction in self.addImage()}
+        addAction(to: alert, title: "Cancel", isCansel: true) {UIAlertAction in }
+
+        imagePicker.delegate = self
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func addAction(to alert: UIAlertController,
+                           title: String,
+                           imageSystemName: String? = nil,
+                           isCansel: Bool = false,
+                           handler: ((UIAlertAction) -> Void)?)
+    {
+        let action = UIAlertAction(title: title,
+                                   style: isCansel ? .cancel : .default,
+                                   handler: handler)
+        
+        if #available(iOS 13.0, *) {
+            if let imageSystemName = imageSystemName, let image = UIImage(systemName: imageSystemName) {
+                action.setValue(image, forKey: "image")
+            }
+        }
+        
+        alert.addAction(action)
     }
     
 }
