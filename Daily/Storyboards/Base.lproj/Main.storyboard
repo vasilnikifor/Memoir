@@ -849,6 +849,7 @@
                         <viewLayoutGuide key="safeArea" id="FgH-vY-1BK"/>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="Br8-g4-KtL">
+                        <barButtonItem key="backBarButtonItem" title=" " id="UUu-br-7z2"/>
                         <rightBarButtonItems>
                             <barButtonItem title="Add record" image="plus" catalog="system" id="6NM-OB-vjb">
                                 <connections>
@@ -896,6 +897,7 @@
                         <viewLayoutGuide key="safeArea" id="z2I-Pg-6a2"/>
                     </view>
                     <navigationItem key="navigationItem" id="qRa-oj-8KO">
+                        <barButtonItem key="backBarButtonItem" title=" " id="978-Yp-ZJp"/>
                         <barButtonItem key="rightBarButtonItem" title="Remove" image="trash" catalog="system" id="YZC-UA-kTz">
                             <connections>
                                 <action selector="removeNoteAction:" destination="ePx-lq-ng2" id="0hv-c7-3zb"/>
@@ -927,7 +929,7 @@
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteText" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
                                 <rect key="frame" x="8" y="90" width="359" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -946,7 +948,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="l2A-Ko-VQB" userLabel="Navigation Item">
+                    <navigationItem key="navigationItem" id="l2A-Ko-VQB" userLabel="Navigation Item">
                         <barButtonItem key="rightBarButtonItem" title="Remove note" image="trash" catalog="system" id="eOe-op-kjW">
                             <connections>
                                 <action selector="removeNoteButtonTapped:" destination="bOK-Nn-dGV" id="YUH-Rd-i5c"/>

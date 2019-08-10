@@ -3,13 +3,13 @@ import CoreData
 
 public class NoteRecord: Record {
     
-    // MARK: - methods
+    // MARK: - Methods
     
     func isEmpty() -> Bool {
         return (text ?? "").isEmpty
     }
     
-    // MARK: - static methods
+    // MARK: - Static methods
     
     static func createNote(dayDate: Date, time: Date, text: String) -> NoteRecord {
         let day = Day.findOrCreateDay(date: dayDate)

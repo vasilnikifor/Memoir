@@ -15,9 +15,7 @@
 		846DF5B422B6855C0095A065 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DF5B322B6855C0095A065 /* ImageCell.swift */; };
 		846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DF5B522B6878A0095A065 /* ImageRecord.swift */; };
 		847082252260D6DD002A06E7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847082242260D6DD002A06E7 /* NoteCell.swift */; };
-		8472597422ABFCB800BCBA42 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597322ABFCB800BCBA42 /* ViewManager.swift */; };
 		8472597722AC02A100BCBA42 /* NoteRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597622AC02A100BCBA42 /* NoteRecordViewController.swift */; };
-		8472597922AC119600BCBA42 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597822AC119600BCBA42 /* UIImage+Extension.swift */; };
 		8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597B22AD3C7400BCBA42 /* NoteRecord.swift */; };
 		84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916C22290E8D00956265 /* AppDelegate.swift */; };
 		84F8916F22290E8D00956265 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916E22290E8D00956265 /* CalendarViewController.swift */; };
@@ -28,7 +26,11 @@
 		84F8918622297AE700956265 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8918522297AE700956265 /* Date+Extension.swift */; };
 		84FB729622ABF38600DA7CE2 /* Tools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FB729522ABF38600DA7CE2 /* Tools.storyboard */; };
 		84FB729922ABF58900DA7CE2 /* DayRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB729822ABF58900DA7CE2 /* DayRateViewController.swift */; };
-		84FE422D228FC73600769F2B /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE422C228FC73600769F2B /* UIButton+Extention.swift */; };
+		84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2922FEC4C100CEF093 /* Theme.swift */; };
+		84FF3F2C22FED6E100CEF093 /* UITextView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2B22FED6E100CEF093 /* UITextView+Extention.swift */; };
+		84FF3F2E22FEF35600CEF093 /* DayRateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2D22FEF35600CEF093 /* DayRateManager.swift */; };
+		84FF3F3022FF01EE00CEF093 /* UIImageView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2F22FF01EE00CEF093 /* UIImageView+Extention.swift */; };
+		84FF3F3222FF157A00CEF093 /* DayEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F3122FF157A00CEF093 /* DayEditorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +42,7 @@
 		846DF5B322B6855C0095A065 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		846DF5B522B6878A0095A065 /* ImageRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecord.swift; sourceTree = "<group>"; };
 		847082242260D6DD002A06E7 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteCell.swift; path = ../NoteCell.swift; sourceTree = "<group>"; };
-		8472597322ABFCB800BCBA42 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		8472597622AC02A100BCBA42 /* NoteRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecordViewController.swift; sourceTree = "<group>"; };
-		8472597822AC119600BCBA42 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		8472597B22AD3C7400BCBA42 /* NoteRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecord.swift; sourceTree = "<group>"; };
 		84F8916922290E8D00956265 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8916C22290E8D00956265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +55,11 @@
 		84F8918522297AE700956265 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		84FB729522ABF38600DA7CE2 /* Tools.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Tools.storyboard; path = ../Tools.storyboard; sourceTree = "<group>"; };
 		84FB729822ABF58900DA7CE2 /* DayRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateViewController.swift; sourceTree = "<group>"; };
-		84FE422C228FC73600769F2B /* UIButton+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
+		84FF3F2922FEC4C100CEF093 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		84FF3F2B22FED6E100CEF093 /* UITextView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extention.swift"; sourceTree = "<group>"; };
+		84FF3F2D22FEF35600CEF093 /* DayRateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateManager.swift; sourceTree = "<group>"; };
+		84FF3F2F22FF01EE00CEF093 /* UIImageView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extention.swift"; sourceTree = "<group>"; };
+		84FF3F3122FF157A00CEF093 /* DayEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEditorDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				846BA3982256443200595D61 /* CalendarDrawer.swift */,
-				8472597322ABFCB800BCBA42 /* ViewManager.swift */,
+				84FF3F2D22FEF35600CEF093 /* DayRateManager.swift */,
+				84FF3F2922FEC4C100CEF093 /* Theme.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -108,8 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				84F8918522297AE700956265 /* Date+Extension.swift */,
-				84FE422C228FC73600769F2B /* UIButton+Extention.swift */,
-				8472597822AC119600BCBA42 /* UIImage+Extension.swift */,
+				84FF3F2B22FED6E100CEF093 /* UITextView+Extention.swift */,
+				84FF3F2F22FF01EE00CEF093 /* UIImageView+Extention.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,10 +164,9 @@
 				84F796A22233A5AC00596CD5 /* Controllers */,
 				84F796A12233A58E00596CD5 /* Models */,
 				8472597122ABFC8700BCBA42 /* Managers */,
+				84FF3F3322FF158100CEF093 /* Protocols */,
 				84D6840F222D6AD5003F08F9 /* Extensions */,
 				84F8918122294A2F00956265 /* SupportFiles */,
-				84F8917322290E8D00956265 /* Daily.xcdatamodeld */,
-				84F8917B22290E9000956265 /* Info.plist */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -170,6 +174,8 @@
 		84F8918122294A2F00956265 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				84F8917322290E8D00956265 /* Daily.xcdatamodeld */,
+				84F8917B22290E9000956265 /* Info.plist */,
 				84F8916C22290E8D00956265 /* AppDelegate.swift */,
 				84F8917822290E9000956265 /* LaunchScreen.storyboard */,
 				84F8917622290E9000956265 /* Assets.xcassets */,
@@ -193,6 +199,14 @@
 				846DF5B322B6855C0095A065 /* ImageCell.swift */,
 			);
 			path = RecordCells;
+			sourceTree = "<group>";
+		};
+		84FF3F3322FF158100CEF093 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				84FF3F3122FF157A00CEF093 /* DayEditorDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,20 +284,22 @@
 			files = (
 				84F8916F22290E8D00956265 /* CalendarViewController.swift in Sources */,
 				846BA3992256443200595D61 /* CalendarDrawer.swift in Sources */,
-				84FE422D228FC73600769F2B /* UIButton+Extention.swift in Sources */,
 				846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */,
 				847082252260D6DD002A06E7 /* NoteCell.swift in Sources */,
 				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
-				8472597922AC119600BCBA42 /* UIImage+Extension.swift in Sources */,
+				84FF3F3022FF01EE00CEF093 /* UIImageView+Extention.swift in Sources */,
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
 				8472597722AC02A100BCBA42 /* NoteRecordViewController.swift in Sources */,
+				84FF3F3222FF157A00CEF093 /* DayEditorDelegate.swift in Sources */,
 				846DF5B222B6604E0095A065 /* DayViewController.swift in Sources */,
 				8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */,
+				84FF3F2C22FED6E100CEF093 /* UITextView+Extention.swift in Sources */,
+				84FF3F2E22FEF35600CEF093 /* DayRateManager.swift in Sources */,
+				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				846DF5B422B6855C0095A065 /* ImageCell.swift in Sources */,
-				8472597422ABFCB800BCBA42 /* ViewManager.swift in Sources */,
 				84FB729922ABF58900DA7CE2 /* DayRateViewController.swift in Sources */,
 				8444DFB422DF8C1E0076C856 /* ImageRecordViewController.swift in Sources */,
 			);
@@ -434,7 +450,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
-				INFOPLIST_FILE = Daily/Info.plist;
+				INFOPLIST_FILE = Daily/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,7 +470,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
-				INFOPLIST_FILE = Daily/Info.plist;
+				INFOPLIST_FILE = Daily/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

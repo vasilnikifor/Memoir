@@ -45,10 +45,10 @@ class DayRateViewController: UITableViewController {
     private func setViewSettings() {
         tableView.tableFooterView = UIView()
         
-        noRateImage.image   = noRateImage.image?.tintImage(     CalendarDrawer.getRateColor(0.0))
-        badMoodImage.image  = badMoodImage.image?.tintImage(    CalendarDrawer.getRateColor(1.0))
-        averageMood.image   = averageMood.image?.tintImage(     CalendarDrawer.getRateColor(2.0))
-        goodMoodImage.image = goodMoodImage.image?.tintImage(   CalendarDrawer.getRateColor(3.0))
+        noRateImage.tintImage(to: DayRateManager.getRateColor(0.0))
+        badMoodImage.tintImage(to: DayRateManager.getRateColor(1.0))
+        averageMood.tintImage(to: DayRateManager.getRateColor(2.0))
+        goodMoodImage.tintImage(to: DayRateManager.getRateColor(3.0))
     }
     
     private func rateDay(_ rate: Double) {

@@ -7,6 +7,7 @@ class DayViewController: UIViewController {
     // MARK: - Propertis
     
     var dayDate: Date!
+    var delegate: DayEditorDelegate?
     
     // MARK: - Private propertis
     
@@ -19,8 +20,8 @@ class DayViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var addNoteOutlet: UIBarButtonItem!
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -80,7 +81,6 @@ class DayViewController: UIViewController {
     private func setInitialViweSettings() {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
-        
         tableView.tableFooterView = UIView()
         
         imagePicker.delegate = self
@@ -172,10 +172,7 @@ class DayViewController: UIViewController {
 extension DayViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let records = records {
-            return records.count
-        }
-        return 0
+        return records?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

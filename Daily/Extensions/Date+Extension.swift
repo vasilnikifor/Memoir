@@ -1,5 +1,6 @@
 import Foundation
 
+// MARK: - Conversion
 extension Date {
 
     func firstDayOfMonth() -> Date {
@@ -42,13 +43,17 @@ extension Date {
 
 }
 
-// MARK: - presentation
+// MARK: - Presentation
 extension Date {
     
     func getTimeRepresentation() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: self)
+    }
+    
+    func getDateNumber() -> String {
+        return String(Calendar.current.component(.day, from: self))
     }
     
 }

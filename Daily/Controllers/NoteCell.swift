@@ -2,10 +2,12 @@ import UIKit
 
 class NoteCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var noteTextLabel: UILabel!
     @IBOutlet weak var recordTimeTextLabel: UILabel!
     
-    // MARK: -
+    // MARK: - Life cycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
