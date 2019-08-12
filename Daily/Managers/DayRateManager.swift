@@ -30,7 +30,11 @@ class DayRateManager {
         case 3.0:
             return UIColor(red: 49/255, green: 180/255, blue: 72/255, alpha: 1)
         default:
-            return UIColor.white
+            if #available(iOS 13, *) {
+                return UIColor.systemBackground
+            } else {
+                return UIColor.white
+            }
         }
     }
     

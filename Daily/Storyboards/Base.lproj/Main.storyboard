@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
@@ -29,21 +29,23 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
                                         <rect key="frame" x="0.0" y="6.5" width="19.5" height="22"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="arrow.left" catalog="system"/>
+                                        <color key="tintColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <state key="normal" image="arrow.left" catalog="system">
+                                            <color key="titleColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkU-D6-8eV"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-jm-6xC">
                                         <rect key="frame" x="93.5" y="0.0" width="156" height="35"/>
+                                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
                                         <rect key="frame" x="323.5" y="6.5" width="19.5" height="22"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" image="arrow.right" catalog="system"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
@@ -638,7 +640,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8aY-Pa-f4n" secondAttribute="trailing" constant="16" id="Eqd-Tg-Z6D"/>
                             <constraint firstItem="8aY-Pa-f4n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GJD-bj-yFJ"/>
@@ -710,10 +712,10 @@
             </objects>
             <point key="canvasLocation" x="49" y="242"/>
         </scene>
-        <!-- -->
+        <!--Day View-->
         <scene sceneID="rtc-L2-Qe7">
             <objects>
-                <viewController id="lfX-gW-mgb" customClass="DayViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lfX-gW-mgb" userLabel="Day View" customClass="DayViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2FI-S6-1M1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -836,7 +838,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qEL-9a-KV3" firstAttribute="trailing" secondItem="FgH-vY-1BK" secondAttribute="trailing" id="8RC-gX-Fyb"/>
                             <constraint firstItem="qEL-9a-KV3" firstAttribute="bottom" secondItem="FgH-vY-1BK" secondAttribute="bottom" id="FYF-9b-Yky"/>
@@ -885,9 +887,10 @@
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-d4-Xm3">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="IhH-d4-Xm3" firstAttribute="leading" secondItem="z2I-Pg-6a2" secondAttribute="leading" id="3uj-yH-MrN"/>
                             <constraint firstItem="IhH-d4-Xm3" firstAttribute="top" secondItem="z2I-Pg-6a2" secondAttribute="top" id="Gtr-86-Ne9"/>
@@ -931,12 +934,13 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
                                 <rect key="frame" x="8" y="90" width="359" height="569"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iUl-Hd-bjL" firstAttribute="trailing" secondItem="fQG-mw-Tu9" secondAttribute="trailing" constant="8" id="969-gh-hVg"/>
                             <constraint firstItem="fQG-mw-Tu9" firstAttribute="leading" secondItem="iUl-Hd-bjL" secondAttribute="leading" constant="8" id="Bo3-0Y-jEU"/>
