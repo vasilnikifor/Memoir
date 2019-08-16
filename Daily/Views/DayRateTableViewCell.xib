@@ -17,35 +17,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.thumbsup.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="O9v-ro-6Ew" userLabel="Mood Image">
-                        <rect key="frame" x="0.0" y="0.0" width="44" height="42.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9v-ro-6Ew" userLabel="Mood Image">
+                        <rect key="frame" x="8" y="2" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="O9v-ro-6Ew" secondAttribute="height" multiplier="1:1" id="QLV-HZ-FFV"/>
+                            <constraint firstAttribute="width" constant="40" id="chL-vQ-0yU"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VwD-1W-qnR" userLabel="Selected Image">
-                        <rect key="frame" x="282" y="13" width="22" height="19"/>
+                        <rect key="frame" x="284" y="14" width="20" height="17"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Ivw-b9-ULd"/>
                             <constraint firstAttribute="width" secondItem="VwD-1W-qnR" secondAttribute="height" multiplier="1:1" id="ttR-gK-yef"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M26-Ed-LTc" userLabel="Mood Name Label">
-                        <rect key="frame" x="52" y="22" width="222" height="0.0"/>
+                        <rect key="frame" x="64" y="22" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7U6-eK-n14"/>
-                    <constraint firstItem="M26-Ed-LTc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Bmf-9S-CYW"/>
-                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="HsF-70-Hfm"/>
-                    <constraint firstItem="VwD-1W-qnR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="XTM-fT-mew"/>
-                    <constraint firstAttribute="bottom" secondItem="O9v-ro-6Ew" secondAttribute="bottom" id="dkM-4Y-nMx"/>
-                    <constraint firstItem="VwD-1W-qnR" firstAttribute="leading" secondItem="M26-Ed-LTc" secondAttribute="trailing" constant="8" id="kSr-hn-yYL"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="VwD-1W-qnR" secondAttribute="trailing" id="r0C-nc-mOd"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="VwD-1W-qnR" secondAttribute="bottom" id="x2J-i9-Qgb"/>
-                    <constraint firstItem="M26-Ed-LTc" firstAttribute="leading" secondItem="O9v-ro-6Ew" secondAttribute="trailing" constant="8" id="yqz-5Y-GoC"/>
+                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="HsF-70-Hfm"/>
+                    <constraint firstItem="VwD-1W-qnR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UTV-aZ-uRP"/>
+                    <constraint firstItem="VwD-1W-qnR" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="j2i-JC-KbD"/>
+                    <constraint firstItem="M26-Ed-LTc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vNu-0d-auR"/>
+                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vnE-KI-wim"/>
+                    <constraint firstItem="M26-Ed-LTc" firstAttribute="leading" secondItem="O9v-ro-6Ew" secondAttribute="trailing" constant="16" id="yqz-5Y-GoC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -59,6 +58,5 @@
     </objects>
     <resources>
         <image name="checkmark" catalog="system" width="64" height="56"/>
-        <image name="hand.thumbsup.fill" catalog="system" width="64" height="64"/>
     </resources>
 </document>

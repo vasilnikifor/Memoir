@@ -21,13 +21,10 @@ class DayRateTableViewCell: UITableViewCell {
     // MARK: - Methods
     
     func configure(dayRate: DayRate) {
-        if #available(iOS 13.0, *) {
-            moodImageView.image = UIImage(systemName: "hand.thumbsup.fill")
-        } else {
-            // Fallback on earlier versions
-        }
+        moodImageView.image = DayRateManager.getRateImage(dayRate)
+        moodImageView.tintImage(to: DayRateManager.getRateColor(dayRate))
         selectedImageView.isHidden = false
-        moodNameLabel.text = "Norm"
+        moodNameLabel.text = DayRateManager.getRateName(dayRate)
     }
     
 }

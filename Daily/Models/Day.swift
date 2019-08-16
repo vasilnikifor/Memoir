@@ -1,12 +1,11 @@
 import Foundation
 import CoreData
 
-enum DayRate {
+enum DayRate: CaseIterable  {
+    case none
     case bad
     case norm
     case good
-    
-    static let count = 4
 }
 
 public class Day: NSManagedObject {

@@ -22,7 +22,7 @@ class DayRateViewController: UITableViewController {
     private func setViewSettings() {
         tableView.rowHeight = 80
         tableView.tableFooterView = UIView()
-        tableView.register(DayRateTableViewCell.self, forCellReuseIdentifier: moodCellId)
+        tableView.register(UINib.init(nibName: "DayRateTableViewCell", bundle: nil), forCellReuseIdentifier: moodCellId) 
         
     }
     
@@ -40,13 +40,13 @@ extension DayRateViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DayRate.count
+        return DayRate.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: moodCellId, for: indexPath) as! DayRateTableViewCell
         
-        cell.configure(dayRate: .norm)
+        cell.configure(dayRate: DayRate.allCases[indexPath.row])
         
         return cell
     }
