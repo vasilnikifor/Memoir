@@ -18,4 +18,16 @@ class DayRateTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // MARK: - Methods
+    
+    func configure(dayRate: DayRate) {
+        if #available(iOS 13.0, *) {
+            moodImageView.image = UIImage(systemName: "hand.thumbsup.fill")
+        } else {
+            // Fallback on earlier versions
+        }
+        selectedImageView.isHidden = false
+        moodNameLabel.text = "Norm"
+    }
+    
 }

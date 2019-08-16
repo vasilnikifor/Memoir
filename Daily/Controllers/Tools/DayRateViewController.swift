@@ -2,57 +2,53 @@ import UIKit
 
 class DayRateViewController: UITableViewController {
 
+    private let moodCellId = "moodCell"
+    
     var dayDate: Date?
     
-    // MARK: -
-    
-    @IBOutlet weak var noRateImage: UIImageView!
-    @IBOutlet weak var badMoodImage: UIImageView!
-    @IBOutlet weak var averageMood: UIImageView!
-    @IBOutlet weak var goodMoodImage: UIImageView!
-    
-    // MARK: -
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setViewSettings()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            rateDay(0.0)
-        case 1:
-            rateDay(1.0)
-        case 2:
-             rateDay(2.0)
-        case 3:
-             rateDay(3.0)
-        default:
-            break
-        }
-        
-        goBack()
-    }
-    
-    // MARK: -
+    // MARK: - Private methods
     
     private func goBack() {
         navigationController?.popViewController(animated: true)
     }
     
     private func setViewSettings() {
+        tableView.rowHeight = 80
         tableView.tableFooterView = UIView()
+        tableView.register(DayRateTableViewCell.self, forCellReuseIdentifier: moodCellId)
         
-        noRateImage.tintImage(to: DayRateManager.getRateColor(0.0))
-        badMoodImage.tintImage(to: DayRateManager.getRateColor(1.0))
-        averageMood.tintImage(to: DayRateManager.getRateColor(2.0))
-        goodMoodImage.tintImage(to: DayRateManager.getRateColor(3.0))
     }
     
     private func rateDay(_ rate: Double) {
-        Day.setDayRate(dayDate: dayDate ?? Date().getStartDay() , rate: rate)
+        Day.setDayRate(dayDate: dayDate ?? Date().getStartDay(), rate: rate)
     }
 
+}
+
+// MARK: - UITableViewDelegate protocol implementation
+extension DayRateViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DayRate.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: moodCellId, for: indexPath) as! DayRateTableViewCell
+        
+        cell.configure(dayRate: .norm)
+        
+        return cell
+    }
+    
 }
