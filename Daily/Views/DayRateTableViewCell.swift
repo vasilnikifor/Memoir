@@ -20,11 +20,14 @@ class DayRateTableViewCell: UITableViewCell {
     
     // MARK: - Methods
     
-    func configure(dayRate: DayRate) {
-        moodImageView.image = DayRateManager.getRateImage(dayRate)
-        moodImageView.tintImage(to: DayRateManager.getRateColor(dayRate))
-        selectedImageView.isHidden = false
-        moodNameLabel.text = DayRateManager.getRateName(dayRate)
+    func configure(for dayRate: DayRate, isSelected: Bool) {
+        moodImageView.image = Theme.getRateImage(dayRate)
+        moodImageView.tintImage(to: Theme.getRateColor(dayRate))
+                
+        moodNameLabel.text = Theme.getRateName(dayRate)
+        
+        selectedImageView.isHidden = !isSelected
+
     }
     
 }

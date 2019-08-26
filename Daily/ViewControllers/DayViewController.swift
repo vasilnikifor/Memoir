@@ -1,7 +1,5 @@
 import UIKit
 
-
-
 class DayViewController: UIViewController {
 
     // MARK: - Propertis
@@ -9,10 +7,18 @@ class DayViewController: UIViewController {
     var dayDate: Date!
     var delegate: DayEditorDelegate?
     
+    // MARK: - Methods
+    
+    func redarwRecords() {
+        setDayData()
+        
+        tableView.reloadData()
+    }
+    
     // MARK: - Private propertis
     
     private var day: Day?
-    private var dayRate: Double?
+    private var dayRate: DayRate?
     private var records: [Record]?
     private var isViewExist: Bool?
     private var imagePicker = UIImagePickerController()
@@ -68,14 +74,6 @@ class DayViewController: UIViewController {
         }
     }
     
-    // MARK: - Methods
-    
-    func redarwRecords() {
-        setDayData()
-        
-        tableView.reloadData()
-    }
-    
     // MARK: - Private methods
     
     private func setInitialViweSettings() {
@@ -103,7 +101,7 @@ class DayViewController: UIViewController {
         
         if let day = day {
             records = day.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record]
-            dayRate = day.dayRate
+            dayRate = day.rate
         } else {
             records = nil
             dayRate = nil
@@ -246,10 +244,8 @@ extension DayViewController: UIImagePickerControllerDelegate {
                                    style: isCansel ? .cancel : .default,
                                    handler: handler)
         
-        if #available(iOS 13.0, *) {
-            if let imageSystemName = imageSystemName, let image = UIImage(systemName: imageSystemName) {
-                action.setValue(image, forKey: "image")
-            }
+        if let imageSystemName = imageSystemName, let image = UIImage(systemName: imageSystemName) {
+            action.setValue(image, forKey: "image")
         }
         
         alert.addAction(action)

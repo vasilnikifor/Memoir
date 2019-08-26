@@ -4,7 +4,7 @@ class DayRateViewController: UITableViewController {
 
     private let moodCellId = "moodCell"
     
-    var dayDate: Date?
+    var dayDate: Date!
     
     // MARK: - Life Cycle
     
@@ -26,13 +26,12 @@ class DayRateViewController: UITableViewController {
         
     }
     
-    private func rateDay(_ rate: Double) {
+    private func rateDay(_ rate: DayRate) {
         Day.setDayRate(dayDate: dayDate ?? Date().getStartDay(), rate: rate)
     }
 
 }
 
-// MARK: - UITableViewDelegate protocol implementation
 extension DayRateViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,9 +45,20 @@ extension DayRateViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: moodCellId, for: indexPath) as! DayRateTableViewCell
         
-        cell.configure(dayRate: DayRate.allCases[indexPath.row])
+        let currentDatyRate = Day.getDay(date: dayDate)?.rate ?? DayRate.noRate
+        let currentDrovintRate = DayRate.allCases[indexPath.row]
+        cell.configure(for: currentDrovintRate, isSelected: currentDrovintRate == currentDatyRate)
         
         return cell
+    }
+    
+}
+
+extension DayRateViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rateDay(DayRate.allCases[indexPath.row])
+        goBack()
     }
     
 }

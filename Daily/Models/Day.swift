@@ -1,14 +1,27 @@
 import Foundation
 import CoreData
 
-enum DayRate: CaseIterable  {
-    case none
-    case bad
-    case norm
-    case good
+enum DayRate: Int16, CaseIterable  {
+    case noRate = 0
+    case bad    = 1
+    case norm   = 2
+    case good   = 3
 }
 
 public class Day: NSManagedObject {
+    
+    var rate: DayRate {
+        get {
+            if let newValue = DayRate(rawValue: self.dayRate) {
+                return newValue
+            } else {
+                return .noRate
+            }
+        }
+        set {
+            self.dayRate = newValue.rawValue
+        }
+    }
     
     // MARK: - Methods
     
@@ -23,14 +36,12 @@ public class Day: NSManagedObject {
     
     // MARK: - Static methods
     
-    static func setDayRate(dayDate: Date, rate: Double) {
+    static func setDayRate(dayDate: Date, rate: DayRate) {
         let day = Day.findOrCreateDay(date: dayDate)
-        day.dayRate = rate
-        
+        day.rate = rate
         if day.isEmpty() {
             AppDelegate.persistentContainer.viewContext.delete(day)
         }
-        
         AppDelegate.saveContext()
     }
     

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,10 +27,10 @@
                                 <rect key="frame" x="16" y="68.5" width="343" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="previousMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-mh-4u6">
-                                        <rect key="frame" x="0.0" y="6.5" width="19.5" height="22"/>
-                                        <color key="tintColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <rect key="frame" x="0.0" y="6.5" width="20" height="22"/>
+                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" image="arrow.left" catalog="system">
-                                            <color key="titleColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkU-D6-8eV"/>
@@ -39,13 +38,13 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-jm-6xC">
                                         <rect key="frame" x="93.5" y="0.0" width="156" height="35"/>
-                                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextMonth" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVF-Pl-XmW">
-                                        <rect key="frame" x="323.5" y="6.5" width="19.5" height="22"/>
-                                        <color key="tintColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <rect key="frame" x="323" y="6.5" width="20" height="22"/>
+                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" image="arrow.right" catalog="system"/>
                                         <connections>
                                             <action selector="changeMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU0-hO-Ffy"/>
@@ -640,7 +639,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8aY-Pa-f4n" secondAttribute="trailing" constant="16" id="Eqd-Tg-Z6D"/>
                             <constraint firstItem="8aY-Pa-f4n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GJD-bj-yFJ"/>
@@ -723,7 +722,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEL-9a-KV3">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Rate day" image="smiley" catalog="system" id="peh-Dy-YPB">
+                                    <barButtonItem title="Rate day" image="smoke" catalog="system" id="peh-Dy-YPB">
                                         <connections>
                                             <action selector="rateDayTapped:" destination="lfX-gW-mgb" id="hPQ-y3-8w3"/>
                                         </connections>
@@ -838,7 +837,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qEL-9a-KV3" firstAttribute="trailing" secondItem="FgH-vY-1BK" secondAttribute="trailing" id="8RC-gX-Fyb"/>
                             <constraint firstItem="qEL-9a-KV3" firstAttribute="bottom" secondItem="FgH-vY-1BK" secondAttribute="bottom" id="FYF-9b-Yky"/>
@@ -858,7 +857,7 @@
                                     <action selector="addRecordButtonTapped:" destination="lfX-gW-mgb" id="Wzp-wQ-cs4"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Rate day" image="smiley" catalog="system" id="GW8-y4-GVh">
+                            <barButtonItem title="Rate day" image="smoke" catalog="system" id="GW8-y4-GVh">
                                 <connections>
                                     <action selector="rateDayButtonTapped:" destination="lfX-gW-mgb" id="c73-0P-fy6"/>
                                 </connections>
@@ -887,10 +886,10 @@
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-d4-Xm3">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="IhH-d4-Xm3" firstAttribute="leading" secondItem="z2I-Pg-6a2" secondAttribute="leading" id="3uj-yH-MrN"/>
                             <constraint firstItem="IhH-d4-Xm3" firstAttribute="top" secondItem="z2I-Pg-6a2" secondAttribute="top" id="Gtr-86-Ne9"/>
@@ -934,13 +933,13 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-mw-Tu9">
                                 <rect key="frame" x="8" y="90" width="359" height="569"/>
-                                <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iUl-Hd-bjL" firstAttribute="trailing" secondItem="fQG-mw-Tu9" secondAttribute="trailing" constant="8" id="969-gh-hVg"/>
                             <constraint firstItem="fQG-mw-Tu9" firstAttribute="leading" secondItem="iUl-Hd-bjL" secondAttribute="leading" constant="8" id="Bo3-0Y-jEU"/>
@@ -994,7 +993,7 @@
         <image name="doc.text" catalog="system" width="56" height="64"/>
         <image name="photo" catalog="system" width="64" height="48"/>
         <image name="plus" catalog="system" width="64" height="58"/>
-        <image name="smiley" catalog="system" width="64" height="62"/>
+        <image name="smoke" catalog="system" width="64" height="48"/>
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>

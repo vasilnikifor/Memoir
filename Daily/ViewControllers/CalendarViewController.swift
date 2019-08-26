@@ -1,7 +1,15 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-
+    
+    // MARK: - Methods
+    
+    func drawCalendar() {
+        drawWeekDays()
+        fillMonthLabel(month: month)
+        drawCalendarDayButtons()
+    }
+    
     // MARK: - Private propertis
     
     private var month = Date().firstDayOfMonth()
@@ -45,14 +53,6 @@ class CalendarViewController: UIViewController {
                 dayViewControllet.delegate = self
             }
         }
-    }
-    
-    // MARK: - Methods
-    
-    func drawCalendar() {
-        drawWeekDays()
-        fillMonthLabel(month: month)
-        drawCalendarDayButtons()
     }
     
     // MARK: - Private methods
