@@ -23,7 +23,7 @@ class Theme {
         case .norm:
             return UIColor.systemBlue
         case .good:
-            return UIColor.systemYellow
+            return UIColor.systemGreen
         default:
             return UIColor.clear
         }
