@@ -4,8 +4,8 @@ class DayViewController: UIViewController {
 
     // MARK: - Propertis
     
-    var dayDate: Date!
     var delegate: DayEditorDelegate?
+    var dayDate: Date!
     
     // MARK: - Methods
     
@@ -15,18 +15,18 @@ class DayViewController: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: - Private propertis
-    
-    private var day: Day?
-    private var dayRate: DayRate?
-    private var records: [Record]?
-    private var isViewExist: Bool?
-    private var imagePicker = UIImagePickerController()
-    
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addNoteOutlet: UIBarButtonItem!
+    @IBOutlet weak var rateDayButton: UIBarButtonItem!
+    
+    // MARK: - Private propertis
+    
+    private var day: Day?
+    private var records: [Record]?
+    private var isViewExist: Bool?
+    private var imagePicker = UIImagePickerController()
+    private var dayRate: DayRate?
     
     // MARK: - Life cycle
     
@@ -69,12 +69,19 @@ class DayViewController: UIViewController {
             if let dayRateVC = segue.destination as? DayRateViewController {
                 dayRateVC.dayDate = dayDate
             }
+            
         default:
             return
         }
     }
     
     // MARK: - Private methods
+    
+    private func dayRareDidChanged() {
+        rateDayButton.image = Theme.getRateImage(dayRate, filed: false)
+        
+        setNavigationItemTitle()
+    }
     
     private func setInitialViweSettings() {
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -91,9 +98,27 @@ class DayViewController: UIViewController {
             dayDate = Date()
         }
         
-        navigationItem.title = getDayDateLable(date: dayDate)
-        
         setDayData()
+        
+        setNavigationItemTitle()
+    }
+    
+    private func setNavigationItemTitle() {
+        if let dayRate = dayRate, dayRate != .noRate {
+            let label = UILabel()
+            label.text = getDayDateLable(date: dayDate)
+            
+            let imageView = UIImageView(image: Theme.getRateImage(dayRate))
+            imageView.tintColor = Theme.getRateColor(dayRate)
+            
+            let titleView = UIStackView(arrangedSubviews: [imageView, label])
+            titleView.axis = .horizontal
+            titleView.spacing = 10.0
+            
+            navigationItem.titleView = titleView
+        } else {
+            navigationItem.title = getDayDateLable(date: dayDate)
+        }
     }
     
     private func setDayData() {
@@ -106,6 +131,8 @@ class DayViewController: UIViewController {
             records = nil
             dayRate = nil
         }
+        
+        dayRareDidChanged()
     }
     
     private func getDayDateLable(date: Date) -> String{
@@ -139,15 +166,7 @@ class DayViewController: UIViewController {
         }
     }
     
-    // MARK: - actions
-    
-    @IBAction func rateDayButtonTapped(_ sender: Any) {
-        rateDay()
-    }
-    
-    @IBAction func addRecordButtonTapped(_ sender: Any) {
-        addRecord()
-    }
+    // MARK: - Actions
     
     @IBAction func rateDayTapped(_ sender: Any) {
         rateDay()
@@ -167,6 +186,7 @@ class DayViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate
 extension DayViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -204,12 +224,12 @@ extension DayViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-// MARK: - extention UINavigationControllerDelegate
 
+// MARK: - UINavigationControllerDelegate
 extension DayViewController: UINavigationControllerDelegate { }
 
-// MARK: - extention UIImagePickerControllerDelegate
 
+// MARK: - UIImagePickerControllerDelegate
 extension DayViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -217,38 +237,6 @@ extension DayViewController: UIImagePickerControllerDelegate {
             self.addImageRecord(image: pickedImage)
         }
         imagePicker.dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - Private methods
-    
-    private func addRecord() {
-        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        
-        addAction(to: alert, title: "Add note", imageSystemName: "doc.text") {UIAlertAction in self.addNote()}
-        addAction(to: alert, title: "Take photo", imageSystemName: "camera") {UIAlertAction in self.takePhoto()}
-        addAction(to: alert, title: "Add image from library", imageSystemName: "photo") {UIAlertAction in self.addImage()}
-        addAction(to: alert, title: "Cancel", isCansel: true) {UIAlertAction in }
-
-        imagePicker.delegate = self
-
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func addAction(to alert: UIAlertController,
-                           title: String,
-                           imageSystemName: String? = nil,
-                           isCansel: Bool = false,
-                           handler: ((UIAlertAction) -> Void)?)
-    {
-        let action = UIAlertAction(title: title,
-                                   style: isCansel ? .cancel : .default,
-                                   handler: handler)
-        
-        if let imageSystemName = imageSystemName, let image = UIImage(systemName: imageSystemName) {
-            action.setValue(image, forKey: "image")
-        }
-        
-        alert.addAction(action)
     }
     
 }

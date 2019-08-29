@@ -29,16 +29,37 @@ class Theme {
         }
     }
     
-    static func getRateImage(_ rate: DayRate) -> UIImage {
+    static func getRateImage(_ rate: DayRate?, filed: Bool = true) -> UIImage {
         switch rate {
-        case .noRate:
+        case .noRate where filed:
             return UIImage(systemName: "smoke.fill")!
-        case .bad:
+            
+        case .noRate:
+            return UIImage(systemName: "smoke")!
+            
+        case .bad where filed:
             return UIImage(systemName: "cloud.rain.fill")!
-        case .norm:
+            
+        case .bad:
+            return UIImage(systemName: "cloud.rain")!
+            
+        case .norm where filed:
             return UIImage(systemName: "cloud.sun.fill")!
-        case .good:
+            
+        case .norm:
+            return UIImage(systemName: "cloud.sun")!
+            
+        case .good where filed:
             return UIImage(systemName: "sun.max.fill")!
+            
+        case .good:
+            return UIImage(systemName: "sun.max")!
+        
+        case .none where filed:
+            return UIImage(systemName: "smoke.fill")!
+            
+        case .none:
+            return UIImage(systemName: "smoke")!
         }
     }
     

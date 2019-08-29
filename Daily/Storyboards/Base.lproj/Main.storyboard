@@ -724,7 +724,7 @@
                                 <items>
                                     <barButtonItem title="Rate day" image="smoke" catalog="system" id="peh-Dy-YPB">
                                         <connections>
-                                            <action selector="rateDayTapped:" destination="lfX-gW-mgb" id="hPQ-y3-8w3"/>
+                                            <action selector="rateDayTapped:" destination="lfX-gW-mgb" id="VjL-zH-kq6"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CPg-Z3-Mqq"/>
@@ -806,11 +806,10 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-04-0oX">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-04-0oX">
                                                     <rect key="frame" x="15" y="31" width="345" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="345" id="R2W-CY-CM0"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="koC-jV-8Yu"/>
+                                                        <constraint firstAttribute="width" secondItem="vpX-04-0oX" secondAttribute="height" multiplier="1:1" id="If1-84-RP3"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -851,21 +850,9 @@
                     </view>
                     <navigationItem key="navigationItem" title=" " id="Br8-g4-KtL">
                         <barButtonItem key="backBarButtonItem" title=" " id="UUu-br-7z2"/>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Add record" image="plus" catalog="system" id="6NM-OB-vjb">
-                                <connections>
-                                    <action selector="addRecordButtonTapped:" destination="lfX-gW-mgb" id="Wzp-wQ-cs4"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Rate day" image="smoke" catalog="system" id="GW8-y4-GVh">
-                                <connections>
-                                    <action selector="rateDayButtonTapped:" destination="lfX-gW-mgb" id="c73-0P-fy6"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="addNoteOutlet" destination="EUM-Rf-vDt" id="fZx-wV-tfk"/>
+                        <outlet property="rateDayButton" destination="peh-Dy-YPB" id="3ko-n7-bvI"/>
                         <outlet property="tableView" destination="BhI-jY-IXQ" id="uAp-UZ-pCg"/>
                         <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRater" id="vW8-JP-BAE"/>
                         <segue destination="bOK-Nn-dGV" kind="show" identifier="openNoteRecordView" id="wNM-no-UsY"/>
@@ -992,7 +979,6 @@
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="doc.text" catalog="system" width="56" height="64"/>
         <image name="photo" catalog="system" width="64" height="48"/>
-        <image name="plus" catalog="system" width="64" height="58"/>
         <image name="smoke" catalog="system" width="64" height="48"/>
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
