@@ -11,7 +11,6 @@ class NoteRecordViewController: UIViewController {
     
     private var noteTime: Date!
     private var isKeyboardShowed: Bool = false
-    private var noteTextViewPlaceholder: String?
     
     // MARK: - Outlets
     
@@ -35,8 +34,6 @@ class NoteRecordViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        removePlaceholder(from: noteTextView)
-        
         saveNote()
     }
     
@@ -49,9 +46,6 @@ class NoteRecordViewController: UIViewController {
     
     private func setSettingsInViewDidApper() {
         noteTextView?.becomeFirstResponder()
-        if isTherePlaceholder(noteTextView) {
-            noteTextView.setCursor(to: .start)
-        }
     }
     
     private func addKeyboardActions() {
@@ -97,8 +91,6 @@ class NoteRecordViewController: UIViewController {
     
     private func setInitialViewSettings() {
         fillInView()
-        
-        initNoteTextPlaceholder()
     }
     
     private func fillInView() {
@@ -135,45 +127,6 @@ class NoteRecordViewController: UIViewController {
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil }
         return keyboardSize.cgRectValue.height
     }
-
-    private func initNoteTextPlaceholder() {
-        noteTextViewPlaceholder = getNoteTextViewPlaceholder()
-        noteTextView.delegate = self
-        setPlaceholder(on: noteTextView)
-    }
-    
-    private func setPlaceholder(on textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = noteTextViewPlaceholder
-            textView.textColor = Theme.secondoryTextColor
-        }
-    }
-    
-    private func removePlaceholder(from textView: UITextView) {
-        if textView.text == noteTextViewPlaceholder, textView.textColor == Theme.secondoryTextColor {
-            textView.text = ""
-            textView.textColor = Theme.textColor
-        }
-    }
-    
-    private func getNoteTextViewPlaceholder() -> String {
-        let placeholders = ["Describe your day",
-                            "How are you?",
-                            "How was your day today?",
-                            "What activities brought you joy?",
-                            "What made you smile today?",
-                            "What made today unusual?",
-                            "What made today a special day?",
-                            "What am I grateful for right now?",
-                            "What memory do you want to keep from today?",
-                            "What did you realize today?"]
-        
-        return placeholders.randomElement()!
-    }
-    
-    private func isTherePlaceholder(_ textView: UITextView) -> Bool {
-        return textView.textColor == Theme.secondoryTextColor
-    }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         setViewFremeYOrigin(notification: notification, keyboadrdWillShow: true)
@@ -195,21 +148,4 @@ class NoteRecordViewController: UIViewController {
     
 }
 
-// MARK: - UITextViewDelegate
-extension NoteRecordViewController: UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = noteTextViewPlaceholder
-            textView.textColor = Theme.secondoryTextColor
-            textView.setCursor(to: .start)
-        } else if isTherePlaceholder(textView) {
-            if let text = textView.text {
-                textView.text = String(text.prefix(1))
-            }
-            textView.textColor = Theme.textColor
-        }
-    }
-    
-}
 

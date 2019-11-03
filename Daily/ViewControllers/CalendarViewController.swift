@@ -1,15 +1,7 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    
-    // MARK: - Methods
-    
-    func drawCalendar() {
-        drawWeekDays()
-        fillMonthLabel(month: month)
-        drawCalendarDayButtons()
-    }
-    
+ 
     // MARK: - Private propertis
     
     private var month = Date().firstDayOfMonth()
@@ -18,9 +10,9 @@ class CalendarViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet var weekDayLabel: [UILabel]!
-    @IBOutlet var dayButtons: [UIButton]!
+    @IBOutlet private var monthLabel: UILabel!
+    @IBOutlet private var weekDayLabel: [UILabel]!
+    @IBOutlet private var dayButtons: [UIButton]!
     
     // MARK: - Life cycle
     
@@ -50,21 +42,11 @@ class CalendarViewController: UIViewController {
         if segue.identifier == "openerDayView" {
             if let dayViewControllet = segue.destination as? DayViewController {
                 dayViewControllet.dayDate = sender as? Date ?? Date()
-                dayViewControllet.delegate = self
             }
         }
     }
     
     // MARK: - Private methods
-    
-    private func setViewSettings() {
-        addGestureRecognizers()
-    }
-    
-    private func addGestureRecognizers() {
-        addSwipe(action: #selector(previousMonth), direction: .right)
-        addSwipe(action: #selector(nextMonth), direction: .left)
-    }
     
     private func setTransparencyOnNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -76,6 +58,17 @@ class CalendarViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    private func drawCalendar() {
+        drawWeekDays()
+        fillMonthLabel(month: month)
+        drawCalendarDayButtons()
+    }
+    
+    private func setViewSettings() {
+        addSwipe(action: #selector(showPreviousMonth), direction: .right)
+        addSwipe(action: #selector(showNextMonth), direction: .left)
     }
     
     private func addSwipe(action: Selector, direction: UISwipeGestureRecognizer.Direction) {
@@ -100,7 +93,7 @@ class CalendarViewController: UIViewController {
         var hideTheLastButtons = false
         
         for index in 0...dayButtons.count - 1 {
-            let button = getButtonById(String(index))!
+            let button = getButton(by: String(index))!
             
             button.isHidden = false
             
@@ -142,7 +135,7 @@ class CalendarViewController: UIViewController {
         return nil
     }
     
-    private func getButtonById(_ id: String) -> UIButton? {
+    private func getButton(by id: String) -> UIButton? {
         for index in dayButtons.indices {
             if dayButtons[index].restorationIdentifier == id {
                 return dayButtons[index]
@@ -164,11 +157,11 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    @objc private func nextMonth() {
+    @objc private func showNextMonth() {
         handelChangeMonth(by: 1)
     }
     
-    @objc private func previousMonth() {
+    @objc private func showPreviousMonth() {
         handelChangeMonth(by: -1)
     }
     
@@ -180,21 +173,13 @@ class CalendarViewController: UIViewController {
     
     @IBAction func changeMonth(_ sender: UIButton) {
         if sender.restorationIdentifier == "previousMonth" {
-            previousMonth()
+            showPreviousMonth()
         } else if sender.restorationIdentifier == "nextMonth" {
-            nextMonth()
+            showNextMonth()
         }
     }
     
 }
 
-// MARK: - DayEditorDelegate
-extension CalendarViewController: DayEditorDelegate {
-    
-    func dayChanged(_ dayDate: Date) {
-        print(dayDate)
-    }
-    
-}
 
 

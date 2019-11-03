@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dJM-ZY-2nP">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--dayRater-->
+        <!--DayRateViewController-->
         <scene sceneID="TxB-x5-NUx">
             <objects>
-                <viewControllerPlaceholder storyboardName="Tools" referencedIdentifier="dayRater" id="vtG-Qu-6Jd" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="DayRate" referencedIdentifier="DayRateViewController" id="vtG-Qu-6Jd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmx-lB-kKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="484" y="697"/>
@@ -657,9 +657,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bHj-dy-prL">
-                        <barButtonItem key="backBarButtonItem" title=" " id="7tI-T8-Ym2"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="bHj-dy-prL"/>
                     <connections>
                         <outlet property="monthLabel" destination="Pla-jm-6xC" id="rcK-RR-CLC"/>
                         <outletCollection property="dayButtons" destination="BSE-NA-uUX" collectionClass="NSMutableArray" id="r82-gj-le9"/>
@@ -759,47 +757,8 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteRecord" rowHeight="83" id="VQo-q4-831" customClass="NoteCell" customModule="Daily" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="83"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQo-q4-831" id="J9f-oV-RQE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ske-Bh-SMm">
-                                                    <rect key="frame" x="15" y="11" width="345" height="12"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="12" id="qI6-8z-Xag"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteText" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-T8-cnf">
-                                                    <rect key="frame" x="15" y="31" width="345" height="41"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="6jW-48-MFz"/>
-                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="leading" secondItem="J9f-oV-RQE" secondAttribute="leadingMargin" id="7OJ-8C-naS"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ipq-T8-cnf" secondAttribute="bottom" id="DKE-3z-bRQ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ske-Bh-SMm" secondAttribute="trailing" id="Gfd-rM-icP"/>
-                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="trailing" secondItem="J9f-oV-RQE" secondAttribute="trailingMargin" id="TFv-98-ye8"/>
-                                                <constraint firstItem="ipq-T8-cnf" firstAttribute="top" secondItem="ske-Bh-SMm" secondAttribute="bottom" constant="8" id="tIW-CV-7qk"/>
-                                                <constraint firstItem="ske-Bh-SMm" firstAttribute="top" secondItem="J9f-oV-RQE" secondAttribute="topMargin" id="uw4-IY-yT8"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <outlet property="noteTextLabel" destination="ipq-T8-cnf" id="oSW-Fn-g6V"/>
-                                            <outlet property="recordTimeTextLabel" destination="ske-Bh-SMm" id="wkd-md-IIe"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageRecord" rowHeight="70" id="wng-Nk-hIk" customClass="ImageCell" customModule="Daily" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="111" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wng-Nk-hIk" id="ArT-pi-15W">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -946,7 +905,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
-                    <navigationItem key="navigationItem" id="l2A-Ko-VQB" userLabel="Navigation Item">
+                    <navigationItem key="navigationItem" title="Note" id="l2A-Ko-VQB" userLabel="Navigation Item">
                         <barButtonItem key="rightBarButtonItem" title="Remove note" image="trash" catalog="system" id="eOe-op-kjW">
                             <connections>
                                 <action selector="removeNoteButtonTapped:" destination="bOK-Nn-dGV" id="YUH-Rd-i5c"/>
@@ -986,8 +945,8 @@
         <image name="arrow.right" catalog="system" width="64" height="48"/>
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="doc.text" catalog="system" width="56" height="64"/>
-        <image name="photo" catalog="system" width="64" height="48"/>
-        <image name="smoke" catalog="system" width="64" height="48"/>
+        <image name="photo" catalog="system" width="64" height="46"/>
+        <image name="smoke" catalog="system" width="64" height="46"/>
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>

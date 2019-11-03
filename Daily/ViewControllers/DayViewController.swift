@@ -3,8 +3,7 @@ import UIKit
 class DayViewController: UIViewController {
 
     // MARK: - Propertis
-    
-    var delegate: DayEditorDelegate?
+
     var dayDate: Date!
     
     // MARK: - Methods
@@ -84,6 +83,7 @@ class DayViewController: UIViewController {
     }
     
     private func setInitialViweSettings() {
+        tableView.register(UINib(nibName: "NoteRecordTableViewCell", bundle: nil), forCellReuseIdentifier: NoteRecordTableViewCell.description())
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
@@ -198,9 +198,8 @@ extension DayViewController: UITableViewDataSource, UITableViewDelegate {
             let record = records[indexPath.row]
             
             if let noteRecord = record as? NoteRecord {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRecord", for: indexPath) as! NoteCell
-                cell.recordTimeTextLabel?.text = noteRecord.time?.getTimeRepresentation()
-                cell.noteTextLabel?.text = noteRecord.text
+                let cell = tableView.dequeueReusableCell(withIdentifier: NoteRecordTableViewCell.description(), for: indexPath) as! NoteRecordTableViewCell
+                cell.configure(noteRecord: noteRecord)
                 return cell
             } else if let imageRecord = record as? ImageRecord {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ImageRecord", for: indexPath) as! ImageCell

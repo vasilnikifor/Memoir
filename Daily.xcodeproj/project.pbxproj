@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0F77A3236EB1E500EE2593 /* RecordsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F77A2236EB1E500EE2593 /* RecordsDAO.swift */; };
+		2D8CE451232F67F500EC523E /* ImageRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8CE44F232F67F500EC523E /* ImageRecordTableViewCell.swift */; };
+		2D8CE452232F67F500EC523E /* ImageRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8CE450232F67F500EC523E /* ImageRecordTableViewCell.xib */; };
+		2D9EEF37232B7E63002CCB49 /* NoteRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EEF35232B7E63002CCB49 /* NoteRecordTableViewCell.swift */; };
+		2D9EEF38232B7E63002CCB49 /* NoteRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9EEF36232B7E63002CCB49 /* NoteRecordTableViewCell.xib */; };
 		84008BF9224A11B8000CB9A2 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF5224A11B8000CB9A2 /* Record.swift */; };
 		84008BFB224A11B8000CB9A2 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF7224A11B8000CB9A2 /* Day.swift */; };
 		8444DFB422DF8C1E0076C856 /* ImageRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444DFB322DF8C1E0076C856 /* ImageRecordViewController.swift */; };
@@ -24,17 +29,21 @@
 		84F8917722290E9000956265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F8917622290E9000956265 /* Assets.xcassets */; };
 		84F8917A22290E9000956265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8917822290E9000956265 /* LaunchScreen.storyboard */; };
 		84F8918622297AE700956265 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8918522297AE700956265 /* Date+Extension.swift */; };
-		84FB729622ABF38600DA7CE2 /* Tools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FB729522ABF38600DA7CE2 /* Tools.storyboard */; };
+		84FB729622ABF38600DA7CE2 /* DayRate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FB729522ABF38600DA7CE2 /* DayRate.storyboard */; };
 		84FB729922ABF58900DA7CE2 /* DayRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB729822ABF58900DA7CE2 /* DayRateViewController.swift */; };
 		84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2922FEC4C100CEF093 /* Theme.swift */; };
 		84FF3F2C22FED6E100CEF093 /* UITextView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2B22FED6E100CEF093 /* UITextView+Extention.swift */; };
 		84FF3F3022FF01EE00CEF093 /* UIImageView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2F22FF01EE00CEF093 /* UIImageView+Extention.swift */; };
-		84FF3F3222FF157A00CEF093 /* DayEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F3122FF157A00CEF093 /* DayEditorDelegate.swift */; };
 		84FF3F3923071AF600CEF093 /* DayRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */; };
 		84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D0F77A2236EB1E500EE2593 /* RecordsDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsDAO.swift; sourceTree = "<group>"; };
+		2D8CE44F232F67F500EC523E /* ImageRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecordTableViewCell.swift; sourceTree = "<group>"; };
+		2D8CE450232F67F500EC523E /* ImageRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageRecordTableViewCell.xib; sourceTree = "<group>"; };
+		2D9EEF35232B7E63002CCB49 /* NoteRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecordTableViewCell.swift; sourceTree = "<group>"; };
+		2D9EEF36232B7E63002CCB49 /* NoteRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteRecordTableViewCell.xib; sourceTree = "<group>"; };
 		84008BF5224A11B8000CB9A2 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		84008BF7224A11B8000CB9A2 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		8444DFB322DF8C1E0076C856 /* ImageRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecordViewController.swift; sourceTree = "<group>"; };
@@ -54,12 +63,11 @@
 		84F8917922290E9000956265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F8917B22290E9000956265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F8918522297AE700956265 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		84FB729522ABF38600DA7CE2 /* Tools.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tools.storyboard; sourceTree = "<group>"; };
+		84FB729522ABF38600DA7CE2 /* DayRate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DayRate.storyboard; sourceTree = "<group>"; };
 		84FB729822ABF58900DA7CE2 /* DayRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateViewController.swift; sourceTree = "<group>"; };
 		84FF3F2922FEC4C100CEF093 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		84FF3F2B22FED6E100CEF093 /* UITextView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extention.swift"; sourceTree = "<group>"; };
 		84FF3F2F22FF01EE00CEF093 /* UIImageView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extention.swift"; sourceTree = "<group>"; };
-		84FF3F3122FF157A00CEF093 /* DayEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEditorDelegate.swift; sourceTree = "<group>"; };
 		84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateTableViewCell.swift; sourceTree = "<group>"; };
 		84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRateTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +83,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D0F77A1236EB1BC00EE2593 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2D0F77A2236EB1E500EE2593 /* RecordsDAO.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2D8CE44E232F67C900EC523E /* ImageRecordTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2D8CE44F232F67F500EC523E /* ImageRecordTableViewCell.swift */,
+				2D8CE450232F67F500EC523E /* ImageRecordTableViewCell.xib */,
+			);
+			path = ImageRecordTableViewCell;
+			sourceTree = "<group>";
+		};
+		2D9EEF2C232B7B06002CCB49 /* DayRateTabelViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */,
+				84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */,
+			);
+			path = DayRateTabelViewCell;
+			sourceTree = "<group>";
+		};
+		2D9EEF34232B7E01002CCB49 /* NoteRecordTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2D9EEF35232B7E63002CCB49 /* NoteRecordTableViewCell.swift */,
+				2D9EEF36232B7E63002CCB49 /* NoteRecordTableViewCell.xib */,
+			);
+			path = NoteRecordTableViewCell;
+			sourceTree = "<group>";
+		};
 		8472597122ABFC8700BCBA42 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +209,7 @@
 				84F796A22233A5AC00596CD5 /* ViewControllers */,
 				84F796A12233A58E00596CD5 /* Models */,
 				8472597122ABFC8700BCBA42 /* Managers */,
-				84FF3F3322FF158100CEF093 /* Protocols */,
+				2D0F77A1236EB1BC00EE2593 /* Services */,
 				84D6840F222D6AD5003F08F9 /* Extensions */,
 				84F8918122294A2F00956265 /* SupportFiles */,
 			);
@@ -189,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				84F8917022290E8D00956265 /* Main.storyboard */,
-				84FB729522ABF38600DA7CE2 /* Tools.storyboard */,
+				84FB729522ABF38600DA7CE2 /* DayRate.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -203,19 +246,12 @@
 			path = RecordCells;
 			sourceTree = "<group>";
 		};
-		84FF3F3322FF158100CEF093 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				84FF3F3122FF157A00CEF093 /* DayEditorDelegate.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		84FF3F3423071A9300CEF093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */,
-				84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */,
+				2D9EEF34232B7E01002CCB49 /* NoteRecordTableViewCell */,
+				2D8CE44E232F67C900EC523E /* ImageRecordTableViewCell */,
+				2D9EEF2C232B7B06002CCB49 /* DayRateTabelViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */,
-				84FB729622ABF38600DA7CE2 /* Tools.storyboard in Resources */,
+				84FB729622ABF38600DA7CE2 /* DayRate.storyboard in Resources */,
+				2D8CE452232F67F500EC523E /* ImageRecordTableViewCell.xib in Resources */,
 				84F8917A22290E9000956265 /* LaunchScreen.storyboard in Resources */,
+				2D9EEF38232B7E63002CCB49 /* NoteRecordTableViewCell.xib in Resources */,
 				84F8917722290E9000956265 /* Assets.xcassets in Resources */,
 				84F8917222290E8D00956265 /* Main.storyboard in Resources */,
 			);
@@ -298,6 +336,7 @@
 				846BA3992256443200595D61 /* CalendarDrawer.swift in Sources */,
 				846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */,
 				847082252260D6DD002A06E7 /* NoteCell.swift in Sources */,
+				2D8CE451232F67F500EC523E /* ImageRecordTableViewCell.swift in Sources */,
 				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
@@ -305,13 +344,14 @@
 				84FF3F3923071AF600CEF093 /* DayRateTableViewCell.swift in Sources */,
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
 				8472597722AC02A100BCBA42 /* NoteRecordViewController.swift in Sources */,
-				84FF3F3222FF157A00CEF093 /* DayEditorDelegate.swift in Sources */,
+				2D9EEF37232B7E63002CCB49 /* NoteRecordTableViewCell.swift in Sources */,
 				846DF5B222B6604E0095A065 /* DayViewController.swift in Sources */,
 				8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */,
 				84FF3F2C22FED6E100CEF093 /* UITextView+Extention.swift in Sources */,
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				846DF5B422B6855C0095A065 /* ImageCell.swift in Sources */,
+				2D0F77A3236EB1E500EE2593 /* RecordsDAO.swift in Sources */,
 				84FB729922ABF58900DA7CE2 /* DayRateViewController.swift in Sources */,
 				8444DFB422DF8C1E0076C856 /* ImageRecordViewController.swift in Sources */,
 			);

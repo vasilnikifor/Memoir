@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--How was your day?-->
+        <!--Rate day-->
         <scene sceneID="XdT-Kv-ibQ">
             <objects>
-                <tableViewController storyboardIdentifier="dayRater" id="bnR-DY-e27" customClass="DayRateViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DayRateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bnR-DY-e27" customClass="DayRateViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lok-IW-s4n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                             <outlet property="delegate" destination="bnR-DY-e27" id="LMG-4a-1bQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="How was your day?" id="CsT-ot-QPO"/>
+                    <navigationItem key="navigationItem" title="Rate day" id="CsT-ot-QPO"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdf-7u-UQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
