@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DayRecordsListViewController" customModule="Daily" customModuleProvider="target">
             <connections>
+                <outlet property="rateDayButton" destination="Gfn-PO-KB0" id="SZ5-lU-XGE"/>
+                <outlet property="recordsListToolBar" destination="4ug-Gh-Nff" id="oU1-h6-Ew3"/>
                 <outlet property="tableView" destination="NxK-Fe-Pw7" id="djI-Zt-hUE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,7 +26,31 @@
                 </tableView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ug-Gh-Nff">
                     <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                    <items/>
+                    <items>
+                        <barButtonItem image="smoke" catalog="system" id="Gfn-PO-KB0" userLabel="Rate Day Button">
+                            <connections>
+                                <action selector="rateDay:" destination="-1" id="p1e-8b-Get"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="IGq-jg-lVF"/>
+                        <barButtonItem image="doc.text" catalog="system" id="Tv9-sU-v7C" userLabel="Add Note Button">
+                            <connections>
+                                <action selector="addNote:" destination="-1" id="jPi-4S-KMN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="tEG-yP-SqH"/>
+                        <barButtonItem image="camera" catalog="system" id="CuT-9f-vrv" userLabel="Take Photo Button">
+                            <connections>
+                                <action selector="takePhoto:" destination="-1" id="fZU-pS-AzR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="KcI-6z-xrq"/>
+                        <barButtonItem image="photo" catalog="system" id="1Bh-g0-Ahz" userLabel="Add Image Button">
+                            <connections>
+                                <action selector="addImage:" destination="-1" id="RfU-1O-Ear"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
                 </toolbar>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -41,4 +67,10 @@
             <point key="canvasLocation" x="131.8840579710145" y="128.57142857142856"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera" catalog="system" width="64" height="48"/>
+        <image name="doc.text" catalog="system" width="56" height="64"/>
+        <image name="photo" catalog="system" width="64" height="46"/>
+        <image name="smoke" catalog="system" width="64" height="46"/>
+    </resources>
 </document>

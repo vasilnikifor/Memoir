@@ -165,7 +165,7 @@ class CalendarViewController: UIViewController {
     
     @IBAction func openNewDaylist(_ sender: Any) {
         let dayRecordsList = DayRecordsListViewController.loadFromNib()
-        dayRecordsList.configure(listDate: Date())
+        dayRecordsList.configure(date: Date())
         push(dayRecordsList)
     }
     

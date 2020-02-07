@@ -6,6 +6,8 @@ protocol DayRecordsListDelegat {
 
 final class DayRecordsListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var recordsListToolBar: UIToolbar!
+    @IBOutlet private weak var rateDayButton: UIBarButtonItem!
     
     private var date: Date = Date()
     private var records: [Record] = []
@@ -21,10 +23,24 @@ final class DayRecordsListViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func configure(listDate: Date) {
-        date = listDate
+    func configure(date: Date) {
+        self.date = date
         
         update()
+    }
+}
+
+extension DayRecordsListViewController {
+    @IBAction func rateDay(_ sender: Any) {
+    }
+    
+    @IBAction func addNote(_ sender: Any) {
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+    }
+    
+    @IBAction func addImage(_ sender: Any) {
     }
 }
 
@@ -32,31 +48,24 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
     func update() {
         let day = Day.getDay(date: date)
         
-//        let rateButtonItem = UIBarButtonItem(image: Theme.getRateImage(day?.rate),style: .plain,target: nil,action: nil)
-//        rateButtonItem.tintColor = Theme.getRateColor(day?.rate)
-//        navigationItem.rightBarButtonItem = rateButtonItem
-//        navigationItem.title = date.dateRepresentation
-        
         if let dayRecords = day?.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record] {
             records = dayRecords
         } else {
             records = []
         }
         
+        let titleView = NavigationTitleView()
         if let rate = day?.rate, rate != .noRate {
+            rateDayButton.image = Theme.getRateImage(rate, filed: false)
+            
             let imageView = UIImageView(image: Theme.getRateImage(rate))
             imageView.tintColor = Theme.getRateColor(rate)
             
-            let titleView = NavigationTitleView()
             titleView.configure(title: date.dateRepresentation, imageView: imageView)
-            
-            navigationItem.titleView = titleView
         } else {
-            let titleView = NavigationTitleView()
             titleView.configure(title: date.dateRepresentation)
-            
-            navigationItem.titleView = titleView
         }
+        navigationItem.titleView = titleView
         
         tableView.reloadData()
     }

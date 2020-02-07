@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2D0CFA15239220B700F8AFBB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CFA14239220B700F8AFBB /* UIView+Extension.swift */; };
 		2D0CFA17239221FE00F8AFBB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CFA16239221FE00F8AFBB /* UIViewController+Extension.swift */; };
-		2D0CFA1A2392384E00F8AFBB /* DayEditorToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CFA192392384E00F8AFBB /* DayEditorToolBar.swift */; };
 		2D8770A623B79E7900A38D9F /* NavigationTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8770A523B79E7900A38D9F /* NavigationTitleStackView.swift */; };
 		2D8770A823B7A1F000A38D9F /* FFF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8770A723B7A1F000A38D9F /* FFF.swift */; };
 		2D8CE451232F67F500EC523E /* ImageRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8CE44F232F67F500EC523E /* ImageRecordTableViewCell.swift */; };
@@ -43,12 +42,13 @@
 		84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2F22FF01EE00CEF093 /* UIImageView+Extension.swift */; };
 		84FF3F3923071AF600CEF093 /* DayRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */; };
 		84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */; };
+		C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */; };
+		C100E1E023ED9F8700B69182 /* SelectRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D0CFA14239220B700F8AFBB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		2D0CFA16239221FE00F8AFBB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		2D0CFA192392384E00F8AFBB /* DayEditorToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEditorToolBar.swift; sourceTree = "<group>"; };
 		2D8770A523B79E7900A38D9F /* NavigationTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleStackView.swift; sourceTree = "<group>"; };
 		2D8770A723B7A1F000A38D9F /* FFF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFF.swift; sourceTree = "<group>"; };
 		2D8CE44F232F67F500EC523E /* ImageRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +84,8 @@
 		84FF3F2F22FF01EE00CEF093 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateTableViewCell.swift; sourceTree = "<group>"; };
 		84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRateTableViewCell.xib; sourceTree = "<group>"; };
+		C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRateViewController.swift; sourceTree = "<group>"; };
+		C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,14 +99,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D0CFA18239237E800F8AFBB /* DayEditorToolBar */ = {
-			isa = PBXGroup;
-			children = (
-				2D0CFA192392384E00F8AFBB /* DayEditorToolBar.swift */,
-			);
-			path = DayEditorToolBar;
-			sourceTree = "<group>";
-		};
 		2D0F77A1236EB1BC00EE2593 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,19 +171,20 @@
 			path = Labels;
 			sourceTree = "<group>";
 		};
-		2DD0AFD42391943C009BED48 /* RecordsListViewController */ = {
+		2DD0AFD42391943C009BED48 /* DayRecordsListViewController */ = {
 			isa = PBXGroup;
 			children = (
 				2DD0AFD5239194AF009BED48 /* DayRecordsListViewController.swift */,
 				2DD0AFD6239194AF009BED48 /* DayRecordsListViewController.xib */,
 			);
-			path = RecordsListViewController;
+			path = DayRecordsListViewController;
 			sourceTree = "<group>";
 		};
 		2DD0AFD9239194EC009BED48 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2DD0AFD42391943C009BED48 /* RecordsListViewController */,
+				C100E1DC23ED9F1300B69182 /* SelectRateViewController */,
+				2DD0AFD42391943C009BED48 /* DayRecordsListViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -320,9 +315,17 @@
 				2D9EEF34232B7E01002CCB49 /* NoteRecordTableViewCell */,
 				2D8CE44E232F67C900EC523E /* ImageRecordTableViewCell */,
 				2D9EEF2C232B7B06002CCB49 /* DayRateTabelViewCell */,
-				2D0CFA18239237E800F8AFBB /* DayEditorToolBar */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C100E1DC23ED9F1300B69182 /* SelectRateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */,
+				C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */,
+			);
+			path = SelectRateViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +395,7 @@
 				2D9EEF38232B7E63002CCB49 /* NoteRecordTableViewCell.xib in Resources */,
 				84F8917722290E9000956265 /* Assets.xcassets in Resources */,
 				84F8917222290E8D00956265 /* Main.storyboard in Resources */,
+				C100E1E023ED9F8700B69182 /* SelectRateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,11 +414,11 @@
 				2D8770A623B79E7900A38D9F /* NavigationTitleStackView.swift in Sources */,
 				2D8CE451232F67F500EC523E /* ImageRecordTableViewCell.swift in Sources */,
 				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
-				2D0CFA1A2392384E00F8AFBB /* DayEditorToolBar.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				2DD0AFCF23917C81009BED48 /* LargePrimaryLabel.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
 				84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */,
+				C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */,
 				2D0CFA15239220B700F8AFBB /* UIView+Extension.swift in Sources */,
 				2DD0AFC923917377009BED48 /* SmallSecondaryTextLabel.swift in Sources */,
 				2D0CFA17239221FE00F8AFBB /* UIViewController+Extension.swift in Sources */,
