@@ -27,7 +27,7 @@ class DayRateViewController: UITableViewController {
     }
     
     private func rateDay(_ rate: DayRate) {
-        Day.setDayRate(dayDate: dayDate ?? Date().getStartDay(), rate: rate)
+        Day.setDayRate(dayDate: dayDate ?? Date().startOfDay, rate: rate)
     }
 
 }

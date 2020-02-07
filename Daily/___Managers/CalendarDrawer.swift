@@ -12,7 +12,7 @@ class CalendarDrawer {
     
     func drawDayButton(_ button: UIButton, dayDate: Date, dayType: DayType, day: Day?) {
 
-        button.setTitle(dayDate.getDateNumber(), for: UIControl.State.normal)
+        button.setTitle(dayDate.dateNumber, for: UIControl.State.normal)
         button.layer.cornerRadius = 20
         button.backgroundColor = Theme.getRateColor(day?.rate)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
@@ -20,10 +20,10 @@ class CalendarDrawer {
         switch dayType {
         case .usual:
             button.isEnabled = true
-            button.tintColor = Theme.textColor
+            button.tintColor = Theme.primaryTextColor
         case .today:
             button.isEnabled = true
-            button.tintColor = Theme.textColor
+            button.tintColor = Theme.primaryTextColor
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         case .inactive:
             button.isEnabled = false

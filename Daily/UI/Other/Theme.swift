@@ -1,18 +1,13 @@
 import UIKit
 
 class Theme {
-    
-    // MARK: - Properties
-    
-    static var textColor: UIColor {
-        return UIColor.label
+    static var primaryTextColor: UIColor {
+        return .label
     }
 
     static var secondoryTextColor: UIColor {
-        return UIColor.placeholderText
+        return .placeholderText
     }
-    
-    // MARK: - Methods
     
     static func getRateColor(_ rate: DayRate?) -> UIColor {
         switch rate {
@@ -74,7 +69,5 @@ class Theme {
         case .good:
             return "Good day"
         }
-        
     }
-    
 }

@@ -1,17 +1,15 @@
 import UIKit
 
 class NoteRecordTableViewCell: UITableViewCell {
-
-    // MARK: - Outlets
-    
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var noteTextLabel: UILabel!
-    
-    // MARK: - Methods
+    @IBOutlet private weak var timeLabel: SmallSecondaryTextLabel!
+    @IBOutlet private weak var noteTextLabel: MediumPrimaryTextLabel!
     
     func configure(noteRecord: NoteRecord) {
-        timeLabel.text = noteRecord.time?.getTimeRepresentation()
+        guard let time = noteRecord.time else {
+            return
+        }
+        
+        timeLabel.text = time.timeRepresentation
         noteTextLabel.text = noteRecord.text
     }
-    
 }

@@ -10,7 +10,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if self.window == nil {
             self.window = UIWindow(frame: UIScreen.main.bounds)
         }
-        window?.tintColor = Theme.textColor
+        window?.tintColor = Theme.primaryTextColor
+        
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
         
         return true
     }
@@ -30,8 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-    
-    // MARK: - Core Data Saving support
     
     static func saveContext () {
         let context = persistentContainer.viewContext

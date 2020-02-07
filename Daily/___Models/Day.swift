@@ -47,7 +47,7 @@ public class Day: NSManagedObject {
     
     static func getDay(date: Date) -> Day? {
         let context = AppDelegate.persistentContainer.viewContext
-        let dateForFind = date.getStartDay()
+        let dateForFind = date.startOfDay
         
         let request: NSFetchRequest<Day> = Day.fetchRequest()
         request.predicate = NSPredicate(format: "date = %@", dateForFind as CVarArg)
@@ -63,7 +63,7 @@ public class Day: NSManagedObject {
     
     static func findOrCreateDay(date: Date) -> Day {
         let context = AppDelegate.persistentContainer.viewContext
-        let dateForFind = date.getStartDay()
+        let dateForFind = date.startOfDay
         
         let request: NSFetchRequest<Day> = Day.fetchRequest()
         request.predicate = NSPredicate(format: "date = %@", dateForFind as CVarArg)
@@ -77,7 +77,7 @@ public class Day: NSManagedObject {
         
         let day = Day(context: context)
         day.date = dateForFind
-        day.month = dateForFind.firstDayOfMonth()
+        day.month = dateForFind.firstDayOfMonth
         
         AppDelegate.saveContext()
         
@@ -85,7 +85,7 @@ public class Day: NSManagedObject {
     }
     
     static func getAllDaysOfMounth(_ month: Date) -> [Day] {
-        let monthForFind = month.firstDayOfMonth()
+        let monthForFind = month.firstDayOfMonth
         
         let request: NSFetchRequest<Day> = Day.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]

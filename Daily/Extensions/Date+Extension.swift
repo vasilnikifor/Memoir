@@ -1,59 +1,57 @@
 import Foundation
 
-// MARK: - Conversion
 extension Date {
-
-    func firstDayOfMonth() -> Date {
-        return Calendar
-            .current
-            .date(from: Calendar.current.dateComponents([.year, .month, .timeZone], from: self.getStartDay()))!
-            .getStartDay()
+    private var calendar: Calendar {
+        return Calendar.current
     }
     
-    func lastDayOfMonth() -> Date {
-        return Calendar
-            .current
-            .date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth())!
-            .getStartDay()
+    var firstDayOfMonth: Date {
+        return calendar
+            .date(from: calendar.dateComponents([.year, .month, .timeZone], from: self.startOfDay))!
+            .startOfDay
     }
     
-    func addDays(_ numberOfDays: Int) -> Date {
-        return Calendar
-            .current
-            .date(byAdding: .day, value: numberOfDays, to: self)!
+    var lastDayOfMonth: Date {
+        return calendar
+            .date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth)!
+            .startOfDay
     }
     
-    func addMonths(_ numberOfMonths: Int) -> Date {
-        return Calendar
-            .current
-            .date(byAdding: .month, value: numberOfMonths, to: self)!
+    var startOfDay: Date {
+        return calendar.startOfDay(for: self)
     }
     
-    func getStartDay() -> Date {
-        return Calendar
-            .current
-            .startOfDay(for: self)
+    var time: Date {
+        return calendar.date(from: calendar.dateComponents([.hour, .minute, .second, .timeZone], from: self))!
     }
     
-    func getTime() -> Date {
-        return Calendar
-            .current
-            .date(from: Calendar.current.dateComponents([.hour, .minute, .second, .timeZone], from: self))!
-    }
-
-}
-
-// MARK: - Presentation
-extension Date {
-    
-    func getTimeRepresentation() -> String {
+    var timeRepresentation: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: self)
     }
     
-    func getDateNumber() -> String {
+    var dateRepresentation: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE, MMM d"
+        return dateFormatter.string(from: self)
+    }
+    
+    var monthRepresentation: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy"
+        return dateFormatter.string(from: self)
+    }
+    
+    var dateNumber: String {
         return String(Calendar.current.component(.day, from: self))
     }
     
+    func addDays(_ numberOfDays: Int) -> Date {
+        return calendar.date(byAdding: .day, value: numberOfDays, to: self)!
+    }
+    
+    func addMonths(_ numberOfMonths: Int) -> Date {
+        return calendar.date(byAdding: .month, value: numberOfMonths, to: self)!
+    }
 }

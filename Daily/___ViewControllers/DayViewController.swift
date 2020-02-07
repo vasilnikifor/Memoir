@@ -2,11 +2,7 @@ import UIKit
 
 class DayViewController: UIViewController {
 
-    // MARK: - Propertis
-
     var dayDate: Date!
-    
-    // MARK: - Methods
     
     func redarwRecords() {
         setDayData()
@@ -14,20 +10,14 @@ class DayViewController: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: - Outlets
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var rateDayButton: UIBarButtonItem!
     
-    // MARK: - Private propertis
-    
     private var day: Day?
-    private var records: [Record]?
+    private var records: [Record] = []
     private var isViewExist: Bool?
     private var imagePicker = UIImagePickerController()
     private var dayRate: DayRate?
-    
-    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +33,6 @@ class DayViewController: UIViewController {
             redarwRecords()
         }
     }
-    
-    // MAKR: - Navigations
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -74,8 +62,6 @@ class DayViewController: UIViewController {
         }
     }
     
-    // MARK: - Private methods
-    
     private func dayRareDidChanged() {
         rateDayButton.image = Theme.getRateImage(dayRate, filed: false)
         
@@ -83,7 +69,8 @@ class DayViewController: UIViewController {
     }
     
     private func setInitialViweSettings() {
-        tableView.register(UINib(nibName: "NoteRecordTableViewCell", bundle: nil), forCellReuseIdentifier: NoteRecordTableViewCell.description())
+        tableView.register(NoteRecordTableViewCell.nib, forCellReuseIdentifier: NoteRecordTableViewCell.nibName)
+        tableView.register(ImageRecordTableViewCell.nib, forCellReuseIdentifier: ImageRecordTableViewCell.nibName)
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
@@ -125,17 +112,21 @@ class DayViewController: UIViewController {
         day = Day.getDay(date: dayDate)
         
         if let day = day {
-            records = day.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record]
             dayRate = day.rate
+            if let dayRedords = day.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record] {
+                records = dayRedords
+            } else {
+                records = []
+            }
         } else {
-            records = nil
+            records = []
             dayRate = nil
         }
         
         dayRareDidChanged()
     }
     
-    private func getDayDateLable(date: Date) -> String{
+    private func getDayDateLable(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE, MMM d"
         return dateFormatter.string(from: date)
@@ -161,7 +152,7 @@ class DayViewController: UIViewController {
 
     private func addImageRecord(image: UIImage) {
         if let imageData = image.jpegData(compressionQuality: 1.0) {
-            _ = ImageRecord.createImage(dayDate: dayDate, time: Date().getTime(), imageData: imageData)
+            _ = ImageRecord.createImage(dayDate: dayDate, time: Date().time, imageData: imageData)
             redarwRecords()
         }
     }
@@ -188,39 +179,33 @@ class DayViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 extension DayViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return records?.count ?? 0
+        return records.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let records = records, indexPath.row < records.count {
-            let record = records[indexPath.row]
-            
-            if let noteRecord = record as? NoteRecord {
-                let cell = tableView.dequeueReusableCell(withIdentifier: NoteRecordTableViewCell.description(), for: indexPath) as! NoteRecordTableViewCell
-                cell.configure(noteRecord: noteRecord)
-                return cell
-            } else if let imageRecord = record as? ImageRecord {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ImageRecord", for: indexPath) as! ImageCell
-                cell.recordTimeTextLabel?.text = imageRecord.time?.getTimeRepresentation()
-                cell.recordImageView?.image = UIImage(data: imageRecord.imageData!)
-                return cell
-            }
+        let record = records[indexPath.row]
+        
+        if let noteRecord = record as? NoteRecord,
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoteRecordTableViewCell.nibName, for: indexPath) as?  NoteRecordTableViewCell {
+            cell.configure(noteRecord: noteRecord)
+            return cell
+        } else if let imageRecord = record as? ImageRecord,
+            let cell = tableView.dequeueReusableCell(withIdentifier: ImageRecordTableViewCell.nibName, for: indexPath) as? ImageRecordTableViewCell {
+            cell.configure(imageRecord: imageRecord)
+            return cell
         }
+        
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let records = records, indexPath.row < records.count {
-            if let noteRecord = records[indexPath.row] as? NoteRecord {
-                performSegue(withIdentifier: "openNoteRecordView", sender: noteRecord)
-            } else if let imageRecord = records[indexPath.row] as? ImageRecord {
-                performSegue(withIdentifier: "openImageRecordView", sender: imageRecord)
-            }
+        if let noteRecord = records[indexPath.row] as? NoteRecord {
+            performSegue(withIdentifier: "openNoteRecordView", sender: noteRecord)
+        } else if let imageRecord = records[indexPath.row] as? ImageRecord {
+            performSegue(withIdentifier: "openImageRecordView", sender: imageRecord)
         }
     }
-    
 }
 
 

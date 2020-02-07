@@ -2,9 +2,7 @@ import Foundation
 import CoreData
 
 public class Record: NSManagedObject {
-    
-    // MARK: - Methods
-    
+
     func save() {
         AppDelegate.saveContext()
     }

@@ -1,9 +1,7 @@
 import UIKit
 
 class NoteRecordViewController: UIViewController {
-    
-    // MARK: - Propertis
-    
+
     var dayDate: Date!
     var record: NoteRecord?
     
@@ -28,7 +26,7 @@ class NoteRecordViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setSettingsInViewDidApper()
+        noteTextView?.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,10 +40,6 @@ class NoteRecordViewController: UIViewController {
     private func setViewSettings() {
         setInitialViewSettings()
         addKeyboardActions()
-    }
-    
-    private func setSettingsInViewDidApper() {
-        noteTextView?.becomeFirstResponder()
     }
     
     private func addKeyboardActions() {
@@ -99,9 +93,9 @@ class NoteRecordViewController: UIViewController {
             noteTime = note.time
         } else {
             noteTextView.text = ""
-            noteTime = Date().getTime()
+            noteTime = Date().time
         }
-        timeButton.setTitle(noteTime.getTimeRepresentation(), for: .normal)
+        timeButton.setTitle(noteTime.timeRepresentation, for: .normal)
     }
     
     private func goBack() {

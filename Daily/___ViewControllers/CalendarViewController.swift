@@ -4,13 +4,13 @@ class CalendarViewController: UIViewController {
  
     // MARK: - Private propertis
     
-    private var month = Date().firstDayOfMonth()
+    private var month = Date().firstDayOfMonth
     private var dayButtonMatch: [UIButton: Date] = [:]
     private let calendarDrawer = CalendarDrawer()
     
     // MARK: - Outlets
     
-    @IBOutlet private var monthLabel: UILabel!
+    @IBOutlet private var monthLabel: LargePrimaryLabel!
     @IBOutlet private var weekDayLabel: [UILabel]!
     @IBOutlet private var dayButtons: [UIButton]!
     
@@ -86,8 +86,8 @@ class CalendarViewController: UIViewController {
         dayButtonMatch = [:]
         
         let daysOfMonth     = Day.getAllDaysOfMounth(month)
-        let firstDayOfMonth = month.firstDayOfMonth()
-        let lastDayOfMonth  = month.lastDayOfMonth()
+        let firstDayOfMonth = month.firstDayOfMonth
+        let lastDayOfMonth  = month.lastDayOfMonth
         var drawingDay      = getFirstDrowingDay(firstDayOfMonth: firstDayOfMonth)
         
         var hideTheLastButtons = false
@@ -114,7 +114,7 @@ class CalendarViewController: UIViewController {
             } else {
                 dayButtonMatch[button] = drawingDay
                 day = getDay(daysOfMonth: daysOfMonth, date: drawingDay)
-                dayType = (drawingDay == Date().getStartDay()) ? .today : .usual
+                dayType = (drawingDay == Date().startOfDay) ? .today : .usual
             }
             calendarDrawer.drawDayButton(button, dayDate: drawingDay, dayType: dayType, day: day)
             
@@ -123,12 +123,12 @@ class CalendarViewController: UIViewController {
     }
     
     private func getFirstDrowingDay(firstDayOfMonth: Date) -> Date {
-        return firstDayOfMonth.addDays(-(Calendar.current.component(.weekday, from: firstDayOfMonth)-1)).getStartDay()
+        return firstDayOfMonth.addDays(-(Calendar.current.component(.weekday, from: firstDayOfMonth)-1)).startOfDay
     }
     
     private func getDay(daysOfMonth: [Day], date: Date) -> Day? {
         for index in daysOfMonth.indices {
-            if daysOfMonth[index].date == date.getStartDay() {
+            if daysOfMonth[index].date == date.startOfDay {
                 return daysOfMonth[index]
             }
         }
@@ -145,9 +145,7 @@ class CalendarViewController: UIViewController {
     }
     
     private func fillMonthLabel(month: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM yyyy"
-        monthLabel.text = dateFormatter.string(from: month)
+        monthLabel.text = month.monthRepresentation
     }
     
     private func drawWeekDays() {
@@ -163,6 +161,12 @@ class CalendarViewController: UIViewController {
     
     @objc private func showPreviousMonth() {
         handelChangeMonth(by: -1)
+    }
+    
+    @IBAction func openNewDaylist(_ sender: Any) {
+        let dayRecordsList = DayRecordsListViewController.loadFromNib()
+        dayRecordsList.configure(listDate: Date())
+        push(dayRecordsList)
     }
     
     // MARK: - Actions
