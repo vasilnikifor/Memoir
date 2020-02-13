@@ -32,6 +32,9 @@ final class DayRecordsListViewController: UIViewController {
 
 extension DayRecordsListViewController {
     @IBAction func rateDay(_ sender: Any) {
+        let rateDay = SelectRateViewController.loadFromNib()
+        rateDay.configure(date: Date(), delegate: self)
+        push(rateDay)
     }
     
     @IBAction func addNote(_ sender: Any) {
@@ -100,5 +103,11 @@ extension DayRecordsListViewController: UITableViewDataSource {
         }
         
         return UITableViewCell()
+    }
+}
+
+extension DayRecordsListViewController: SelectRateDelegate {
+    func rateDidChange() {
+        update()
     }
 }

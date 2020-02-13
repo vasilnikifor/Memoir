@@ -47,7 +47,7 @@ extension DayRateViewController {
         
         let currentDatyRate = Day.getDay(date: dayDate)?.rate ?? DayRate.noRate
         let currentDrovintRate = DayRate.allCases[indexPath.row]
-        cell.configure(for: currentDrovintRate, isSelected: currentDrovintRate == currentDatyRate)
+//        cell.configure(for: currentDrovintRate, isSelected: currentDrovintRate == currentDatyRate)
         
         return cell
     }

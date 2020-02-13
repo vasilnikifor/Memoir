@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,33 +17,35 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9v-ro-6Ew" userLabel="Mood Image">
-                        <rect key="frame" x="8" y="2" width="40" height="40"/>
+                        <rect key="frame" x="16" y="2" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="O9v-ro-6Ew" secondAttribute="height" multiplier="1:1" id="QLV-HZ-FFV"/>
                             <constraint firstAttribute="width" constant="40" id="chL-vQ-0yU"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VwD-1W-qnR" userLabel="Selected Image">
-                        <rect key="frame" x="284" y="14" width="20" height="17"/>
+                        <rect key="frame" x="284" y="14" width="20" height="16.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="Ivw-b9-ULd"/>
                             <constraint firstAttribute="width" secondItem="VwD-1W-qnR" secondAttribute="height" multiplier="1:1" id="ttR-gK-yef"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M26-Ed-LTc" userLabel="Mood Name Label">
-                        <rect key="frame" x="64" y="22" width="0.0" height="0.0"/>
+                        <rect key="frame" x="72" y="16" width="196" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="HsF-70-Hfm"/>
-                    <constraint firstItem="VwD-1W-qnR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UTV-aZ-uRP"/>
-                    <constraint firstItem="VwD-1W-qnR" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="j2i-JC-KbD"/>
-                    <constraint firstItem="M26-Ed-LTc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vNu-0d-auR"/>
-                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vnE-KI-wim"/>
-                    <constraint firstItem="M26-Ed-LTc" firstAttribute="leading" secondItem="O9v-ro-6Ew" secondAttribute="trailing" constant="16" id="yqz-5Y-GoC"/>
+                    <constraint firstAttribute="trailing" secondItem="VwD-1W-qnR" secondAttribute="trailing" constant="16" id="8fl-vx-WtG"/>
+                    <constraint firstAttribute="bottom" secondItem="M26-Ed-LTc" secondAttribute="bottom" constant="16" id="BTN-ki-60d"/>
+                    <constraint firstItem="M26-Ed-LTc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Dbd-FW-Aer"/>
+                    <constraint firstItem="VwD-1W-qnR" firstAttribute="leading" secondItem="M26-Ed-LTc" secondAttribute="trailing" constant="16" id="RVF-aa-fpE"/>
+                    <constraint firstItem="M26-Ed-LTc" firstAttribute="leading" secondItem="O9v-ro-6Ew" secondAttribute="trailing" constant="16" id="bJZ-jP-FXR"/>
+                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gbD-Do-PKr"/>
+                    <constraint firstItem="VwD-1W-qnR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kXk-mt-9ei"/>
+                    <constraint firstItem="O9v-ro-6Ew" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="zJA-ev-GOD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

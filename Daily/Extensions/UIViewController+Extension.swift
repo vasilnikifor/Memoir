@@ -18,4 +18,8 @@ extension UIViewController {
     func push(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func dismiss() {
+        navigationController?.popViewController(animated: true)
+    }
 }

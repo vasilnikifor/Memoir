@@ -16,6 +16,8 @@ class SelectRateViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private var date: Date = Date()
+    private var dayRate: DayRate = .noRate
+    private var delegate: SelectRateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +29,34 @@ class SelectRateViewController: UIViewController {
         tableView.dataSource = self
     }
 
-    func configure(date: Date) {
+    func configure(date: Date, delegate: SelectRateDelegate?) {
         self.date = date
+        self.delegate = delegate
+        
+        dayRate = Day.getDay(date: date)?.rate ?? DayRate.noRate
     }
 }
 
 extension SelectRateViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        Day.setDayRate(dayDate: date.startOfDay, rate: DayRate.allCases[indexPath.row])
+        delegate?.rateDidChange()
+        dismiss()
     }
 }
 
 extension SelectRateViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return DayRate.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DayRateTableViewCell.nibName, for: indexPath) as?  DayRateTableViewCell {
-        cell.configure(noteRecord: noteRecord)
+        let cell = tableView.dequeueReusableCell(withIdentifier: DayRateTableViewCell.nibName, for: indexPath) as! DayRateTableViewCell
+        let currentDrovintRate =  DayRate.allCases[indexPath.row]
+        cell.configure(for: DayRateTableVievCellViewModel(
+            dayRate: currentDrovintRate,
+            isSelected: currentDrovintRate == dayRate
+        ))
         return cell
-        
-        return UITableViewCell()
     }
 }
