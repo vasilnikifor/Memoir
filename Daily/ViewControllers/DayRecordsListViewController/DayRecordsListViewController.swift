@@ -30,6 +30,7 @@ final class DayRecordsListViewController: UIViewController {
     }
 }
 
+// MARK: - Actions
 extension DayRecordsListViewController {
     @IBAction func rateDay(_ sender: Any) {
         let rateDay = SelectRateViewController.loadFromNib()
@@ -41,12 +42,29 @@ extension DayRecordsListViewController {
     }
     
     @IBAction func takePhoto(_ sender: Any) {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            return
+        }
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerController.SourceType.camera
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func addImage(_ sender: Any) {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            return
+        }
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
     }
 }
 
+// MARK: - DayRecordsListDelegat
 extension DayRecordsListViewController: DayRecordsListDelegat {
     func update() {
         let day = Day.getDay(date: date)
@@ -74,6 +92,7 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension DayRecordsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let record = records[indexPath.row] as? NoteRecord {
@@ -84,6 +103,7 @@ extension DayRecordsListViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension DayRecordsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return records.count
@@ -106,8 +126,24 @@ extension DayRecordsListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - SelectRateDelegate
 extension DayRecordsListViewController: SelectRateDelegate {
     func rateDidChange() {
         update()
     }
 }
+
+// MARK: - UIImagePickerControllerDelegate
+extension DayRecordsListViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let imageData = pickedImage.jpegData(compressionQuality: 1.0) {
+            _ = ImageRecord.createImage(dayDate: date, time: Date().time, imageData: imageData)
+            update()
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - UINavigationControllerDelegate
+extension DayRecordsListViewController: UINavigationControllerDelegate { }

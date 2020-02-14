@@ -44,6 +44,7 @@
 		84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */; };
 		C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */; };
 		C100E1E023ED9F8700B69182 /* SelectRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */; };
+		C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRateTableViewCell.xib; sourceTree = "<group>"; };
 		C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRateViewController.swift; sourceTree = "<group>"; };
 		C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRateViewController.xib; sourceTree = "<group>"; };
+		C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				2DD0AFC823917377009BED48 /* SmallSecondaryTextLabel.swift */,
 				2DD0AFCA239177D0009BED48 /* MediumPrimaryTextLabel.swift */,
 				2DD0AFCE23917C81009BED48 /* LargePrimaryLabel.swift */,
+				C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				2DD0AFCF23917C81009BED48 /* LargePrimaryLabel.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
 				84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */,
+				C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */,
 				C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */,
 				2D0CFA15239220B700F8AFBB /* UIView+Extension.swift in Sources */,
 				2DD0AFC923917377009BED48 /* SmallSecondaryTextLabel.swift in Sources */,

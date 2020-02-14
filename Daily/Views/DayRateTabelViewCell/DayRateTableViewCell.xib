@@ -30,7 +30,7 @@
                             <constraint firstAttribute="width" secondItem="VwD-1W-qnR" secondAttribute="height" multiplier="1:1" id="ttR-gK-yef"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M26-Ed-LTc" userLabel="Mood Name Label">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M26-Ed-LTc" userLabel="Mood Name Label" customClass="MediumPrimaryTextLabel" customModule="Daily" customModuleProvider="target">
                         <rect key="frame" x="72" y="16" width="196" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>

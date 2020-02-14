@@ -8,7 +8,7 @@ struct DayRateTableVievCellViewModel {
 class DayRateTableViewCell: UITableViewCell {
     @IBOutlet weak var moodImageView: UIImageView!
     @IBOutlet weak var selectedImageView: UIImageView!
-    @IBOutlet weak var moodNameLabel: UILabel!
+    @IBOutlet weak var moodNameLabel: MediumPrimaryTextLabel!
     
     func configure(for viewModel: DayRateTableVievCellViewModel) {
         moodImageView.image = Theme.getRateImage(viewModel.dayRate)

@@ -11,7 +11,7 @@ class NavigationTitleView: UIStackView {
             addArrangedSubview(imageView)
         }
         
-        let label = UILabel()
+        let label = NavigationBarLable()
         label.text = title
         addArrangedSubview(label)
     }
