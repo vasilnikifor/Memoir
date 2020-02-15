@@ -38,10 +38,10 @@ class DayViewController: UIViewController {
         switch segue.identifier {
         case "openNoteRecordView":
             if let noteVC = segue.destination as? NoteRecordViewController {
-                noteVC.dayDate = dayDate
-                if let record = sender as? NoteRecord {
-                    noteVC.record = record
-                }
+//                noteVC.dayDate = dayDate
+//                if let record = sender as? NoteRecord {
+//                    noteVC.record = record
+//                }
             }
             
         case "openImageRecordView":

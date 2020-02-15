@@ -23,7 +23,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="BLy-sK-SGg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4FI-9A-MaS"/>
                 <constraint firstItem="BLy-sK-SGg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6wC-mt-yfL"/>

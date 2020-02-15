@@ -26,6 +26,7 @@
                 </tableView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ug-Gh-Nff">
                     <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <items>
                         <barButtonItem image="smoke" catalog="system" id="Gfn-PO-KB0" userLabel="Rate Day Button">
                             <connections>
@@ -53,7 +54,6 @@
                     </items>
                 </toolbar>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NxK-Fe-Pw7" secondAttribute="trailing" id="XAA-82-JRR"/>
                 <constraint firstItem="NxK-Fe-Pw7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XiH-Pn-UNr"/>

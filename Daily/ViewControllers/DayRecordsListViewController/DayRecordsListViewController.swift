@@ -95,8 +95,10 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
 // MARK: - UITableViewDelegate
 extension DayRecordsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let record = records[indexPath.row] as? NoteRecord {
-            print(record)
+        if let noteRecord = records[indexPath.row] as? NoteRecord {
+            let noteView = NoteRecordViewController.loadFromNib()
+            noteView.configure(NoteRecordViewModel(date: date, noteRecord: noteRecord))
+            push(noteView)
         } else if let record = records[indexPath.row] as? ImageRecord {
             print(record)
         }
