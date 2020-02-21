@@ -39,6 +39,9 @@ extension DayRecordsListViewController {
     }
     
     @IBAction func addNote(_ sender: Any) {
+        let note = NoteRecordViewController.loadFromNib()
+        note.configure(NoteRecordViewModel(date: date, noteRecord: nil), delegate: self)
+        push(note)
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -97,7 +100,7 @@ extension DayRecordsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let noteRecord = records[indexPath.row] as? NoteRecord {
             let noteView = NoteRecordViewController.loadFromNib()
-            noteView.configure(NoteRecordViewModel(date: date, noteRecord: noteRecord))
+            noteView.configure(NoteRecordViewModel(date: date, noteRecord: noteRecord), delegate: self)
             push(noteView)
         } else if let record = records[indexPath.row] as? ImageRecord {
             print(record)
@@ -131,6 +134,13 @@ extension DayRecordsListViewController: UITableViewDataSource {
 // MARK: - SelectRateDelegate
 extension DayRecordsListViewController: SelectRateDelegate {
     func rateDidChange() {
+        update()
+    }
+}
+
+// MARK: - NoteRecordDelegate
+extension DayRecordsListViewController: NoteRecordDelegate {
+    func noteDidChange() {
         update()
     }
 }

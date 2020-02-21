@@ -6,16 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if self.window == nil {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-        }
-        window?.tintColor = Theme.primaryTextColor
-        
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
-        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
-        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {     
         return true
     }
 

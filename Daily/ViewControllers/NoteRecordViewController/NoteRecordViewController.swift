@@ -15,8 +15,17 @@ class NoteRecordViewController: UIViewController {
     
     private var date: Date = Date()
     private var noteRecord: NoteRecord?
+    private var delegate: NoteRecordDelegate?
     
-    func configure(_ viewModel: NoteRecordViewModel) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Note"
+    }
+    
+    func configure(_ viewModel: NoteRecordViewModel, delegate: NoteRecordDelegate) {
+        self.delegate = delegate
+        
         date = viewModel.date
         noteRecord = viewModel.noteRecord
         

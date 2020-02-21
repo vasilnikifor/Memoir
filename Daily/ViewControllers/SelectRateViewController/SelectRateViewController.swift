@@ -27,6 +27,8 @@ class SelectRateViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        navigationItem.title = "Rate day"
     }
 
     func configure(date: Date, delegate: SelectRateDelegate?) {
