@@ -163,16 +163,14 @@ class CalendarViewController: UIViewController {
         handelChangeMonth(by: -1)
     }
     
-    @IBAction func openNewDaylist(_ sender: Any) {
-        let dayRecordsList = DayRecordsListViewController.loadFromNib()
-        dayRecordsList.configure(date: Date())
-        push(dayRecordsList)
-    }
-    
     // MARK: - Actions
     
     @IBAction func openDay(_ sender: UIButton) {
-        performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
+        let dayRecordsList = DayRecordsListViewController.loadFromNib()
+        dayRecordsList.configure(date: (dayButtonMatch[sender] as? Date) ?? Date())
+        push(dayRecordsList)
+        
+        //performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
     }
     
     @IBAction func changeMonth(_ sender: UIButton) {

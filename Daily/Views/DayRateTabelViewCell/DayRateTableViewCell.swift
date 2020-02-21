@@ -10,7 +10,7 @@ class DayRateTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var moodNameLabel: MediumPrimaryTextLabel!
     
-    func configure(for viewModel: DayRateTableVievCellViewModel) {
+    func configure(_ viewModel: DayRateTableVievCellViewModel) {
         moodImageView.image = Theme.getRateImage(viewModel.dayRate)
         moodImageView.tintImage(to: Theme.getRateColor(viewModel.dayRate))
                 

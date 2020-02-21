@@ -9,9 +9,10 @@ struct NoteRecordViewModel {
     let noteRecord: NoteRecord?
 }
 
-class NoteRecordViewController: UIViewController {
+final class NoteRecordViewController: UIViewController {
     @IBOutlet private weak var timeLabel: SmallSecondaryTextLabel!
     @IBOutlet private weak var noteTextView: UITextView!
+    @IBOutlet private weak var noteTextViewBottomConstratint: NSLayoutConstraint!
     
     private var date: Date = Date()
     private var noteRecord: NoteRecord?
@@ -21,6 +22,31 @@ class NoteRecordViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Note"
+        
+        becomeKeyboardShowingObserver()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        noteTextView.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        saveNote()
+        delegate?.noteDidChange()
+    }
+    
+    override func keyboardWillShow(keyboardHeight: CGFloat) {
+        self.noteTextViewBottomConstratint.constant = keyboardHeight
+        self.view.layoutIfNeeded()
+    }
+    
+    override func keyboardWillHide() {
+        self.noteTextViewBottomConstratint.constant = 0
+        self.view.layoutIfNeeded()
     }
     
     func configure(_ viewModel: NoteRecordViewModel, delegate: NoteRecordDelegate) {
@@ -29,11 +55,30 @@ class NoteRecordViewController: UIViewController {
         date = viewModel.date
         noteRecord = viewModel.noteRecord
         
-        if let noteRecord = noteRecord {
-            timeLabel.text = noteRecord.time?.timeRepresentation
-            noteTextView.text = String(noteRecord.text ?? "")
+        if let noteRecord = noteRecord, let time = noteRecord.time, let text = noteRecord.text {
+            timeLabel.text = time.timeRepresentation
+            noteTextView.text = text
         } else {
+            timeLabel.text = Date().timeRepresentation
+            noteTextView.text = nil
+        }
+    }
+}
 
+// MARK: - Private methods
+extension NoteRecordViewController {
+    private func saveNote() {
+        if let noteRecord = noteRecord {
+            noteRecord.text = noteTextView.text
+            if noteRecord.isEmpty {
+                DAONoteService.removeNote(noteRecord)
+            } else {
+                DAOService.saveContext()
+            }
+        } else if !noteTextView.text.isEmpty {
+            _ = DAONoteService.createNote(dayDate: date,
+                                          time: Date().time,
+                                          text: noteTextView.text)
         }
     }
 }

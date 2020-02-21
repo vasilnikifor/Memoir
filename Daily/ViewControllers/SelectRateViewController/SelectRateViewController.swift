@@ -28,20 +28,22 @@ class SelectRateViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        navigationItem.title = "Rate day"
+        navigationItem.title = "Day ratings"
     }
 
     func configure(date: Date, delegate: SelectRateDelegate?) {
         self.date = date
         self.delegate = delegate
         
-        dayRate = Day.getDay(date: date)?.rate ?? DayRate.noRate
+        if let day = DAODayService.getDay(date: date) {
+            dayRate = day.rate
+        }
     }
 }
 
 extension SelectRateViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Day.setDayRate(dayDate: date.startOfDay, rate: DayRate.allCases[indexPath.row])
+        DAODayService.setDayRate(dayDate: date.startOfDay, rate: DayRate.allCases[indexPath.row])
         delegate?.rateDidChange()
         dismiss()
     }
@@ -54,11 +56,8 @@ extension SelectRateViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DayRateTableViewCell.nibName, for: indexPath) as! DayRateTableViewCell
-        let currentDrovintRate =  DayRate.allCases[indexPath.row]
-        cell.configure(for: DayRateTableVievCellViewModel(
-            dayRate: currentDrovintRate,
-            isSelected: currentDrovintRate == dayRate
-        ))
+        let dayRate = DayRate.allCases[indexPath.row]
+        cell.configure(DayRateTableVievCellViewModel(dayRate: dayRate, isSelected: self.dayRate == dayRate))
         return cell
     }
 }

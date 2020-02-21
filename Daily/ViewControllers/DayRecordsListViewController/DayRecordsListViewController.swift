@@ -70,7 +70,7 @@ extension DayRecordsListViewController {
 // MARK: - DayRecordsListDelegat
 extension DayRecordsListViewController: DayRecordsListDelegat {
     func update() {
-        let day = Day.getDay(date: date)
+        let day = DAODayService.getDay(date: date)
         
         if let dayRecords = day?.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record] {
             records = dayRecords
@@ -150,7 +150,7 @@ extension DayRecordsListViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
             let imageData = pickedImage.jpegData(compressionQuality: 1.0) {
-            _ = ImageRecord.createImage(dayDate: date, time: Date().time, imageData: imageData)
+            _ = DAOImageService.createImage(dayDate: date, time: Date().time, imageData: imageData)
             update()
         }
         picker.dismiss(animated: true, completion: nil)

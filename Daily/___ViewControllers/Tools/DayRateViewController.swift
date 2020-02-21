@@ -27,7 +27,7 @@ class DayRateViewController: UITableViewController {
     }
     
     private func rateDay(_ rate: DayRate) {
-        Day.setDayRate(dayDate: dayDate ?? Date().startOfDay, rate: rate)
+        DAODayService.setDayRate(dayDate: dayDate ?? Date().startOfDay, rate: rate)
     }
 
 }
@@ -45,7 +45,7 @@ extension DayRateViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: moodCellId, for: indexPath) as! DayRateTableViewCell
         
-        let currentDatyRate = Day.getDay(date: dayDate)?.rate ?? DayRate.noRate
+        let currentDatyRate = DAODayService.getDay(date: dayDate)?.rate ?? DayRate.noRate
         let currentDrovintRate = DayRate.allCases[indexPath.row]
 //        cell.configure(for: currentDrovintRate, isSelected: currentDrovintRate == currentDatyRate)
         

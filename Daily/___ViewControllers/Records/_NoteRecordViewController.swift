@@ -1,6 +1,6 @@
 //import UIKit
 //
-//class NoteRecordViewController: UIViewController {
+//class NNoteRecordViewController: UIViewController {
 //
 //    var dayDate: Date!
 //    var record: NoteRecord?
@@ -21,12 +21,6 @@
 //        super.viewDidLoad()
 //        
 //        setViewSettings()
-//    }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        noteTextView?.becomeFirstResponder()
 //    }
 //    
 //    override func viewWillDisappear(_ animated: Bool) {

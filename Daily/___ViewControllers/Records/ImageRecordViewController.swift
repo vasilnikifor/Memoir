@@ -31,7 +31,7 @@ class ImageRecordViewController: UIViewController {
     
     private func removeNote() {
         if let record = record {
-            record.remove()
+            DAOImageService.removeImage(record)
             goBack()
         } else {
             goBack()

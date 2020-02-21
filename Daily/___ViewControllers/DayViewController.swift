@@ -109,7 +109,7 @@ class DayViewController: UIViewController {
     }
     
     private func setDayData() {
-        day = Day.getDay(date: dayDate)
+        day = DAODayService.getDay(date: dayDate)
         
         if let day = day {
             dayRate = day.rate
@@ -152,7 +152,7 @@ class DayViewController: UIViewController {
 
     private func addImageRecord(image: UIImage) {
         if let imageData = image.jpegData(compressionQuality: 1.0) {
-            _ = ImageRecord.createImage(dayDate: dayDate, time: Date().time, imageData: imageData)
+            _ = DAOImageService.createImage(dayDate: dayDate, time: Date().time, imageData: imageData)
             redarwRecords()
         }
     }
