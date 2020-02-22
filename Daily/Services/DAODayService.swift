@@ -47,4 +47,18 @@ final class DAODayService: DAOService {
         
         return day
     }
+    
+    static func getAllDaysOfMounth(_ month: Date) -> [Day] {
+        let monthForFind = month.firstDayOfMonth
+        
+        let request: NSFetchRequest<Day> = Day.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        request.predicate = NSPredicate(format: "month = %@", monthForFind as CVarArg)
+        
+        do {
+            return try AppDelegate.viewContext.fetch(request)
+        } catch {}
+        
+        return []
+    }
 }

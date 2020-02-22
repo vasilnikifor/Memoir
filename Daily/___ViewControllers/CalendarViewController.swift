@@ -85,7 +85,7 @@ class CalendarViewController: UIViewController {
     private func drawCalendarDayButtons() {
         dayButtonMatch = [:]
         
-        let daysOfMonth     = Day.getAllDaysOfMounth(month)
+        let daysOfMonth     = DAODayService.getAllDaysOfMounth(month)
         let firstDayOfMonth = month.firstDayOfMonth
         let lastDayOfMonth  = month.lastDayOfMonth
         var drawingDay      = getFirstDrowingDay(firstDayOfMonth: firstDayOfMonth)

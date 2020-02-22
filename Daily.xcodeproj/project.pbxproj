@@ -223,15 +223,6 @@
 			path = Records;
 			sourceTree = "<group>";
 		};
-		8472597D22AD3C9900BCBA42 /* Records */ = {
-			isa = PBXGroup;
-			children = (
-				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
-				846DF5B522B6878A0095A065 /* ImageRecord.swift */,
-			);
-			path = Records;
-			sourceTree = "<group>";
-		};
 		84D6840F222D6AD5003F08F9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,14 +234,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		84F796A12233A58E00596CD5 /* ___Models */ = {
+		84F796A12233A58E00596CD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				84008BF7224A11B8000CB9A2 /* Day.swift */,
 				84008BF5224A11B8000CB9A2 /* Record.swift */,
-				8472597D22AD3C9900BCBA42 /* Records */,
+				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
+				846DF5B522B6878A0095A065 /* ImageRecord.swift */,
 			);
-			path = "___Models";
+			path = Models;
 			sourceTree = "<group>";
 		};
 		84F796A22233A5AC00596CD5 /* ___ViewControllers */ = {
@@ -285,10 +277,10 @@
 			children = (
 				84FB729722ABF39400DA7CE2 /* ___Storyboards */,
 				84F796A22233A5AC00596CD5 /* ___ViewControllers */,
-				84F796A12233A58E00596CD5 /* ___Models */,
 				8472597122ABFC8700BCBA42 /* ___Managers */,
 				2DD0AFD9239194EC009BED48 /* ViewControllers */,
 				84FF3F3423071A9300CEF093 /* Views */,
+				84F796A12233A58E00596CD5 /* Models */,
 				84D6840F222D6AD5003F08F9 /* Extensions */,
 				C15815E32400435D0060B9FA /* Services */,
 				2DD0AFC6239172E4009BED48 /* UI */,
