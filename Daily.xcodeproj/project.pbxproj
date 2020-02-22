@@ -10,7 +10,6 @@
 		2D0CFA15239220B700F8AFBB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CFA14239220B700F8AFBB /* UIView+Extension.swift */; };
 		2D0CFA17239221FE00F8AFBB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CFA16239221FE00F8AFBB /* UIViewController+Extension.swift */; };
 		2D8770A623B79E7900A38D9F /* NavigationTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8770A523B79E7900A38D9F /* NavigationTitleStackView.swift */; };
-		2D8770A823B7A1F000A38D9F /* FFF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8770A723B7A1F000A38D9F /* FFF.swift */; };
 		2D8CE451232F67F500EC523E /* ImageRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8CE44F232F67F500EC523E /* ImageRecordTableViewCell.swift */; };
 		2D8CE452232F67F500EC523E /* ImageRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8CE450232F67F500EC523E /* ImageRecordTableViewCell.xib */; };
 		2D9EEF37232B7E63002CCB49 /* NoteRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EEF35232B7E63002CCB49 /* NoteRecordTableViewCell.swift */; };
@@ -57,7 +56,6 @@
 		2D0CFA14239220B700F8AFBB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		2D0CFA16239221FE00F8AFBB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		2D8770A523B79E7900A38D9F /* NavigationTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleStackView.swift; sourceTree = "<group>"; };
-		2D8770A723B7A1F000A38D9F /* FFF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFF.swift; sourceTree = "<group>"; };
 		2D8CE44F232F67F500EC523E /* ImageRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecordTableViewCell.swift; sourceTree = "<group>"; };
 		2D8CE450232F67F500EC523E /* ImageRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageRecordTableViewCell.xib; sourceTree = "<group>"; };
 		2D9EEF35232B7E63002CCB49 /* NoteRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				2D8770A523B79E7900A38D9F /* NavigationTitleStackView.swift */,
-				2D8770A723B7A1F000A38D9F /* FFF.swift */,
 			);
 			path = StackView;
 			sourceTree = "<group>";
@@ -451,7 +448,6 @@
 				C15815E9240047DF0060B9FA /* DAOImageService.swift in Sources */,
 				84FF3F3923071AF600CEF093 /* DayRateTableViewCell.swift in Sources */,
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
-				2D8770A823B7A1F000A38D9F /* FFF.swift in Sources */,
 				8472597722AC02A100BCBA42 /* _NoteRecordViewController.swift in Sources */,
 				2D9EEF37232B7E63002CCB49 /* NoteRecordTableViewCell.swift in Sources */,
 				846DF5B222B6604E0095A065 /* DayViewController.swift in Sources */,

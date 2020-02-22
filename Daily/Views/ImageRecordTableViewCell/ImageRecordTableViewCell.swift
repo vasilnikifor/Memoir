@@ -1,6 +1,6 @@
 import UIKit
 
-class ImageRecordTableViewCell: UITableViewCell {
+final class ImageRecordTableViewCell: UITableViewCell {
     @IBOutlet private weak var timeLabel: SmallSecondaryTextLabel!
     @IBOutlet private weak var recordImageView: UIImageView!
     

@@ -1,6 +1,6 @@
 import UIKit
 
-class Theme {
+final class Theme {
     static var primaryTextColor: UIColor {
         return .label
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-class NavigationTitleView: UIStackView {
+final class NavigationTitleView: UIStackView {
     override func draw(_ rect: CGRect) {
         axis = .horizontal
         spacing = 16

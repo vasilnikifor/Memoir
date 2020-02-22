@@ -5,7 +5,7 @@ struct DayRateTableVievCellViewModel {
     let isSelected: Bool
 }
 
-class DayRateTableViewCell: UITableViewCell {
+final class DayRateTableViewCell: UITableViewCell {
     @IBOutlet weak var moodImageView: UIImageView!
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var moodNameLabel: MediumPrimaryTextLabel!

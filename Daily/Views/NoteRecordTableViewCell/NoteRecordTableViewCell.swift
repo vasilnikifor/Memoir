@@ -1,6 +1,6 @@
 import UIKit
 
-class NoteRecordTableViewCell: UITableViewCell {
+final class NoteRecordTableViewCell: UITableViewCell {
     @IBOutlet private weak var timeLabel: SmallSecondaryTextLabel!
     @IBOutlet private weak var noteTextLabel: MediumPrimaryTextLabel!
     

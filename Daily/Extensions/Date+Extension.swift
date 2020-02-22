@@ -44,7 +44,7 @@ extension Date {
     }
     
     var dateNumber: String {
-        return String(Calendar.current.component(.day, from: self))
+        return String(calendar.component(.day, from: self))
     }
     
     func addDays(_ numberOfDays: Int) -> Date {
