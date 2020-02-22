@@ -43,6 +43,8 @@
 		84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */; };
 		C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */; };
 		C100E1E023ED9F8700B69182 /* SelectRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */; };
+		C116546C2401361F005DC8C1 /* ImageRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C116546B2401361E005DC8C1 /* ImageRecordViewController.swift */; };
+		C1438575240134CD008CACDB /* ImageRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1438573240134CD008CACDB /* ImageRecordViewController.xib */; };
 		C15815E52400437E0060B9FA /* DAOService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E42400437E0060B9FA /* DAOService.swift */; };
 		C15815E72400474C0060B9FA /* DAODayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E62400474C0060B9FA /* DAODayService.swift */; };
 		C15815E9240047DF0060B9FA /* DAOImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E8240047DF0060B9FA /* DAOImageService.swift */; };
@@ -91,6 +93,8 @@
 		84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRateTableViewCell.xib; sourceTree = "<group>"; };
 		C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRateViewController.swift; sourceTree = "<group>"; };
 		C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRateViewController.xib; sourceTree = "<group>"; };
+		C116546B2401361E005DC8C1 /* ImageRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecordViewController.swift; sourceTree = "<group>"; };
+		C1438573240134CD008CACDB /* ImageRecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageRecordViewController.xib; sourceTree = "<group>"; };
 		C15815E42400437E0060B9FA /* DAOService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOService.swift; sourceTree = "<group>"; };
 		C15815E62400474C0060B9FA /* DAODayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAODayService.swift; sourceTree = "<group>"; };
 		C15815E8240047DF0060B9FA /* DAOImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOImageService.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		2DD0AFD9239194EC009BED48 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C14385712401347F008CACDB /* ImageRecordViewController */,
 				C1EBB28223F82672001C3D94 /* NoteRecordViewController */,
 				C100E1DC23ED9F1300B69182 /* SelectRateViewController */,
 				2DD0AFD42391943C009BED48 /* DayRecordsListViewController */,
@@ -326,6 +331,15 @@
 			path = SelectRateViewController;
 			sourceTree = "<group>";
 		};
+		C14385712401347F008CACDB /* ImageRecordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C116546B2401361E005DC8C1 /* ImageRecordViewController.swift */,
+				C1438573240134CD008CACDB /* ImageRecordViewController.xib */,
+			);
+			path = ImageRecordViewController;
+			sourceTree = "<group>";
+		};
 		C15815E32400435D0060B9FA /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */,
+				C1438575240134CD008CACDB /* ImageRecordViewController.xib in Resources */,
 				C1EBB28623F8269A001C3D94 /* NoteRecordViewController.xib in Resources */,
 				84FB729622ABF38600DA7CE2 /* DayRate.storyboard in Resources */,
 				2D8CE452232F67F500EC523E /* ImageRecordTableViewCell.xib in Resources */,
@@ -456,6 +471,7 @@
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				2DD0AFCB239177D0009BED48 /* MediumPrimaryTextLabel.swift in Sources */,
 				84FB729922ABF58900DA7CE2 /* DayRateViewController.swift in Sources */,
+				C116546C2401361F005DC8C1 /* ImageRecordViewController.swift in Sources */,
 				8444DFB422DF8C1E0076C856 /* ImageRecordViewController.swift in Sources */,
 				C15815E52400437E0060B9FA /* DAOService.swift in Sources */,
 			);

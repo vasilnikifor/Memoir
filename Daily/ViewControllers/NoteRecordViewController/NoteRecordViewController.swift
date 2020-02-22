@@ -24,6 +24,13 @@ final class NoteRecordViewController: UIViewController {
         navigationItem.title = "Note"
         
         becomeKeyboardShowingObserver()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "trash") ?? UIImage(),
+            style: .done,
+            target: nil,
+            action: #selector(removeNote)
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,5 +87,16 @@ extension NoteRecordViewController {
                                           time: Date().time,
                                           text: noteTextView.text)
         }
+    }
+    
+    @objc
+    private func removeNote() {
+        if let noteRecord = noteRecord {
+            DAONoteService.removeNote(noteRecord)
+            delegate?.noteDidChange()
+        } else {
+            noteTextView.text = nil
+        }
+        dismiss()
     }
 }

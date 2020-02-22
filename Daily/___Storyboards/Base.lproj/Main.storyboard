@@ -906,7 +906,7 @@
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Note" id="l2A-Ko-VQB" userLabel="Navigation Item">
-                        <barButtonItem key="rightBarButtonItem" title="Remove note" image="trash" catalog="system" id="eOe-op-kjW">
+                        <barButtonItem key="rightBarButtonItem" title="Remove note" id="eOe-op-kjW">
                             <connections>
                                 <action selector="removeNoteButtonTapped:" destination="bOK-Nn-dGV" id="YUH-Rd-i5c"/>
                             </connections>
