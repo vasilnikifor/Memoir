@@ -45,12 +45,13 @@ class DayViewController: UIViewController {
             }
             
         case "openImageRecordView":
-            if let imageVC = segue.destination as? ImageRecordViewController {
-                imageVC.dayDate = dayDate
-                if let record = sender as? ImageRecord {
-                    imageVC.record = record
-                }
-            }
+            break
+//            if let imageVC = segue.destination as? ImageRecordViewController {
+//                imageVC.dayDate = dayDate
+//                if let record = sender as? ImageRecord {
+//                    imageVC.record = record
+//                }
+//            }
             
         case "goToDayRater":
             if let dayRateVC = segue.destination as? DayRateViewController {
