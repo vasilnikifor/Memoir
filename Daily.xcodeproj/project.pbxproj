@@ -214,14 +214,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		8472597122ABFC8700BCBA42 /* ___Managers */ = {
-			isa = PBXGroup;
-			children = (
-				846BA3982256443200595D61 /* CalendarDrawer.swift */,
-			);
-			path = "___Managers";
-			sourceTree = "<group>";
-		};
 		84D6840F222D6AD5003F08F9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +241,7 @@
 			children = (
 				84F8916E22290E8D00956265 /* CcalendarViewController.swift */,
 				846DF5B122B6604E0095A065 /* DayViewController.swift */,
+				846BA3982256443200595D61 /* CalendarDrawer.swift */,
 			);
 			path = "___ViewControllers";
 			sourceTree = "<group>";
@@ -274,7 +267,6 @@
 			children = (
 				84FB729722ABF39400DA7CE2 /* ___Storyboards */,
 				84F796A22233A5AC00596CD5 /* ___ViewControllers */,
-				8472597122ABFC8700BCBA42 /* ___Managers */,
 				2DD0AFD9239194EC009BED48 /* ViewControllers */,
 				84FF3F3423071A9300CEF093 /* Views */,
 				84F796A12233A58E00596CD5 /* Models */,
