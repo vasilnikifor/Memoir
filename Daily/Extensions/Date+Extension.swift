@@ -1,7 +1,7 @@
 import Foundation
 
 extension Date {
-    private var calendar: Calendar {
+    var calendar: Calendar {
         return Calendar.current
     }
     

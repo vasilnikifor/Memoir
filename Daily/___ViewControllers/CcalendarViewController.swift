@@ -1,6 +1,6 @@
 import UIKit
 
-class CalendarViewController: UIViewController {
+class CcalendarViewController: UIViewController {
  
     // MARK: - Private propertis
     
@@ -67,8 +67,8 @@ class CalendarViewController: UIViewController {
     }
     
     private func setViewSettings() {
-        addSwipe(action: #selector(showPreviousMonth), direction: .right)
-        addSwipe(action: #selector(showNextMonth), direction: .left)
+//        addSwipe(action: #selector(swipeToPreviousMonth), direction: .right)
+//        addSwipe(action: #selector(swipeToNextMonth), direction: .left)
     }
     
     private func addSwipe(action: Selector, direction: UISwipeGestureRecognizer.Direction) {
@@ -181,6 +181,10 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    @IBAction func openNewCalendar(_ sender: Any) {
+        let calendar = CalendarViewController.loadFromNib()
+        push(calendar)
+    }
 }
 
 

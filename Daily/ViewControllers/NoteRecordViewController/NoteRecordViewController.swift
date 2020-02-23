@@ -84,7 +84,7 @@ extension NoteRecordViewController {
             }
         } else if !noteTextView.text.isEmpty {
             _ = DAONoteService.createNote(dayDate: date,
-                                          time: Date().time,
+                                          time: date.time,
                                           text: noteTextView.text)
         }
     }

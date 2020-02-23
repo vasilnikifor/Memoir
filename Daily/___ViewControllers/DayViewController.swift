@@ -35,31 +35,31 @@ class DayViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "openNoteRecordView":
-            if let noteVC = segue.destination as? NoteRecordViewController {
+//        switch segue.identifier {
+//        case "openNoteRecordView":
+//            if let noteVC = segue.destination as? NoteRecordViewController {
 //                noteVC.dayDate = dayDate
 //                if let record = sender as? NoteRecord {
 //                    noteVC.record = record
 //                }
-            }
-            
-        case "openImageRecordView":
-            if let imageVC = segue.destination as? ImageRecordViewController {
-                imageVC.dayDate = dayDate
-                if let record = sender as? ImageRecord {
-                    imageVC.record = record
-                }
-            }
-            
-        case "goToDayRater":
-            if let dayRateVC = segue.destination as? DayRateViewController {
-                dayRateVC.dayDate = dayDate
-            }
-            
-        default:
-            return
-        }
+//            }
+//
+//        case "openImageRecordView":
+//            if let imageVC = segue.destination as? ImageRecordViewController {
+//                imageVC.dayDate = dayDate
+//                if let record = sender as? ImageRecord {
+//                    imageVC.record = record
+//                }
+//            }
+//
+//        case "goToDayRater":
+//            if let dayRateVC = segue.destination as? DayRateViewController {
+//                dayRateVC.dayDate = dayDate
+//            }
+//
+//        default:
+//            return
+//        }
     }
     
     private func dayRareDidChanged() {

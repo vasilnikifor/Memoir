@@ -102,8 +102,10 @@ extension DayRecordsListViewController: UITableViewDelegate {
             let noteView = NoteRecordViewController.loadFromNib()
             noteView.configure(NoteRecordViewModel(date: date, noteRecord: noteRecord), delegate: self)
             push(noteView)
-        } else if let record = records[indexPath.row] as? ImageRecord {
-            print(record)
+        } else if let imageRecord = records[indexPath.row] as? ImageRecord {
+            let imageRecordView = ImageRceordViewController.loadFromNib()
+            imageRecordView.configure(ImageRecordViewModel(date: date, imageRecord: imageRecord), delegate: self)
+            push(imageRecordView)
         }
     }
 }
@@ -141,6 +143,13 @@ extension DayRecordsListViewController: SelectRateDelegate {
 // MARK: - NoteRecordDelegate
 extension DayRecordsListViewController: NoteRecordDelegate {
     func noteDidChange() {
+        update()
+    }
+}
+
+// MARK: - ImageRecordDelegate
+extension DayRecordsListViewController: ImageRecordDelegate {
+    func imageRecordDidChange() {
         update()
     }
 }

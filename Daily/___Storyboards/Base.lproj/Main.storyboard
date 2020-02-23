@@ -7,18 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--DayRateViewController-->
-        <scene sceneID="TxB-x5-NUx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DayRate" referencedIdentifier="DayRateViewController" id="vtG-Qu-6Jd" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hmx-lB-kKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="484" y="697"/>
-        </scene>
         <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController restorationIdentifier="CalendarViewController" storyboardIdentifier="CalendarViewController" title="Calendar" id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CalendarViewController" storyboardIdentifier="CalendarViewController" title="Calendar" id="BYZ-38-t0r" customClass="CcalendarViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -646,6 +638,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4y-Lu-Yxp">
+                                <rect key="frame" x="111" y="594" width="152" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="С новому календарю"/>
+                                <connections>
+                                    <action selector="openNewCalendar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BZm-0Y-8pK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -710,7 +710,6 @@
                         <outletCollection property="weekDayLabel" destination="5Ea-4N-SpQ" collectionClass="NSMutableArray" id="ffd-64-s7u"/>
                         <outletCollection property="dayButtons" destination="LRs-ID-rGB" collectionClass="NSMutableArray" id="KZy-0c-xLb"/>
                         <segue destination="lfX-gW-mgb" kind="show" identifier="openerDayView" id="8ot-zX-vGS"/>
-                        <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRaterFromCalendar" id="vDd-aZ-qzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -821,7 +820,6 @@
                     <connections>
                         <outlet property="rateDayButton" destination="peh-Dy-YPB" id="3ko-n7-bvI"/>
                         <outlet property="tableView" destination="BhI-jY-IXQ" id="uAp-UZ-pCg"/>
-                        <segue destination="vtG-Qu-6Jd" kind="show" identifier="goToDayRater" id="vW8-JP-BAE"/>
                         <segue destination="bOK-Nn-dGV" kind="show" identifier="openNoteRecordView" id="wNM-no-UsY"/>
                         <segue destination="ePx-lq-ng2" kind="show" identifier="openImageRecordView" id="qb7-hc-obk"/>
                     </connections>
@@ -830,10 +828,10 @@
             </objects>
             <point key="canvasLocation" x="933.60000000000002" y="241.52923538230885"/>
         </scene>
-        <!--Image Record View Controller-->
+        <!--View Controller-->
         <scene sceneID="JIL-ba-xDc">
             <objects>
-                <viewController id="ePx-lq-ng2" customClass="ImageRecordViewController" customModule="Daily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ePx-lq-ng2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lvO-1p-xwL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -906,7 +904,7 @@
                         <viewLayoutGuide key="safeArea" id="iUl-Hd-bjL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Note" id="l2A-Ko-VQB" userLabel="Navigation Item">
-                        <barButtonItem key="rightBarButtonItem" title="Remove note" id="eOe-op-kjW">
+                        <barButtonItem key="rightBarButtonItem" title="Remove note" image="square.and.arrow.down.on.square.fill" catalog="system" id="eOe-op-kjW">
                             <connections>
                                 <action selector="removeNoteButtonTapped:" destination="bOK-Nn-dGV" id="YUH-Rd-i5c"/>
                             </connections>
@@ -947,9 +945,7 @@
         <image name="doc.text" catalog="system" width="56" height="64"/>
         <image name="photo" catalog="system" width="64" height="46"/>
         <image name="smoke" catalog="system" width="64" height="46"/>
+        <image name="square.and.arrow.down.on.square.fill" catalog="system" width="60" height="64"/>
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="vDd-aZ-qzV"/>
-    </inferredMetricsTieBreakers>
 </document>
