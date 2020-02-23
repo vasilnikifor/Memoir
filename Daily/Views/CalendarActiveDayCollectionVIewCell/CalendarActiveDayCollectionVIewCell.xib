@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CalendarActiveDayCollectionVIewCell" customModule="Daily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbU-QR-STs" userLabel="Cirlcle View">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="rbU-QR-STs" secondAttribute="height" multiplier="1:1" id="W8o-fJ-Zks"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1O-xm-tAF" customClass="MediumPrimaryTextLabel" customModule="Daily" customModuleProvider="target">
+                        <rect key="frame" x="25" y="25" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="rbU-QR-STs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DuR-5n-Z6W"/>
+                <constraint firstItem="M1O-xm-tAF" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Eq9-Tn-5Sg"/>
+                <constraint firstAttribute="trailing" secondItem="rbU-QR-STs" secondAttribute="trailing" id="Zch-Zd-9DO"/>
+                <constraint firstItem="M1O-xm-tAF" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="eBQ-rd-ddh"/>
+                <constraint firstItem="rbU-QR-STs" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="jtX-sf-uaV"/>
+                <constraint firstItem="rbU-QR-STs" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tbW-cp-EJY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="circleView" destination="rbU-QR-STs" id="We2-QT-uV9"/>
+                <outlet property="dateLabel" destination="M1O-xm-tAF" id="pIo-0p-vry"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>
