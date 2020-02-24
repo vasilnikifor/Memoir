@@ -26,11 +26,11 @@ final class CalendarViewController: UIViewController {
         calendarCollectionView.register(CalendarInactiveDayCollectionViewCell.nib, forCellWithReuseIdentifier: CalendarInactiveDayCollectionViewCell.nibName)
         calendarCollectionView.register(CalendarActiveDayCollectionVIewCell.nib, forCellWithReuseIdentifier: CalendarActiveDayCollectionVIewCell.nibName)
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToPreviousMonth))
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToNextMonth))
         leftSwipe.direction = .left
         view.addGestureRecognizer(leftSwipe)
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToNextMonth))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToPreviousMonth))
         rightSwipe.direction = .right
         view.addGestureRecognizer(rightSwipe)
         
@@ -70,7 +70,7 @@ extension CalendarViewController {
     }
     
     private func setDefaultTransparenceOnNavigationController() {
-
+        navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.isTranslucent = true
     }
