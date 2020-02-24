@@ -11,10 +11,11 @@ final class CalendarCellFactory {
         
         var processingDate = month.firstMonthCalendarDate.startOfDay
         let lastCalendarDate = month.lastMonthCalendarDate.startOfDay
+        let todayDate = Date().startOfDay
         
         while processingDate <= lastCalendarDate {
             if processingDate.firstDayOfMonth == month.firstDayOfMonth {
-                cells.append(.activeDay(CalendarActiveDayViewModel(date: processingDate)))
+                cells.append(.activeDay(CalendarActiveDayViewModel(date: processingDate, isHighlited: processingDate == todayDate)))
             } else {
                 cells.append(.inactiveDay(CalendarInactiveDayViewModel(date: processingDate)))
             }

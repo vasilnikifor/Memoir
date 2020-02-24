@@ -23,7 +23,12 @@
                             <constraint firstAttribute="width" secondItem="rbU-QR-STs" secondAttribute="height" multiplier="1:1" id="W8o-fJ-Zks"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1O-xm-tAF" customClass="MediumPrimaryTextLabel" customModule="Daily" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1O-xm-tAF" customClass="MediumPrimaryTextLabel" customModule="Daily" customModuleProvider="target">
+                        <rect key="frame" x="25" y="25" width="0.0" height="0.0"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-85-jfl" customClass="LargeMediumBoldPrimaryTextLabel" customModule="Daily" customModuleProvider="target">
                         <rect key="frame" x="25" y="25" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -34,7 +39,9 @@
             <constraints>
                 <constraint firstItem="rbU-QR-STs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DuR-5n-Z6W"/>
                 <constraint firstItem="M1O-xm-tAF" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Eq9-Tn-5Sg"/>
+                <constraint firstItem="nFw-85-jfl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="S0W-CA-zTt"/>
                 <constraint firstAttribute="trailing" secondItem="rbU-QR-STs" secondAttribute="trailing" id="Zch-Zd-9DO"/>
+                <constraint firstItem="nFw-85-jfl" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="bK1-iG-aUs"/>
                 <constraint firstItem="M1O-xm-tAF" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="eBQ-rd-ddh"/>
                 <constraint firstItem="rbU-QR-STs" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="jtX-sf-uaV"/>
                 <constraint firstItem="rbU-QR-STs" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tbW-cp-EJY"/>
@@ -43,6 +50,7 @@
             <connections>
                 <outlet property="circleView" destination="rbU-QR-STs" id="We2-QT-uV9"/>
                 <outlet property="dateLabel" destination="M1O-xm-tAF" id="pIo-0p-vry"/>
+                <outlet property="highlightedDateLabel" destination="nFw-85-jfl" id="8ex-ar-Kg3"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </collectionViewCell>

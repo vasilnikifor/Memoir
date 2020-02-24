@@ -21,16 +21,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ty-zB-WzY" userLabel="Month View">
-                    <rect key="frame" x="20" y="84" width="374" height="52.5"/>
+                    <rect key="frame" x="20" y="84" width="374" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBs-9o-FaC" customClass="LargePrimaryLabel" customModule="Daily" customModuleProvider="target">
-                            <rect key="frame" x="65.5" y="16" width="243" height="20.5"/>
+                            <rect key="frame" x="56" y="16" width="262" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Aw-sf-UE4" userLabel="Previous Month Button">
-                            <rect key="frame" x="38" y="15.5" width="19.5" height="22"/>
+                            <rect key="frame" x="8" y="20" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="4DB-fN-5sN"/>
+                                <constraint firstAttribute="height" constant="40" id="x5L-bK-veJ"/>
+                            </constraints>
                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <state key="normal" image="arrow.left" catalog="system">
                                 <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -40,7 +44,11 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3y9-Yd-ukg" userLabel="Next Month Button">
-                            <rect key="frame" x="316.5" y="15.5" width="19.5" height="22"/>
+                            <rect key="frame" x="326" y="20" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="48i-hl-4o8"/>
+                                <constraint firstAttribute="height" constant="40" id="TfF-sU-TzH"/>
+                            </constraints>
                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <state key="normal" image="arrow.right" catalog="system">
                                 <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -56,14 +64,15 @@
                         <constraint firstItem="JBs-9o-FaC" firstAttribute="top" secondItem="5Ty-zB-WzY" secondAttribute="top" constant="16" id="0qY-43-OEI"/>
                         <constraint firstItem="3y9-Yd-ukg" firstAttribute="centerY" secondItem="5Ty-zB-WzY" secondAttribute="centerY" id="EQa-os-mho"/>
                         <constraint firstItem="5Aw-sf-UE4" firstAttribute="centerY" secondItem="5Ty-zB-WzY" secondAttribute="centerY" id="G2e-Ts-mum"/>
-                        <constraint firstItem="5Aw-sf-UE4" firstAttribute="leading" secondItem="5Ty-zB-WzY" secondAttribute="leadingMargin" constant="30" id="GYf-HE-i95"/>
-                        <constraint firstAttribute="trailingMargin" secondItem="3y9-Yd-ukg" secondAttribute="trailing" constant="30" id="NYc-Jm-bIO"/>
+                        <constraint firstItem="5Aw-sf-UE4" firstAttribute="leading" secondItem="5Ty-zB-WzY" secondAttribute="leadingMargin" id="GYf-HE-i95"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="3y9-Yd-ukg" secondAttribute="trailing" id="NYc-Jm-bIO"/>
                         <constraint firstAttribute="bottom" secondItem="JBs-9o-FaC" secondAttribute="bottom" constant="16" id="e2r-bg-3Mj"/>
                         <constraint firstItem="JBs-9o-FaC" firstAttribute="leading" secondItem="5Aw-sf-UE4" secondAttribute="trailing" constant="8" id="iLD-FP-vgt"/>
+                        <constraint firstItem="3y9-Yd-ukg" firstAttribute="top" secondItem="5Ty-zB-WzY" secondAttribute="top" constant="20" symbolic="YES" id="jl2-4c-9dT"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QVy-EB-qpD" userLabel="Weekdays Collection View">
-                    <rect key="frame" x="20" y="166.5" width="374" height="50"/>
+                    <rect key="frame" x="20" y="194" width="374" height="50"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Lgm-vK-MaV"/>
@@ -76,7 +85,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ubu-qP-huZ" userLabel="Calendar Collection View">
-                    <rect key="frame" x="20" y="224.5" width="374" height="637.5"/>
+                    <rect key="frame" x="20" y="252" width="374" height="610"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lkJ-OH-aJr">
                         <size key="itemSize" width="50" height="50"/>

@@ -39,6 +39,7 @@
 		84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */; };
 		C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */; };
 		C100E1E023ED9F8700B69182 /* SelectRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */; };
+		C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */; };
 		C15815E52400437E0060B9FA /* DAOService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E42400437E0060B9FA /* DAOService.swift */; };
 		C15815E72400474C0060B9FA /* DAODayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E62400474C0060B9FA /* DAODayService.swift */; };
 		C15815E9240047DF0060B9FA /* DAOImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E8240047DF0060B9FA /* DAOImageService.swift */; };
@@ -95,6 +96,7 @@
 		84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRateTableViewCell.xib; sourceTree = "<group>"; };
 		C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRateViewController.swift; sourceTree = "<group>"; };
 		C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRateViewController.xib; sourceTree = "<group>"; };
+		C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumHilightedPrimaryTextLabel.swift; sourceTree = "<group>"; };
 		C15815E42400437E0060B9FA /* DAOService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOService.swift; sourceTree = "<group>"; };
 		C15815E62400474C0060B9FA /* DAODayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAODayService.swift; sourceTree = "<group>"; };
 		C15815E8240047DF0060B9FA /* DAOImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOImageService.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				2DD0AFC823917377009BED48 /* SmallSecondaryTextLabel.swift */,
 				C1DC1FFE2402BFDF00142690 /* MediumSecondaryTextLabel.swift */,
 				2DD0AFCA239177D0009BED48 /* MediumPrimaryTextLabel.swift */,
+				C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */,
 				2DD0AFCE23917C81009BED48 /* LargePrimaryLabel.swift */,
 				C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */,
 			);
@@ -471,6 +474,7 @@
 			files = (
 				2DD0AFD7239194AF009BED48 /* DayRecordsListViewController.swift in Sources */,
 				C1DC1FFD2402B7F300142690 /* CalendarCellFactory.swift in Sources */,
+				C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */,
 				84F8916F22290E8D00956265 /* CcalendarViewController.swift in Sources */,
 				C1DC1FF0240295A300142690 /* CalendarViewController.swift in Sources */,
 				846BA3992256443200595D61 /* CalendarDrawer.swift in Sources */,
