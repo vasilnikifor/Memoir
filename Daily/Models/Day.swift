@@ -23,6 +23,6 @@ public class Day: NSManagedObject {
     }
     
     var isEmpty: Bool {
-        return (records ?? NSSet()).count == 0 && dayRate == 0
+        return (records ?? NSSet()).count == 0 && rate == .noRate
     }
 }

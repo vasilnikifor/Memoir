@@ -1,6 +1,10 @@
 import UIKit
 
-class CalendarViewController: UIViewController {
+protocol CalendarDelegate {
+    func update()
+}
+
+final class CalendarViewController: UIViewController {
     @IBOutlet private weak var monthLabel: LargePrimaryLabel!
     @IBOutlet private weak var weekdaysCollectionView: UICollectionView!
     @IBOutlet private weak var calendarCollectionView: UICollectionView!
@@ -46,7 +50,7 @@ class CalendarViewController: UIViewController {
     }
 }
 
-// MARK: - Private methods
+// MARK: - Actions
 extension CalendarViewController {
     @IBAction func tapToPreviousMonth(_ sender: Any) {
         handelChangeMonth(by: -1)
@@ -59,20 +63,14 @@ extension CalendarViewController {
 
 // MARK: - Private methods
 extension CalendarViewController {
-    private func update() {
-        monthLabel.text = month.monthRepresentation
-        
-        calendarDataSours = CalendarCellFactory.configure(month: month)
-        calendarCollectionView.reloadData()
-    }
-    
-    private func setTransparencyOnNavigationController() { navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    private func setTransparencyOnNavigationController() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
     }
     
     private func setDefaultTransparenceOnNavigationController() {
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -93,8 +91,35 @@ extension CalendarViewController {
     }
 }
 
+
+// MARK: - CalendarDelegate
+extension CalendarViewController: CalendarDelegate {
+    func update() {
+        monthLabel.text = month.monthRepresentation
+        
+        calendarDataSours = CalendarCellFactory.configure(month: month)
+        calendarCollectionView.reloadData()
+    }
+}
+
 // MARK: - UICollectionViewDelegate
-extension CalendarViewController: UICollectionViewDelegate { }
+extension CalendarViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case calendarCollectionView:
+            switch calendarDataSours[indexPath.row] {
+            case .activeDay(let viewModel):
+                let dayRecordsList = DayRecordsListViewController.loadFromNib()
+                dayRecordsList.configure(date: viewModel.date, delegate: self)
+                push(dayRecordsList)
+            default:
+                break
+            }
+        default:
+            break
+        }
+    }
+}
 
 // MARK: - UICollectionViewDataSource
 extension CalendarViewController: UICollectionViewDataSource {
@@ -107,7 +132,6 @@ extension CalendarViewController: UICollectionViewDataSource {
         default:
             return 0
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

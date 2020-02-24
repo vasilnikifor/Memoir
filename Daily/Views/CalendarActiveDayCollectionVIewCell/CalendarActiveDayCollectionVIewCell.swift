@@ -2,6 +2,7 @@ import UIKit
 
 struct CalendarActiveDayViewModel {
     let date: Date
+    let dayColor: UIColor
     let isHighlited: Bool
 }
 
@@ -23,5 +24,7 @@ class CalendarActiveDayCollectionVIewCell: UICollectionViewCell {
             dateLabel.text = viewModel.date.dateNumber
             highlightedDateLabel.text = nil
         }
+        
+        circleView.backgroundColor = viewModel.dayColor
     }
 }

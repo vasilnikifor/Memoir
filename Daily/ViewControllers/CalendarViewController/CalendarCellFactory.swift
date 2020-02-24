@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 enum CalendarCellTypes {
     case inactiveDay(CalendarInactiveDayViewModel)
@@ -9,24 +9,38 @@ final class CalendarCellFactory {
     static func configure(month: Date) -> [CalendarCellTypes] {
         var cells: [CalendarCellTypes] = []
         
+        let daysOfMonth = DAODayService.getAllDaysOfMounth(month)
         var processingDate = month.firstMonthCalendarDate.startOfDay
         let lastCalendarDate = month.lastMonthCalendarDate.startOfDay
         let todayDate = Date().startOfDay
         
         while processingDate <= lastCalendarDate {
             if processingDate.firstDayOfMonth == month.firstDayOfMonth {
-                cells.append(.activeDay(CalendarActiveDayViewModel(date: processingDate, isHighlited: processingDate == todayDate)))
+                let day = getDay(daysOfMonth: daysOfMonth, date: processingDate)
+                let dayColor = (day?.isEmpty ?? true) ? .clear : Theme.getRateColor(day?.rate)
+                let viewModel = CalendarActiveDayViewModel(date: processingDate,
+                                                           dayColor: dayColor,
+                                                           isHighlited: processingDate == todayDate)
+                cells.append(.activeDay(viewModel))
             } else {
                 cells.append(.inactiveDay(CalendarInactiveDayViewModel(date: processingDate)))
             }
             processingDate = processingDate.addDays(1)
         }
-//        let daysOfMonth = DAODayService.getAllDaysOfMounth(month)
-//        let firstDayOfMonth = month.firstDayOfMonth
-//
-//        firstDayOfMonth.addDays(-(Calendar.current.component(.weekday, from: firstDayOfMonth)-1)).startOfDay
         
         return cells
+    }
+}
+
+// MARK: - Private methods
+extension CalendarCellFactory {
+    private static func getDay(daysOfMonth: [Day], date: Date) -> Day? {
+        for index in daysOfMonth.indices {
+            if daysOfMonth[index].date == date.startOfDay {
+                return daysOfMonth[index]
+            }
+        }
+        return nil
     }
 }
 

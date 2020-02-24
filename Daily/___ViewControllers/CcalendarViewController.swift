@@ -18,23 +18,9 @@ class CcalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setViewSettings()
+
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setTransparencyOnNavigationController()
-        
-        drawCalendar()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        setDefaultTransparenceOnNavigationController()
-    }
+
     
     // MARK: - Navigations
     
@@ -48,38 +34,10 @@ class CcalendarViewController: UIViewController {
     
     // MARK: - Private methods
     
-    private func setTransparencyOnNavigationController() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-    }
-    
-    private func setDefaultTransparenceOnNavigationController() {
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.isTranslucent = true
-    }
-    
     private func drawCalendar() {
         drawWeekDays()
         fillMonthLabel(month: month)
         drawCalendarDayButtons()
-    }
-    
-    private func setViewSettings() {
-//        addSwipe(action: #selector(swipeToPreviousMonth), direction: .right)
-//        addSwipe(action: #selector(swipeToNextMonth), direction: .left)
-    }
-    
-    private func addSwipe(action: Selector, direction: UISwipeGestureRecognizer.Direction) {
-        let swipe = UISwipeGestureRecognizer(target: self, action: action)
-        swipe.direction = direction
-        view.addGestureRecognizer(swipe)
-    }
-    
-    private func handelChangeMonth(by: Int) {
-        month = month.addMonths(by)
-        drawCalendar()
     }
 
     private func drawCalendarDayButtons() {
@@ -153,37 +111,6 @@ class CcalendarViewController: UIViewController {
             let label = weekDayLabel[index]
             label.text = Calendar.current.shortWeekdaySymbols[index]
         }
-    }
-    
-    @objc private func showNextMonth() {
-        handelChangeMonth(by: 1)
-    }
-    
-    @objc private func showPreviousMonth() {
-        handelChangeMonth(by: -1)
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func openDay(_ sender: UIButton) {
-        let dayRecordsList = DayRecordsListViewController.loadFromNib()
-        dayRecordsList.configure(date: (dayButtonMatch[sender] as? Date) ?? Date())
-        push(dayRecordsList)
-        
-        //performSegue(withIdentifier: "openerDayView", sender: dayButtonMatch[sender])
-    }
-    
-    @IBAction func changeMonth(_ sender: UIButton) {
-        if sender.restorationIdentifier == "previousMonth" {
-            showPreviousMonth()
-        } else if sender.restorationIdentifier == "nextMonth" {
-            showNextMonth()
-        }
-    }
-    
-    @IBAction func openNewCalendar(_ sender: Any) {
-        let calendar = CalendarViewController.loadFromNib()
-        push(calendar)
     }
 }
 

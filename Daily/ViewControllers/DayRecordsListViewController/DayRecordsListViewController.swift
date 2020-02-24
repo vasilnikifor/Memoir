@@ -11,6 +11,7 @@ final class DayRecordsListViewController: UIViewController {
     
     private var date: Date = Date()
     private var records: [Record] = []
+    private var delegate: CalendarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,9 @@ final class DayRecordsListViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func configure(date: Date) {
+    func configure(date: Date, delegate: CalendarDelegate) {
         self.date = date
+        self.delegate = delegate
         
         update()
     }
@@ -92,6 +94,8 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
         navigationItem.titleView = titleView
         
         tableView.reloadData()
+        
+        delegate?.update()
     }
 }
 

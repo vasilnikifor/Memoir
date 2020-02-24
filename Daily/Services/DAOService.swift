@@ -1,6 +1,6 @@
 import CoreData
 
-final class DAOService {
+class DAOService {
     static var shared = DAOService()
     
     private init() { }

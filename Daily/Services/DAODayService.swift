@@ -56,7 +56,7 @@ final class DAODayService: DAOService {
         request.predicate = NSPredicate(format: "month = %@", monthForFind as CVarArg)
         
         do {
-            return try AppDelegate.viewContext.fetch(request)
+            return try viewContext.fetch(request)
         } catch {}
         
         return []
