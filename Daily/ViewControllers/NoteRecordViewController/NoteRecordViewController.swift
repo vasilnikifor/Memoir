@@ -15,6 +15,7 @@ final class NoteRecordViewController: UIViewController {
     @IBOutlet private weak var noteTextViewBottomConstratint: NSLayoutConstraint!
     
     private var date: Date = Date()
+    private var time: Date = Date()
     private var noteRecord: NoteRecord?
     private var delegate: NoteRecordDelegate?
     
@@ -60,15 +61,11 @@ final class NoteRecordViewController: UIViewController {
         self.delegate = delegate
         
         date = viewModel.date
+        time = viewModel.noteRecord?.time?.time ?? Date()
         noteRecord = viewModel.noteRecord
         
-        if let noteRecord = noteRecord, let time = noteRecord.time, let text = noteRecord.text {
-            timeLabel.text = time.timeRepresentation
-            noteTextView.text = text
-        } else {
-            timeLabel.text = Date().timeRepresentation
-            noteTextView.text = nil
-        }
+        noteTextView.text = noteRecord?.text
+        timeLabel.text = time.timeRepresentation
     }
 }
 
@@ -83,9 +80,9 @@ extension NoteRecordViewController {
                 DAOService.saveContext()
             }
         } else if !noteTextView.text.isEmpty {
-            _ = DAONoteService.createNote(dayDate: date,
-                                          time: date.time,
-                                          text: noteTextView.text)
+            DAONoteService.createNote(dayDate: date,
+                                      time: time,
+                                      text: noteTextView.text)
         }
     }
     

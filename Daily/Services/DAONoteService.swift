@@ -1,6 +1,7 @@
 import CoreData
 
 final class DAONoteService: DAOService {
+    @discardableResult
     static func createNote(dayDate: Date, time: Date, text: String) -> NoteRecord {
         let day = DAODayService.findOrCreateDay(date: dayDate)
         

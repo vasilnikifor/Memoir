@@ -1,6 +1,7 @@
 import CoreData
 
 class DAOImageService: DAOService {
+    @discardableResult
     static func createImage(dayDate: Date, time: Date, imageData: Data) -> ImageRecord {
         let day = DAODayService.findOrCreateDay(date: dayDate)
         
