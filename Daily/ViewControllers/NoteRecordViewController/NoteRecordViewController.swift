@@ -22,7 +22,7 @@ final class NoteRecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Note"
+        navigationItem.title = Localized.note
         
         becomeKeyboardShowingObserver()
         

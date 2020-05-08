@@ -35,15 +35,15 @@ final class DayRecordsListViewController: UIViewController {
 // MARK: - Actions
 extension DayRecordsListViewController {
     @IBAction func rateDay(_ sender: Any) {
-        let rateDay = SelectRateViewController.loadFromNib()
+        let rateDay = DayRatingViewController.loadFromNib()
         rateDay.configure(date: date, delegate: self)
-        push(rateDay)
+        present(rateDay)
     }
     
     @IBAction func addNote(_ sender: Any) {
         let note = NoteRecordViewController.loadFromNib()
         note.configure(NoteRecordViewModel(date: date, noteRecord: nil), delegate: self)
-        push(note)
+        present(note)
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -104,11 +104,11 @@ extension DayRecordsListViewController: UITableViewDelegate {
         if let noteRecord = records[indexPath.row] as? NoteRecord {
             let noteView = NoteRecordViewController.loadFromNib()
             noteView.configure(NoteRecordViewModel(date: date, noteRecord: noteRecord), delegate: self)
-            push(noteView)
+            present(noteView)
         } else if let imageRecord = records[indexPath.row] as? ImageRecord {
             let imageRecordView = ImageRceordViewController.loadFromNib()
             imageRecordView.configure(ImageRecordViewModel(date: date, imageRecord: imageRecord), delegate: self)
-            push(imageRecordView)
+            present(imageRecordView)
         }
     }
 }

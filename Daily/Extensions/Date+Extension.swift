@@ -1,8 +1,17 @@
 import Foundation
 
 extension Date {
+    private var locale: Locale {
+        switch NSLocale.current {
+        default:
+            return Locale(identifier: "en_EN")
+        }
+    }
+    
     var calendar: Calendar {
-        return Calendar.current
+        var calendar = Calendar.current
+        calendar.locale = locale
+        return calendar
     }
     
     var firstDayOfMonth: Date {
@@ -27,18 +36,21 @@ extension Date {
     
     var timeRepresentation: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: self)
     }
     
     var dateRepresentation: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
         dateFormatter.dateFormat = "EE, MMM d"
         return dateFormatter.string(from: self)
     }
     
     var monthRepresentation: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
         dateFormatter.dateFormat = "MMMM yyyy"
         return dateFormatter.string(from: self)
     }

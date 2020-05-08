@@ -4,7 +4,7 @@ protocol SelectRateDelegate {
     func rateDidChange()
 }
 
-final class SelectRateViewController: UIViewController {
+final class DayRatingViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private var date: Date = Date()
@@ -20,7 +20,7 @@ final class SelectRateViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        navigationItem.title = "Day ratings"
+        navigationItem.title = Localized.dayRating
     }
 
     func configure(date: Date, delegate: SelectRateDelegate?) {
@@ -34,7 +34,7 @@ final class SelectRateViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension SelectRateViewController: UITableViewDelegate {
+extension DayRatingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DAODayService.setDayRate(dayDate: date.startOfDay, rate: DayRate.allCases[indexPath.row])
         delegate?.rateDidChange()
@@ -43,7 +43,7 @@ extension SelectRateViewController: UITableViewDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension SelectRateViewController: UITableViewDataSource {
+extension DayRatingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DayRate.allCases.count
     }

@@ -7,7 +7,7 @@ final class DAONoteService: DAOService {
         
         let noteRecord = NoteRecord(context: context)
         
-        noteRecord.day  = day
+        noteRecord.day = day
         noteRecord.time = time
         noteRecord.text = text
         

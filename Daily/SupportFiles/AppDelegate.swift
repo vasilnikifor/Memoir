@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: CalendarViewController())
         window?.makeKeyAndVisible()
-            
+        window?.tintColor = .label
+        
         return true
     }
 }

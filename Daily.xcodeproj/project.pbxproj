@@ -33,9 +33,10 @@
 		84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2F22FF01EE00CEF093 /* UIImageView+Extension.swift */; };
 		84FF3F3923071AF600CEF093 /* DayRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */; };
 		84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */; };
-		C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */; };
-		C100E1E023ED9F8700B69182 /* SelectRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */; };
+		C100E1DF23ED9F8700B69182 /* DayRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */; };
+		C100E1E023ED9F8700B69182 /* DayRatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */; };
 		C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */; };
+		C1443166245AA68100B9F5E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1443165245AA68100B9F5E5 /* Images.xcassets */; };
 		C15815E52400437E0060B9FA /* DAOService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E42400437E0060B9FA /* DAOService.swift */; };
 		C15815E72400474C0060B9FA /* DAODayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E62400474C0060B9FA /* DAODayService.swift */; };
 		C15815E9240047DF0060B9FA /* DAOImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E8240047DF0060B9FA /* DAOImageService.swift */; };
@@ -52,6 +53,8 @@
 		C1DC1FFF2402BFDF00142690 /* MediumSecondaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1FFE2402BFDF00142690 /* MediumSecondaryTextLabel.swift */; };
 		C1DC20032402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC20012402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift */; };
 		C1DC20042402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC20022402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib */; };
+		C1DCAE1C2465615E006A751B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1DCAE1E2465615E006A751B /* Localizable.strings */; };
+		C1DCAE2324658567006A751B /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCAE2224658567006A751B /* Localized.swift */; };
 		C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */; };
 		C1EBB28523F8269A001C3D94 /* NoteRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EBB28323F8269A001C3D94 /* NoteRecordViewController.swift */; };
 		C1EBB28623F8269A001C3D94 /* NoteRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1EBB28423F8269A001C3D94 /* NoteRecordViewController.xib */; };
@@ -79,16 +82,16 @@
 		84F8916C22290E8D00956265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F8917422290E8D00956265 /* Daily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Daily.xcdatamodel; sourceTree = "<group>"; };
 		84F8917622290E9000956265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		84F8917922290E9000956265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F8917B22290E9000956265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F8918522297AE700956265 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		84FF3F2922FEC4C100CEF093 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		84FF3F2F22FF01EE00CEF093 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateTableViewCell.swift; sourceTree = "<group>"; };
 		84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRateTableViewCell.xib; sourceTree = "<group>"; };
-		C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRateViewController.swift; sourceTree = "<group>"; };
-		C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRateViewController.xib; sourceTree = "<group>"; };
+		C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRatingViewController.swift; sourceTree = "<group>"; };
+		C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRatingViewController.xib; sourceTree = "<group>"; };
 		C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumHilightedPrimaryTextLabel.swift; sourceTree = "<group>"; };
+		C1443165245AA68100B9F5E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C15815E42400437E0060B9FA /* DAOService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOService.swift; sourceTree = "<group>"; };
 		C15815E62400474C0060B9FA /* DAODayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAODayService.swift; sourceTree = "<group>"; };
 		C15815E8240047DF0060B9FA /* DAOImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOImageService.swift; sourceTree = "<group>"; };
@@ -105,6 +108,9 @@
 		C1DC1FFE2402BFDF00142690 /* MediumSecondaryTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumSecondaryTextLabel.swift; sourceTree = "<group>"; };
 		C1DC20012402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActiveDayCollectionVIewCell.swift; sourceTree = "<group>"; };
 		C1DC20022402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarActiveDayCollectionVIewCell.xib; sourceTree = "<group>"; };
+		C1DCAE1D2465615E006A751B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C1DCAE2224658567006A751B /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		C1DCAE2524659AEB006A751B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLable.swift; sourceTree = "<group>"; };
 		C1EBB28323F8269A001C3D94 /* NoteRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecordViewController.swift; sourceTree = "<group>"; };
 		C1EBB28423F8269A001C3D94 /* NoteRecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteRecordViewController.xib; sourceTree = "<group>"; };
@@ -256,6 +262,8 @@
 				84D6840F222D6AD5003F08F9 /* Extensions */,
 				C15815E32400435D0060B9FA /* Services */,
 				2DD0AFC6239172E4009BED48 /* UI */,
+				C1DCAE2424658DF0006A751B /* Utilities */,
+				C1443164245AA64700B9F5E5 /* Resources */,
 				84F8918122294A2F00956265 /* SupportFiles */,
 			);
 			path = Daily;
@@ -289,8 +297,8 @@
 		C100E1DC23ED9F1300B69182 /* SelectRateViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C100E1DD23ED9F8700B69182 /* SelectRateViewController.swift */,
-				C100E1DE23ED9F8700B69182 /* SelectRateViewController.xib */,
+				C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */,
+				C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */,
 			);
 			path = SelectRateViewController;
 			sourceTree = "<group>";
@@ -302,6 +310,15 @@
 				C1DC1FEA24028A5700142690 /* ImageRceordViewController.xib */,
 			);
 			path = ImageRecordViewController;
+			sourceTree = "<group>";
+		};
+		C1443164245AA64700B9F5E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1443165245AA68100B9F5E5 /* Images.xcassets */,
+				C1DCAE1E2465615E006A751B /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		C15815E32400435D0060B9FA /* Services */ = {
@@ -350,6 +367,14 @@
 				C1DC20022402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib */,
 			);
 			path = CalendarActiveDayCollectionVIewCell;
+			sourceTree = "<group>";
+		};
+		C1DCAE2424658DF0006A751B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C1DCAE2224658567006A751B /* Localized.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		C1EBB28223F82672001C3D94 /* NoteRecordViewController */ = {
@@ -403,7 +428,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 84F8916022290E8D00956265;
 			productRefGroup = 84F8916A22290E8D00956265 /* Products */;
@@ -423,16 +447,18 @@
 				C1DC1FEC24028A5700142690 /* ImageRceordViewController.xib in Resources */,
 				84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */,
 				C1EBB28623F8269A001C3D94 /* NoteRecordViewController.xib in Resources */,
+				C1DCAE1C2465615E006A751B /* Localizable.strings in Resources */,
 				C1DC20042402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib in Resources */,
 				C1DC1FF62402A35B00142690 /* WeekdayCollectionViewCell.xib in Resources */,
 				2D8CE452232F67F500EC523E /* ImageRecordTableViewCell.xib in Resources */,
 				84F8917A22290E9000956265 /* LaunchScreen.storyboard in Resources */,
 				C1DC1FF1240295A300142690 /* CalendarViewController.xib in Resources */,
 				C1DC1FFB2402B68900142690 /* CalendarInactiveDayCollectionViewCell.xib in Resources */,
+				C1443166245AA68100B9F5E5 /* Images.xcassets in Resources */,
 				2DD0AFD8239194AF009BED48 /* DayRecordsListViewController.xib in Resources */,
 				2D9EEF38232B7E63002CCB49 /* NoteRecordTableViewCell.xib in Resources */,
 				84F8917722290E9000956265 /* Assets.xcassets in Resources */,
-				C100E1E023ED9F8700B69182 /* SelectRateViewController.xib in Resources */,
+				C100E1E023ED9F8700B69182 /* DayRatingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,10 +484,11 @@
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				2DD0AFCF23917C81009BED48 /* LargePrimaryLabel.swift in Sources */,
 				C1DC1FFF2402BFDF00142690 /* MediumSecondaryTextLabel.swift in Sources */,
+				C1DCAE2324658567006A751B /* Localized.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
 				84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */,
 				C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */,
-				C100E1DF23ED9F8700B69182 /* SelectRateViewController.swift in Sources */,
+				C100E1DF23ED9F8700B69182 /* DayRatingViewController.swift in Sources */,
 				2D0CFA15239220B700F8AFBB /* UIView+Extension.swift in Sources */,
 				2DD0AFC923917377009BED48 /* SmallSecondaryTextLabel.swift in Sources */,
 				C15815E72400474C0060B9FA /* DAODayService.swift in Sources */,
@@ -487,9 +514,17 @@
 		84F8917822290E9000956265 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84F8917922290E9000956265 /* Base */,
+				C1DCAE2524659AEB006A751B /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C1DCAE1E2465615E006A751B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1DCAE1D2465615E006A751B /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -499,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -560,6 +596,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

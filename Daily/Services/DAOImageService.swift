@@ -7,8 +7,8 @@ class DAOImageService: DAOService {
         
         let imageRecord = ImageRecord(context: context)
         
-        imageRecord.day       = day
-        imageRecord.time      = time
+        imageRecord.day = day
+        imageRecord.time = time
         imageRecord.imageData = imageData
         
         saveContext()

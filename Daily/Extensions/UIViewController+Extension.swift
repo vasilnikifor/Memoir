@@ -23,8 +23,23 @@ extension UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
+    func present(_ viewController: UIViewController) {
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .pageSheet
+        present(navigationController, animated: true, completion: nil)
+    }
+    
     func dismiss() {
-        navigationController?.popViewController(animated: true)
+        guard let navigationController = navigationController else {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+
+        if navigationController.viewControllers.count > 1 {
+            navigationController.popViewController(animated: true)
+        } else {
+            navigationController.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

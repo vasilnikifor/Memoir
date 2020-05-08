@@ -61,13 +61,13 @@ final class Theme {
     static func getRateName(_ rate: DayRate) -> String {
         switch rate {
         case .noRate:
-            return "No rate"
+            return Localized.noRate
         case .bad:
-            return "Bad day"
+            return Localized.badDay
         case .norm:
-            return "Average day"
+            return Localized.averageDay
         case .good:
-            return "Good day"
+            return Localized.goodDay
         }
     }
 }
