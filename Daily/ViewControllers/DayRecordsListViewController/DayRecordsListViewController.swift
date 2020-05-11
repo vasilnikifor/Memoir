@@ -161,7 +161,7 @@ extension DayRecordsListViewController: ImageRecordDelegate {
 extension DayRecordsListViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-            let imageData = pickedImage.jpegData(compressionQuality: 1.0) {
+            let imageData = pickedImage.getCompressedData() {
             DAOImageService.createImage(dayDate: date, time: Date().time, imageData: imageData)
             update()
         }

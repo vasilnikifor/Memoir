@@ -36,6 +36,7 @@
 		C100E1DF23ED9F8700B69182 /* DayRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */; };
 		C100E1E023ED9F8700B69182 /* DayRatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */; };
 		C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */; };
+		C138625A246970920066D7C6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1386259246970920066D7C6 /* UIImage+Extension.swift */; };
 		C1443166245AA68100B9F5E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1443165245AA68100B9F5E5 /* Images.xcassets */; };
 		C15815E52400437E0060B9FA /* DAOService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E42400437E0060B9FA /* DAOService.swift */; };
 		C15815E72400474C0060B9FA /* DAODayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E62400474C0060B9FA /* DAODayService.swift */; };
@@ -91,6 +92,7 @@
 		C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRatingViewController.swift; sourceTree = "<group>"; };
 		C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRatingViewController.xib; sourceTree = "<group>"; };
 		C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumHilightedPrimaryTextLabel.swift; sourceTree = "<group>"; };
+		C1386259246970920066D7C6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C1443165245AA68100B9F5E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C15815E42400437E0060B9FA /* DAOService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOService.swift; sourceTree = "<group>"; };
 		C15815E62400474C0060B9FA /* DAODayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAODayService.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				2D0CFA14239220B700F8AFBB /* UIView+Extension.swift */,
 				2D0CFA16239221FE00F8AFBB /* UIViewController+Extension.swift */,
 				84FF3F2F22FF01EE00CEF093 /* UIImageView+Extension.swift */,
+				C1386259246970920066D7C6 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				2D9EEF37232B7E63002CCB49 /* NoteRecordTableViewCell.swift in Sources */,
 				C1DC1FEB24028A5700142690 /* ImageRceordViewController.swift in Sources */,
 				8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */,
+				C138625A246970920066D7C6 /* UIImage+Extension.swift in Sources */,
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				C1DC1FFA2402B68900142690 /* CalendarInactiveDayCollectionViewCell.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
