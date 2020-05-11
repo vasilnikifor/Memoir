@@ -5,6 +5,7 @@ struct Localized {
     static let cansel = NSLocalizedString("cancel")
     
     static let note = NSLocalizedString("note")
+    static let image = NSLocalizedString("image")
     
     static let dayRating = NSLocalizedString("dayRating")
     static let noRate = NSLocalizedString("noRate")
