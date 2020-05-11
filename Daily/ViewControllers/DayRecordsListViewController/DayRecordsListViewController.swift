@@ -37,13 +37,13 @@ extension DayRecordsListViewController {
     @IBAction func rateDay(_ sender: Any) {
         let rateDay = DayRatingViewController.loadFromNib()
         rateDay.configure(date: date, delegate: self)
-        present(rateDay)
+        presentWithNavigationController(rateDay)
     }
     
     @IBAction func addNote(_ sender: Any) {
         let note = NoteRecordViewController.loadFromNib()
         note.configure(NoteRecordViewModel(date: date, noteRecord: nil), delegate: self)
-        present(note)
+        presentWithNavigationController(note)
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -54,7 +54,7 @@ extension DayRecordsListViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerController.SourceType.camera
-        present(imagePicker, animated: true, completion: nil)
+        present(imagePicker)
     }
     
     @IBAction func addImage(_ sender: Any) {
@@ -65,7 +65,7 @@ extension DayRecordsListViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        present(imagePicker)
     }
 }
 
@@ -104,18 +104,12 @@ extension DayRecordsListViewController: UITableViewDelegate {
         if let noteRecord = records[indexPath.row] as? NoteRecord {
             let noteView = NoteRecordViewController.loadFromNib()
             noteView.configure(NoteRecordViewModel(date: date, noteRecord: noteRecord), delegate: self)
-            present(noteView)
+            presentWithNavigationController(noteView)
         } else if let imageRecord = records[indexPath.row] as? ImageRecord {
             let imageRecordView = ImageRceordViewController.loadFromNib()
             imageRecordView.configure(ImageRecordViewModel(date: date, imageRecord: imageRecord), delegate: self)
-            present(imageRecordView)
+            presentWithNavigationController(imageRecordView)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //let action = UISwipeActionsConfiguration()
-        print(indexPath)
-        return nil
     }
 }
 
