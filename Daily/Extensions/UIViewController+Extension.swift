@@ -22,8 +22,6 @@ extension UIViewController {
     func push(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    
 
     func presentWithNavigationController(_ viewController: UIViewController) {
         let navigationController = UINavigationController(rootViewController: viewController)

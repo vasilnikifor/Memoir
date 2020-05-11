@@ -8,15 +8,26 @@ final class CalendarViewController: UIViewController {
     @IBOutlet private weak var monthLabel: LargePrimaryLabel!
     @IBOutlet private weak var weekdaysCollectionView: UICollectionView!
     @IBOutlet private weak var calendarCollectionView: UICollectionView!
+    @IBOutlet private weak var weekdaysCollectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var calendarCollectionViewHeightConstraint: NSLayoutConstraint!
     
     private var month = Date().firstDayOfMonth
     private let weekdaysNames: [String] = Calendar.current.shortWeekdaySymbols
     private var calendarDataSours: [CalendarCellTypes] = []
-    private let minimumInteritemSpacing: CGFloat = 8
+    private let minimumCollectionViewSpacing: CGFloat = 8
+    
+    private var calendarCellEdge: CGFloat {
+        let collectionViewWidth = calendarCollectionView.frame.width
+        let spacingWidth = minimumCollectionViewSpacing * CGFloat(weekdaysNames.count - 1)
+        return (collectionViewWidth - spacingWidth) / CGFloat(weekdaysNames.count)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        weekdaysCollectionViewHeightConstraint.constant = calendarCellEdge
+        calendarCollectionViewHeightConstraint.constant = calendarCellEdge * 6 + minimumCollectionViewSpacing * 5
+        
         weekdaysCollectionView.delegate = self
         weekdaysCollectionView.dataSource = self
         weekdaysCollectionView.register(WeekdayCollectionViewCell.nib, forCellWithReuseIdentifier: WeekdayCollectionViewCell.nibName)
@@ -96,7 +107,6 @@ extension CalendarViewController {
 extension CalendarViewController: CalendarDelegate {
     func update() {
         monthLabel.text = month.monthRepresentation
-        
         calendarDataSours = CalendarCellFactory.configure(month: month)
         calendarCollectionView.reloadData()
     }
@@ -160,13 +170,14 @@ extension CalendarViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewWidth = collectionView.frame.width
-        let spacingWidth = minimumInteritemSpacing * CGFloat(weekdaysNames.count - 1)
-        let edge = (collectionViewWidth - spacingWidth) / CGFloat(weekdaysNames.count)
-        return CGSize(width: edge, height: edge)
+        return CGSize(width: calendarCellEdge, height: calendarCellEdge)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumInteritemSpacing
+        return minimumCollectionViewSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumCollectionViewSpacing
     }
 }
