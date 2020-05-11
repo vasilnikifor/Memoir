@@ -1,6 +1,12 @@
+"yes" = "Yes";
+"cancel" = "Cancel";
+
 "note" = "Note";
+
 "dayRating" = "Day rating";
 "noRate" = "No rate";
 "badDay" = "Bad day";
 "averageDay" = "Average day";
 "goodDay" = "Good day";
+
+"doYouWantToDeleteTheRecord" = "Do you want to delete the record?";

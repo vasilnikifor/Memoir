@@ -88,12 +88,31 @@ extension NoteRecordViewController {
     
     @objc
     private func removeNote() {
-        if let noteRecord = noteRecord {
-            DAONoteService.removeNote(noteRecord)
-            delegate?.noteDidChange()
-        } else {
-            noteTextView.text = nil
-        }
-        dismiss()
+        let alert = UIAlertController(title: nil, message: Localized.doYouWantToDeleteTheRecord, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(
+                title: Localized.cansel,
+                style: .cancel,
+                handler: nil
+            )
+        )
+        alert.addAction(
+            UIAlertAction(
+                title: Localized.yes,
+                style: .default,
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    
+                    if let noteRecord = self.noteRecord {
+                        DAONoteService.removeNote(noteRecord)
+                        self.delegate?.noteDidChange()
+                    } else {
+                        self.noteTextView.text = nil
+                    }
+                    self.dismiss()
+                }
+            )
+        )
+        present(alert, animated: true, completion: nil)
     }
 }

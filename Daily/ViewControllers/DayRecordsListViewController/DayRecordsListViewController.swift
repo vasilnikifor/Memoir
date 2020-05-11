@@ -54,7 +54,7 @@ extension DayRecordsListViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerController.SourceType.camera
-        self.present(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func addImage(_ sender: Any) {
@@ -65,7 +65,7 @@ extension DayRecordsListViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        self.present(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -110,6 +110,12 @@ extension DayRecordsListViewController: UITableViewDelegate {
             imageRecordView.configure(ImageRecordViewModel(date: date, imageRecord: imageRecord), delegate: self)
             present(imageRecordView)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        //let action = UISwipeActionsConfiguration()
+        print(indexPath)
+        return nil
     }
 }
 

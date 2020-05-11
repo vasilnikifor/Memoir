@@ -47,10 +47,29 @@ class ImageRceordViewController: UIViewController {
 extension ImageRceordViewController {
     @objc
     private func removeImage() {
-        if let imageRecord = imageRecord {
-            DAOImageService.removeImage(imageRecord)
-            delegate?.imageRecordDidChange()
-        }
-        dismiss()
+        let alert = UIAlertController(title: nil, message: Localized.doYouWantToDeleteTheRecord, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(
+                title: Localized.cansel,
+                style: .cancel,
+                handler: nil
+            )
+        )
+        alert.addAction(
+            UIAlertAction(
+                title: Localized.yes,
+                style: .default,
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    
+                    if let imageRecord = self.imageRecord {
+                        DAOImageService.removeImage(imageRecord)
+                        self.delegate?.imageRecordDidChange()
+                    }
+                    self.dismiss()
+                }
+            )
+        )
+        present(alert, animated: true, completion: nil)
     }
 }
