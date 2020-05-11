@@ -54,7 +54,7 @@ extension DayRecordsListViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerController.SourceType.camera
-        present(imagePicker)
+        present(imagePicker, animated: true)
     }
     
     @IBAction func addImage(_ sender: Any) {
@@ -65,7 +65,7 @@ extension DayRecordsListViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        present(imagePicker)
+        present(imagePicker, animated: true)
     }
 }
 

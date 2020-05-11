@@ -22,8 +22,10 @@ extension UIViewController {
     func push(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    
 
-    func present(_ viewController: UIViewController) {
+    func presentWithNavigationController(_ viewController: UIViewController) {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .pageSheet
         present(navigationController, animated: true, completion: nil)

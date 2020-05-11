@@ -105,6 +105,6 @@ extension NoteRecordViewController {
         let alert = UIAlertController(title: nil, message: Localized.doYouWantToDeleteTheRecord, preferredStyle: .alert)
         alert.addAction(cancelAction)
         alert.addAction(yesAction)
-        present(alert)
+        present(alert, animated: true)
     }
 }
