@@ -36,9 +36,11 @@ final class DayRatingViewController: UIViewController {
 // MARK: - UITableViewDelegate
 extension DayRatingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DAODayService.setDayRate(dayDate: date.startOfDay, rate: DayRate.allCases[indexPath.row])
-        delegate?.rateDidChange()
-        dismiss()
+        DispatchQueue.main.async {
+            DAODayService.setDayRate(dayDate: self.date.startOfDay, rate: DayRate.allCases[indexPath.row])
+            self.delegate?.rateDidChange()
+            self.dismiss()
+        }
     }
 }
 

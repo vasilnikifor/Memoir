@@ -101,14 +101,16 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
 // MARK: - UITableViewDelegate
 extension DayRecordsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let noteRecord = records[indexPath.row] as? NoteRecord {
-            let noteView = NoteRecordViewController.loadFromNib()
-            noteView.configure(NoteRecordViewModel(date: date, noteRecord: noteRecord), delegate: self)
-            presentWithNavigationController(noteView)
-        } else if let imageRecord = records[indexPath.row] as? ImageRecord {
-            let imageRecordView = ImageRceordViewController.loadFromNib()
-            imageRecordView.configure(ImageRecordViewModel(date: date, imageRecord: imageRecord), delegate: self)
-            presentWithNavigationController(imageRecordView)
+        DispatchQueue.main.async {
+            if let noteRecord = self.records[indexPath.row] as? NoteRecord {
+                let noteView = NoteRecordViewController.loadFromNib()
+                noteView.configure(NoteRecordViewModel(date: self.date, noteRecord: noteRecord), delegate: self)
+                self.presentWithNavigationController(noteView)
+            } else if let imageRecord = self.records[indexPath.row] as? ImageRecord {
+                let imageRecordView = ImageRceordViewController.loadFromNib()
+                imageRecordView.configure(ImageRecordViewModel(date: self.date, imageRecord: imageRecord), delegate: self)
+                self.presentWithNavigationController(imageRecordView)
+            }
         }
     }
 }
