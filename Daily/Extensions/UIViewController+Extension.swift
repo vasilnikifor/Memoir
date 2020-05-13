@@ -20,25 +20,37 @@ extension UIViewController {
 // MARK: - Navigation
 extension UIViewController {
     func push(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
+    func present(_ navigationController: UINavigationController) {
+        DispatchQueue.main.async {
+            self.present(navigationController, animated: true)
+        }
+    }
+    
     func presentWithNavigationController(_ viewController: UIViewController) {
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .pageSheet
-        present(navigationController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.modalPresentationStyle = .pageSheet
+            self.present(navigationController, animated: true, completion: nil)
+        }
     }
     
     func dismiss() {
-        guard let navigationController = navigationController else {
-            dismiss(animated: true, completion: nil)
-            return
-        }
+        DispatchQueue.main.async {
+            guard let navigationController = self.navigationController else {
+                self.dismiss(animated: true, completion: nil)
+                return
+            }
 
-        if navigationController.viewControllers.count > 1 {
-            navigationController.popViewController(animated: true)
-        } else {
-            navigationController.dismiss(animated: true, completion: nil)
+            if navigationController.viewControllers.count > 1 {
+                navigationController.popViewController(animated: true)
+            } else {
+                navigationController.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

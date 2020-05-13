@@ -13,7 +13,7 @@ final class DayRatingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.register(DayRateTableViewCell.nib, forCellReuseIdentifier: DayRateTableViewCell.nibName)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
@@ -22,7 +22,7 @@ final class DayRatingViewController: UIViewController {
         
         navigationItem.title = Localized.dayRating
     }
-
+    
     func configure(date: Date, delegate: SelectRateDelegate?) {
         self.date = date
         self.delegate = delegate
@@ -36,11 +36,9 @@ final class DayRatingViewController: UIViewController {
 // MARK: - UITableViewDelegate
 extension DayRatingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DispatchQueue.main.async {
-            DAODayService.setDayRate(dayDate: self.date.startOfDay, rate: DayRate.allCases[indexPath.row])
-            self.delegate?.rateDidChange()
-            self.dismiss()
-        }
+        DAODayService.setDayRate(dayDate: self.date.startOfDay, rate: DayRate.allCases[indexPath.row])
+        self.delegate?.rateDidChange()
+        self.dismiss()
     }
 }
 
