@@ -17,7 +17,6 @@
 		2DD0AFC923917377009BED48 /* SmallSecondaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0AFC823917377009BED48 /* SmallSecondaryTextLabel.swift */; };
 		2DD0AFCB239177D0009BED48 /* MediumPrimaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0AFCA239177D0009BED48 /* MediumPrimaryTextLabel.swift */; };
 		2DD0AFCD23917B86009BED48 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0AFCC23917B86009BED48 /* BaseLabel.swift */; };
-		2DD0AFCF23917C81009BED48 /* LargePrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0AFCE23917C81009BED48 /* LargePrimaryLabel.swift */; };
 		2DD0AFD7239194AF009BED48 /* DayRecordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0AFD5239194AF009BED48 /* DayRecordsListViewController.swift */; };
 		2DD0AFD8239194AF009BED48 /* DayRecordsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0AFD6239194AF009BED48 /* DayRecordsListViewController.xib */; };
 		84008BF9224A11B8000CB9A2 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF5224A11B8000CB9A2 /* Record.swift */; };
@@ -42,6 +41,9 @@
 		9157AB85266A728C003C4B66 /* Constrainable+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB84266A728C003C4B66 /* Constrainable+Edge.swift */; };
 		9157AB87266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB86266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift */; };
 		9157AB89266A7F44003C4B66 /* Constrainable+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB88266A7F44003C4B66 /* Constrainable+Size.swift */; };
+		9157AB8B266A8CC8003C4B66 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8A266A8CC8003C4B66 /* CalendarView.swift */; };
+		9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */; };
+		9157AB8F266AA91C003C4B66 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8E266AA91C003C4B66 /* LabelStyle.swift */; };
 		C100E1DF23ED9F8700B69182 /* DayRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */; };
 		C100E1E023ED9F8700B69182 /* DayRatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */; };
 		C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */; };
@@ -81,7 +83,6 @@
 		2DD0AFC823917377009BED48 /* SmallSecondaryTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSecondaryTextLabel.swift; sourceTree = "<group>"; };
 		2DD0AFCA239177D0009BED48 /* MediumPrimaryTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumPrimaryTextLabel.swift; sourceTree = "<group>"; };
 		2DD0AFCC23917B86009BED48 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
-		2DD0AFCE23917C81009BED48 /* LargePrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargePrimaryLabel.swift; sourceTree = "<group>"; };
 		2DD0AFD5239194AF009BED48 /* DayRecordsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsListViewController.swift; sourceTree = "<group>"; };
 		2DD0AFD6239194AF009BED48 /* DayRecordsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRecordsListViewController.xib; sourceTree = "<group>"; };
 		84008BF5224A11B8000CB9A2 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
@@ -107,6 +108,9 @@
 		9157AB84266A728C003C4B66 /* Constrainable+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constrainable+Edge.swift"; sourceTree = "<group>"; };
 		9157AB86266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+Constraints.swift"; sourceTree = "<group>"; };
 		9157AB88266A7F44003C4B66 /* Constrainable+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constrainable+Size.swift"; sourceTree = "<group>"; };
+		9157AB8A266A8CC8003C4B66 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
+		9157AB8E266AA91C003C4B66 /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
 		C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRatingViewController.swift; sourceTree = "<group>"; };
 		C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRatingViewController.xib; sourceTree = "<group>"; };
 		C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumHilightedPrimaryTextLabel.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 		2D8770A423B79E5100A38D9F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				9157AB8E266AA91C003C4B66 /* LabelStyle.swift */,
 				84FF3F2922FEC4C100CEF093 /* Theme.swift */,
 			);
 			path = Other;
@@ -209,7 +214,6 @@
 				C1DC1FFE2402BFDF00142690 /* MediumSecondaryTextLabel.swift */,
 				2DD0AFCA239177D0009BED48 /* MediumPrimaryTextLabel.swift */,
 				C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */,
-				2DD0AFCE23917C81009BED48 /* LargePrimaryLabel.swift */,
 				C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */,
 			);
 			path = Labels;
@@ -307,6 +311,8 @@
 		84FF3F3423071A9300CEF093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9157AB8A266A8CC8003C4B66 /* CalendarView.swift */,
+				9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */,
 				C1DC20002402C79E00142690 /* CalendarActiveDayCollectionVIewCell */,
 				C1DC1FF72402B64500142690 /* CalendarUnactiveDayCollectionViewCell */,
 				C1DC1FF22402A33300142690 /* WeekdayCollectionVIewCell */,
@@ -328,17 +334,9 @@
 		9157AB6C266A6173003C4B66 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				9157AB6D266A617D003C4B66 /* ViewController */,
-			);
-			path = Calendar;
-			sourceTree = "<group>";
-		};
-		9157AB6D266A617D003C4B66 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
 				9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */,
 			);
-			path = ViewController;
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		9157AB79266A6DCA003C4B66 /* Constraints */ = {
@@ -347,11 +345,11 @@
 				9157AB7A266A6E6E003C4B66 /* Constrainable.swift */,
 				9157AB84266A728C003C4B66 /* Constrainable+Edge.swift */,
 				9157AB80266A6FBC003C4B66 /* Constrainable+Position.swift */,
+				9157AB88266A7F44003C4B66 /* Constrainable+Size.swift */,
 				9157AB7C266A6F12003C4B66 /* UIView+Constrainable.swift */,
 				9157AB7E266A6F87003C4B66 /* UILayoutGuide+Constrainable.swift */,
 				9157AB82266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift */,
 				9157AB86266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift */,
-				9157AB88266A7F44003C4B66 /* Constrainable+Size.swift */,
 			);
 			path = Constraints;
 			sourceTree = "<group>";
@@ -535,6 +533,7 @@
 				C1DC1FFD2402B7F300142690 /* CalendarCellFactory.swift in Sources */,
 				C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */,
 				C1DC1FF0240295A300142690 /* CalendarViewControllerOld.swift in Sources */,
+				9157AB8B266A8CC8003C4B66 /* CalendarView.swift in Sources */,
 				C1EBB28523F8269A001C3D94 /* NoteRecordViewController.swift in Sources */,
 				C15815EB24004A110060B9FA /* DAONoteService.swift in Sources */,
 				846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */,
@@ -546,10 +545,10 @@
 				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */,
-				2DD0AFCF23917C81009BED48 /* LargePrimaryLabel.swift in Sources */,
 				9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */,
 				C1DC1FFF2402BFDF00142690 /* MediumSecondaryTextLabel.swift in Sources */,
 				C1DCAE2324658567006A751B /* Localized.swift in Sources */,
+				9157AB8F266AA91C003C4B66 /* LabelStyle.swift in Sources */,
 				84008BF9224A11B8000CB9A2 /* Record.swift in Sources */,
 				84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */,
 				C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */,
@@ -573,6 +572,7 @@
 				C138625A246970920066D7C6 /* UIImage+Extension.swift in Sources */,
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				C1DC1FFA2402B68900142690 /* CalendarInactiveDayCollectionViewCell.swift in Sources */,
+				9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				9157AB7F266A6F87003C4B66 /* UILayoutGuide+Constrainable.swift in Sources */,
 				2DD0AFCB239177D0009BED48 /* MediumPrimaryTextLabel.swift in Sources */,

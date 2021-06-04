@@ -5,7 +5,7 @@ protocol CalendarDelegate {
 }
 
 final class CalendarViewControllerOld: UIViewController {
-    @IBOutlet private weak var monthLabel: LargePrimaryLabel!
+    @IBOutlet private weak var monthLabel: UILabel!
     @IBOutlet private weak var weekdaysCollectionView: UICollectionView!
     @IBOutlet private weak var calendarCollectionView: UICollectionView!
     @IBOutlet private weak var weekdaysCollectionViewHeightConstraint: NSLayoutConstraint!

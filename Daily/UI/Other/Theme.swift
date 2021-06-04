@@ -9,6 +9,10 @@ final class Theme {
         return .placeholderText
     }
     
+    static var backgroundColor: UIColor {
+        return .systemBackground
+    }
+    
     static func getRateColor(_ rate: DayRate?) -> UIColor {
         switch rate {
         case .noRate:
