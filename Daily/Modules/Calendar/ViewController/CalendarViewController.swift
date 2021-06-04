@@ -12,6 +12,7 @@ final class CalendarView: UIView {
     }
 
     private func commonInit() {
+        backgroundColor = .red
     }
 }
 
@@ -28,7 +29,10 @@ final class CalendarViewController: UIViewController {
         
         calendarView
             .centerYToSuperview()
-            
+            .leadingToSuperview(16)
+            .trailingToSuperview(-16)
+            .topToSuperview(16)
+            .bottomToSuperview(-16)
     }
 }
 

@@ -32,7 +32,7 @@ extension Constrainable {
     func centerXToSuperview(_ offset: CGFloat = 0,
                             multiplier: CGFloat = 1,
                             priority: UILayoutPriority = .required,
-                            safeArea: Bool = false) -> Constrainable {
+                            safeArea: Bool = true) -> Constrainable {
         let safely = getSafe(container, safeArea: safeArea)
         return centerX(to: safely, multiplier: multiplier, offset: offset, priority: priority)
     }
@@ -67,7 +67,7 @@ extension Constrainable {
     func centerYToSuperview(_ offset: CGFloat = 0,
                             multiplier: CGFloat = 1,
                             priority: UILayoutPriority = .required,
-                            safeArea: Bool = false) -> Constrainable {
+                            safeArea: Bool = true) -> Constrainable {
         let safely = getSafe(container, safeArea: safeArea)
         return centerY(to: safely, multiplier: multiplier, offset: offset, priority: priority)
     }

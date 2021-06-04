@@ -41,6 +41,7 @@
 		9157AB83266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB82266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift */; };
 		9157AB85266A728C003C4B66 /* Constrainable+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB84266A728C003C4B66 /* Constrainable+Edge.swift */; };
 		9157AB87266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB86266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift */; };
+		9157AB89266A7F44003C4B66 /* Constrainable+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB88266A7F44003C4B66 /* Constrainable+Size.swift */; };
 		C100E1DF23ED9F8700B69182 /* DayRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */; };
 		C100E1E023ED9F8700B69182 /* DayRatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */; };
 		C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */; };
@@ -105,6 +106,7 @@
 		9157AB82266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Setter.swift"; sourceTree = "<group>"; };
 		9157AB84266A728C003C4B66 /* Constrainable+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constrainable+Edge.swift"; sourceTree = "<group>"; };
 		9157AB86266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+Constraints.swift"; sourceTree = "<group>"; };
+		9157AB88266A7F44003C4B66 /* Constrainable+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constrainable+Size.swift"; sourceTree = "<group>"; };
 		C100E1DD23ED9F8700B69182 /* DayRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRatingViewController.swift; sourceTree = "<group>"; };
 		C100E1DE23ED9F8700B69182 /* DayRatingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRatingViewController.xib; sourceTree = "<group>"; };
 		C117264124038142000AA974 /* MediumHilightedPrimaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumHilightedPrimaryTextLabel.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				9157AB7E266A6F87003C4B66 /* UILayoutGuide+Constrainable.swift */,
 				9157AB82266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift */,
 				9157AB86266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift */,
+				9157AB88266A7F44003C4B66 /* Constrainable+Size.swift */,
 			);
 			path = Constraints;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */,
 				9157AB81266A6FBC003C4B66 /* Constrainable+Position.swift in Sources */,
 				C100E1DF23ED9F8700B69182 /* DayRatingViewController.swift in Sources */,
+				9157AB89266A7F44003C4B66 /* Constrainable+Size.swift in Sources */,
 				9157AB85266A728C003C4B66 /* Constrainable+Edge.swift in Sources */,
 				2D0CFA15239220B700F8AFBB /* UIView+Extension.swift in Sources */,
 				2DD0AFC923917377009BED48 /* SmallSecondaryTextLabel.swift in Sources */,

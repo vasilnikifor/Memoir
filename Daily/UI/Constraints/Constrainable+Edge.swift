@@ -32,7 +32,7 @@ extension Constrainable {
     func topToSuperview(_ offset: CGFloat = 0,
                         relation: NSLayoutConstraint.Relation = .equal,
                         priority: UILayoutPriority = .required,
-                        safeArea: Bool = false) -> Constrainable {
+                        safeArea: Bool = true) -> Constrainable {
         let safely = getSafe(container, safeArea: safeArea)
         return top(to: safely, offset: offset, relation: relation, priority: priority)
     }
@@ -67,7 +67,7 @@ extension Constrainable {
     func bottomToSuperview(_ offset: CGFloat = 0,
                            relation: NSLayoutConstraint.Relation = .equal,
                            priority: UILayoutPriority = .required,
-                           safeArea: Bool = false) -> Constrainable {
+                           safeArea: Bool = true) -> Constrainable {
         let safely = getSafe(container, safeArea: safeArea)
         return bottom(to: safely, offset: offset, relation: relation, priority: priority)
     }
@@ -107,7 +107,7 @@ extension Constrainable {
     func leadingToSuperview(_ offset: CGFloat = 0,
                             relation: NSLayoutConstraint.Relation = .equal,
                             priority: UILayoutPriority = .required,
-                            safeArea: Bool = false) -> Constrainable {
+                            safeArea: Bool = true) -> Constrainable {
         
         let safely = getSafe(container, safeArea: safeArea)
         return leading(to: safely,
@@ -143,12 +143,10 @@ extension Constrainable {
     }
     
     @discardableResult
-    func trailingToSuperview(to item: Constrainable,
-                             anchor: NSLayoutXAxisAnchor? = nil,
-                             offset: CGFloat = 0,
+    func trailingToSuperview(_ offset: CGFloat = 0,
                              relation: NSLayoutConstraint.Relation = .equal,
                              priority: UILayoutPriority = .required,
-                             safeArea: Bool = false) -> Constrainable {
+                             safeArea: Bool = true) -> Constrainable {
         let safely = getSafe(container, safeArea: safeArea)
         return trailing(to: safely, offset: offset, relation: relation, priority: priority)
     }
