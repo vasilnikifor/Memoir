@@ -4,7 +4,7 @@ protocol CalendarDelegate {
     func update()
 }
 
-final class CalendarViewController: UIViewController {
+final class CalendarViewControllerOld: UIViewController {
     @IBOutlet private weak var monthLabel: LargePrimaryLabel!
     @IBOutlet private weak var weekdaysCollectionView: UICollectionView!
     @IBOutlet private weak var calendarCollectionView: UICollectionView!
@@ -62,7 +62,7 @@ final class CalendarViewController: UIViewController {
 }
 
 // MARK: - Actions
-extension CalendarViewController {
+extension CalendarViewControllerOld {
     @IBAction func tapToPreviousMonth(_ sender: Any) {
         handelChangeMonth(by: -1)
     }
@@ -73,7 +73,7 @@ extension CalendarViewController {
 }
 
 // MARK: - Private methods
-extension CalendarViewController {
+extension CalendarViewControllerOld {
     private func setTransparencyOnNavigationController() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -104,7 +104,7 @@ extension CalendarViewController {
 
 
 // MARK: - CalendarDelegate
-extension CalendarViewController: CalendarDelegate {
+extension CalendarViewControllerOld: CalendarDelegate {
     func update() {
         monthLabel.text = month.monthRepresentation
         calendarDataSours = CalendarCellFactory.configure(month: month)
@@ -113,7 +113,7 @@ extension CalendarViewController: CalendarDelegate {
 }
 
 // MARK: - UICollectionViewDelegate
-extension CalendarViewController: UICollectionViewDelegate {
+extension CalendarViewControllerOld: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case calendarCollectionView:
@@ -132,7 +132,7 @@ extension CalendarViewController: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension CalendarViewController: UICollectionViewDataSource {
+extension CalendarViewControllerOld: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case weekdaysCollectionView:
@@ -168,7 +168,7 @@ extension CalendarViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+extension CalendarViewControllerOld: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: calendarCellEdge, height: calendarCellEdge)
     }

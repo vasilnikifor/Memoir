@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController" customModule="Daily" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewControllerOld" customModule="Daily" customModuleProvider="target">
             <connections>
                 <outlet property="calendarCollectionView" destination="Ubu-qP-huZ" id="m8Y-fI-j1k"/>
                 <outlet property="calendarCollectionViewHeightConstraint" destination="w5B-kP-AtS" id="4LP-bZ-d4r"/>
@@ -40,9 +42,9 @@
                                         <constraint firstAttribute="width" constant="40" id="4DB-fN-5sN"/>
                                         <constraint firstAttribute="height" constant="40" id="x5L-bK-veJ"/>
                                     </constraints>
-                                    <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" image="arrow.left" catalog="system">
-                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleColor" systemColor="labelColor"/>
                                     </state>
                                     <connections>
                                         <action selector="tapToPreviousMonth:" destination="-1" eventType="touchUpInside" id="Vbq-xX-ch7"/>
@@ -54,16 +56,16 @@
                                         <constraint firstAttribute="width" constant="40" id="48i-hl-4o8"/>
                                         <constraint firstAttribute="height" constant="40" id="TfF-sU-TzH"/>
                                     </constraints>
-                                    <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" image="arrow.right" catalog="system">
-                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleColor" systemColor="labelColor"/>
                                     </state>
                                     <connections>
                                         <action selector="tapToNextMonth:" destination="-1" eventType="touchUpInside" id="P8t-MO-gV2"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="3y9-Yd-ukg" firstAttribute="leading" secondItem="JBs-9o-FaC" secondAttribute="trailing" constant="8" id="0No-vn-5fg"/>
                                 <constraint firstItem="JBs-9o-FaC" firstAttribute="top" secondItem="5Ty-zB-WzY" secondAttribute="top" constant="16" id="0qY-43-OEI"/>
@@ -78,7 +80,7 @@
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ubu-qP-huZ" userLabel="Calendar Collection View">
                             <rect key="frame" x="20" y="154" width="374" height="100"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="w5B-kP-AtS"/>
                             </constraints>
@@ -91,7 +93,7 @@
                         </collectionView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QVy-EB-qpD" userLabel="Weekdays Collection View">
                             <rect key="frame" x="20" y="96" width="374" height="50"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Lgm-vK-MaV"/>
                             </constraints>
@@ -103,7 +105,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="Ubu-qP-huZ" firstAttribute="leading" secondItem="DL3-8f-ih4" secondAttribute="leading" constant="20" id="498-lW-Zy0"/>
                         <constraint firstItem="QVy-EB-qpD" firstAttribute="top" secondItem="5Ty-zB-WzY" secondAttribute="bottom" constant="16" id="6zA-6H-eo5"/>
@@ -118,18 +120,24 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="DL3-8f-ih4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dx0-72-Eyx"/>
                 <constraint firstItem="DL3-8f-ih4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="nfT-7x-P3f"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DL3-8f-ih4" secondAttribute="trailing" id="pHz-Yl-QQq"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </view>
     </objects>
     <resources>
-        <image name="arrow.left" catalog="system" width="64" height="48"/>
-        <image name="arrow.right" catalog="system" width="64" height="48"/>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
