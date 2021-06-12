@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .highlighted)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: CalendarViewController())
+        window?.rootViewController = CalendarAssembler.assemble()
         window?.makeKeyAndVisible()
         window?.tintColor = .label
         

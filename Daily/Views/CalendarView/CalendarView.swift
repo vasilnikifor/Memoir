@@ -1,14 +1,27 @@
 import UIKit
 
+protocol CalendarViewDelegate: AnyObject {
+    func getMonthsWeekDays() -> [CalendarWeekdayViewModel]
+    func getMonthsDays(month: Date) -> [CalendarDayViewModel]
+    func dateSelected(_ date: Date)
+}
+
+struct CalendarViewModel {
+    let month: Date
+    weak var delegate: CalendarViewDelegate?
+}
+
 fileprivate struct DefaultValues {
-    static let buttonEdgeSize: CGFloat = 32
-    static let upMonthButtonImage: UIImage? = UIImage(systemName: "arrow.right")
-    static let downMonthButtonImage: UIImage? = UIImage(systemName: "arrow.left")
+
 }
 
 final class CalendarView: UIView {
+    private weak var delegate: CalendarViewDelegate?
     private var month: Date = Date()
     private let pageCount: CGFloat = 3
+    private let buttonEdgeSize: CGFloat = 32
+    private let upMonthButtonImage: UIImage? = UIImage(systemName: "arrow.right")
+    private let downMonthButtonImage: UIImage? = UIImage(systemName: "arrow.left")
     private var previousMonthView = CalendarMonthView()
     private var currentMonthView = CalendarMonthView()
     private var nextMonthView = CalendarMonthView()
@@ -16,19 +29,19 @@ final class CalendarView: UIView {
     private lazy var upMonthButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.setImage(DefaultValues.upMonthButtonImage, for: .normal)
+        button.setImage(upMonthButtonImage, for: .normal)
         button.addTarget(self, action: #selector(swipeCalendarToNextMonth), for: .touchUpInside)
         return button
     }()
-
+    
     private lazy var downMonthButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.setImage(DefaultValues.downMonthButtonImage, for: .normal)
+        button.setImage(downMonthButtonImage, for: .normal)
         button.addTarget(self, action: #selector(swipeCalendarToPreviousMonth), for: .touchUpInside)
         return button
     }()
-
+    
     private lazy var monthLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -48,27 +61,25 @@ final class CalendarView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         let pageSize = scrollView.frame.size
         let pagesWidth = pageSize.width * pageCount
-
         scrollView.contentSize = CGSize(width: pagesWidth, height: pageSize.height)
         scrollView.contentOffset = CGPoint(x: pageSize.width, y: .zero)
-
-        fillCalendar()
+        update()
         layoutCalendar()
     }
     
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-
-    public required init?(coder: NSCoder) {
+    
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
-
+    
     private func commonInit() {
         addSubview(upMonthButton)
         addSubview(downMonthButton)
@@ -82,21 +93,21 @@ final class CalendarView: UIView {
         downMonthButton
             .topToSuperview()
             .leading(to: scrollView, anchor: scrollView.leadingAnchor)
-            .height(DefaultValues.buttonEdgeSize)
-            .width(DefaultValues.buttonEdgeSize)
-
+            .height(buttonEdgeSize)
+            .width(buttonEdgeSize)
+        
         upMonthButton
             .topToSuperview()
             .trailing(to: scrollView, anchor: scrollView.trailingAnchor)
-            .height(DefaultValues.buttonEdgeSize)
-            .width(DefaultValues.buttonEdgeSize)
-
+            .height(buttonEdgeSize)
+            .width(buttonEdgeSize)
+        
         monthLabel
             .topToSuperview()
             .leading(to: downMonthButton, anchor: downMonthButton.trailingAnchor)
             .trailing(to: upMonthButton, anchor: upMonthButton.leadingAnchor)
-            .height(DefaultValues.buttonEdgeSize)
-
+            .height(buttonEdgeSize)
+        
         scrollView
             .top(to: monthLabel, anchor: monthLabel.bottomAnchor, offset: 16)
             .trailingToSuperview()
@@ -105,32 +116,27 @@ final class CalendarView: UIView {
             .widthToHeight(of: scrollView)
     }
     
-    private func fillCalendar() {
-        monthLabel.text = month.monthRepresentation
-
-        fillMonthView(previousMonthView, month: month.addMonths(-1))
-        fillMonthView(currentMonthView, month: month)
-        fillMonthView(nextMonthView, month: month.addMonths(1))
-    }
-    
     private func layoutCalendar() {
         layoutMonthView(previousMonthView, onPage: 0)
         layoutMonthView(currentMonthView, onPage: 1)
         layoutMonthView(nextMonthView, onPage: 2)
     }
-
+    
     private func layoutMonthView(_ monthView: CalendarMonthView, onPage pageNubmer: CGFloat) {
         let pageSize = scrollView.frame.size
-        monthView.frame = CGRect(x: pageSize.width * pageNubmer,
-                                 y: .zero,
-                                 width: pageSize.width,
-                                 height: pageSize.height)
+        monthView.frame = CGRect(
+            x: pageSize.width * pageNubmer,
+            y: .zero,
+            width: pageSize.width,
+            height: pageSize.height
+        )
     }
-
+    
     private func fillMonthView(_ monthView: CalendarMonthView, month: Date) {
         monthView.setup(with:
             CalendarMonthViewModel(
-                month: month
+                month: month,
+                delegate: delegate
             )
         )
     }
@@ -142,7 +148,7 @@ final class CalendarView: UIView {
         let contentOffset = CGPoint(x: pageSize.width * lastPageIndex, y: .zero)
         scrollView.setContentOffset(contentOffset, animated: true)
     }
-
+    
     @objc
     private func swipeCalendarToPreviousMonth() {
         let contentOffset = CGPoint(x: 0, y: 0)
@@ -153,45 +159,57 @@ final class CalendarView: UIView {
     private func showNextMonth() {
         month = month.addMonths(1)
         monthLabel.text = month.monthRepresentation
-
         let newNextMonthView = previousMonthView
         previousMonthView = currentMonthView
         currentMonthView = nextMonthView
         nextMonthView = newNextMonthView
-
         fillMonthView(newNextMonthView, month: month.addMonths(1))
         layoutCalendar()
     }
-
+    
     @objc
     private func showPreviousMonthView() {
         month = month.addMonths(-1)
         monthLabel.text = month.monthRepresentation
-
         let newPreviousMonthView = nextMonthView
         nextMonthView = currentMonthView
         currentMonthView = previousMonthView
         previousMonthView = newPreviousMonthView
-
         fillMonthView(newPreviousMonthView, month: month.addMonths(-1))
-
         layoutCalendar()
     }
 }
 
 extension CalendarView: UIScrollViewDelegate {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
         let pageXOffset = scrollView.frame.size.width
-
+        
         if offsetX > scrollView.frame.size.width * 1.5 {
             showNextMonth()
             scrollView.contentOffset.x -= pageXOffset
         }
-
+        
         if offsetX < scrollView.frame.size.width * 0.5 {
             showPreviousMonthView()
             scrollView.contentOffset.x += pageXOffset
         }
+    }
+}
+
+extension CalendarView {
+    func update() {
+        monthLabel.text = month.monthRepresentation
+        fillMonthView(previousMonthView, month: month.addMonths(-1))
+        fillMonthView(currentMonthView, month: month)
+        fillMonthView(nextMonthView, month: month.addMonths(1))
+    }
+}
+
+extension CalendarView: ViewModelSettable {
+    func setup(with viewModel: CalendarViewModel) {
+        month = viewModel.month
+        delegate = viewModel.delegate
+        update()
     }
 }

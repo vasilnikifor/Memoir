@@ -1,6 +1,23 @@
 import Foundation
 
 extension Date {
+    private static var firstWeekday: Int {
+        return 2
+    }
+    
+    static var shortWeekdaySymbols: [String] {
+        let shortWeekdaySymbols = Date().calendar.shortWeekdaySymbols
+        let firstWeekdayIndex = firstWeekday - 1
+        let lastWeekdayIndex = shortWeekdaySymbols.count - 1
+        let shortWeekdaySymbolsWithNeededFirstWeekday: [String] =
+            Array(
+                shortWeekdaySymbols[firstWeekdayIndex...lastWeekdayIndex] + shortWeekdaySymbols[0..<firstWeekdayIndex]
+            )
+        return shortWeekdaySymbolsWithNeededFirstWeekday.map { $0.capitalizedFirstLetter }
+    }
+}
+
+extension Date {
     private var locale: Locale {
         switch NSLocale.current {
         default:

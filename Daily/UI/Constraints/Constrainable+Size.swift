@@ -91,4 +91,36 @@ extension Constrainable {
         self.height(height: height, relation: relation, priority: priority)
         return self
     }
+    
+    @discardableResult
+    func height(to item: Constrainable,
+                dimension: NSLayoutDimension? = nil,
+                multiplier: CGFloat = 1,
+                offset: CGFloat = 0,
+                relation: NSLayoutConstraint.Relation = .equal,
+                priority: UILayoutPriority = .required,
+                isActive: Bool = true) -> NSLayoutConstraint {
+        return prepare()
+            .heightAnchor
+            .constraint(relation: relation, dimension: dimension ?? item.heightAnchor, multiplier: multiplier, constant: offset)
+            .with(priority: priority)
+            .set(active: isActive)
+    }
+    
+    @discardableResult
+    func height(to item: Constrainable,
+                dimension: NSLayoutDimension? = nil,
+                multiplier: CGFloat = 1,
+                offset: CGFloat = 0,
+                relation: NSLayoutConstraint.Relation = .equal,
+                priority: UILayoutPriority = .required) -> Constrainable {
+        height(to: item,
+               dimension: dimension,
+               multiplier: multiplier,
+               offset: offset,
+               relation: relation,
+               priority: priority,
+               isActive: true)
+        return self
+    }
 }
