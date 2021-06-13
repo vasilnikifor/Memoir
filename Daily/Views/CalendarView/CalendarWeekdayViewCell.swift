@@ -7,6 +7,7 @@ struct CalendarWeekdayViewModel {
 final class CalendarWeekdayViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.apply(style: .mediumPrimaryText)
         label.textAlignment = .center
         return label

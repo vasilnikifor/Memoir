@@ -104,14 +104,15 @@ extension CalendarMonthView: UICollectionViewDataSource {
 
 extension CalendarMonthView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellEdgeSize = collectionView.frame.width / columnsCount
+        var cellEdgeSize = collectionView.frame.width / columnsCount
+        cellEdgeSize.round(.down)
         return CGSize(width: cellEdgeSize, height: cellEdgeSize)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
     }
@@ -121,12 +122,6 @@ extension CalendarMonthView: ViewModelSettable {
     func setup(with viewModel: CalendarMonthViewModel) {
         month = viewModel.month
         delegate = viewModel.delegate
-        calendarCollectionView.backgroundColor = UIColor(
-            red: .random(in: 0...1),
-            green: .random(in: 0...1),
-            blue: .random(in: 0...1),
-            alpha: 1.0
-        )
         update()
     }
 }

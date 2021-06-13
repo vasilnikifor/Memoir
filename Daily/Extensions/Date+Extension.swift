@@ -18,14 +18,23 @@ extension Date {
 }
 
 extension Date {
-    private var locale: Locale {
-        switch NSLocale.current {
-        default:
-            return Locale(identifier: "en_EN")
-        }
+    var firstMonthCalendarDate: Date {
+        let firstDayOfMonth = firstDayOfMonth
+        let deltaFromFirstMonthDate = calendar.component(.weekday, from: firstDayOfMonth) - 1
+        return firstDayOfMonth.addDays(-deltaFromFirstMonthDate)
     }
     
-    var calendar: Calendar {
+    var lastMonthCalendarDate: Date {
+        let lastDayOfMonth = lastDayOfMonth
+        let deltaFromLastMonthDate = calendar.shortWeekdaySymbols.count - calendar.component(.weekday, from: lastDayOfMonth)
+        return lastDayOfMonth.addDays(deltaFromLastMonthDate)
+    }
+    
+    private var locale: Locale {
+        return Locale(identifier: "en_EN")
+    }
+    
+    private var calendar: Calendar {
         var calendar = Calendar.current
         calendar.locale = locale
         return calendar
@@ -58,6 +67,7 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    /// "EE, MMM d"
     var dateRepresentation: String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = locale
@@ -65,6 +75,7 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    /// "MMMM yyyy"
     var monthRepresentation: String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = locale
@@ -83,4 +94,6 @@ extension Date {
     func addMonths(_ numberOfMonths: Int) -> Date {
         return calendar.date(byAdding: .month, value: numberOfMonths, to: self)!
     }
+    
+
 }

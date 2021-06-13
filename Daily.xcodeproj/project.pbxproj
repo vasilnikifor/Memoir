@@ -20,7 +20,7 @@
 		2DD0AFD7239194AF009BED48 /* DayRecordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0AFD5239194AF009BED48 /* DayRecordsListViewController.swift */; };
 		2DD0AFD8239194AF009BED48 /* DayRecordsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0AFD6239194AF009BED48 /* DayRecordsListViewController.xib */; };
 		84008BF9224A11B8000CB9A2 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF5224A11B8000CB9A2 /* Record.swift */; };
-		84008BFB224A11B8000CB9A2 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF7224A11B8000CB9A2 /* Day.swift */; };
+		84008BFB224A11B8000CB9A2 /* DayOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF7224A11B8000CB9A2 /* DayOld.swift */; };
 		846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DF5B522B6878A0095A065 /* ImageRecord.swift */; };
 		8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597B22AD3C7400BCBA42 /* NoteRecord.swift */; };
 		84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916C22290E8D00956265 /* AppDelegate.swift */; };
@@ -32,6 +32,9 @@
 		84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2F22FF01EE00CEF093 /* UIImageView+Extension.swift */; };
 		84FF3F3923071AF600CEF093 /* DayRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */; };
 		84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */; };
+		911080CB2676233500BCE949 /* RecordsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911080CA2676233500BCE949 /* RecordsService.swift */; };
+		911080CD2676243700BCE949 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911080CC2676243700BCE949 /* Day.swift */; };
+		911080CF267624C000BCE949 /* DayRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911080CE267624C000BCE949 /* DayRate.swift */; };
 		9157AB6F266A61AE003C4B66 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */; };
 		9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB7A266A6E6E003C4B66 /* Constrainable.swift */; };
 		9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB7C266A6F12003C4B66 /* UIView+Constrainable.swift */; };
@@ -58,21 +61,12 @@
 		C138625A246970920066D7C6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1386259246970920066D7C6 /* UIImage+Extension.swift */; };
 		C1443166245AA68100B9F5E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1443165245AA68100B9F5E5 /* Images.xcassets */; };
 		C15815E52400437E0060B9FA /* DAOService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E42400437E0060B9FA /* DAOService.swift */; };
-		C15815E72400474C0060B9FA /* DAODayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E62400474C0060B9FA /* DAODayService.swift */; };
+		C15815E72400474C0060B9FA /* DAODayServicedd.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E62400474C0060B9FA /* DAODayServicedd.swift */; };
 		C15815E9240047DF0060B9FA /* DAOImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E8240047DF0060B9FA /* DAOImageService.swift */; };
 		C15815EB24004A110060B9FA /* DAONoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815EA24004A110060B9FA /* DAONoteService.swift */; };
 		C1DC1FEB24028A5700142690 /* ImageRceordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1FE924028A5700142690 /* ImageRceordViewController.swift */; };
 		C1DC1FEC24028A5700142690 /* ImageRceordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC1FEA24028A5700142690 /* ImageRceordViewController.xib */; };
-		C1DC1FF0240295A300142690 /* CalendarViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1FEE240295A300142690 /* CalendarViewControllerOld.swift */; };
-		C1DC1FF1240295A300142690 /* CalendarViewControllerOld.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC1FEF240295A300142690 /* CalendarViewControllerOld.xib */; };
-		C1DC1FF52402A35B00142690 /* WeekdayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1FF32402A35B00142690 /* WeekdayCollectionViewCell.swift */; };
-		C1DC1FF62402A35B00142690 /* WeekdayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC1FF42402A35B00142690 /* WeekdayCollectionViewCell.xib */; };
-		C1DC1FFA2402B68900142690 /* CalendarInactiveDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1FF82402B68900142690 /* CalendarInactiveDayCollectionViewCell.swift */; };
-		C1DC1FFB2402B68900142690 /* CalendarInactiveDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC1FF92402B68900142690 /* CalendarInactiveDayCollectionViewCell.xib */; };
-		C1DC1FFD2402B7F300142690 /* CalendarCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1FFC2402B7F300142690 /* CalendarCellFactory.swift */; };
 		C1DC1FFF2402BFDF00142690 /* MediumSecondaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC1FFE2402BFDF00142690 /* MediumSecondaryTextLabel.swift */; };
-		C1DC20032402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC20012402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift */; };
-		C1DC20042402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC20022402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib */; };
 		C1DCAE1C2465615E006A751B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1DCAE1E2465615E006A751B /* Localizable.strings */; };
 		C1DCAE2324658567006A751B /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DCAE2224658567006A751B /* Localized.swift */; };
 		C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EBB28023F6D8F6001C3D94 /* NavigationBarLable.swift */; };
@@ -94,7 +88,7 @@
 		2DD0AFD5239194AF009BED48 /* DayRecordsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsListViewController.swift; sourceTree = "<group>"; };
 		2DD0AFD6239194AF009BED48 /* DayRecordsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRecordsListViewController.xib; sourceTree = "<group>"; };
 		84008BF5224A11B8000CB9A2 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		84008BF7224A11B8000CB9A2 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		84008BF7224A11B8000CB9A2 /* DayOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOld.swift; sourceTree = "<group>"; };
 		846DF5B522B6878A0095A065 /* ImageRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecord.swift; sourceTree = "<group>"; };
 		8472597B22AD3C7400BCBA42 /* NoteRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecord.swift; sourceTree = "<group>"; };
 		84F8916922290E8D00956265 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +101,9 @@
 		84FF3F2F22FF01EE00CEF093 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		84FF3F3723071AF600CEF093 /* DayRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateTableViewCell.swift; sourceTree = "<group>"; };
 		84FF3F3823071AF600CEF093 /* DayRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRateTableViewCell.xib; sourceTree = "<group>"; };
+		911080CA2676233500BCE949 /* RecordsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsService.swift; sourceTree = "<group>"; };
+		911080CC2676243700BCE949 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		911080CE267624C000BCE949 /* DayRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRate.swift; sourceTree = "<group>"; };
 		9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9157AB7A266A6E6E003C4B66 /* Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constrainable.swift; sourceTree = "<group>"; };
 		9157AB7C266A6F12003C4B66 /* UIView+Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constrainable.swift"; sourceTree = "<group>"; };
@@ -133,21 +130,12 @@
 		C1386259246970920066D7C6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C1443165245AA68100B9F5E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C15815E42400437E0060B9FA /* DAOService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOService.swift; sourceTree = "<group>"; };
-		C15815E62400474C0060B9FA /* DAODayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAODayService.swift; sourceTree = "<group>"; };
+		C15815E62400474C0060B9FA /* DAODayServicedd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAODayServicedd.swift; sourceTree = "<group>"; };
 		C15815E8240047DF0060B9FA /* DAOImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOImageService.swift; sourceTree = "<group>"; };
 		C15815EA24004A110060B9FA /* DAONoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAONoteService.swift; sourceTree = "<group>"; };
 		C1DC1FE924028A5700142690 /* ImageRceordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRceordViewController.swift; sourceTree = "<group>"; };
 		C1DC1FEA24028A5700142690 /* ImageRceordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageRceordViewController.xib; sourceTree = "<group>"; };
-		C1DC1FEE240295A300142690 /* CalendarViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewControllerOld.swift; sourceTree = "<group>"; };
-		C1DC1FEF240295A300142690 /* CalendarViewControllerOld.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarViewControllerOld.xib; sourceTree = "<group>"; };
-		C1DC1FF32402A35B00142690 /* WeekdayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayCollectionViewCell.swift; sourceTree = "<group>"; };
-		C1DC1FF42402A35B00142690 /* WeekdayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayCollectionViewCell.xib; sourceTree = "<group>"; };
-		C1DC1FF82402B68900142690 /* CalendarInactiveDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInactiveDayCollectionViewCell.swift; sourceTree = "<group>"; };
-		C1DC1FF92402B68900142690 /* CalendarInactiveDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarInactiveDayCollectionViewCell.xib; sourceTree = "<group>"; };
-		C1DC1FFC2402B7F300142690 /* CalendarCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCellFactory.swift; sourceTree = "<group>"; };
 		C1DC1FFE2402BFDF00142690 /* MediumSecondaryTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumSecondaryTextLabel.swift; sourceTree = "<group>"; };
-		C1DC20012402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarActiveDayCollectionVIewCell.swift; sourceTree = "<group>"; };
-		C1DC20022402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarActiveDayCollectionVIewCell.xib; sourceTree = "<group>"; };
 		C1DCAE1D2465615E006A751B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C1DCAE2224658567006A751B /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		C1DCAE2524659AEB006A751B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -180,7 +168,6 @@
 			children = (
 				9157AB8E266AA91C003C4B66 /* LabelStyle.swift */,
 				84FF3F2922FEC4C100CEF093 /* Theme.swift */,
-				9182AAA62673EBC4006E68BE /* ViewModelSettable.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -248,7 +235,6 @@
 		2DD0AFD9239194EC009BED48 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C1DC1FED2402956E00142690 /* CalendarViewController */,
 				C14385712401347F008CACDB /* ImageRecordViewController */,
 				C1EBB28223F82672001C3D94 /* NoteRecordViewController */,
 				C100E1DC23ED9F1300B69182 /* SelectRateViewController */,
@@ -274,10 +260,9 @@
 		84F796A12233A58E00596CD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				84008BF7224A11B8000CB9A2 /* Day.swift */,
-				84008BF5224A11B8000CB9A2 /* Record.swift */,
-				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
-				846DF5B522B6878A0095A065 /* ImageRecord.swift */,
+				911080CC2676243700BCE949 /* Day.swift */,
+				911080CE267624C000BCE949 /* DayRate.swift */,
+				911080D0267624ED00BCE949 /* Old */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,14 +316,22 @@
 			isa = PBXGroup;
 			children = (
 				9182AAA32673EA91006E68BE /* CalendarView */,
-				C1DC20002402C79E00142690 /* CalendarActiveDayCollectionVIewCell */,
-				C1DC1FF72402B64500142690 /* CalendarUnactiveDayCollectionViewCell */,
-				C1DC1FF22402A33300142690 /* WeekdayCollectionVIewCell */,
 				2D9EEF34232B7E01002CCB49 /* NoteRecordTableViewCell */,
 				2D8CE44E232F67C900EC523E /* ImageRecordTableViewCell */,
 				2D9EEF2C232B7B06002CCB49 /* DayRateTabelViewCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		911080D0267624ED00BCE949 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				84008BF7224A11B8000CB9A2 /* DayOld.swift */,
+				84008BF5224A11B8000CB9A2 /* Record.swift */,
+				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
+				846DF5B522B6878A0095A065 /* ImageRecord.swift */,
+			);
+			path = Old;
 			sourceTree = "<group>";
 		};
 		9157AB6B266A6164003C4B66 /* Modules */ = {
@@ -416,54 +409,19 @@
 		C15815E32400435D0060B9FA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				911080CA2676233500BCE949 /* RecordsService.swift */,
 				C15815E42400437E0060B9FA /* DAOService.swift */,
-				C15815E62400474C0060B9FA /* DAODayService.swift */,
+				C15815E62400474C0060B9FA /* DAODayServicedd.swift */,
 				C15815E8240047DF0060B9FA /* DAOImageService.swift */,
 				C15815EA24004A110060B9FA /* DAONoteService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		C1DC1FED2402956E00142690 /* CalendarViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C1DC1FEE240295A300142690 /* CalendarViewControllerOld.swift */,
-				C1DC1FEF240295A300142690 /* CalendarViewControllerOld.xib */,
-				C1DC1FFC2402B7F300142690 /* CalendarCellFactory.swift */,
-			);
-			path = CalendarViewController;
-			sourceTree = "<group>";
-		};
-		C1DC1FF22402A33300142690 /* WeekdayCollectionVIewCell */ = {
-			isa = PBXGroup;
-			children = (
-				C1DC1FF32402A35B00142690 /* WeekdayCollectionViewCell.swift */,
-				C1DC1FF42402A35B00142690 /* WeekdayCollectionViewCell.xib */,
-			);
-			path = WeekdayCollectionVIewCell;
-			sourceTree = "<group>";
-		};
-		C1DC1FF72402B64500142690 /* CalendarUnactiveDayCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				C1DC1FF82402B68900142690 /* CalendarInactiveDayCollectionViewCell.swift */,
-				C1DC1FF92402B68900142690 /* CalendarInactiveDayCollectionViewCell.xib */,
-			);
-			path = CalendarUnactiveDayCollectionViewCell;
-			sourceTree = "<group>";
-		};
-		C1DC20002402C79E00142690 /* CalendarActiveDayCollectionVIewCell */ = {
-			isa = PBXGroup;
-			children = (
-				C1DC20012402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift */,
-				C1DC20022402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib */,
-			);
-			path = CalendarActiveDayCollectionVIewCell;
-			sourceTree = "<group>";
-		};
 		C1DCAE2424658DF0006A751B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9182AAA62673EBC4006E68BE /* ViewModelSettable.swift */,
 				C1DCAE2224658567006A751B /* Localized.swift */,
 			);
 			path = Utilities;
@@ -540,12 +498,8 @@
 				84FF3F3A23071AF600CEF093 /* DayRateTableViewCell.xib in Resources */,
 				C1EBB28623F8269A001C3D94 /* NoteRecordViewController.xib in Resources */,
 				C1DCAE1C2465615E006A751B /* Localizable.strings in Resources */,
-				C1DC20042402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.xib in Resources */,
-				C1DC1FF62402A35B00142690 /* WeekdayCollectionViewCell.xib in Resources */,
 				2D8CE452232F67F500EC523E /* ImageRecordTableViewCell.xib in Resources */,
 				84F8917A22290E9000956265 /* LaunchScreen.storyboard in Resources */,
-				C1DC1FF1240295A300142690 /* CalendarViewControllerOld.xib in Resources */,
-				C1DC1FFB2402B68900142690 /* CalendarInactiveDayCollectionViewCell.xib in Resources */,
 				C1443166245AA68100B9F5E5 /* Images.xcassets in Resources */,
 				2DD0AFD8239194AF009BED48 /* DayRecordsListViewController.xib in Resources */,
 				2D9EEF38232B7E63002CCB49 /* NoteRecordTableViewCell.xib in Resources */,
@@ -562,24 +516,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD0AFD7239194AF009BED48 /* DayRecordsListViewController.swift in Sources */,
-				C1DC1FFD2402B7F300142690 /* CalendarCellFactory.swift in Sources */,
 				C117264224038142000AA974 /* MediumHilightedPrimaryTextLabel.swift in Sources */,
-				C1DC1FF0240295A300142690 /* CalendarViewControllerOld.swift in Sources */,
 				9157AB8B266A8CC8003C4B66 /* CalendarView.swift in Sources */,
 				9182AAB12674CC6A006E68BE /* CalendarAssembler.swift in Sources */,
 				C1EBB28523F8269A001C3D94 /* NoteRecordViewController.swift in Sources */,
 				C15815EB24004A110060B9FA /* DAONoteService.swift in Sources */,
 				9182AAB52674D1E5006E68BE /* String+Extension.swift in Sources */,
 				846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */,
-				C1DC1FF52402A35B00142690 /* WeekdayCollectionViewCell.swift in Sources */,
 				2DD0AFCD23917B86009BED48 /* BaseLabel.swift in Sources */,
+				911080CB2676233500BCE949 /* RecordsService.swift in Sources */,
 				9182AAA52673EAB9006E68BE /* CalendarWeekdayViewCell.swift in Sources */,
 				2D8770A623B79E7900A38D9F /* NavigationTitleStackView.swift in Sources */,
 				9157AB6F266A61AE003C4B66 /* CalendarViewController.swift in Sources */,
 				2D8CE451232F67F500EC523E /* ImageRecordTableViewCell.swift in Sources */,
 				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
-				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
+				84008BFB224A11B8000CB9A2 /* DayOld.swift in Sources */,
 				9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */,
+				911080CD2676243700BCE949 /* Day.swift in Sources */,
 				9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */,
 				C1DC1FFF2402BFDF00142690 /* MediumSecondaryTextLabel.swift in Sources */,
 				C1DCAE2324658567006A751B /* Localized.swift in Sources */,
@@ -588,15 +541,15 @@
 				9182AAA72673EBC4006E68BE /* ViewModelSettable.swift in Sources */,
 				84FF3F3022FF01EE00CEF093 /* UIImageView+Extension.swift in Sources */,
 				C1EBB28123F6D8F6001C3D94 /* NavigationBarLable.swift in Sources */,
+				911080CF267624C000BCE949 /* DayRate.swift in Sources */,
 				9157AB81266A6FBC003C4B66 /* Constrainable+Position.swift in Sources */,
 				C100E1DF23ED9F8700B69182 /* DayRatingViewController.swift in Sources */,
 				9157AB89266A7F44003C4B66 /* Constrainable+Size.swift in Sources */,
 				9157AB85266A728C003C4B66 /* Constrainable+Edge.swift in Sources */,
 				2D0CFA15239220B700F8AFBB /* UIView+Extension.swift in Sources */,
 				2DD0AFC923917377009BED48 /* SmallSecondaryTextLabel.swift in Sources */,
-				C15815E72400474C0060B9FA /* DAODayService.swift in Sources */,
+				C15815E72400474C0060B9FA /* DAODayServicedd.swift in Sources */,
 				9157AB83266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift in Sources */,
-				C1DC20032402C7BD00142690 /* CalendarActiveDayCollectionVIewCell.swift in Sources */,
 				2D0CFA17239221FE00F8AFBB /* UIViewController+Extension.swift in Sources */,
 				9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */,
 				9182AAAF2674B960006E68BE /* CalendarPresenter.swift in Sources */,
@@ -611,7 +564,6 @@
 				9182AAA92673EE22006E68BE /* CalendarDayViewCell.swift in Sources */,
 				C138625A246970920066D7C6 /* UIImage+Extension.swift in Sources */,
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
-				C1DC1FFA2402B68900142690 /* CalendarInactiveDayCollectionViewCell.swift in Sources */,
 				9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				9157AB7F266A6F87003C4B66 /* UILayoutGuide+Constrainable.swift in Sources */,

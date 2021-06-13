@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DayOld" representedClassName=".DayOld" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dayRate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="month" attributeType="Date" usesScalarValueType="NO"/>
@@ -14,12 +14,12 @@
     </entity>
     <entity name="Record" representedClassName=".Record" isAbstract="YES" syncable="YES" codeGenerationType="category">
         <attribute name="time" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="records" inverseEntity="Day"/>
+        <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="DayOld" inverseName="records" inverseEntity="DayOld"/>
     </entity>
     <elements>
-        <element name="Day" positionX="-443.93359375" positionY="-66.03125" width="128" height="103"/>
-        <element name="ImageRecord" positionX="-234" positionY="-27" width="128" height="58"/>
-        <element name="NoteRecord" positionX="35.93359375" positionY="-31.015625" width="128" height="60"/>
-        <element name="Record" positionX="-193.89453125" positionY="-36.02734375" width="128" height="73"/>
+        <element name="DayOld" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ImageRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NoteRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Record" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

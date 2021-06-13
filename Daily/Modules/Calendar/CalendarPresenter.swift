@@ -27,10 +27,12 @@ extension CalendarPresenter: CalendarViewDelegate {
     }
     
     func getMonthsDays(month: Date) -> [CalendarDayViewModel] {
-        return factory.make(month: month)
+        return factory.make(month: month, delegate: self)
     }
-    
+}
+
+extension CalendarPresenter: CalendarFactoryDelegate {
     func dateSelected(_ date: Date) {
-        
+        print(date)
     }
 }

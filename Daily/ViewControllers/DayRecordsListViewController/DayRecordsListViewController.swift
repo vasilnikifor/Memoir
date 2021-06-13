@@ -11,7 +11,7 @@ final class DayRecordsListViewController: UIViewController {
     
     private var date: Date = Date()
     private var records: [Record] = []
-    private var delegate: CalendarDelegate?
+    //private var delegate: CalendarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +24,9 @@ final class DayRecordsListViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func configure(date: Date, delegate: CalendarDelegate) {
+    func configure(date: Date) { //}, delegate: CalendarDelegate) {
         self.date = date
-        self.delegate = delegate
+        //self.delegate = delegate
         
         update()
     }
@@ -72,7 +72,7 @@ extension DayRecordsListViewController {
 // MARK: - DayRecordsListDelegat
 extension DayRecordsListViewController: DayRecordsListDelegat {
     func update() {
-        let day = DAODayService.getDay(date: date)
+        let day = DAODayServicedd.getDay(date: date)
         
         if let dayRecords = day?.records?.sortedArray(using: [NSSortDescriptor(key: "time", ascending: true)]) as? [Record] {
             records = dayRecords
@@ -83,7 +83,7 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
         rateDayButton.image = Theme.getRateImage(day?.rate, filed: false)
         
         let titleView = NavigationTitleView()
-        if let rate = day?.rate, rate != .noRate {
+        if let rate = day?.rate, rate != .average {
             let imageView = UIImageView(image: Theme.getRateImage(rate))
             imageView.tintColor = Theme.getRateColor(rate)
             titleView.configure(title: date.dateRepresentation, imageView: imageView)
@@ -94,7 +94,7 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
         
         tableView.reloadData()
         
-        delegate?.update()
+        //delegate?.update()
     }
 }
 

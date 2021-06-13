@@ -8,7 +8,7 @@ final class DayRatingViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private var date: Date = Date()
-    private var dayRate: DayRate = .noRate
+    private var dayRate: DayRate = .bad
     private var delegate: SelectRateDelegate?
     
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ final class DayRatingViewController: UIViewController {
         self.date = date
         self.delegate = delegate
         
-        if let day = DAODayService.getDay(date: date) {
+        if let day = DAODayServicedd.getDay(date: date) {
             dayRate = day.rate
         }
     }
@@ -36,7 +36,7 @@ final class DayRatingViewController: UIViewController {
 // MARK: - UITableViewDelegate
 extension DayRatingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DAODayService.setDayRate(dayDate: self.date.startOfDay, rate: DayRate.allCases[indexPath.row])
+        DAODayServicedd.setDayRate(dayDate: self.date.startOfDay, rate: DayRate.allCases[indexPath.row])
         self.delegate?.rateDidChange()
         self.dismiss()
     }

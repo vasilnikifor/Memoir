@@ -1,8 +1,8 @@
 import CoreData
 
-final class DAODayService: DAOService {
-    static func getDay(date: Date) -> Day? {
-        let request: NSFetchRequest<Day> = Day.fetchRequest()
+final class DAODayServicedd: DAOService {
+    static func getDay(date: Date) -> DayOld? {
+        let request: NSFetchRequest<DayOld> = DayOld.fetchRequest()
         request.predicate = NSPredicate(format: "date = %@", date.startOfDay as CVarArg)
         
         if let matches = try? context.fetch(request), let day = matches.first {
@@ -12,7 +12,7 @@ final class DAODayService: DAOService {
         }
     }
     
-    static func removeDay(_ day: Day) {
+    static func removeDay(_ day: DayOld) {
         context.delete(day)
         saveContext()
     }
@@ -26,10 +26,10 @@ final class DAODayService: DAOService {
         saveContext()
     }
     
-    static func findOrCreateDay(date: Date) -> Day {
+    static func findOrCreateDay(date: Date) -> DayOld {
         let dateForFind = date.startOfDay
         
-        let request: NSFetchRequest<Day> = Day.fetchRequest()
+        let request: NSFetchRequest<DayOld> = DayOld.fetchRequest()
         request.predicate = NSPredicate(format: "date = %@", dateForFind as CVarArg)
         
         do {
@@ -39,7 +39,7 @@ final class DAODayService: DAOService {
             }
         } catch {}
         
-        let day = Day(context: context)
+        let day = DayOld(context: context)
         day.date = dateForFind
         day.month = dateForFind.firstDayOfMonth
         
@@ -48,10 +48,10 @@ final class DAODayService: DAOService {
         return day
     }
     
-    static func getAllDaysOfMounth(_ month: Date) -> [Day] {
+    static func getAllDaysOfMounth(_ month: Date) -> [DayOld] {
         let monthForFind = month.firstDayOfMonth
         
-        let request: NSFetchRequest<Day> = Day.fetchRequest()
+        let request: NSFetchRequest<DayOld> = DayOld.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         request.predicate = NSPredicate(format: "month = %@", monthForFind as CVarArg)
         
