@@ -1,55 +1,50 @@
 import Foundation
 
+// MARK: - Static
 extension Date {
-    private static var firstWeekday: Int {
-        return 2
+    private static var calendar: Calendar {
+        return Calendar.current
     }
-    
+
     static var shortWeekdaySymbols: [String] {
-        let shortWeekdaySymbols = Date().calendar.shortWeekdaySymbols
-        let firstWeekdayIndex = firstWeekday - 1
+        let shortWeekdaySymbols = calendar.shortWeekdaySymbols
+        let firstWeekdayIndex = calendar.firstWeekday - 1
         let lastWeekdayIndex = shortWeekdaySymbols.count - 1
-        let shortWeekdaySymbolsWithNeededFirstWeekday: [String] =
-            Array(
-                shortWeekdaySymbols[firstWeekdayIndex...lastWeekdayIndex] + shortWeekdaySymbols[0..<firstWeekdayIndex]
-            )
-        return shortWeekdaySymbolsWithNeededFirstWeekday.map { $0.capitalizedFirstLetter }
+        let weekdays: [String] = Array(shortWeekdaySymbols[firstWeekdayIndex...lastWeekdayIndex] + shortWeekdaySymbols[0..<firstWeekdayIndex])
+        return weekdays.map { $0.capitalizedFirstLetter }
     }
 }
 
+
+// MARK: - Instance
 extension Date {
+    private var calendar: Calendar {
+        return Date.calendar
+    }
+    
     var firstMonthCalendarDate: Date {
         let firstDayOfMonth = firstDayOfMonth
-        let deltaFromFirstMonthDate = calendar.component(.weekday, from: firstDayOfMonth) - 1
-        return firstDayOfMonth.addDays(-deltaFromFirstMonthDate)
+        let absoluteDelta = calendar.component(.weekday, from: firstDayOfMonth) - calendar.firstWeekday
+        let delta = absoluteDelta < 0 ? calendar.shortWeekdaySymbols.count + absoluteDelta : absoluteDelta
+        return firstDayOfMonth.addDays(-delta)
     }
     
     var lastMonthCalendarDate: Date {
         let lastDayOfMonth = lastDayOfMonth
-        let deltaFromLastMonthDate = calendar.shortWeekdaySymbols.count - calendar.component(.weekday, from: lastDayOfMonth)
-        return lastDayOfMonth.addDays(deltaFromLastMonthDate)
-    }
-    
-    private var locale: Locale {
-        return Locale(identifier: "en_EN")
-    }
-    
-    private var calendar: Calendar {
-        var calendar = Calendar.current
-        calendar.locale = locale
-        return calendar
+        let weekdaysCount = calendar.shortWeekdaySymbols.count
+        let absoluteLastWeekday = calendar.firstWeekday - 1
+        let lastWeekday = absoluteLastWeekday < 1 ? weekdaysCount - absoluteLastWeekday : absoluteLastWeekday
+        let absoluteDelta = lastWeekday - calendar.component(.weekday, from: lastDayOfMonth)
+        let delta = absoluteDelta < 0 ? weekdaysCount + absoluteDelta : absoluteDelta
+        return lastDayOfMonth.addDays(delta)
     }
     
     var firstDayOfMonth: Date {
-        return calendar
-            .date(from: calendar.dateComponents([.year, .month, .timeZone], from: self.startOfDay))!
-            .startOfDay
+        return calendar.date(from: calendar.dateComponents([.year, .month, .timeZone], from: self.startOfDay))!.startOfDay
     }
     
     var lastDayOfMonth: Date {
-        return calendar
-            .date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth)!
-            .startOfDay
+        return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth)!.startOfDay
     }
     
     var startOfDay: Date {
@@ -60,9 +55,13 @@ extension Date {
         return calendar.date(from: calendar.dateComponents([.hour, .minute, .second, .timeZone], from: self))!
     }
     
+    var dateNumber: String {
+        return String(calendar.component(.day, from: self))
+    }
+    
+    /// "h:mm a"
     var timeRepresentation: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = locale
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: self)
     }
@@ -70,7 +69,6 @@ extension Date {
     /// "EE, MMM d"
     var dateRepresentation: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = locale
         dateFormatter.dateFormat = "EE, MMM d"
         return dateFormatter.string(from: self)
     }
@@ -78,13 +76,8 @@ extension Date {
     /// "MMMM yyyy"
     var monthRepresentation: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = locale
         dateFormatter.dateFormat = "MMMM yyyy"
         return dateFormatter.string(from: self)
-    }
-    
-    var dateNumber: String {
-        return String(calendar.component(.day, from: self))
     }
     
     func addDays(_ numberOfDays: Int) -> Date {
@@ -94,6 +87,4 @@ extension Date {
     func addMonths(_ numberOfMonths: Int) -> Date {
         return calendar.date(byAdding: .month, value: numberOfMonths, to: self)!
     }
-    
-
 }
