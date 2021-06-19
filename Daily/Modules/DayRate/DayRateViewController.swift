@@ -5,14 +5,13 @@ protocol DayRateViewControllerProtocol: Transitionable, AnyObject {
 }
 
 final class DayRateViewController: UIViewController {
-    private let closeButtonImage: UIImage? = UIImage(systemName: "xmark")
     private let removeButtonImage: UIImage? = UIImage(systemName: "trash")
     
     var presenter: DayRatePresenterProtocol?
     
     private lazy var closeButton: UIBarButtonItem = {
         return UIBarButtonItem(
-            image: closeButtonImage,
+            image: Theme.closeImage,
             style: .plain,
             target: self,
             action: #selector(closeButtonTouchUpInside)
@@ -21,7 +20,7 @@ final class DayRateViewController: UIViewController {
     
     private lazy var removeButton: UIBarButtonItem = {
         return UIBarButtonItem(
-            image: removeButtonImage,
+            image: Theme.removeImage,
             style: .plain,
             target: self,
             action: #selector(closeButtonTouchUpInside)
@@ -30,8 +29,8 @@ final class DayRateViewController: UIViewController {
     
     private lazy var badRateView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Theme.getRateImage(.bad)
-        imageView.tintColor = Theme.getRateColor(.bad)
+        imageView.image = Theme.badRateImage
+        imageView.tintColor = Theme.badRateColor
         imageView.contentMode = .scaleAspectFit
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(badRateViewTouchUpInside)))
         imageView.isUserInteractionEnabled = true
@@ -40,8 +39,8 @@ final class DayRateViewController: UIViewController {
     
     private lazy var averageRateView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Theme.getRateImage(.average)
-        imageView.tintColor = Theme.getRateColor(.average)
+        imageView.image = Theme.averageRateImage
+        imageView.tintColor = Theme.averageRateColor
         imageView.contentMode = .scaleAspectFit
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(avaregeRateViewTouchUpInside)))
         imageView.isUserInteractionEnabled = true
@@ -50,8 +49,8 @@ final class DayRateViewController: UIViewController {
     
     private lazy var goodRateView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Theme.getRateImage(.good)
-        imageView.tintColor = Theme.getRateColor(.good)
+        imageView.image = Theme.goodRateImage
+        imageView.tintColor = Theme.goodRateColor
         imageView.contentMode = .scaleAspectFit
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(goodRateViewTouchUpInside)))
         imageView.isUserInteractionEnabled = true

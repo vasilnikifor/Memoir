@@ -74,7 +74,7 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
             records = []
         }
         
-        rateDayButton.image = Theme.getRateImage(day?.rate, filed: false)
+        //rateDayButton.image = Theme.getRateImage(day?.rate, filed: false)
         
         tableView.reloadData()
         

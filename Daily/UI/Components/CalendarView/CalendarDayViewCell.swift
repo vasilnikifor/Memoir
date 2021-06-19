@@ -92,9 +92,18 @@ extension CalendarDayViewCell: ViewModelSettable {
             button.isEnabled = false
         case .filled(let dayRate):
             isTodayView.backgroundColor = Theme.primaryTextColor
-            button.backgroundColor = Theme.getRateColor(dayRate)
             button.setTitleColor(Theme.primaryTextColor, for: .normal)
             button.isEnabled = false
+            switch dayRate {
+            case .bad:
+                button.backgroundColor = Theme.badRateColor
+            case .average:
+                button.backgroundColor = Theme.averageRateColor
+            case .good:
+                button.backgroundColor = Theme.goodRateColor
+            case .none:
+                button.backgroundColor = Theme.noRateColor
+            }
         }
     }
 }
