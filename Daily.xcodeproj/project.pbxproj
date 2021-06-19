@@ -243,6 +243,7 @@
 		9157AB6C266A6173003C4B66 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				9182AAA32673EA91006E68BE /* CalendarView */,
 				9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */,
 				9182AAAE2674B960006E68BE /* CalendarPresenter.swift */,
 				9182AAB02674CC6A006E68BE /* CalendarAssembler.swift */,
@@ -280,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				916C25ED267E211A004A1CDF /* NavigationController.swift */,
-				9182AAA32673EA91006E68BE /* CalendarView */,
 			);
 			path = Components;
 			sourceTree = "<group>";

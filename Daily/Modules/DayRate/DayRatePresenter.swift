@@ -25,7 +25,23 @@ final class DayRatePresenter {
 
 extension DayRatePresenter: DayRatePresenterProtocol {
     func viewLoaded() {
-        view?.setupInitialState()
+        // TODO:
+        let dayRate: DayRate?
+        let randomRate = Int.random(in: 0...3)
+        if randomRate == 0 {
+            dayRate = .none
+        } else if randomRate == 1 {
+            dayRate = .bad
+        } else if randomRate == 2 {
+            dayRate = .average
+        } else {
+            dayRate = .good
+        }
+        view?.setupInitialState(
+            dateText: date.dateRepresentation,
+            isRemoveable: Bool.random(),
+            currentRate: dayRate
+        )
     }
     
     func closeTapped() {

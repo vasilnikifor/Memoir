@@ -51,6 +51,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
                         )
                     )
                 } else {
+                    // TODO: -
                     let dayRate: DayRate?
                     let randomRate = Int.random(in: 0...3)
                     if randomRate == 0 {

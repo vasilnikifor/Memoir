@@ -1,13 +1,18 @@
 import UIKit
 
 protocol DayRateViewControllerProtocol: Transitionable, AnyObject {
-    func setupInitialState()
+    func setupInitialState(dateText: String, isRemoveable: Bool, currentRate: DayRate?)
 }
 
 final class DayRateViewController: UIViewController {
-    private let removeButtonImage: UIImage? = UIImage(systemName: "trash")
-    
     var presenter: DayRatePresenterProtocol?
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.apply(style: .primary24)
+        label.textAlignment = .center
+        return label
+    }()
     
     private lazy var closeButton: UIBarButtonItem = {
         return UIBarButtonItem(
@@ -75,16 +80,20 @@ final class DayRateViewController: UIViewController {
     
     private func setupUI() {
         navigationItem.leftBarButtonItem = closeButton
-        navigationItem.rightBarButtonItem = removeButton
-        
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(rateStackView)
+        view.addSubview(dateLabel)
         
         rateStackView
             .centerYToSuperview()
             .leadingToSuperview(16)
             .trailingToSuperview(-16)
             .height(60)
+        
+        dateLabel
+            .leadingToSuperview()
+            .trailingToSuperview()
+            .bottom(to: rateStackView, anchor: rateStackView.topAnchor, offset: -32)
     }
     
     @objc
@@ -114,7 +123,13 @@ final class DayRateViewController: UIViewController {
 }
 
 extension DayRateViewController: DayRateViewControllerProtocol {
-    func setupInitialState() {
+    func setupInitialState(dateText: String, isRemoveable: Bool, currentRate: DayRate?) {
+        dateLabel.text = dateText
         
+        if isRemoveable {
+            navigationItem.rightBarButtonItem = removeButton
+        }
+        
+
     }
 }
