@@ -16,8 +16,6 @@ final class DayRecordsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(NoteRecordTableViewCell.nib, forCellReuseIdentifier: NoteRecordTableViewCell.nibName)
-        tableView.register(ImageRecordTableViewCell.nib, forCellReuseIdentifier: ImageRecordTableViewCell.nibName)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         tableView.delegate = self
@@ -35,15 +33,11 @@ final class DayRecordsListViewController: UIViewController {
 // MARK: - Actions
 extension DayRecordsListViewController {
     @IBAction func rateDay(_ sender: Any) {
-        let rateDay = DayRatingViewController.loadFromNib()
-        rateDay.configure(date: date, delegate: self)
-        presentWithNavigationController(rateDay)
+
     }
     
     @IBAction func addNote(_ sender: Any) {
-        let note = NoteRecordViewController.loadFromNib()
-        note.configure(NoteRecordViewModel(date: date, noteRecord: nil), delegate: self)
-        presentWithNavigationController(note)
+
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -91,15 +85,6 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
 // MARK: - UITableViewDelegate
 extension DayRecordsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let noteRecord = self.records[indexPath.row] as? NoteRecord {
-            let noteView = NoteRecordViewController.loadFromNib()
-            noteView.configure(NoteRecordViewModel(date: self.date, noteRecord: noteRecord), delegate: self)
-            self.presentWithNavigationController(noteView)
-        } else if let imageRecord = self.records[indexPath.row] as? ImageRecord {
-            let imageRecordView = ImageRceordViewController.loadFromNib()
-            imageRecordView.configure(ImageRecordViewModel(date: self.date, imageRecord: imageRecord), delegate: self)
-            self.presentWithNavigationController(imageRecordView)
-        }
     }
 }
 
@@ -110,43 +95,9 @@ extension DayRecordsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let record = records[indexPath.row]
-        
-        if let noteRecord = record as? NoteRecord,
-            let cell = tableView.dequeueReusableCell(withIdentifier: NoteRecordTableViewCell.nibName, for: indexPath) as?  NoteRecordTableViewCell {
-            cell.configure(noteRecord: noteRecord)
-            return cell
-        } else if let imageRecord = record as? ImageRecord,
-            let cell = tableView.dequeueReusableCell(withIdentifier: ImageRecordTableViewCell.nibName, for: indexPath) as? ImageRecordTableViewCell {
-            cell.configure(imageRecord: imageRecord)
-            return cell
-        }
-        
         return UITableViewCell()
     }
 }
-
-// MARK: - SelectRateDelegate
-extension DayRecordsListViewController: SelectRateDelegate {
-    func rateDidChange() {
-        update()
-    }
-}
-
-// MARK: - NoteRecordDelegate
-extension DayRecordsListViewController: NoteRecordDelegate {
-    func noteDidChange() {
-        update()
-    }
-}
-
-// MARK: - ImageRecordDelegate
-extension DayRecordsListViewController: ImageRecordDelegate {
-    func imageRecordDidChange() {
-        update()
-    }
-}
-
 // MARK: - UIImagePickerControllerDelegate
 extension DayRecordsListViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

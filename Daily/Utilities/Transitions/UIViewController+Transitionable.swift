@@ -1,22 +1,5 @@
 import UIKit
 
-// TODO: - REMOVE
-extension UIViewController {
-    static var nibName: String {
-        return String(describing: self)
-    }
-
-    static func loadFromNib() -> Self {
-        func instantiateFromNib<T: UIViewController>() -> T {
-            let nib = T.init(nibName: self.nibName, bundle: nil)
-            nib.loadViewIfNeeded()
-            return nib
-        }
-
-        return instantiateFromNib()
-    }
-}
-
 extension UIViewController: Transitionable {
     func push(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
@@ -37,17 +20,6 @@ extension UIViewController: Transitionable {
             navigationController.popViewController(animated: true)
         } else {
             navigationController.dismiss(animated: true, completion: nil)
-        }
-    }
-}
-
-// MARK: - Navigation
-extension UIViewController {
-    func presentWithNavigationController(_ viewController: UIViewController) {
-        DispatchQueue.main.async {
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.modalPresentationStyle = .pageSheet
-            self.present(navigationController, animated: true, completion: nil)
         }
     }
 }

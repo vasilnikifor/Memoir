@@ -44,7 +44,7 @@ final class CalendarView: UIView {
     private lazy var monthLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.apply(style: .largePrimary)
+        label.apply(style: .primary24)
         return label
     }()
     
