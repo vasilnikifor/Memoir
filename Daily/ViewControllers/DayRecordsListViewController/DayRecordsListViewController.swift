@@ -82,16 +82,6 @@ extension DayRecordsListViewController: DayRecordsListDelegat {
         
         rateDayButton.image = Theme.getRateImage(day?.rate, filed: false)
         
-        let titleView = NavigationTitleView()
-        if let rate = day?.rate, rate != .average {
-            let imageView = UIImageView(image: Theme.getRateImage(rate))
-            imageView.tintColor = Theme.getRateColor(rate)
-            titleView.configure(title: date.dateRepresentation, imageView: imageView)
-        } else {
-            titleView.configure(title: date.dateRepresentation)
-        }
-        navigationItem.titleView = titleView
-        
         tableView.reloadData()
         
         //delegate?.update()

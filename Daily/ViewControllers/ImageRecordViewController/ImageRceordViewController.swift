@@ -20,8 +20,6 @@ class ImageRceordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = Localized.image
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "trash") ?? UIImage(),
             style: .plain,
@@ -47,21 +45,6 @@ class ImageRceordViewController: UIViewController {
 extension ImageRceordViewController {
     @objc
     private func removeImage() {
-        let cancelAction = UIAlertAction(title: Localized.cansel, style: .cancel, handler: nil)
-        let yesAction = UIAlertAction(title: Localized.yes, style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            
-            if let imageRecord = self.imageRecord {
-                DAOImageService.removeImage(imageRecord)
-                self.delegate?.imageRecordDidChange()
-            }
-            
-            self.dismiss()
-        }
-        
-        let alert = UIAlertController(title: nil, message: Localized.doYouWantToDeleteTheRecord, preferredStyle: .alert)
-        alert.addAction(cancelAction)
-        alert.addAction(yesAction)
-        present(alert, animated: true)
+
     }
 }

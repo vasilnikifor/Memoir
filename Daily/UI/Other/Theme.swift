@@ -15,12 +15,6 @@ final class Theme {
     
     static func getRateColor(_ rate: DayRate?) -> UIColor {
         switch rate {
-        case .none:
-            return UIColor { (trait) -> UIColor in
-                trait.userInterfaceStyle == .dark
-                    ? UIColor(red: 0.26, green: 0.26, blue: 0.26, alpha: 1.00) // #424242
-                    : UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00) // #eeeeee
-            }
         case .bad:
             return UIColor { (trait) -> UIColor in
                 trait.userInterfaceStyle == .dark
@@ -39,8 +33,25 @@ final class Theme {
                     ? UIColor(red: 0.18, green: 0.49, blue: 0.20, alpha: 1.00) // #2e7d32
                     : UIColor(red: 0.65, green: 0.84, blue: 0.65, alpha: 1.00) // #a5d6a7
             }
-        default:
-            return UIColor.clear
+        case .none:
+            return UIColor { (trait) -> UIColor in
+                trait.userInterfaceStyle == .dark
+                    ? UIColor(red: 0.26, green: 0.26, blue: 0.26, alpha: 1.00) // #424242
+                    : UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00) // #eeeeee
+            }
+        }
+    }
+    
+    static func getRateImage(_ rate: DayRate?) -> UIImage {
+        switch rate {
+        case .bad:
+            return UIImage(systemName: "star.slash") ?? UIImage()
+        case .average:
+            return UIImage(systemName: "star.leadinghalf.fill") ?? UIImage()
+        case .good:
+            return UIImage(systemName: "star.fill") ?? UIImage()
+        case .none:
+            return UIImage(systemName: "star") ?? UIImage()
         }
     }
     
@@ -72,17 +83,6 @@ final class Theme {
         
         case .none where filed:
             return UIImage(systemName: "smoke.fill") ?? UIImage()
-        }
-    }
-    
-    static func getRateName(_ rate: DayRate) -> String {
-        switch rate {
-        case .bad:
-            return Localized.badDay
-        case .average:
-            return Localized.averageDay
-        case .good:
-            return Localized.goodDay
         }
     }
 }

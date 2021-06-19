@@ -19,8 +19,6 @@ final class DayRatingViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        navigationItem.title = Localized.dayRating
     }
     
     func configure(date: Date, delegate: SelectRateDelegate?) {

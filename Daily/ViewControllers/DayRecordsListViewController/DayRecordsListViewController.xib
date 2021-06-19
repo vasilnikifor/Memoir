@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,25 +24,25 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NxK-Fe-Pw7">
                     <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ug-Gh-Nff">
                     <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <items>
-                        <barButtonItem image="smoke" catalog="system" id="Gfn-PO-KB0" userLabel="Rate Day Button">
+                        <barButtonItem image="star.leadinghalf.fill" catalog="system" id="Gfn-PO-KB0" userLabel="Rate Day Button">
                             <connections>
                                 <action selector="rateDay:" destination="-1" id="p1e-8b-Get"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="IGq-jg-lVF"/>
-                        <barButtonItem image="doc.text" catalog="system" id="Tv9-sU-v7C" userLabel="Add Note Button">
+                        <barButtonItem image="penc" id="Tv9-sU-v7C" userLabel="Add Note Button">
                             <connections>
                                 <action selector="addNote:" destination="-1" id="jPi-4S-KMN"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="tEG-yP-SqH"/>
-                        <barButtonItem image="photo" catalog="system" id="1Bh-g0-Ahz" userLabel="Add Image Button">
+                        <barButtonItem title="Item" image="star.slash" catalog="system" id="1Bh-g0-Ahz" userLabel="Add Image Button">
                             <connections>
                                 <action selector="addImage:" destination="-1" id="RfU-1O-Ear"/>
                             </connections>
@@ -53,8 +55,13 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Jr-E8-4FG">
+                    <rect key="frame" x="87" y="354" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NxK-Fe-Pw7" secondAttribute="trailing" id="XAA-82-JRR"/>
                 <constraint firstItem="NxK-Fe-Pw7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XiH-Pn-UNr"/>
@@ -64,14 +71,19 @@
                 <constraint firstItem="4ug-Gh-Nff" firstAttribute="top" secondItem="NxK-Fe-Pw7" secondAttribute="bottom" id="qaH-gW-Cw1"/>
                 <constraint firstItem="4ug-Gh-Nff" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tTH-eb-4CM"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="131.8840579710145" y="128.57142857142856"/>
         </view>
     </objects>
     <resources>
-        <image name="camera" catalog="system" width="64" height="48"/>
-        <image name="doc.text" catalog="system" width="56" height="64"/>
-        <image name="photo" catalog="system" width="64" height="46"/>
-        <image name="smoke" catalog="system" width="64" height="46"/>
+        <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="penc" width="128" height="128"/>
+        <image name="star.leadinghalf.fill" catalog="system" width="128" height="116"/>
+        <image name="star.slash" catalog="system" width="128" height="116"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

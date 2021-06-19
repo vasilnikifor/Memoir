@@ -21,17 +21,7 @@ final class NoteRecordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = Localized.note
-        
-        becomeKeyboardShowingObserver()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "trash") ?? UIImage(),
-            style: .done,
-            target: nil,
-            action: #selector(removeNote)
-        )
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,23 +78,6 @@ extension NoteRecordViewController {
     
     @objc
     private func removeNote() {
-        let cancelAction = UIAlertAction(title: Localized.cansel, style: .cancel, handler: nil)
-        let yesAction = UIAlertAction(title: Localized.yes, style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            
-            if let noteRecord = self.noteRecord {
-                DAONoteService.removeNote(noteRecord)
-                self.delegate?.noteDidChange()
-            } else {
-                self.noteTextView.text = nil
-            }
-            
-            self.dismiss()
-        }
-        
-        let alert = UIAlertController(title: nil, message: Localized.doYouWantToDeleteTheRecord, preferredStyle: .alert)
-        alert.addAction(cancelAction)
-        alert.addAction(yesAction)
-        present(alert, animated: true)
+
     }
 }

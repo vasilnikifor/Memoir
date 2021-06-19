@@ -1,11 +1,11 @@
 import UIKit
 
-// MARK: - View
+// TODO: - REMOVE
 extension UIViewController {
     static var nibName: String {
         return String(describing: self)
     }
-    
+
     static func loadFromNib() -> Self {
         func instantiateFromNib<T: UIViewController>() -> T {
             let nib = T.init(nibName: self.nibName, bundle: nil)
@@ -17,40 +17,37 @@ extension UIViewController {
     }
 }
 
-// MARK: - Navigation
-extension UIViewController {
+extension UIViewController: Transitionable {
     func push(_ viewController: UIViewController) {
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
-
-    func present(_ navigationController: UINavigationController) {
-        DispatchQueue.main.async {
-            self.present(navigationController, animated: true)
-        }
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
+    
+    func present(_ viewController: UIViewController) {
+        present(NavigationController(rootViewController: viewController), animated: true)
+    }
+    
+    func dismiss() {
+        guard let navigationController = navigationController else {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+
+        if navigationController.viewControllers.count > 1 {
+            navigationController.popViewController(animated: true)
+        } else {
+            navigationController.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - Navigation
+extension UIViewController {
     func presentWithNavigationController(_ viewController: UIViewController) {
         DispatchQueue.main.async {
             let navigationController = UINavigationController(rootViewController: viewController)
             navigationController.modalPresentationStyle = .pageSheet
             self.present(navigationController, animated: true, completion: nil)
-        }
-    }
-    
-    func dismiss() {
-        DispatchQueue.main.async {
-            guard let navigationController = self.navigationController else {
-                self.dismiss(animated: true, completion: nil)
-                return
-            }
-
-            if navigationController.viewControllers.count > 1 {
-                navigationController.popViewController(animated: true)
-            } else {
-                navigationController.dismiss(animated: true, completion: nil)
-            }
         }
     }
 }

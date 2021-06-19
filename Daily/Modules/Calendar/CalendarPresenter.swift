@@ -1,7 +1,15 @@
 import Foundation
 
 protocol CalendarPresenterProtocol: AnyObject {
-    func viewDidLoad()
+    func viewLoaded()
+    func rateDayTapped()
+    func addNoteTapped()
+    func addImageTapped()
+    func takePhotoTapped()
+}
+
+protocol CalendarDelegate: AnyObject {
+    func update()
 }
 
 final class CalendarPresenter {
@@ -16,9 +24,19 @@ final class CalendarPresenter {
 }
 
 extension CalendarPresenter: CalendarPresenterProtocol {
-    func viewDidLoad() {
+    func viewLoaded() {
         view?.setupInitialState(calendarViewModel: CalendarViewModel(month: Date(), delegate: self))
     }
+    
+    func rateDayTapped() {
+        view?.present(DayRateAssembler.assemble(date: Date(), calendarDelegate: self))
+    }
+    
+    func addNoteTapped() {}
+    
+    func addImageTapped() {}
+    
+    func takePhotoTapped() {}
 }
 
 extension CalendarPresenter: CalendarViewDelegate {
@@ -33,6 +51,12 @@ extension CalendarPresenter: CalendarViewDelegate {
 
 extension CalendarPresenter: CalendarFactoryDelegate {
     func dateSelected(_ date: Date) {
-        print(date)
+        print("date \(date)")
+    }
+}
+
+extension CalendarPresenter: CalendarDelegate {
+    func update() {
+        print("update")
     }
 }
