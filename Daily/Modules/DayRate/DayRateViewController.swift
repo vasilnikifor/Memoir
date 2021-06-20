@@ -7,13 +7,6 @@ protocol DayRateViewControllerProtocol: Transitionable, AnyObject {
 final class DayRateViewController: UIViewController {
     var presenter: DayRatePresenterProtocol?
     
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.apply(style: .primary24)
-        label.textAlignment = .center
-        return label
-    }()
-    
     private lazy var closeButton: UIBarButtonItem = {
         return UIBarButtonItem(
             image: Theme.closeImage,
@@ -82,18 +75,12 @@ final class DayRateViewController: UIViewController {
         navigationItem.leftBarButtonItem = closeButton
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(rateStackView)
-        view.addSubview(dateLabel)
         
         rateStackView
             .centerYToSuperview()
             .leadingToSuperview(16)
             .trailingToSuperview(-16)
             .height(60)
-        
-        dateLabel
-            .leadingToSuperview()
-            .trailingToSuperview()
-            .bottom(to: rateStackView, anchor: rateStackView.topAnchor, offset: -32)
     }
     
     @objc
@@ -124,12 +111,9 @@ final class DayRateViewController: UIViewController {
 
 extension DayRateViewController: DayRateViewControllerProtocol {
     func setupInitialState(dateText: String, isRemoveable: Bool, currentRate: DayRate?) {
-        dateLabel.text = dateText
-        
+        title = dateText
         if isRemoveable {
             navigationItem.rightBarButtonItem = removeButton
         }
-        
-
     }
 }
