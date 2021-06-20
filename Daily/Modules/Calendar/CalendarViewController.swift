@@ -13,6 +13,10 @@ final class CalendarViewController: UIViewController {
     
     var presenter: CalendarPresenterProtocol?
     
+    private let calendarContentView: UIView = {
+        return UIView()
+    }()
+    
     private var calendarView: CalendarView = {
         return CalendarView()
     }()
@@ -69,8 +73,15 @@ final class CalendarViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = Theme.backgroundColor
-        view.addSubview(calendarView)
         view.addSubview(actionsStackView)
+        view.addSubview(calendarContentView)
+        calendarContentView.addSubview(calendarView)
+        
+        calendarContentView
+            .leadingToSuperview()
+            .trailingToSuperview()
+            .topToSuperview()
+            .bottom(to: actionsStackView, anchor: actionsStackView.topAnchor)
         
         calendarView
             .centerYToSuperview()

@@ -14,7 +14,11 @@ extension Theme {
     }
     
     static var backgroundColor: UIColor {
-        return .systemBackground
+        return UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? .black
+                : .white
+        }
     }
     
     static var badRateColor: UIColor {
