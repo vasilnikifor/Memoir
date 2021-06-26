@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -30,7 +29,7 @@
                     <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <items>
-                        <barButtonItem image="star.leadinghalf.fill" catalog="system" id="Gfn-PO-KB0" userLabel="Rate Day Button">
+                        <barButtonItem image="checkmark" catalog="system" id="Gfn-PO-KB0" userLabel="Rate Day Button">
                             <connections>
                                 <action selector="rateDay:" destination="-1" id="p1e-8b-Get"/>
                             </connections>
@@ -76,8 +75,8 @@
     </objects>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="penc" width="128" height="128"/>
-        <image name="star.leadinghalf.fill" catalog="system" width="128" height="116"/>
         <image name="star.slash" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

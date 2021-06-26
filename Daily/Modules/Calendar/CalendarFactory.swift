@@ -41,7 +41,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
                     )
                 )
             } else {
-                if Bool.random() {
+                if true {
                     calendarDays.append(
                         CalendarDayViewModel(
                             date: processingDate,

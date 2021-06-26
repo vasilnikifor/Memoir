@@ -27,7 +27,6 @@ final class CalendarView: UIView {
     
     private lazy var upMonthButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .clear
         button.setImage(upMonthButtonImage, for: .normal)
         button.addTarget(self, action: #selector(swipeCalendarToNextMonth), for: .touchUpInside)
         return button
@@ -35,7 +34,6 @@ final class CalendarView: UIView {
     
     private lazy var downMonthButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .clear
         button.setImage(downMonthButtonImage, for: .normal)
         button.addTarget(self, action: #selector(swipeCalendarToPreviousMonth), for: .touchUpInside)
         return button

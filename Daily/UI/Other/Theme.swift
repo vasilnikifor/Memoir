@@ -79,4 +79,8 @@ extension Theme {
     static var removeImage: UIImage {
         return UIImage(systemName: "trash") ?? UIImage()
     }
+    
+    static var doneImage: UIImage {
+        return UIImage(systemName: "checkmark") ?? UIImage()
+    }
 }

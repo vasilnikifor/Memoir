@@ -23,7 +23,6 @@ final class CalendarViewController: UIViewController {
     
     private lazy var rateDayButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .clear
         button.setImage(rateDayButtonImage, for: .normal)
         button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
         return button
@@ -31,7 +30,6 @@ final class CalendarViewController: UIViewController {
     
     private lazy var addNoteButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .clear
         button.setImage(addNoteButtonImage, for: .normal)
         button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
         return button
@@ -39,7 +37,6 @@ final class CalendarViewController: UIViewController {
     
     private lazy var addImageButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .clear
         button.setImage(addImageButtonImage, for: .normal)
         button.addTarget(self, action: #selector(addImageButtonTouchUpInside), for: .touchUpInside)
         return button
@@ -47,7 +44,6 @@ final class CalendarViewController: UIViewController {
     
     private lazy var takePhotoButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .clear
         button.setImage(takePhotoButtonImage, for: .normal)
         button.addTarget(self, action: #selector(takePhotoButtonTouchUpInside), for: .touchUpInside)
         return button
@@ -60,8 +56,8 @@ final class CalendarViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(rateDayButton)
         stackView.addArrangedSubview(addNoteButton)
-        stackView.addArrangedSubview(addImageButton)
-        stackView.addArrangedSubview(takePhotoButton)
+        //stackView.addArrangedSubview(addImageButton)
+        //stackView.addArrangedSubview(takePhotoButton)
         return stackView
     }()
     

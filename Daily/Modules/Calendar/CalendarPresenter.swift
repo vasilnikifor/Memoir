@@ -32,7 +32,9 @@ extension CalendarPresenter: CalendarPresenterProtocol {
         view?.present(DayRateAssembler.assemble(date: Date(), calendarDelegate: self))
     }
     
-    func addNoteTapped() {}
+    func addNoteTapped() {
+        view?.present(DayNoteAssembler.assemble())
+    }
     
     func addImageTapped() {}
     
