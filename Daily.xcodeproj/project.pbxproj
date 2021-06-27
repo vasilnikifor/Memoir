@@ -288,8 +288,8 @@
 		916C25E3267E158D004A1CDF /* DayRate */ = {
 			isa = PBXGroup;
 			children = (
-				916C25E4267E15A4004A1CDF /* DayRateAssembler.swift */,
 				912092382688B0A900F966BE /* DayRateInputModel.swift */,
+				916C25E4267E15A4004A1CDF /* DayRateAssembler.swift */,
 				916C25E6267E15E1004A1CDF /* DayRateViewController.swift */,
 				916C25E8267E163B004A1CDF /* DayRatePresenter.swift */,
 				9120922D26889EFC00F966BE /* DayRateView.swift */,
