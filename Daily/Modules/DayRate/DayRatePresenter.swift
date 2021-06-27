@@ -4,43 +4,52 @@ protocol DayRatePresenterProtocol: AnyObject {
     func viewLoaded()
     func closeTapped()
     func removeTapped()
-    func badRateTapped()
-    func averageRateTapped()
-    func goodRateTapped()
 }
 
 final class DayRatePresenter {
     private weak var view: DayRateViewControllerProtocol?
     private weak var calendarDelegate: CalendarDelegate?
     private var date: Date
+    private var day: Day?
     
     init(view: DayRateViewControllerProtocol,
-         calendarDelegate: CalendarDelegate?,
-         date: Date) {
+         inputModel: DayRateInputModel) {
         self.view = view
-        self.calendarDelegate = calendarDelegate
-        self.date = date
+        calendarDelegate = inputModel.delegate
+        date = inputModel.date
+        day = inputModel.day
+    }
+    
+    private func update(selectedRate: DayRate?) {
+        day?.rate = selectedRate
+        calendarDelegate?.update()
+        view?.dismiss()
     }
 }
 
 extension DayRatePresenter: DayRatePresenterProtocol {
     func viewLoaded() {
-        // TODO:
-        let dayRate: DayRate?
-        let randomRate = Int.random(in: 0...3)
-        if randomRate == 0 {
-            dayRate = .none
-        } else if randomRate == 1 {
-            dayRate = .bad
-        } else if randomRate == 2 {
-            dayRate = .average
-        } else {
-            dayRate = .good
-        }
-        view?.setupInitialState(
-            dateText: date.dateRepresentation,
-            isRemoveable: Bool.random(),
-            currentRate: dayRate
+        view?.setupInitialState(dateText: date.dateRepresentation)
+        
+        view?.update(
+            badRateViewModel: DayRateViewModel(
+                image: Theme.badRateImage,
+                tintColor: Theme.badRateColor,
+                isSelected: day?.rate == .bad,
+                action: { [weak self] in self?.update(selectedRate: .bad) }
+            ),
+            averageRateViewModel: DayRateViewModel(
+                image: Theme.averageRateImage,
+                tintColor: Theme.averageRateColor,
+                isSelected: day?.rate == .average,
+                action: { [weak self] in self?.update(selectedRate: .average) }
+            ),
+            goodRateViewModel: DayRateViewModel(
+                image: Theme.goodRateImage,
+                tintColor: Theme.goodRateColor,
+                isSelected: day?.rate == .good,
+                action: { [weak self] in self?.update(selectedRate: .good) }
+            )
         )
     }
     
@@ -49,26 +58,6 @@ extension DayRatePresenter: DayRatePresenterProtocol {
     }
     
     func removeTapped() {
-        // TODO: - rate logic
-        calendarDelegate?.update()
-        view?.dismiss()
-    }
-    
-    func badRateTapped() {
-        // TODO: - rate logic
-        calendarDelegate?.update()
-        view?.dismiss()
-    }
-    
-    func averageRateTapped() {
-        // TODO: - rate logic
-        calendarDelegate?.update()
-        view?.dismiss()
-    }
-    
-    func goodRateTapped() {
-        // TODO: - rate logic
-        calendarDelegate?.update()
-        view?.dismiss()
+        update(selectedRate: nil)
     }
 }

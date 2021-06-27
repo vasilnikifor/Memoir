@@ -1,7 +1,7 @@
 import Foundation
 
 protocol CalendarFactoryDelegate: AnyObject {
-    func dateSelected(_ date: Date)
+    func dateSelected(_ date: Date, day: Day?)
 }
 
 protocol CalendarFactoryProtocol: AnyObject {
@@ -29,6 +29,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
         let lastMonthDate = month.lastDayOfMonth.startOfDay
         let lastCalendarDate = month.lastMonthCalendarDate.startOfDay
         let todayDate = Date().startOfDay
+        let days = recordsService.getDays(of: month)
         
         while processingDate <= lastCalendarDate {
             if processingDate < firstMonthDate || processingDate > lastMonthDate {
@@ -41,44 +42,19 @@ final class CalendarFactory: CalendarFactoryProtocol {
                     )
                 )
             } else {
-                if true {
-                    calendarDays.append(
-                        CalendarDayViewModel(
-                            date: processingDate,
-                            isToday: processingDate == todayDate,
-                            state: .empty,
-                            action: { [weak delegate] in delegate?.dateSelected(processingDate) }
-                        )
+                let day = days.first(where: { $0.date?.startOfDay == processingDate })
+                calendarDays.append(
+                    CalendarDayViewModel(
+                        date: processingDate,
+                        isToday: processingDate == todayDate,
+                        state: day == nil ? .empty : .filled(dayRate: day?.rate),
+                        action: { [processingDate, day, weak delegate] in delegate?.dateSelected(processingDate, day: day) }
                     )
-                } else {
-                    // TODO: -
-                    let dayRate: DayRate?
-                    let randomRate = Int.random(in: 0...3)
-                    if randomRate == 0 {
-                        dayRate = .none
-                    } else if randomRate == 1 {
-                        dayRate = .bad
-                    } else if randomRate == 2 {
-                        dayRate = .average
-                    } else {
-                        dayRate = .good
-                    }
-                    
-                    calendarDays.append(
-                        CalendarDayViewModel(
-                            date: processingDate,
-                            isToday: processingDate == todayDate,
-                            state: .filled(dayRate: dayRate),
-                            action: { [weak delegate] in delegate?.dateSelected(processingDate) }
-                        )
-                    )
-                }
-
+                )
             }
             processingDate = processingDate.addDays(1)
         }
 
-        
         return calendarDays
     }
 }

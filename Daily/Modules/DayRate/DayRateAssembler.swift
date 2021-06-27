@@ -1,9 +1,9 @@
 import Foundation
 
 final class DayRateAssembler {
-    static func assemble(date: Date, calendarDelegate: CalendarDelegate?) -> DayRateViewController {
+    static func assemble(_ inputModel: DayRateInputModel) -> DayRateViewController {
         let viewContorller = DayRateViewController()
-        let presenter = DayRatePresenter(view: viewContorller, calendarDelegate: calendarDelegate, date: date)
+        let presenter = DayRatePresenter(view: viewContorller, inputModel: inputModel)
         viewContorller.presenter = presenter
         return viewContorller
     }

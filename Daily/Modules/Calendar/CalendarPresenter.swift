@@ -29,7 +29,19 @@ extension CalendarPresenter: CalendarPresenterProtocol {
     }
     
     func rateDayTapped() {
-        view?.present(DayRateAssembler.assemble(date: Date(), calendarDelegate: self))
+        let day: Day? = false
+            ? Day()
+            : nil
+        
+        view?.present(
+            DayRateAssembler.assemble(
+                DayRateInputModel(
+                    date: Date(),
+                    day: day,
+                    delegate: self
+                )
+            )
+        )
     }
     
     func addNoteTapped() {
@@ -52,8 +64,16 @@ extension CalendarPresenter: CalendarViewDelegate {
 }
 
 extension CalendarPresenter: CalendarFactoryDelegate {
-    func dateSelected(_ date: Date) {
-        print("date \(date)")
+    func dateSelected(_ date: Date, day: Day?) {
+        view?.push(
+            DayRecordsAssembler.assemble(
+                DayRecordsInputModel(
+                    date: date,
+                    day: day,
+                    delegate: self
+                )
+            )
+        )
     }
 }
 

@@ -9,7 +9,7 @@ class DAOImageService: DAOService {
         
         imageRecord.day = day
         imageRecord.time = time
-        imageRecord.imageData = imageData
+        //imageRecord.imageData = imageData
         
         saveContext()
         

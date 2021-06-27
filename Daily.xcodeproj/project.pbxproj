@@ -11,7 +11,7 @@
 		2DD0AFD7239194AF009BED48 /* DayRecordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0AFD5239194AF009BED48 /* DayRecordsListViewController.swift */; };
 		2DD0AFD8239194AF009BED48 /* DayRecordsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0AFD6239194AF009BED48 /* DayRecordsListViewController.xib */; };
 		84008BF9224A11B8000CB9A2 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF5224A11B8000CB9A2 /* Record.swift */; };
-		84008BFB224A11B8000CB9A2 /* DayOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF7224A11B8000CB9A2 /* DayOld.swift */; };
+		84008BFB224A11B8000CB9A2 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84008BF7224A11B8000CB9A2 /* Day.swift */; };
 		846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DF5B522B6878A0095A065 /* ImageRecord.swift */; };
 		8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472597B22AD3C7400BCBA42 /* NoteRecord.swift */; };
 		84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8916C22290E8D00956265 /* AppDelegate.swift */; };
@@ -21,8 +21,13 @@
 		84F8918622297AE700956265 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8918522297AE700956265 /* Date+Extension.swift */; };
 		84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF3F2922FEC4C100CEF093 /* Theme.swift */; };
 		911080CB2676233500BCE949 /* RecordsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911080CA2676233500BCE949 /* RecordsService.swift */; };
-		911080CD2676243700BCE949 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911080CC2676243700BCE949 /* Day.swift */; };
 		911080CF267624C000BCE949 /* DayRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911080CE267624C000BCE949 /* DayRate.swift */; };
+		9120922E26889EFC00F966BE /* DayRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9120922D26889EFC00F966BE /* DayRateView.swift */; };
+		912092312688ACC300F966BE /* DayRecordsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092302688ACC300F966BE /* DayRecordsAssembler.swift */; };
+		912092332688AD0300F966BE /* DayRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092322688AD0300F966BE /* DayRecordsViewController.swift */; };
+		912092352688AD6800F966BE /* DayRecordsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092342688AD6800F966BE /* DayRecordsPresenterProtocol.swift */; };
+		912092372688AFD900F966BE /* DayRecordsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092362688AFD900F966BE /* DayRecordsInputModel.swift */; };
+		912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092382688B0A900F966BE /* DayRateInputModel.swift */; };
 		9157AB6F266A61AE003C4B66 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */; };
 		9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB7A266A6E6E003C4B66 /* Constrainable.swift */; };
 		9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB7C266A6F12003C4B66 /* UIView+Constrainable.swift */; };
@@ -52,7 +57,6 @@
 		91F85402268771E80098EEE5 /* DayNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F85401268771E80098EEE5 /* DayNoteViewController.swift */; };
 		91F854042687724A0098EEE5 /* DayNotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F854032687724A0098EEE5 /* DayNotePresenter.swift */; };
 		C138625A246970920066D7C6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1386259246970920066D7C6 /* UIImage+Extension.swift */; };
-		C1443166245AA68100B9F5E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1443165245AA68100B9F5E5 /* Images.xcassets */; };
 		C15815E52400437E0060B9FA /* DAOService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E42400437E0060B9FA /* DAOService.swift */; };
 		C15815E72400474C0060B9FA /* DAODayServicedd.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E62400474C0060B9FA /* DAODayServicedd.swift */; };
 		C15815E9240047DF0060B9FA /* DAOImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15815E8240047DF0060B9FA /* DAOImageService.swift */; };
@@ -64,7 +68,7 @@
 		2DD0AFD5239194AF009BED48 /* DayRecordsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsListViewController.swift; sourceTree = "<group>"; };
 		2DD0AFD6239194AF009BED48 /* DayRecordsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayRecordsListViewController.xib; sourceTree = "<group>"; };
 		84008BF5224A11B8000CB9A2 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		84008BF7224A11B8000CB9A2 /* DayOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOld.swift; sourceTree = "<group>"; };
+		84008BF7224A11B8000CB9A2 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		846DF5B522B6878A0095A065 /* ImageRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecord.swift; sourceTree = "<group>"; };
 		8472597B22AD3C7400BCBA42 /* NoteRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecord.swift; sourceTree = "<group>"; };
 		84F8916922290E8D00956265 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,8 +79,14 @@
 		84F8918522297AE700956265 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		84FF3F2922FEC4C100CEF093 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		911080CA2676233500BCE949 /* RecordsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsService.swift; sourceTree = "<group>"; };
-		911080CC2676243700BCE949 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		911080CE267624C000BCE949 /* DayRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRate.swift; sourceTree = "<group>"; };
+		9120922C2688451C00F966BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9120922D26889EFC00F966BE /* DayRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateView.swift; sourceTree = "<group>"; };
+		912092302688ACC300F966BE /* DayRecordsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsAssembler.swift; sourceTree = "<group>"; };
+		912092322688AD0300F966BE /* DayRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsViewController.swift; sourceTree = "<group>"; };
+		912092342688AD6800F966BE /* DayRecordsPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsPresenterProtocol.swift; sourceTree = "<group>"; };
+		912092362688AFD900F966BE /* DayRecordsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsInputModel.swift; sourceTree = "<group>"; };
+		912092382688B0A900F966BE /* DayRateInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateInputModel.swift; sourceTree = "<group>"; };
 		9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9157AB7A266A6E6E003C4B66 /* Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constrainable.swift; sourceTree = "<group>"; };
 		9157AB7C266A6F12003C4B66 /* UIView+Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constrainable.swift"; sourceTree = "<group>"; };
@@ -106,12 +116,10 @@
 		91F85401268771E80098EEE5 /* DayNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNoteViewController.swift; sourceTree = "<group>"; };
 		91F854032687724A0098EEE5 /* DayNotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNotePresenter.swift; sourceTree = "<group>"; };
 		C1386259246970920066D7C6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		C1443165245AA68100B9F5E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C15815E42400437E0060B9FA /* DAOService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOService.swift; sourceTree = "<group>"; };
 		C15815E62400474C0060B9FA /* DAODayServicedd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAODayServicedd.swift; sourceTree = "<group>"; };
 		C15815E8240047DF0060B9FA /* DAOImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOImageService.swift; sourceTree = "<group>"; };
 		C15815EA24004A110060B9FA /* DAONoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAONoteService.swift; sourceTree = "<group>"; };
-		C1DCAE2524659AEB006A751B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,9 +183,11 @@
 		84F796A12233A58E00596CD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				911080CC2676243700BCE949 /* Day.swift */,
+				84008BF7224A11B8000CB9A2 /* Day.swift */,
 				911080CE267624C000BCE949 /* DayRate.swift */,
-				911080D0267624ED00BCE949 /* Old */,
+				84008BF5224A11B8000CB9A2 /* Record.swift */,
+				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
+				846DF5B522B6878A0095A065 /* ImageRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,20 +236,21 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
-		911080D0267624ED00BCE949 /* Old */ = {
+		9120922F2688AC7700F966BE /* DayRecords */ = {
 			isa = PBXGroup;
 			children = (
-				84008BF7224A11B8000CB9A2 /* DayOld.swift */,
-				84008BF5224A11B8000CB9A2 /* Record.swift */,
-				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
-				846DF5B522B6878A0095A065 /* ImageRecord.swift */,
+				912092302688ACC300F966BE /* DayRecordsAssembler.swift */,
+				912092322688AD0300F966BE /* DayRecordsViewController.swift */,
+				912092342688AD6800F966BE /* DayRecordsPresenterProtocol.swift */,
+				912092362688AFD900F966BE /* DayRecordsInputModel.swift */,
 			);
-			path = Old;
+			path = DayRecords;
 			sourceTree = "<group>";
 		};
 		9157AB6B266A6164003C4B66 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9120922F2688AC7700F966BE /* DayRecords */,
 				91F853FE268771590098EEE5 /* DayNote */,
 				916C25E3267E158D004A1CDF /* DayRate */,
 				9157AB6C266A6173003C4B66 /* Calendar */,
@@ -278,8 +289,10 @@
 			isa = PBXGroup;
 			children = (
 				916C25E4267E15A4004A1CDF /* DayRateAssembler.swift */,
+				912092382688B0A900F966BE /* DayRateInputModel.swift */,
 				916C25E6267E15E1004A1CDF /* DayRateViewController.swift */,
 				916C25E8267E163B004A1CDF /* DayRatePresenter.swift */,
+				9120922D26889EFC00F966BE /* DayRateView.swift */,
 			);
 			path = DayRate;
 			sourceTree = "<group>";
@@ -290,15 +303,6 @@
 				916C25ED267E211A004A1CDF /* NavigationController.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		916C25EF267E3C9F004A1CDF /* Transitions */ = {
-			isa = PBXGroup;
-			children = (
-				916C25EA267E1CFC004A1CDF /* Transitionable.swift */,
-				2D0CFA16239221FE00F8AFBB /* UIViewController+Transitionable.swift */,
-			);
-			path = Transitions;
 			sourceTree = "<group>";
 		};
 		9182AAA32673EA91006E68BE /* CalendarView */ = {
@@ -325,7 +329,6 @@
 		C1443164245AA64700B9F5E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C1443165245AA68100B9F5E5 /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -345,8 +348,9 @@
 		C1DCAE2424658DF0006A751B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				916C25EA267E1CFC004A1CDF /* Transitionable.swift */,
 				9182AAA62673EBC4006E68BE /* ViewModelSettable.swift */,
-				916C25EF267E3C9F004A1CDF /* Transitions */,
+				2D0CFA16239221FE00F8AFBB /* UIViewController+Transitionable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -378,7 +382,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = buldog.team;
 				TargetAttributes = {
 					84F8916822290E8D00956265 = {
@@ -393,6 +397,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 84F8916022290E8D00956265;
 			productRefGroup = 84F8916A22290E8D00956265 /* Products */;
@@ -410,7 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F8917A22290E9000956265 /* LaunchScreen.storyboard in Resources */,
-				C1443166245AA68100B9F5E5 /* Images.xcassets in Resources */,
 				2DD0AFD8239194AF009BED48 /* DayRecordsListViewController.xib in Resources */,
 				84F8917722290E9000956265 /* Assets.xcassets in Resources */,
 			);
@@ -426,6 +430,7 @@
 				2DD0AFD7239194AF009BED48 /* DayRecordsListViewController.swift in Sources */,
 				9157AB8B266A8CC8003C4B66 /* CalendarView.swift in Sources */,
 				9182AAB12674CC6A006E68BE /* CalendarAssembler.swift in Sources */,
+				9120922E26889EFC00F966BE /* DayRateView.swift in Sources */,
 				C15815EB24004A110060B9FA /* DAONoteService.swift in Sources */,
 				9182AAB52674D1E5006E68BE /* String+Extension.swift in Sources */,
 				846DF5B622B6878A0095A065 /* ImageRecord.swift in Sources */,
@@ -435,9 +440,8 @@
 				9157AB6F266A61AE003C4B66 /* CalendarViewController.swift in Sources */,
 				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
 				91F854002687719B0098EEE5 /* DayNoteAssembler.swift in Sources */,
-				84008BFB224A11B8000CB9A2 /* DayOld.swift in Sources */,
+				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */,
-				911080CD2676243700BCE949 /* Day.swift in Sources */,
 				91F85402268771E80098EEE5 /* DayNoteViewController.swift in Sources */,
 				9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */,
 				9157AB8F266AA91C003C4B66 /* LabelStyle.swift in Sources */,
@@ -447,11 +451,13 @@
 				9157AB81266A6FBC003C4B66 /* Constrainable+Position.swift in Sources */,
 				9157AB89266A7F44003C4B66 /* Constrainable+Size.swift in Sources */,
 				9157AB85266A728C003C4B66 /* Constrainable+Edge.swift in Sources */,
+				912092332688AD0300F966BE /* DayRecordsViewController.swift in Sources */,
 				C15815E72400474C0060B9FA /* DAODayServicedd.swift in Sources */,
 				9157AB83266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift in Sources */,
 				916C25E5267E15A4004A1CDF /* DayRateAssembler.swift in Sources */,
 				2D0CFA17239221FE00F8AFBB /* UIViewController+Transitionable.swift in Sources */,
 				9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */,
+				912092312688ACC300F966BE /* DayRecordsAssembler.swift in Sources */,
 				91F854042687724A0098EEE5 /* DayNotePresenter.swift in Sources */,
 				9182AAAF2674B960006E68BE /* CalendarPresenter.swift in Sources */,
 				C15815E9240047DF0060B9FA /* DAOImageService.swift in Sources */,
@@ -459,7 +465,10 @@
 				8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */,
 				9182AAAD2674AFCA006E68BE /* UICollectionView+Extension.swift in Sources */,
 				9157AB87266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift in Sources */,
+				912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */,
+				912092352688AD6800F966BE /* DayRecordsPresenterProtocol.swift in Sources */,
 				916C25E7267E15E1004A1CDF /* DayRateViewController.swift in Sources */,
+				912092372688AFD900F966BE /* DayRecordsInputModel.swift in Sources */,
 				9182AAA92673EE22006E68BE /* CalendarDayViewCell.swift in Sources */,
 				916C25EB267E1CFC004A1CDF /* Transitionable.swift in Sources */,
 				C138625A246970920066D7C6 /* UIImage+Extension.swift in Sources */,
@@ -478,7 +487,7 @@
 		84F8917822290E9000956265 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C1DCAE2524659AEB006A751B /* en */,
+				9120922C2688451C00F966BE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -513,6 +522,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -575,6 +585,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

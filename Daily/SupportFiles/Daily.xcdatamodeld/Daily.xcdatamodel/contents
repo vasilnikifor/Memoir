@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="DayOld" representedClassName=".DayOld" syncable="YES" codeGenerationType="category">
+    <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="dayRate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="month" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="rateValue" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="records" toMany="YES" deletionRule="Cascade" destinationEntity="Record" inverseName="day" inverseEntity="Record"/>
     </entity>
     <entity name="ImageRecord" representedClassName=".ImageRecord" parentEntity="Record" syncable="YES" codeGenerationType="category">
-        <attribute name="imageData" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="address" optional="YES" attributeType="String"/>
     </entity>
     <entity name="NoteRecord" representedClassName=".NoteRecord" parentEntity="Record" syncable="YES" codeGenerationType="category">
         <attribute name="text" attributeType="String"/>
     </entity>
     <entity name="Record" representedClassName=".Record" isAbstract="YES" syncable="YES" codeGenerationType="category">
         <attribute name="time" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="DayOld" inverseName="records" inverseEntity="DayOld"/>
+        <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="records" inverseEntity="Day"/>
     </entity>
     <elements>
-        <element name="DayOld" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ImageRecord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="NoteRecord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Record" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Day" positionX="0" positionY="0" width="128" height="74"/>
+        <element name="ImageRecord" positionX="0" positionY="0" width="128" height="44"/>
+        <element name="NoteRecord" positionX="0" positionY="0" width="128" height="44"/>
+        <element name="Record" positionX="0" positionY="0" width="128" height="59"/>
     </elements>
 </model>

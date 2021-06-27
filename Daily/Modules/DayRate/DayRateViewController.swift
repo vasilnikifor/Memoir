@@ -1,8 +1,13 @@
 import UIKit
 
 protocol DayRateViewControllerProtocol: Transitionable, AnyObject {
-    func setupInitialState(dateText: String, isRemoveable: Bool, currentRate: DayRate?)
+    func setupInitialState(dateText: String)
+    
+    func update(badRateViewModel: DayRateViewModel,
+               averageRateViewModel: DayRateViewModel,
+               goodRateViewModel: DayRateViewModel)
 }
+
 
 final class DayRateViewController: UIViewController {
     var presenter: DayRatePresenterProtocol?
@@ -25,34 +30,16 @@ final class DayRateViewController: UIViewController {
         )
     }()
     
-    private lazy var badRateView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Theme.badRateImage
-        imageView.tintColor = Theme.badRateColor
-        imageView.contentMode = .scaleAspectFit
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(badRateViewTouchUpInside)))
-        imageView.isUserInteractionEnabled = true
-        return imageView
+    private lazy var badRateView: DayRateView = {
+        return DayRateView()
     }()
     
-    private lazy var averageRateView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Theme.averageRateImage
-        imageView.tintColor = Theme.averageRateColor
-        imageView.contentMode = .scaleAspectFit
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(avaregeRateViewTouchUpInside)))
-        imageView.isUserInteractionEnabled = true
-        return imageView
+    private lazy var averageRateView: DayRateView = {
+        return DayRateView()
     }()
     
-    private lazy var goodRateView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Theme.goodRateImage
-        imageView.tintColor = Theme.goodRateColor
-        imageView.contentMode = .scaleAspectFit
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(goodRateViewTouchUpInside)))
-        imageView.isUserInteractionEnabled = true
-        return imageView
+    private lazy var goodRateView: DayRateView = {
+        return DayRateView()
     }()
     
     private lazy var rateStackView: UIStackView = {
@@ -73,6 +60,8 @@ final class DayRateViewController: UIViewController {
     
     private func setupUI() {
         navigationItem.leftBarButtonItem = closeButton
+        navigationItem.rightBarButtonItem = removeButton
+        
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(rateStackView)
         
@@ -92,28 +81,18 @@ final class DayRateViewController: UIViewController {
     private func removeButtonTouchUpInside() {
         presenter?.removeTapped()
     }
-    
-    @objc
-    private func badRateViewTouchUpInside() {
-        presenter?.badRateTapped()
-    }
-    
-    @objc
-    private func avaregeRateViewTouchUpInside() {
-        presenter?.averageRateTapped()
-    }
-    
-    @objc
-    private func goodRateViewTouchUpInside() {
-        presenter?.goodRateTapped()
-    }
 }
 
 extension DayRateViewController: DayRateViewControllerProtocol {
-    func setupInitialState(dateText: String, isRemoveable: Bool, currentRate: DayRate?) {
+    func setupInitialState(dateText: String) {
         title = dateText
-        if isRemoveable {
-            navigationItem.rightBarButtonItem = removeButton
-        }
+    }
+    
+    func update(badRateViewModel: DayRateViewModel,
+               averageRateViewModel: DayRateViewModel,
+               goodRateViewModel: DayRateViewModel) {
+        badRateView.setup(with: badRateViewModel)
+        averageRateView.setup(with: averageRateViewModel)
+        goodRateView.setup(with: goodRateViewModel)
     }
 }

@@ -1,13 +1,13 @@
 import UIKit
 
 protocol DayNoteViewControllerProtocol: Transitionable, AnyObject {
-    func setupInitialState(dateText: String, noteText: String, isRemoveable: Bool)
+    func setupInitialState(dateText: String, noteText: String)
 }
 
 final class DayNoteViewController: UIViewController {
     var presenter: DayNotePresenterProtocol?
     
-    private var buttonBottomToSuperviewConstraint: NSLayoutConstraint?
+    private var textViewBottomToSuperviewBottomConstraint: NSLayoutConstraint?
     private var keyboardAnimationDuration: Double?
     
     private lazy var closeButton: UIBarButtonItem = {
@@ -28,13 +28,6 @@ final class DayNoteViewController: UIViewController {
         )
     }()
     
-    private lazy var doneButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Theme.doneImage, for: .normal)
-        button.addTarget(self, action: #selector(doneButtonTouchUpInside), for: .touchUpInside)
-        return button
-    }()
-    
     private var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = Theme.backgroundColor
@@ -48,29 +41,19 @@ final class DayNoteViewController: UIViewController {
         setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        textView.becomeFirstResponder()
-    }
-    
     private func setupUI() {
         navigationItem.leftBarButtonItem = closeButton
+        navigationItem.rightBarButtonItem = removeButton
+        
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(textView)
-        view.addSubview(doneButton)
         
         textView
             .topToSuperview(16, safeArea: true)
             .leadingToSuperview(16)
             .trailingToSuperview(-16)
-            .bottom(to: doneButton, anchor: doneButton.topAnchor)
         
-        doneButton
-            .trailingToSuperview(-16)
-            .height(44)
-            .width(44)
-        
-        buttonBottomToSuperviewConstraint = doneButton.bottom(to: view, anchor: view.safeAreaLayoutGuide.bottomAnchor)
+        textViewBottomToSuperviewBottomConstraint = textView.bottom(to: view, anchor: view.safeAreaLayoutGuide.bottomAnchor, offset: -16)
         
         view.addGestureRecognizer(
             UITapGestureRecognizer(
@@ -105,16 +88,11 @@ final class DayNoteViewController: UIViewController {
     }
     
     @objc
-    private func doneButtonTouchUpInside() {
-
-    }
-    
-    @objc
     private func keyboardWillShow(_ notification: Notification) {
         keyboardAnimationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-            buttonBottomToSuperviewConstraint?.constant = -(keyboardFrame.height - view.safeAreaInsets.bottom)
+            textViewBottomToSuperviewBottomConstraint?.constant = -(16 + keyboardFrame.height - view.safeAreaInsets.bottom)
             UIView.animate(withDuration: keyboardAnimationDuration ?? .zero) { [weak self] in
                 self?.view.layoutIfNeeded()
             }
@@ -123,7 +101,7 @@ final class DayNoteViewController: UIViewController {
     
     @objc
     private func keyboardWillHide() {
-        buttonBottomToSuperviewConstraint?.constant = .zero
+        textViewBottomToSuperviewBottomConstraint?.constant = -16
         UIView.animate(withDuration: keyboardAnimationDuration ?? .zero) { [weak self] in
             self?.view.layoutIfNeeded()
         }
@@ -136,11 +114,11 @@ final class DayNoteViewController: UIViewController {
 }
 
 extension DayNoteViewController: DayNoteViewControllerProtocol {
-    func setupInitialState(dateText: String, noteText: String, isRemoveable: Bool) {
+    func setupInitialState(dateText: String, noteText: String) {
         title = dateText
         textView.text = noteText
-        if isRemoveable {
-            navigationItem.rightBarButtonItem = removeButton
+        if noteText.isEmpty {
+            textView.becomeFirstResponder()
         }
     }
 }
