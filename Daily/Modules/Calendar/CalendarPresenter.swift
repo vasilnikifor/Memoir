@@ -58,7 +58,15 @@ extension CalendarPresenter: CalendarPresenterProtocol {
     }
     
     func addNoteTapped() {
-        view?.present(DayNoteAssembler.assemble())
+        view?.present(
+            DayNoteAssembler.assemble(
+                DayNoteInputModel(
+                    date: todayDay?.date ?? Date(),
+                    note: nil,
+                    delegate: self
+                )
+            )
+        )
     }
 }
 

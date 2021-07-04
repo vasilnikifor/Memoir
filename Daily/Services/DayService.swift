@@ -4,9 +4,8 @@ protocol DayServiceProtocol {
     func getDays(of month: Date) -> [Day]
     func rateDay(of date: Date, rate: DayRate?)
     func getDay(date: Date) -> Day?
-//    func removeDay(_ day: Day)
-//    func saveDay(_ day: Day)
-//    func findOrCreateDay(date: Date) -> Day
+    func saveNote(date: Date, note: NoteRecord?, text: String) -> NoteRecord?
+    func removeNote(_ note: NoteRecord)
 }
 
 final class DayService: DayServiceProtocol {
@@ -38,6 +37,35 @@ final class DayService: DayServiceProtocol {
             return nil
         }
     }
+    
+    func saveNote(date: Date, note: NoteRecord?, text: String) -> NoteRecord? {
+        if let note = note, text.isEmpty {
+            removeNote(note)
+            return nil
+        } else if let note = note {
+            note.text = text
+            DAOService.saveContext()
+            return note
+        } else if !text.isEmpty {
+            let note = NoteRecord(context: DAOService.context)
+            note.day = findOrCreateDay(of: date)
+            note.time = date
+            note.text = text
+            DAOService.saveContext()
+            return note
+        } else {
+            return nil
+        }
+    }
+    
+    func removeNote(_ note: NoteRecord) {
+        DAOService.context.delete(note)
+        if let day = note.day {
+            saveDay(day)
+        } else {
+            DAOService.saveContext()
+        }
+    }
 
     private func removeDay(_ day: Day) {
         DAOService.context.delete(day)
@@ -60,6 +88,7 @@ final class DayService: DayServiceProtocol {
         } else {
             let day = Day(context: DAOService.context)
             day.date = date.startOfDay
+            
             DAOService.saveContext()
             return day
         }

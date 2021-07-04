@@ -28,10 +28,11 @@ final class DayNoteViewController: UIViewController {
         )
     }()
     
-    private var textView: UITextView = {
+    private lazy var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = Theme.backgroundColor
         textView.font = UIFont.systemFont(ofSize: 17)
+        textView.delegate = self
         return textView
     }()
     
@@ -120,5 +121,11 @@ extension DayNoteViewController: DayNoteViewControllerProtocol {
         if noteText.isEmpty {
             textView.becomeFirstResponder()
         }
+    }
+}
+
+extension DayNoteViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        presenter?.textDidEndEditing(text: textView.text)
     }
 }

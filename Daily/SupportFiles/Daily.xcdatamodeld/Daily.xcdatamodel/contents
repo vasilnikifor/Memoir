@@ -3,15 +3,15 @@
     <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="rateValue" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="notes" toMany="YES" deletionRule="Cascade" destinationEntity="NoteRecord"/>
+        <relationship name="notes" toMany="YES" deletionRule="Cascade" destinationEntity="NoteRecord" inverseName="day" inverseEntity="NoteRecord"/>
     </entity>
     <entity name="NoteRecord" representedClassName=".NoteRecord" isAbstract="YES" syncable="YES" codeGenerationType="category">
         <attribute name="text" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="notes" inverseEntity="Day"/>
     </entity>
     <elements>
-        <element name="Day" positionX="0" positionY="0" width="128" height="74"/>
-        <element name="NoteRecord" positionX="0" positionY="0" width="128" height="74"/>
+        <element name="Day" positionX="-328.626953125" positionY="94.25454711914062" width="128" height="88"/>
+        <element name="NoteRecord" positionX="0" positionY="0" width="128" height="88"/>
     </elements>
 </model>

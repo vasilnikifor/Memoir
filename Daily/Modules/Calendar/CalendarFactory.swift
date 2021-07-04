@@ -47,7 +47,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
                     CalendarDayViewModel(
                         date: processingDate,
                         isToday: processingDate == todayDate,
-                        state: day == nil ? .empty : .filled(dayRate: day?.rate),
+                        state: (day?.isEmpty ?? true) ? .empty : .filled(dayRate: day?.rate),
                         action: { [processingDate, weak day, weak delegate] in delegate?.dateSelected(processingDate, day: day) }
                     )
                 )
