@@ -83,4 +83,12 @@ extension Theme {
     static var doneImage: UIImage {
         return UIImage(systemName: "checkmark") ?? UIImage()
     }
+    
+    static var rateDayImage: UIImage {
+        return UIImage(systemName: "star") ?? UIImage()
+    }
+    
+    static var addNoteImage: UIImage {
+        return UIImage(systemName: "square.and.pencil") ?? UIImage()
+    }
 }

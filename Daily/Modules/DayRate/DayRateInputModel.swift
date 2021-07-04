@@ -2,6 +2,6 @@ import Foundation
 
 struct DayRateInputModel {
     let date: Date
-    let day: Day?
+    let selectedRate: DayRate?
     weak var delegate: CalendarDelegate?
 }

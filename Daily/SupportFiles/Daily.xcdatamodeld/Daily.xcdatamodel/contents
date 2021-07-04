@@ -3,22 +3,15 @@
     <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="rateValue" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="records" toMany="YES" deletionRule="Cascade" destinationEntity="Record" inverseName="day" inverseEntity="Record"/>
+        <relationship name="notes" toMany="YES" deletionRule="Cascade" destinationEntity="NoteRecord"/>
     </entity>
-    <entity name="ImageRecord" representedClassName=".ImageRecord" parentEntity="Record" syncable="YES" codeGenerationType="category">
-        <attribute name="address" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="NoteRecord" representedClassName=".NoteRecord" parentEntity="Record" syncable="YES" codeGenerationType="category">
+    <entity name="NoteRecord" representedClassName=".NoteRecord" isAbstract="YES" syncable="YES" codeGenerationType="category">
         <attribute name="text" attributeType="String"/>
-    </entity>
-    <entity name="Record" representedClassName=".Record" isAbstract="YES" syncable="YES" codeGenerationType="category">
-        <attribute name="time" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="records" inverseEntity="Day"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day"/>
     </entity>
     <elements>
         <element name="Day" positionX="0" positionY="0" width="128" height="74"/>
-        <element name="ImageRecord" positionX="0" positionY="0" width="128" height="44"/>
-        <element name="NoteRecord" positionX="0" positionY="0" width="128" height="44"/>
-        <element name="Record" positionX="0" positionY="0" width="128" height="59"/>
+        <element name="NoteRecord" positionX="0" positionY="0" width="128" height="74"/>
     </elements>
 </model>

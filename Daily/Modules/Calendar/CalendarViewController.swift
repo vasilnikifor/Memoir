@@ -3,14 +3,10 @@ import UIKit
 protocol CalendarViewControllerProtocol: Transitionable, AnyObject {
     func setupInitialState(calendarViewModel: CalendarViewModel)
     func update()
+    func updateRateImage(image: UIImage)
 }
 
 final class CalendarViewController: UIViewController {
-    private let rateDayButtonImage: UIImage? = UIImage(systemName: "star")
-    private let addNoteButtonImage: UIImage? = UIImage(systemName: "square.and.pencil")
-    private let addImageButtonImage: UIImage? = UIImage(systemName: "paperclip")
-    private let takePhotoButtonImage: UIImage? = UIImage(systemName: "camera")
-    
     var presenter: CalendarPresenterProtocol?
     
     private let calendarContentView: UIView = {
@@ -23,29 +19,15 @@ final class CalendarViewController: UIViewController {
     
     private lazy var rateDayButton: UIButton = {
         let button = UIButton()
-        button.setImage(rateDayButtonImage, for: .normal)
+        button.setImage(Theme.rateDayImage, for: .normal)
         button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
     
     private lazy var addNoteButton: UIButton = {
         let button = UIButton()
-        button.setImage(addNoteButtonImage, for: .normal)
+        button.setImage(Theme.addNoteImage, for: .normal)
         button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var addImageButton: UIButton = {
-        let button = UIButton()
-        button.setImage(addImageButtonImage, for: .normal)
-        button.addTarget(self, action: #selector(addImageButtonTouchUpInside), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var takePhotoButton: UIButton = {
-        let button = UIButton()
-        button.setImage(takePhotoButtonImage, for: .normal)
-        button.addTarget(self, action: #selector(takePhotoButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
     
@@ -56,8 +38,6 @@ final class CalendarViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(rateDayButton)
         stackView.addArrangedSubview(addNoteButton)
-        //stackView.addArrangedSubview(addImageButton)
-        //stackView.addArrangedSubview(takePhotoButton)
         return stackView
     }()
     
@@ -100,16 +80,6 @@ final class CalendarViewController: UIViewController {
     private func addNoteButtonTouchUpInside() {
         presenter?.addNoteTapped()
     }
-    
-    @objc
-    private func addImageButtonTouchUpInside() {
-        presenter?.addImageTapped()
-    }
-    
-    @objc
-    private func takePhotoButtonTouchUpInside() {
-        presenter?.takePhotoTapped()
-    }
 }
 
 extension CalendarViewController: CalendarViewControllerProtocol {
@@ -119,6 +89,10 @@ extension CalendarViewController: CalendarViewControllerProtocol {
     
     func update() {
         calendarView.update()
+    }
+    
+    func updateRateImage(image: UIImage) {
+        rateDayButton.setImage(image, for: .normal)
     }
 }
 

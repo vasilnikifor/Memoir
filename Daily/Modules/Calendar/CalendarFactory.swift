@@ -10,10 +10,10 @@ protocol CalendarFactoryProtocol: AnyObject {
 }
 
 final class CalendarFactory: CalendarFactoryProtocol {
-    private let recordsService: RecordsServiceProtocol
+    private let dayService: DayServiceProtocol
     
-    init(recordsService: RecordsServiceProtocol) {
-        self.recordsService = recordsService
+    init(dayService: DayServiceProtocol) {
+        self.dayService = dayService
     }
     
     func make() -> [CalendarWeekdayViewModel] {
@@ -29,7 +29,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
         let lastMonthDate = month.lastDayOfMonth.startOfDay
         let lastCalendarDate = month.lastMonthCalendarDate.startOfDay
         let todayDate = Date().startOfDay
-        let days = recordsService.getDays(of: month)
+        let days = dayService.getDays(of: month)
         
         while processingDate <= lastCalendarDate {
             if processingDate < firstMonthDate || processingDate > lastMonthDate {

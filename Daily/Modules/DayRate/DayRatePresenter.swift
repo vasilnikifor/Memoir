@@ -8,20 +8,23 @@ protocol DayRatePresenterProtocol: AnyObject {
 
 final class DayRatePresenter {
     private weak var view: DayRateViewControllerProtocol?
+    private var dayService: DayServiceProtocol
     private weak var calendarDelegate: CalendarDelegate?
     private var date: Date
-    private var day: Day?
+    private var selectedRate: DayRate?
     
     init(view: DayRateViewControllerProtocol,
+         dayService: DayServiceProtocol,
          inputModel: DayRateInputModel) {
         self.view = view
+        self.dayService = dayService
         calendarDelegate = inputModel.delegate
         date = inputModel.date
-        day = inputModel.day
+        selectedRate = inputModel.selectedRate
     }
     
     private func update(selectedRate: DayRate?) {
-        day?.rate = selectedRate
+        dayService.rateDay(of: date, rate: selectedRate)
         calendarDelegate?.update()
         view?.dismiss()
     }
@@ -35,19 +38,19 @@ extension DayRatePresenter: DayRatePresenterProtocol {
             badRateViewModel: DayRateViewModel(
                 image: Theme.badRateImage,
                 tintColor: Theme.badRateColor,
-                isSelected: day?.rate == .bad,
+                isSelected: selectedRate == .bad,
                 action: { [weak self] in self?.update(selectedRate: .bad) }
             ),
             averageRateViewModel: DayRateViewModel(
                 image: Theme.averageRateImage,
                 tintColor: Theme.averageRateColor,
-                isSelected: day?.rate == .average,
+                isSelected: selectedRate == .average,
                 action: { [weak self] in self?.update(selectedRate: .average) }
             ),
             goodRateViewModel: DayRateViewModel(
                 image: Theme.goodRateImage,
                 tintColor: Theme.goodRateColor,
-                isSelected: day?.rate == .good,
+                isSelected: selectedRate == .good,
                 action: { [weak self] in self?.update(selectedRate: .good) }
             )
         )

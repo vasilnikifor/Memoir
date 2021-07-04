@@ -30,4 +30,12 @@ extension Day {
             }
         }
     }
+    
+    var isEmpty: Bool {
+        if rate == nil, (notes?.count ?? .zero) == .zero {
+            return true
+        } else {
+            return false
+        }
+    }
 }
