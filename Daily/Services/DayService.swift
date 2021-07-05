@@ -47,8 +47,9 @@ final class DayService: DayServiceProtocol {
             DAOService.saveContext()
             return note
         } else if !text.isEmpty {
+            let day = findOrCreateDay(of: date)
             let note = NoteRecord(context: DAOService.context)
-            note.day = findOrCreateDay(of: date)
+            note.day = day
             note.time = date
             note.text = text
             DAOService.saveContext()
@@ -88,7 +89,6 @@ final class DayService: DayServiceProtocol {
         } else {
             let day = Day(context: DAOService.context)
             day.date = date.startOfDay
-            
             DAOService.saveContext()
             return day
         }

@@ -12,6 +12,6 @@
     </entity>
     <elements>
         <element name="Day" positionX="-328.626953125" positionY="94.25454711914062" width="128" height="88"/>
-        <element name="NoteRecord" positionX="0" positionY="0" width="128" height="88"/>
+        <element name="NoteRecord" positionX="-96.73187255859375" positionY="364.5509033203125" width="128" height="58"/>
     </elements>
 </model>
