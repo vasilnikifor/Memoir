@@ -1,3 +1,3 @@
 import CoreData
 
-final class NoteRecord: NSManagedObject {}
+final class NoteRecord: Record {}

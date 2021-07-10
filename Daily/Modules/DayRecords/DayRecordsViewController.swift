@@ -2,11 +2,13 @@ import UIKit
 
 protocol DayRecordsViewControllerProtocol: Transitionable, AnyObject {
     func setupInitialState(dateText: String)
-    func update(rateImage: UIImage)
+    func update(rateImage: UIImage, dataSource: [DayRecordsDataSource])
 }
 
 final class DayRecordsViewController: UIViewController {
     var presenter: DayRecordsPresenterProtocol?
+    
+    private var dataSource: [DayRecordsDataSource] = []
     
     private lazy var rateDayButton: UIButton = {
         let button = UIButton()
@@ -32,6 +34,13 @@ final class DayRecordsViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewLoaded()
@@ -41,12 +50,19 @@ final class DayRecordsViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(actionsStackView)
+        view.addSubview(tableView)
         
         actionsStackView
             .leadingToSuperview()
             .trailingToSuperview()
             .bottomToSuperview(safeArea: true)
             .height(48)
+        
+        tableView
+            .topToSuperview()
+            .leadingToSuperview()
+            .trailingToSuperview()
+            .bottom(to: actionsStackView, anchor: actionsStackView.topAnchor)
     }
     
     @objc
@@ -65,7 +81,24 @@ extension DayRecordsViewController: DayRecordsViewControllerProtocol {
         title = dateText
     }
     
-    func update(rateImage: UIImage) {
+    func update(rateImage: UIImage, dataSource: [DayRecordsDataSource]) {
         rateDayButton.setImage(rateImage, for: .normal)
+        self.dataSource = dataSource
+        tableView.reloadData()
+    }
+}
+
+extension DayRecordsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch dataSource[indexPath.row] {
+        case .note(let viewModel):
+            let cell = tableView.dequeueReusableCell(NoteRecordCellView.self)
+            cell.setup(with: viewModel)
+            return cell
+        }
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-final class Day: NSManagedObject {}
+final public class Day: NSManagedObject {}
 
 extension Day {
     var rate: DayRate? {
@@ -32,7 +32,7 @@ extension Day {
     }
     
     var isEmpty: Bool {
-        if rate == nil, (notes?.count ?? .zero) == .zero {
+        if rate == nil, (records?.count ?? .zero) == .zero {
             return true
         } else {
             return false
