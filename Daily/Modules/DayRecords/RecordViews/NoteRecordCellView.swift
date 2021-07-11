@@ -18,7 +18,7 @@ final class NoteRecordCellView: UITableViewCell {
     
     private let timeLabel: UILabel = {
         let label = UILabel()
-        label.apply(style: .secondory13)
+        label.apply(style: .secondory9)
         label.numberOfLines = .zero
         return label
     }()

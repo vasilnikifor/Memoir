@@ -3,7 +3,7 @@ import UIKit
 enum LabelStyle {
     case primary17
     case primary24
-    case secondory13
+    case secondory9
 }
 
 extension UILabel {
@@ -15,8 +15,8 @@ extension UILabel {
         case .primary24:
             font = UIFont.systemFont(ofSize: 24)
             textColor = Theme.primaryTextColor
-        case .secondory13:
-            font = UIFont.systemFont(ofSize: 13)
+        case .secondory9:
+            font = UIFont.systemFont(ofSize: 9)
             textColor = Theme.secondoryTextColor
         }
     }

@@ -24,7 +24,7 @@ final class DayNoteViewController: UIViewController {
             image: Theme.removeImage,
             style: .plain,
             target: self,
-            action: #selector(closeButtonTouchUpInside)
+            action: #selector(removeButtonTouchUpInside)
         )
     }()
     

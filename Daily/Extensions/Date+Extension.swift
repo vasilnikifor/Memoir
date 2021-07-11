@@ -51,6 +51,13 @@ extension Date {
         return calendar.startOfDay(for: self)
     }
     
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return calendar.date(byAdding: components, to: startOfDay)!
+    }
+    
     var time: Date {
         return calendar.date(from: calendar.dateComponents([.hour, .minute, .second, .timeZone], from: self))!
     }

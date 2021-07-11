@@ -27,7 +27,7 @@ final class DayRecordsPresenter {
         view?.present(
             DayNoteAssembler.assemble(
                 DayNoteInputModel(
-                    date: day?.date ?? Date(),
+                    date: date,
                     note: noteRecord,
                     delegate: self
                 )
@@ -79,6 +79,13 @@ extension DayRecordsPresenter: CalendarDelegate {
         let dataSource:  [DayRecordsDataSource]
         if let records = day?.records {
             dataSource = records
+                .sorted { record1, record2 in
+                    guard let record1 = record1 as? Record,
+                          let record1Time = record1.time,
+                          let record2 = record2 as? Record,
+                          let record2Time = record2.time else { return false }
+                    return record1Time < record2Time
+                }
                 .compactMap { record in
                     if let noteRecord = record as? NoteRecord {
                         return .note(

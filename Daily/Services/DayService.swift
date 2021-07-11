@@ -50,7 +50,7 @@ final class DayService: DayServiceProtocol {
             let day = findOrCreateDay(of: date)
             let note = NoteRecord(context: DAOService.context)
             note.day = day
-            note.time = date
+            note.time = date.recordTime
             note.text = text
             DAOService.saveContext()
             return note
@@ -95,3 +95,16 @@ final class DayService: DayServiceProtocol {
     }
 }
 
+extension Date {
+    var recordTime: Date {
+        let demendedDateStartOfDay = startOfDay
+        let todayStartOfDay = Date().startOfDay
+        if demendedDateStartOfDay < todayStartOfDay {
+            return endOfDay
+        } else if demendedDateStartOfDay > todayStartOfDay {
+            return demendedDateStartOfDay
+        } else {
+            return Date()
+        }
+    }
+}
