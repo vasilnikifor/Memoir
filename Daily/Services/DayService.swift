@@ -39,6 +39,7 @@ final class DayService: DayServiceProtocol {
     }
     
     func saveNote(date: Date, note: NoteRecord?, text: String) -> NoteRecord? {
+        let text = text.trimmingCharacters(in: .whitespacesAndNewlines)
         if let note = note, text.isEmpty {
             removeNote(note)
             return nil
