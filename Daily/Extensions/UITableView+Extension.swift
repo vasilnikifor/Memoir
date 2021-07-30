@@ -1,12 +1,13 @@
 import UIKit
 
 extension UITableView {
-    func dequeueReusableCell<T: UITableViewCell>(_ cellType: T.Type) -> T {
-        if let cell = dequeueReusableCell(withIdentifier: String(describing: cellType)) as? T {
+    func dequeueReusableCell<View: UIView & ViewModelSettable>(_ viewType: View.Type) -> ReusableTableViewCell<View> {
+        let identifier = String(describing: ReusableTableViewCell<View>.self)
+        if let cell = dequeueReusableCell(withIdentifier: identifier) as? ReusableTableViewCell<View> {
             return cell
         } else {
-            register(cellType, forCellReuseIdentifier: String(describing: cellType))
-            return dequeueReusableCell(cellType)
+            register(ReusableTableViewCell<View>.self, forCellReuseIdentifier: identifier)
+            return dequeueReusableCell(viewType)
         }
     }
 }

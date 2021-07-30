@@ -89,7 +89,7 @@ extension DayRecordsPresenter: CalendarDelegate {
                 .compactMap { record in
                     if let noteRecord = record as? NoteRecord {
                         return .note(
-                            viewModel: NoteRecordCellViewModel(
+                            viewModel: NoteRecordViewModel(
                                 text: noteRecord.text ?? "",
                                 time: (noteRecord.time ?? Date()).timeRepresentation,
                                 action: { [weak self, weak noteRecord] in self?.openNote(noteRecord)}

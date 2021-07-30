@@ -1,5 +1,5 @@
 import Foundation
 
 enum DayRecordsDataSource {
-    case note(viewModel: NoteRecordCellViewModel)
+    case note(viewModel: NoteRecordViewModel)
 }

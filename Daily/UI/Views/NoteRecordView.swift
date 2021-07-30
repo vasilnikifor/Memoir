@@ -1,12 +1,12 @@
 import UIKit
 
-struct NoteRecordCellViewModel {
+struct NoteRecordViewModel {
     let text: String
     let time: String
     let action: (() -> ())?
 }
 
-final class NoteRecordCellView: UITableViewCell {
+final class NoteRecordView: UIView {
     private var action: (() -> ())?
     
     private let noteTextLabel: UILabel = {
@@ -23,21 +23,20 @@ final class NoteRecordCellView: UITableViewCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         commonInit()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
-
+    
     private func commonInit() {
         backgroundColor = .clear
-        selectionStyle = .none
-        contentView.addSubview(noteTextLabel)
-        contentView.addSubview(timeLabel)
+        addSubview(noteTextLabel)
+        addSubview(timeLabel)
         
         noteTextLabel
             .topToSuperview(32)
@@ -50,7 +49,7 @@ final class NoteRecordCellView: UITableViewCell {
             .trailingToSuperview(-16)
             .bottomToSuperview(-20)
         
-        contentView.addGestureRecognizer(
+        addGestureRecognizer(
             UITapGestureRecognizer(
                 target: self,
                 action: #selector(viewTouchUpInside)
@@ -64,8 +63,8 @@ final class NoteRecordCellView: UITableViewCell {
     }
 }
 
-extension NoteRecordCellView: ViewModelSettable {
-    func setup(with viewModel: NoteRecordCellViewModel) {
+extension NoteRecordView: ViewModelSettable {
+    func setup(with viewModel: NoteRecordViewModel) {
         noteTextLabel.text = viewModel.text
         timeLabel.text = viewModel.time
         action = viewModel.action

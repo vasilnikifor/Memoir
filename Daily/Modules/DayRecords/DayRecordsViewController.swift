@@ -96,7 +96,7 @@ extension DayRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
         case .note(let viewModel):
-            let cell = tableView.dequeueReusableCell(NoteRecordCellView.self)
+            let cell = tableView.dequeueReusableCell(NoteRecordView.self)
             cell.setup(with: viewModel)
             return cell
         }
