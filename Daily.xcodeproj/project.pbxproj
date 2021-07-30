@@ -25,6 +25,10 @@
 		912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092382688B0A900F966BE /* DayRateInputModel.swift */; };
 		91419C5226B43ECB0031F519 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5126B43ECB0031F519 /* ReusableTableViewCell.swift */; };
 		91419C5526B43F920031F519 /* NoteRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5426B43F910031F519 /* NoteRecordView.swift */; };
+		91419C5726B44E790031F519 /* MonthRecordsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5626B44E790031F519 /* MonthRecordsAssembler.swift */; };
+		91419C5926B44F0A0031F519 /* MonthRecordsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5826B44F0A0031F519 /* MonthRecordsInputModel.swift */; };
+		91419C5B26B44F290031F519 /* MonthRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5A26B44F290031F519 /* MonthRecordsViewController.swift */; };
+		91419C5D26B44F8C0031F519 /* MonthRecordsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5C26B44F8C0031F519 /* MonthRecordsPresenter.swift */; };
 		9157AB6F266A61AE003C4B66 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */; };
 		9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB7A266A6E6E003C4B66 /* Constrainable.swift */; };
 		9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB7C266A6F12003C4B66 /* UIView+Constrainable.swift */; };
@@ -82,6 +86,10 @@
 		912092382688B0A900F966BE /* DayRateInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateInputModel.swift; sourceTree = "<group>"; };
 		91419C5126B43ECB0031F519 /* ReusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewCell.swift; sourceTree = "<group>"; };
 		91419C5426B43F910031F519 /* NoteRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecordView.swift; sourceTree = "<group>"; };
+		91419C5626B44E790031F519 /* MonthRecordsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsAssembler.swift; sourceTree = "<group>"; };
+		91419C5826B44F0A0031F519 /* MonthRecordsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsInputModel.swift; sourceTree = "<group>"; };
+		91419C5A26B44F290031F519 /* MonthRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsViewController.swift; sourceTree = "<group>"; };
+		91419C5C26B44F8C0031F519 /* MonthRecordsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsPresenter.swift; sourceTree = "<group>"; };
 		9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9157AB7A266A6E6E003C4B66 /* Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constrainable.swift; sourceTree = "<group>"; };
 		9157AB7C266A6F12003C4B66 /* UIView+Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constrainable.swift"; sourceTree = "<group>"; };
@@ -228,6 +236,10 @@
 		91419C5026B43B3E0031F519 /* MonthRecords */ = {
 			isa = PBXGroup;
 			children = (
+				91419C5626B44E790031F519 /* MonthRecordsAssembler.swift */,
+				91419C5A26B44F290031F519 /* MonthRecordsViewController.swift */,
+				91419C5826B44F0A0031F519 /* MonthRecordsInputModel.swift */,
+				91419C5C26B44F8C0031F519 /* MonthRecordsPresenter.swift */,
 			);
 			path = MonthRecords;
 			sourceTree = "<group>";
@@ -428,16 +440,19 @@
 				9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */,
 				9157AB8F266AA91C003C4B66 /* LabelStyle.swift in Sources */,
 				9182AAA72673EBC4006E68BE /* ViewModelSettable.swift in Sources */,
+				91419C5926B44F0A0031F519 /* MonthRecordsInputModel.swift in Sources */,
 				9166F4A1269A068400D66CEE /* UITableView+Extension.swift in Sources */,
 				911080CF267624C000BCE949 /* DayRate.swift in Sources */,
 				9157AB81266A6FBC003C4B66 /* Constrainable+Position.swift in Sources */,
 				9157AB89266A7F44003C4B66 /* Constrainable+Size.swift in Sources */,
 				9157AB85266A728C003C4B66 /* Constrainable+Edge.swift in Sources */,
+				91419C5D26B44F8C0031F519 /* MonthRecordsPresenter.swift in Sources */,
 				912092332688AD0300F966BE /* DayRecordsViewController.swift in Sources */,
 				9157AB83266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift in Sources */,
 				916C25E5267E15A4004A1CDF /* DayRateAssembler.swift in Sources */,
 				2D0CFA17239221FE00F8AFBB /* UIViewController+Transitionable.swift in Sources */,
 				9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */,
+				91419C5B26B44F290031F519 /* MonthRecordsViewController.swift in Sources */,
 				912092312688ACC300F966BE /* DayRecordsAssembler.swift in Sources */,
 				91F854042687724A0098EEE5 /* DayNotePresenter.swift in Sources */,
 				9182AAAF2674B960006E68BE /* CalendarPresenter.swift in Sources */,
@@ -446,6 +461,7 @@
 				9182AAAD2674AFCA006E68BE /* UICollectionView+Extension.swift in Sources */,
 				9166F4A3269A086400D66CEE /* DayRecordsDataSource.swift in Sources */,
 				9157AB87266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift in Sources */,
+				91419C5726B44E790031F519 /* MonthRecordsAssembler.swift in Sources */,
 				912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */,
 				912092352688AD6800F966BE /* DayRecordsPresenter.swift in Sources */,
 				91419C5526B43F920031F519 /* NoteRecordView.swift in Sources */,
