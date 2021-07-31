@@ -80,6 +80,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    /// "EE, d"
+    var dateShortRepresentation: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE, d"
+        return dateFormatter.string(from: self)
+    }
+    
     /// "MMMM yyyy"
     var monthRepresentation: String {
         let dateFormatter = DateFormatter()

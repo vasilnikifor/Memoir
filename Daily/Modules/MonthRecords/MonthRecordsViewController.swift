@@ -20,10 +20,10 @@ final class MonthRecordsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewLoaded()
-        setupUI()
+        setup()
     }
     
-    private func setupUI() {
+    private func setup() {
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(tableView)
         

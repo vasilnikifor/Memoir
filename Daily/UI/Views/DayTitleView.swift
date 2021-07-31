@@ -21,10 +21,6 @@ final class DayHeaderView: UIView {
         return UIImageView()
     }()
     
-    private let contentView: UIView = {
-        return UIView()
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -37,20 +33,13 @@ final class DayHeaderView: UIView {
     
     private func setup() {
         backgroundColor = .clear
-        addSubview(contentView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(rateImageView)
-        
-        contentView
-            .topToSuperview(16)
-            .bottomToSuperview()
-            .trailingToSuperview()
-            .leadingToSuperview()
+        addSubview(titleLabel)
+        addSubview(rateImageView)
         
         titleLabel
             .topToSuperview(relation: .greaterThanOrEqual)
-            .bottomToSuperview(relation: .lessThanOrEqual)
-            .centerYToSuperview()
+            .bottomToSuperview(-16)
+            //.centerYToSuperview()
             .leadingToSuperview(16)
             .trailing(to: rateImageView, anchor: rateImageView.leadingAnchor, offset: -4)
         
@@ -59,7 +48,7 @@ final class DayHeaderView: UIView {
             .height(40)
             .width(40)
             .trailingToSuperview(-16)
-            .topToSuperview(16)
+            .topToSuperview(32)
             .bottomToSuperview(-16)
         
         addGestureRecognizer(

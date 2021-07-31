@@ -55,10 +55,10 @@ final class DayRateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewLoaded()
-        setupUI()
+        setup()
     }
     
-    private func setupUI() {
+    private func setup() {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
         

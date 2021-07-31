@@ -34,34 +34,8 @@ final class DayRecordsPresenter {
             )
         )
     }
-}
-
-extension DayRecordsPresenter: DayRecordsPresenterProtocol {
-    func viewLoaded() {
-        view?.setupInitialState(title: date.dateRepresentation)
-        update()
-    }
     
-    func rateDayTapped() {
-        view?.present(
-            DayRateAssembler.assemble(
-                DayRateInputModel(
-                    date: date,
-                    selectedRate: day?.rate,
-                    delegate: self
-                )
-            )
-        )
-    }
-    
-    func addNoteTapped() {
-        openNote(nil)
-    }
-}
-
-
-extension DayRecordsPresenter: CalendarDelegate {
-    func update() {
+    private func updateDataSource() {
         day = dayService.getDay(date: date)
         
         let rateImage: UIImage
@@ -104,6 +78,37 @@ extension DayRecordsPresenter: CalendarDelegate {
         }
         
         view?.update(rateImage: rateImage, dataSource: dataSource)
+
+    }
+}
+
+extension DayRecordsPresenter: DayRecordsPresenterProtocol {
+    func viewLoaded() {
+        view?.setupInitialState(title: date.dateRepresentation)
+        updateDataSource()
+    }
+    
+    func rateDayTapped() {
+        view?.present(
+            DayRateAssembler.assemble(
+                DayRateInputModel(
+                    date: date,
+                    selectedRate: day?.rate,
+                    delegate: self
+                )
+            )
+        )
+    }
+    
+    func addNoteTapped() {
+        openNote(nil)
+    }
+}
+
+
+extension DayRecordsPresenter: CalendarDelegate {
+    func update() {
+        updateDataSource()
         delegate?.update()
     }
 }

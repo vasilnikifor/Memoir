@@ -83,7 +83,8 @@ extension CalendarPresenter: CalendarViewDelegate {
         view?.push(
             MonthRecordsAssembler.assemble(
                 MonthRecordsInputModel(
-                    month: month
+                    month: month,
+                    delegate: self
                 )
             )
         )

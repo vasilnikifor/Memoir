@@ -8,6 +8,7 @@ final class MonthRecordsPresenter {
     private weak var view: MonthRecordsViewControllerProtocol?
     private let dayService: DayServiceProtocol
     private let month: Date
+    private weak var delegate: CalendarDelegate?
     
     init(view: MonthRecordsViewControllerProtocol,
         inputModel: MonthRecordsInputModel,
@@ -15,8 +16,8 @@ final class MonthRecordsPresenter {
         self.view = view
         self.dayService = dayService
         month = inputModel.month
+        delegate = inputModel.delegate
     }
-    
     
     private func openNote(day: Day, noteRecord: NoteRecord) {
         guard let date = day.date else { return }
@@ -45,17 +46,8 @@ final class MonthRecordsPresenter {
             )
         )
     }
-}
-
-extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
-    func viewLoaded() {
-        view?.setupInitialState(title: month.monthRepresentation)
-        update()
-    }
-}
-
-extension MonthRecordsPresenter: CalendarDelegate {
-    func update() {
+    
+    private func updateDataSource() {
         var dataSource: [MonthRecordsDataSource] = []
             
         dayService.getDays(of: month).forEach { day in
@@ -81,7 +73,7 @@ extension MonthRecordsPresenter: CalendarDelegate {
             dataSource.append(
                 .dayHeader(
                     viewModel: DayHeaderViewModel(
-                        title: day.date?.dateRepresentation ?? "",
+                        title: day.date?.dateShortRepresentation ?? "",
                         image: rateImage,
                         imageTintColor: rateImageTintColor,
                         action: { [weak self] in self?.openDayRate(day: day)}
@@ -113,5 +105,19 @@ extension MonthRecordsPresenter: CalendarDelegate {
         }
         
         view?.update(dataSource: dataSource)
+    }
+}
+
+extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
+    func viewLoaded() {
+        view?.setupInitialState(title: month.monthRepresentation)
+        updateDataSource()
+    }
+}
+
+extension MonthRecordsPresenter: CalendarDelegate {
+    func update() {
+        updateDataSource()
+        delegate?.update()
     }
 }
