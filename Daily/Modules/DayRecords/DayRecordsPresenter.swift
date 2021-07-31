@@ -78,7 +78,6 @@ final class DayRecordsPresenter {
         }
         
         view?.update(rateImage: rateImage, dataSource: dataSource)
-
     }
 }
 

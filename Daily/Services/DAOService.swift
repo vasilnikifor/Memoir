@@ -18,8 +18,7 @@ final class DAOService {
 
 extension DAOService {
     static var persistentContainer: NSPersistentContainer {
-        return DAOService.shared
-            .persistentContainer
+        return DAOService.shared.persistentContainer
     }
     
     static var viewContext: NSManagedObjectContext {

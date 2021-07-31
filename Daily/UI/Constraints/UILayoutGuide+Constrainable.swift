@@ -1,6 +1,6 @@
 import UIKit
 
-extension UILayoutGuide: Constrainable { }
+extension UILayoutGuide: Constrainable {}
 
 public extension UILayoutGuide {
     var container: UIView? { return owningView }

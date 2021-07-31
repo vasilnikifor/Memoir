@@ -11,10 +11,6 @@ struct CalendarViewModel {
     weak var delegate: CalendarViewDelegate?
 }
 
-fileprivate struct DefaultValues {
-
-}
-
 final class CalendarView: UIView {
     private weak var delegate: CalendarViewDelegate?
     private var month: Date = Date()
