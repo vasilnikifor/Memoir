@@ -39,15 +39,15 @@ final class CalendarMonthView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        setup()
     }
 
-    private func commonInit() {
+    private func setup() {
         addSubview(weekdaysCollectionView)
         addSubview(calendarCollectionView)
 

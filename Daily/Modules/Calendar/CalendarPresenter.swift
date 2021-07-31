@@ -78,6 +78,16 @@ extension CalendarPresenter: CalendarViewDelegate {
     func getMonthsDays(month: Date) -> [CalendarDayViewModel] {
         return factory.make(month: month, delegate: self)
     }
+    
+    func monthSelected(month: Date) {
+        view?.push(
+            MonthRecordsAssembler.assemble(
+                MonthRecordsInputModel(
+                    month: month
+                )
+            )
+        )
+    }
 }
 
 extension CalendarPresenter: CalendarFactoryDelegate {

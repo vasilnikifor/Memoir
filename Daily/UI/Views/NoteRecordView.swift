@@ -25,21 +25,21 @@ final class NoteRecordView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        setup()
     }
     
-    private func commonInit() {
+    private func setup() {
         backgroundColor = .clear
         addSubview(noteTextLabel)
         addSubview(timeLabel)
         
         noteTextLabel
-            .topToSuperview(32)
+            .topToSuperview(16)
             .leadingToSuperview(16)
             .trailingToSuperview(-16)
             
@@ -47,7 +47,7 @@ final class NoteRecordView: UIView {
             .top(to: noteTextLabel, anchor: noteTextLabel.bottomAnchor, offset: 8)
             .leadingToSuperview(16)
             .trailingToSuperview(-16)
-            .bottomToSuperview(-20)
+            .bottomToSuperview(-32)
         
         addGestureRecognizer(
             UITapGestureRecognizer(

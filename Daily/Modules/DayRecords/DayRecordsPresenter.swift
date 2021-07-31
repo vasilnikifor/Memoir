@@ -38,7 +38,7 @@ final class DayRecordsPresenter {
 
 extension DayRecordsPresenter: DayRecordsPresenterProtocol {
     func viewLoaded() {
-        view?.setupInitialState(dateText: date.dateRepresentation)
+        view?.setupInitialState(title: date.dateRepresentation)
         update()
     }
     

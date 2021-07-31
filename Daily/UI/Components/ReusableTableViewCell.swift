@@ -5,15 +5,15 @@ final class ReusableTableViewCell<View: ViewModelSettable & UIView>: UITableView
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        commonInit()
+        setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        setup()
     }
 
-    private func commonInit() {
+    private func setup() {
         backgroundColor = .clear
         selectionStyle = .none
         contentView.addSubview(mainView)

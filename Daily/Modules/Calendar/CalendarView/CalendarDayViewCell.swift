@@ -33,12 +33,12 @@ final class CalendarDayViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        setup()
     }
     
     override func layoutSubviews() {
@@ -50,7 +50,7 @@ final class CalendarDayViewCell: UICollectionViewCell {
         buttonWidthConstraint?.constant = buttonEdgeSize
     }
 
-    private func commonInit() {
+    private func setup() {
         contentView.addSubview(button)
         contentView.addSubview(isTodayView)
         

@@ -3,6 +3,7 @@ import UIKit
 protocol CalendarViewDelegate: AnyObject {
     func getMonthsWeekDays() -> [CalendarWeekdayViewModel]
     func getMonthsDays(month: Date) -> [CalendarDayViewModel]
+    func monthSelected(month: Date)
 }
 
 struct CalendarViewModel {
@@ -43,6 +44,8 @@ final class CalendarView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.apply(style: .primary24)
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonth)))
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -69,15 +72,15 @@ final class CalendarView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        setup()
     }
     
-    private func commonInit() {
+    private func setup() {
         addSubview(upMonthButton)
         addSubview(downMonthButton)
         addSubview(monthLabel)
@@ -174,6 +177,11 @@ final class CalendarView: UIView {
         previousMonthView = newPreviousMonthView
         fillMonthView(newPreviousMonthView, month: month.addMonths(-1))
         layoutCalendar()
+    }
+    
+    @objc
+    private func showMonth() {
+        delegate?.monthSelected(month: month)
     }
 }
 

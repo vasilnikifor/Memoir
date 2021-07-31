@@ -3,15 +3,15 @@ import UIKit
 final class NavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
-        commonInit()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
+        setup()
     }
     
-    private func commonInit() {
+    private func setup() {
         navigationBar.barTintColor = Theme.backgroundColor
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.shadowImage = UIImage()

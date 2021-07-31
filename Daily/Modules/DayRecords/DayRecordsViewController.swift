@@ -1,7 +1,7 @@
 import UIKit
 
 protocol DayRecordsViewControllerProtocol: Transitionable, AnyObject {
-    func setupInitialState(dateText: String)
+    func setupInitialState(title: String)
     func update(rateImage: UIImage, dataSource: [DayRecordsDataSource])
 }
 
@@ -77,8 +77,8 @@ final class DayRecordsViewController: UIViewController {
 }
 
 extension DayRecordsViewController: DayRecordsViewControllerProtocol {
-    func setupInitialState(dateText: String) {
-        title = dateText
+    func setupInitialState(title: String) {
+        self.title = title
     }
     
     func update(rateImage: UIImage, dataSource: [DayRecordsDataSource]) {
