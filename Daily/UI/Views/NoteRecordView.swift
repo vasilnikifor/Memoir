@@ -11,14 +11,14 @@ final class NoteRecordView: UIView {
     
     private let noteTextLabel: UILabel = {
         let label = UILabel()
-        label.apply(style: .primary17)
+        label.apply(style: .primaryMedium)
         label.numberOfLines = .zero
         return label
     }()
     
     private let timeLabel: UILabel = {
         let label = UILabel()
-        label.apply(style: .secondory9)
+        label.apply(style: .secondarySmall)
         label.numberOfLines = .zero
         return label
     }()

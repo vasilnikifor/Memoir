@@ -155,7 +155,6 @@
 			children = (
 				91419C5326B43F6C0031F519 /* Views */,
 				916C25EC267E2102004A1CDF /* Components */,
-				9157AB79266A6DCA003C4B66 /* Constraints */,
 				2D8770A423B79E5100A38D9F /* Other */,
 			);
 			path = UI;
@@ -355,6 +354,7 @@
 				916C25EA267E1CFC004A1CDF /* Transitionable.swift */,
 				9182AAA62673EBC4006E68BE /* ViewModelSettable.swift */,
 				2D0CFA16239221FE00F8AFBB /* UIViewController+Transitionable.swift */,
+				9157AB79266A6DCA003C4B66 /* Constraints */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

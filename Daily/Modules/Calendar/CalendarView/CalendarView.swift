@@ -39,7 +39,7 @@ final class CalendarView: UIView {
     private lazy var monthLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.apply(style: .primary24)
+        label.apply(style: .primaryBig)
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonth)))
         label.isUserInteractionEnabled = true
         return label

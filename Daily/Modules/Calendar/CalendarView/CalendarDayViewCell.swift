@@ -81,9 +81,9 @@ extension CalendarDayViewCell: ViewModelSettable {
         button.setTitle(viewModel.date.dateNumber, for: .normal)
         switch viewModel.state {
         case .unactive:
-            isTodayView.backgroundColor = Theme.secondoryTextColor
+            isTodayView.backgroundColor = Theme.secondaryTextColor
             button.backgroundColor = .clear
-            button.setTitleColor(Theme.secondoryTextColor, for: .normal)
+            button.setTitleColor(Theme.secondaryTextColor, for: .normal)
             button.isEnabled = false
         case .empty:
             isTodayView.backgroundColor = Theme.primaryTextColor

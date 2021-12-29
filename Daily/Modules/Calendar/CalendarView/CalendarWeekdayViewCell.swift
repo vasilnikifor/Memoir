@@ -8,7 +8,7 @@ final class CalendarWeekdayViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.apply(style: .primary17)
+        label.apply(style: .primaryMedium)
         label.textAlignment = .center
         return label
     }()

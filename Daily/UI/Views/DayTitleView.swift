@@ -12,7 +12,7 @@ final class DayHeaderView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.apply(style: .primary24)
+        label.apply(style: .primaryBig)
         label.numberOfLines = .zero
         return label
     }()

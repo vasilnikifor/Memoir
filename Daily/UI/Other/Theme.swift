@@ -9,7 +9,7 @@ extension Theme {
         return .label
     }
 
-    static var secondoryTextColor: UIColor {
+    static var secondaryTextColor: UIColor {
         return .placeholderText
     }
     
