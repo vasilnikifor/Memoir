@@ -1,9 +1,21 @@
 import Foundation
 
+extension Locale {
+    static var currentLocale: Locale {
+        if let locale = Calendar.current.locale, locale.identifier.contains("en") {
+            return locale
+        } else {
+            return Locale(identifier: "en")
+        }
+    }
+}
+
 // MARK: - Static
 extension Date {
     private static var calendar: Calendar {
-        return Calendar.current
+        var calendar = Calendar.current
+        calendar.locale = Locale.currentLocale
+        return calendar
     }
 
     static var shortWeekdaySymbols: [String] {
@@ -19,6 +31,8 @@ extension Date {
 // MARK: - Instance
 extension Date {
     private var calendar: Calendar {
+        var calendar = Date.calendar
+        calendar.locale = Locale.currentLocale
         return Date.calendar
     }
     
