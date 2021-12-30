@@ -1,7 +1,11 @@
 import Foundation
 
-enum MonthRecordsDataSource {
-    case header(viewModel: DayHeaderViewModel)
+struct MonthRecordsDataSource {
+    let sectionHeaderViewModel: DayHeaderViewModel
+    let sectionDataSource: [MonthRecordsSectionDataSource]
+}
+
+enum MonthRecordsSectionDataSource {
     case note(viewModel: DayNoteRecordViewModel)
     case actions(viewModel: DayActionsViewModel)
 }

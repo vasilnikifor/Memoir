@@ -12,6 +12,7 @@ final class MonthRecordsViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         return tableView
@@ -48,15 +49,23 @@ extension MonthRecordsViewController: MonthRecordsViewControllerProtocol {
     }
 }
 
+extension MonthRecordsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableCell(DayHeaderView.self, viewModel: dataSource[section].sectionHeaderViewModel)
+    }
+}
+
 extension MonthRecordsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        dataSource.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSource[section].sectionDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch dataSource[indexPath.row] {
-        case .header(viewModel: let viewModel):
-            return tableView.dequeueReusableCell(DayHeaderView.self, viewModel: viewModel)
+        switch dataSource[indexPath.section].sectionDataSource[indexPath.row] {
         case .note(let viewModel):
             return tableView.dequeueReusableCell(DayNoteRecordView.self, viewModel: viewModel)
         case .actions(let viewModel):
