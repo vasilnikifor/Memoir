@@ -7,13 +7,13 @@ protocol MonthRecordsViewControllerProtocol: Transitionable, AnyObject {
 
 final class MonthRecordsViewController: UIViewController {
     var presenter: MonthRecordsPresenterProtocol?
-    
-    private var dataSource: [MonthRecordsDataSource] = []
+    var dataSource: [MonthRecordsDataSource] = []
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -23,9 +23,10 @@ final class MonthRecordsViewController: UIViewController {
         setup()
     }
     
-    private func setup() {
-        view.backgroundColor = Theme.backgroundColor
+    func setup() {
+        view.backgroundColor = Theme.topLayerBackgroundColor
         view.addSubview(tableView)
+        view.backgroundColor = Theme.bottomLayerBackgroundColor
         
         tableView
             .topToSuperview()
@@ -54,14 +55,12 @@ extension MonthRecordsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
-        case .dayHeader(viewModel: let viewModel):
-            let cell = tableView.dequeueReusableCell(DayHeaderView.self)
-            cell.setup(with: viewModel)
-            return cell
+        case .header(viewModel: let viewModel):
+            return tableView.dequeueReusableCell(DayHeaderView.self, viewModel: viewModel)
         case .note(let viewModel):
-            let cell = tableView.dequeueReusableCell(NoteRecordView.self)
-            cell.setup(with: viewModel)
-            return cell
+            return tableView.dequeueReusableCell(DayNoteRecordView.self, viewModel: viewModel)
+        case .actions(let viewModel):
+            return tableView.dequeueReusableCell(DayActionsView.self, viewModel: viewModel)
         }
     }
 }

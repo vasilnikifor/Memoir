@@ -1,6 +1,7 @@
 import Foundation
 
 enum MonthRecordsDataSource {
-    case dayHeader(viewModel: DayHeaderViewModel)
-    case note(viewModel: NoteRecordViewModel)
+    case header(viewModel: DayHeaderViewModel)
+    case note(viewModel: DayNoteRecordViewModel)
+    case actions(viewModel: DayActionsViewModel)
 }

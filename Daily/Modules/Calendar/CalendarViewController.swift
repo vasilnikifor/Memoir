@@ -9,29 +9,29 @@ protocol CalendarViewControllerProtocol: Transitionable, AnyObject {
 final class CalendarViewController: UIViewController {
     var presenter: CalendarPresenterProtocol?
     
-    private let calendarContentView: UIView = {
+    let calendarContentView: UIView = {
         return UIView()
     }()
     
-    private var calendarView: CalendarView = {
+    var calendarView: CalendarView = {
         return CalendarView()
     }()
     
-    private lazy var rateDayButton: UIButton = {
+    lazy var rateDayButton: UIButton = {
         let button = UIButton()
         button.setImage(Theme.rateDayImage, for: .normal)
         button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
     
-    private lazy var addNoteButton: UIButton = {
+    lazy var addNoteButton: UIButton = {
         let button = UIButton()
         button.setImage(Theme.addNoteImage, for: .normal)
         button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
     
-    private lazy var actionsStackView: UIStackView = {
+    lazy var actionsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = Theme.backgroundColor
         stackView.axis = .horizontal
@@ -47,7 +47,7 @@ final class CalendarViewController: UIViewController {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(actionsStackView)
         view.addSubview(calendarContentView)
@@ -72,12 +72,12 @@ final class CalendarViewController: UIViewController {
     }
     
     @objc
-    private func rateDateButtonTouchUpInside() {
+    func rateDateButtonTouchUpInside() {
         presenter?.rateDayTapped()
     }
     
     @objc
-    private func addNoteButtonTouchUpInside() {
+    func addNoteButtonTouchUpInside() {
         presenter?.addNoteTapped()
     }
 }

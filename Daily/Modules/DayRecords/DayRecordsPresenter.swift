@@ -38,18 +38,6 @@ final class DayRecordsPresenter {
     private func updateDataSource() {
         day = dayService.getDay(date: date)
         
-        let rateImage: UIImage
-        switch day?.rate {
-        case .none:
-            rateImage = Theme.rateDayImage
-        case .bad:
-            rateImage = Theme.badRateImage
-        case .average:
-            rateImage = Theme.averageRateImage
-        case .good:
-            rateImage = Theme.goodRateImage
-        }
-        
         let dataSource:  [DayRecordsDataSource]
         if let records = day?.records {
             dataSource = records
@@ -77,7 +65,7 @@ final class DayRecordsPresenter {
             dataSource = []
         }
         
-        view?.update(rateImage: rateImage, dataSource: dataSource)
+        view?.update(rate: day?.rate, dataSource: dataSource)
     }
 }
 

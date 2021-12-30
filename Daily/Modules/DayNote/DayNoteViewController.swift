@@ -6,11 +6,10 @@ protocol DayNoteViewControllerProtocol: Transitionable, AnyObject {
 
 final class DayNoteViewController: UIViewController {
     var presenter: DayNotePresenterProtocol?
+    var textViewBottomToSuperviewBottomConstraint: NSLayoutConstraint?
+    var keyboardAnimationDuration: Double?
     
-    private var textViewBottomToSuperviewBottomConstraint: NSLayoutConstraint?
-    private var keyboardAnimationDuration: Double?
-    
-    private lazy var closeButton: UIBarButtonItem = {
+    lazy var closeButton: UIBarButtonItem = {
         return UIBarButtonItem(
             image: Theme.closeImage,
             style: .plain,
@@ -19,7 +18,7 @@ final class DayNoteViewController: UIViewController {
         )
     }()
     
-    private lazy var removeButton: UIBarButtonItem = {
+    lazy var removeButton: UIBarButtonItem = {
         return UIBarButtonItem(
             image: Theme.removeImage,
             style: .plain,
@@ -28,7 +27,7 @@ final class DayNoteViewController: UIViewController {
         )
     }()
     
-    private lazy var textView: UITextView = {
+    lazy var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = Theme.backgroundColor
         textView.font = UIFont.systemFont(ofSize: 17)
@@ -42,7 +41,7 @@ final class DayNoteViewController: UIViewController {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
         
@@ -79,17 +78,17 @@ final class DayNoteViewController: UIViewController {
     }
     
     @objc
-    private func closeButtonTouchUpInside() {
+    func closeButtonTouchUpInside() {
         presenter?.closeTapped()
     }
     
     @objc
-    private func removeButtonTouchUpInside() {
+    func removeButtonTouchUpInside() {
         presenter?.removeTapped()
     }
     
     @objc
-    private func keyboardWillShow(_ notification: Notification) {
+    func keyboardWillShow(_ notification: Notification) {
         keyboardAnimationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
@@ -101,7 +100,7 @@ final class DayNoteViewController: UIViewController {
     }
     
     @objc
-    private func keyboardWillHide() {
+    func keyboardWillHide() {
         textViewBottomToSuperviewBottomConstraint?.constant = -16
         UIView.animate(withDuration: keyboardAnimationDuration ?? .zero) { [weak self] in
             self?.view.layoutIfNeeded()
@@ -109,7 +108,7 @@ final class DayNoteViewController: UIViewController {
     }
     
     @objc
-    private func dismissKeyboard() {
+    func dismissKeyboard() {
         view.endEditing(true)
     }
 }

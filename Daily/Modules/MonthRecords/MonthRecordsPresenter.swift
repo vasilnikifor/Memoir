@@ -5,10 +5,10 @@ protocol MonthRecordsPresenterProtocol {
 }
 
 final class MonthRecordsPresenter {
-    private weak var view: MonthRecordsViewControllerProtocol?
-    private let dayService: DayServiceProtocol
-    private let month: Date
-    private weak var delegate: CalendarDelegate?
+    weak var view: MonthRecordsViewControllerProtocol?
+    let dayService: DayServiceProtocol
+    let month: Date
+    weak var delegate: CalendarDelegate?
     
     init(view: MonthRecordsViewControllerProtocol,
         inputModel: MonthRecordsInputModel,
@@ -19,7 +19,7 @@ final class MonthRecordsPresenter {
         delegate = inputModel.delegate
     }
     
-    private func openNote(day: Day, noteRecord: NoteRecord) {
+    func openNote(day: Day, noteRecord: NoteRecord?) {
         guard let date = day.date else { return }
         
         view?.present(
@@ -33,7 +33,7 @@ final class MonthRecordsPresenter {
         )
     }
     
-    private func openDayRate(day: Day) {
+    func openDayRate(day: Day) {
         guard let date = day.date else { return }
         
         view?.present(
@@ -47,35 +47,17 @@ final class MonthRecordsPresenter {
         )
     }
     
-    private func updateDataSource() {
+    func updateDataSource() {
         var dataSource: [MonthRecordsDataSource] = []
             
         dayService.getDays(of: month).forEach { day in
             guard !day.isEmpty else { return }
             
-            let rateImage: UIImage?
-            let rateImageTintColor: UIColor?
-            switch day.rate {
-            case .none:
-                rateImage = nil
-                rateImageTintColor = nil
-            case .bad:
-                rateImage = Theme.badRateImage
-                rateImageTintColor = Theme.badRateColor
-            case .average:
-                rateImage = Theme.averageRateImage
-                rateImageTintColor = Theme.averageRateColor
-            case .good:
-                rateImage = Theme.goodRateImage
-                rateImageTintColor = Theme.goodRateColor
-            }
-            
             dataSource.append(
-                .dayHeader(
+                .header(
                     viewModel: DayHeaderViewModel(
                         title: day.date?.dateShortRepresentation ?? "",
-                        image: rateImage,
-                        imageTintColor: rateImageTintColor,
+                        rate: day.rate,
                         action: { [weak self] in self?.openDayRate(day: day)}
                     )
                 )
@@ -93,7 +75,7 @@ final class MonthRecordsPresenter {
                     if let noteRecord = record as? NoteRecord {
                         dataSource.append(
                             .note(
-                                viewModel: NoteRecordViewModel(
+                                viewModel: DayNoteRecordViewModel(
                                     text: noteRecord.text ?? "",
                                     time: (noteRecord.time ?? Date()).timeRepresentation,
                                     action: { [weak self] in self?.openNote(day: day, noteRecord: noteRecord)}
@@ -102,6 +84,16 @@ final class MonthRecordsPresenter {
                         )
                     }
                 }
+            
+            dataSource.append(
+                .actions(
+                    viewModel: DayActionsViewModel(
+                        rate: day.rate,
+                        rateAction: { [weak self] in self?.openDayRate(day: day)},
+                        addNoteAction: { [weak self] in self?.openNote(day: day, noteRecord: nil)}
+                    )
+                )
+            )
         }
         
         view?.update(dataSource: dataSource)

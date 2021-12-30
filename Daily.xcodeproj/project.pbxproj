@@ -43,6 +43,8 @@
 		9157AB8B266A8CC8003C4B66 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8A266A8CC8003C4B66 /* CalendarView.swift */; };
 		9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */; };
 		9157AB8F266AA91C003C4B66 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8E266AA91C003C4B66 /* LabelStyle.swift */; };
+		915D4E65277DB21E00D8F178 /* DayNoteRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D4E64277DB21E00D8F178 /* DayNoteRecordView.swift */; };
+		915D4E67277DB59B00D8F178 /* DayActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D4E66277DB59B00D8F178 /* DayActionsView.swift */; };
 		9166F4A1269A068400D66CEE /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166F4A0269A068400D66CEE /* UITableView+Extension.swift */; };
 		9166F4A3269A086400D66CEE /* DayRecordsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166F4A2269A086400D66CEE /* DayRecordsDataSource.swift */; };
 		916C25E5267E15A4004A1CDF /* DayRateAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916C25E4267E15A4004A1CDF /* DayRateAssembler.swift */; };
@@ -106,6 +108,8 @@
 		9157AB8A266A8CC8003C4B66 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
 		9157AB8E266AA91C003C4B66 /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
+		915D4E64277DB21E00D8F178 /* DayNoteRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNoteRecordView.swift; sourceTree = "<group>"; };
+		915D4E66277DB59B00D8F178 /* DayActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayActionsView.swift; sourceTree = "<group>"; };
 		9166F4A0269A068400D66CEE /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		9166F4A2269A086400D66CEE /* DayRecordsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsDataSource.swift; sourceTree = "<group>"; };
 		916C25E4267E15A4004A1CDF /* DayRateAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateAssembler.swift; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 			children = (
 				91419C5426B43F910031F519 /* NoteRecordView.swift */,
 				91419C5E26B591DD0031F519 /* DayTitleView.swift */,
+				915D4E64277DB21E00D8F178 /* DayNoteRecordView.swift */,
+				915D4E66277DB59B00D8F178 /* DayActionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,7 +278,7 @@
 		9157AB6C266A6173003C4B66 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				9182AAA32673EA91006E68BE /* CalendarView */,
+				9182AAA32673EA91006E68BE /* Views */,
 				9157AB6E266A61AE003C4B66 /* CalendarViewController.swift */,
 				9182AAAE2674B960006E68BE /* CalendarPresenter.swift */,
 				9182AAB02674CC6A006E68BE /* CalendarAssembler.swift */,
@@ -317,7 +323,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		9182AAA32673EA91006E68BE /* CalendarView */ = {
+		9182AAA32673EA91006E68BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				9157AB8A266A8CC8003C4B66 /* CalendarView.swift */,
@@ -325,7 +331,7 @@
 				9182AAA42673EAB9006E68BE /* CalendarWeekdayViewCell.swift */,
 				9182AAA82673EE22006E68BE /* CalendarDayViewCell.swift */,
 			);
-			path = CalendarView;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		91F853FE268771590098EEE5 /* DayNote */ = {
@@ -460,6 +466,7 @@
 				9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */,
 				91419C5B26B44F290031F519 /* MonthRecordsViewController.swift in Sources */,
 				912092312688ACC300F966BE /* DayRecordsAssembler.swift in Sources */,
+				915D4E65277DB21E00D8F178 /* DayNoteRecordView.swift in Sources */,
 				91F854042687724A0098EEE5 /* DayNotePresenter.swift in Sources */,
 				9182AAAF2674B960006E68BE /* CalendarPresenter.swift in Sources */,
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
@@ -482,6 +489,7 @@
 				91F0A2022691B91500BD5E28 /* DayNoteInputModel.swift in Sources */,
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */,
+				915D4E67277DB59B00D8F178 /* DayActionsView.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				9157AB7F266A6F87003C4B66 /* UILayoutGuide+Constrainable.swift in Sources */,
 				91419C5226B43ECB0031F519 /* ReusableTableViewCell.swift in Sources */,
@@ -627,7 +635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
 				INFOPLIST_FILE = Daily/SupportFiles/Info.plist;
@@ -648,7 +656,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
 				INFOPLIST_FILE = Daily/SupportFiles/Info.plist;

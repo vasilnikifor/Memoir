@@ -1,31 +1,32 @@
 import UIKit
 
-struct DayHeaderViewModel {
-    let title: String
-    let rate: DayRate?
+struct DayNoteRecordViewModel {
+    let text: String
+    let time: String
     let action: (() -> ())?
 }
 
-final class DayHeaderView: UIView {
+final class DayNoteRecordView: UIView {
     var action: (() -> ())?
-     
+    
     var cardView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 16
-        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         view.backgroundColor = Theme.topLayerBackgroundColor
         return view
     }()
     
-    let titleLabel: UILabel = {
+    let noteTextLabel: UILabel = {
         let label = UILabel()
-        label.apply(style: .primaryBig)
+        label.apply(style: .primaryMedium)
         label.numberOfLines = .zero
         return label
     }()
     
-    let rateImageView: UIImageView = {
-        return UIImageView()
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        label.apply(style: .secondarySmall)
+        label.numberOfLines = .zero
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -41,27 +42,25 @@ final class DayHeaderView: UIView {
     func setup() {
         backgroundColor = Theme.bottomLayerBackgroundColor
         addSubview(cardView)
-        cardView.addSubview(titleLabel)
-        cardView.addSubview(rateImageView)
+        cardView.addSubview(noteTextLabel)
+        cardView.addSubview(timeLabel)
         
         cardView
-            .topToSuperview(8)
+            .topToSuperview()
             .leadingToSuperview(16)
             .trailingToSuperview(-16)
             .bottomToSuperview()
         
-        titleLabel
+        noteTextLabel
             .topToSuperview(16)
-            .bottomToSuperview(-16)
             .leadingToSuperview(16)
-            .trailing(to: rateImageView, anchor: rateImageView.leadingAnchor, offset: -4)
-        
-        
-        rateImageView
-            .height(32)
-            .width(32)
-            .centerYToSuperview()
             .trailingToSuperview(-16)
+            
+        timeLabel
+            .top(to: noteTextLabel, anchor: noteTextLabel.bottomAnchor, offset: 8)
+            .leadingToSuperview(16)
+            .trailingToSuperview(-16)
+            .bottomToSuperview(-32)
         
         addGestureRecognizer(
             UITapGestureRecognizer(
@@ -77,12 +76,10 @@ final class DayHeaderView: UIView {
     }
 }
 
-extension DayHeaderView: ViewModelSettable {
-    func setup(with viewModel: DayHeaderViewModel) {
-        titleLabel.text = viewModel.title
-        rateImageView.image = viewModel.rate.image
-        rateImageView.tintColor = viewModel.rate.tintColor
-        rateImageView.isHidden = viewModel.rate == nil
+extension DayNoteRecordView: ViewModelSettable {
+    func setup(with viewModel: DayNoteRecordViewModel) {
+        noteTextLabel.text = viewModel.text
+        timeLabel.text = viewModel.time
         action = viewModel.action
     }
 }

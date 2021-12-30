@@ -7,16 +7,16 @@ struct NoteRecordViewModel {
 }
 
 final class NoteRecordView: UIView {
-    private var action: (() -> ())?
+    var action: (() -> ())?
     
-    private let noteTextLabel: UILabel = {
+    let noteTextLabel: UILabel = {
         let label = UILabel()
         label.apply(style: .primaryMedium)
         label.numberOfLines = .zero
         return label
     }()
     
-    private let timeLabel: UILabel = {
+    let timeLabel: UILabel = {
         let label = UILabel()
         label.apply(style: .secondarySmall)
         label.numberOfLines = .zero
@@ -33,7 +33,7 @@ final class NoteRecordView: UIView {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         backgroundColor = .clear
         addSubview(noteTextLabel)
         addSubview(timeLabel)
@@ -58,7 +58,7 @@ final class NoteRecordView: UIView {
     }
     
     @objc
-    private func viewTouchUpInside() {
+    func viewTouchUpInside() {
         action?()
     }
 }

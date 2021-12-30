@@ -2,29 +2,37 @@ import UIKit
 
 protocol DayRecordsViewControllerProtocol: Transitionable, AnyObject {
     func setupInitialState(title: String)
-    func update(rateImage: UIImage, dataSource: [DayRecordsDataSource])
+    func update(rate: DayRate?, dataSource: [DayRecordsDataSource])
 }
 
 final class DayRecordsViewController: UIViewController {
     var presenter: DayRecordsPresenterProtocol?
+    var dataSource: [DayRecordsDataSource] = []
     
-    private var dataSource: [DayRecordsDataSource] = []
+    lazy var rateDayBarButton: UIBarButtonItem = {
+        return UIBarButtonItem(
+            image: Theme.rateDayImage,
+            style: .plain,
+            target: self,
+            action: #selector(rateDateButtonTouchUpInside)
+        )
+    }()
     
-    private lazy var rateDayButton: UIButton = {
+    lazy var rateDayButton: UIButton = {
         let button = UIButton()
         button.setImage(Theme.rateDayImage, for: .normal)
         button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
     
-    private lazy var addNoteButton: UIButton = {
+    lazy var addNoteButton: UIButton = {
         let button = UIButton()
         button.setImage(Theme.addNoteImage, for: .normal)
         button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
     
-    private lazy var actionsStackView: UIStackView = {
+    lazy var actionsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = Theme.backgroundColor
         stackView.axis = .horizontal
@@ -34,7 +42,7 @@ final class DayRecordsViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -47,7 +55,7 @@ final class DayRecordsViewController: UIViewController {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(actionsStackView)
         view.addSubview(tableView)
@@ -66,12 +74,12 @@ final class DayRecordsViewController: UIViewController {
     }
     
     @objc
-    private func rateDateButtonTouchUpInside() {
+    func rateDateButtonTouchUpInside() {
         presenter?.rateDayTapped()
     }
     
     @objc
-    private func addNoteButtonTouchUpInside() {
+    func addNoteButtonTouchUpInside() {
         presenter?.addNoteTapped()
     }
 }
@@ -81,8 +89,15 @@ extension DayRecordsViewController: DayRecordsViewControllerProtocol {
         self.title = title
     }
     
-    func update(rateImage: UIImage, dataSource: [DayRecordsDataSource]) {
-        rateDayButton.setImage(rateImage, for: .normal)
+    func update(rate: DayRate?, dataSource: [DayRecordsDataSource]) {
+        if rate != nil {
+            let button = UIBarButtonItem(image: rate.image, style: .plain, target: self, action: #selector(rateDateButtonTouchUpInside))
+            button.tintColor = rate.tintColor
+            navigationItem.rightBarButtonItem = button
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
+        rateDayButton.setImage(rate.image, for: .normal)
         self.dataSource = dataSource
         tableView.reloadData()
     }
@@ -96,9 +111,7 @@ extension DayRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
         case .note(let viewModel):
-            let cell = tableView.dequeueReusableCell(NoteRecordView.self)
-            cell.setup(with: viewModel)
-            return cell
+            return tableView.dequeueReusableCell(NoteRecordView.self, viewModel: viewModel)
         }
     }
 }
