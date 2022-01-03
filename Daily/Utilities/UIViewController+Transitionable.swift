@@ -7,7 +7,7 @@ extension UIViewController: Transitionable {
     
     
     func present(_ viewController: UIViewController) {
-        present(NavigationController(rootViewController: viewController), animated: true)
+        present(UINavigationController(rootViewController: viewController), animated: true)
     }
     
     func dismiss() {
