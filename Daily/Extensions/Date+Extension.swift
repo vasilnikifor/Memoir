@@ -83,6 +83,7 @@ extension Date {
     /// "h:mm a"
     var timeRepresentation: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.currentLocale
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: self)
     }
@@ -90,6 +91,7 @@ extension Date {
     /// "EE, MMM d"
     var dateRepresentation: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.currentLocale
         dateFormatter.dateFormat = "EE, MMM d"
         return dateFormatter.string(from: self)
     }
@@ -97,6 +99,7 @@ extension Date {
     /// "EE, d"
     var dateShortRepresentation: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.currentLocale
         dateFormatter.dateFormat = "EE, d"
         return dateFormatter.string(from: self)
     }
@@ -104,6 +107,7 @@ extension Date {
     /// "MMMM yyyy"
     var monthRepresentation: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.currentLocale
         dateFormatter.dateFormat = "MMMM yyyy"
         return dateFormatter.string(from: self)
     }
