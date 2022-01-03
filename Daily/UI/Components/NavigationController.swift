@@ -13,7 +13,7 @@ final class NavigationController: UINavigationController {
     
     private func setup() {
         navigationBar.barTintColor = Theme.backgroundColor
-        navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
     }
 }

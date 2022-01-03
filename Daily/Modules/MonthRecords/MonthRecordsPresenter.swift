@@ -53,7 +53,15 @@ final class MonthRecordsPresenter {
         dayService.getDays(of: month).forEach { day in
             guard !day.isEmpty else { return }
             
-            var sectionDataSource: [MonthRecordsSectionDataSource] = []
+            dataSource.append(
+                .header(
+                    viewModel: DayHeaderViewModel(
+                        title: day.date?.dateShortRepresentation ?? "",
+                        rate: day.rate,
+                        action: { [weak self] in self?.openDayRate(day: day)}
+                    )
+                )
+            )
             
             day.records?
                 .sorted { record1, record2 in
@@ -65,7 +73,7 @@ final class MonthRecordsPresenter {
                 }
                 .forEach { record in
                     if let noteRecord = record as? NoteRecord {
-                        sectionDataSource.append(
+                        dataSource.append(
                             .note(
                                 viewModel: DayNoteRecordViewModel(
                                     text: noteRecord.text ?? "",
@@ -77,24 +85,13 @@ final class MonthRecordsPresenter {
                     }
                 }
             
-            sectionDataSource.append(
+            dataSource.append(
                 .actions(
                     viewModel: DayActionsViewModel(
                         rate: day.rate,
                         rateAction: { [weak self] in self?.openDayRate(day: day)},
                         addNoteAction: { [weak self] in self?.openNote(day: day, noteRecord: nil)}
                     )
-                )
-            )
-            
-            dataSource.append(
-                MonthRecordsDataSource(
-                    sectionHeaderViewModel: DayHeaderViewModel(
-                        title: day.date?.dateShortRepresentation ?? "",
-                        rate: day.rate,
-                        action: { [weak self] in self?.openDayRate(day: day)}
-                    ),
-                    sectionDataSource: sectionDataSource
                 )
             )
         }

@@ -25,15 +25,15 @@ extension Theme {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
                 ? black
-                : lightGray
+                : UIColor.systemGray6
         }
     }
     
     static var topLayerBackgroundColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
-                ? Theme.darkGray
-                : Theme.white
+                ? UIColor.systemGray6
+                : white
         }
     }
     
