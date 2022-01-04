@@ -38,9 +38,9 @@ extension DayNotePresenter: DayNotePresenterProtocol {
     }
     
     func removeTapped() {
+        view?.dismiss()
         if let note = note { dayService.removeNote(note) }
         delegate?.update()
-        view?.dismiss()
     }
     
     func textDidEndEditing(text: String) {

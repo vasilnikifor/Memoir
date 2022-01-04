@@ -98,12 +98,12 @@ final class DayService: DayServiceProtocol {
 
 extension Date {
     var recordTime: Date {
-        let demendedDateStartOfDay = startOfDay
+        let demandedDateStartOfDay = startOfDay
         let todayStartOfDay = Date().startOfDay
-        if demendedDateStartOfDay < todayStartOfDay {
+        if demandedDateStartOfDay < todayStartOfDay {
             return endOfDay
-        } else if demendedDateStartOfDay > todayStartOfDay {
-            return demendedDateStartOfDay
+        } else if demandedDateStartOfDay > todayStartOfDay {
+            return demandedDateStartOfDay
         } else {
             return Date()
         }
