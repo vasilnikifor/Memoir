@@ -15,7 +15,6 @@ final class IconRender: UIViewController {
         let gradient = CAGradientLayer()
         gradient.startPoint = .zero
         gradient.endPoint = CGPoint(x: 1, y: .zero)
-        gradient.cornerRadius = icon.bounds.height / 6.4
         gradient.frame = icon.bounds
         gradient.colors = [Theme.badRateColor.cgColor, Theme.averageRateColor.cgColor, Theme.goodRateColor.cgColor]
 
