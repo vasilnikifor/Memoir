@@ -7,14 +7,19 @@ protocol MonthRecordsPresenterProtocol {
 final class MonthRecordsPresenter {
     weak var view: MonthRecordsViewControllerProtocol?
     let dayService: DayServiceProtocol
+    let analyticsService: AnalyticsServiceProtocol
     let month: Date
     weak var delegate: CalendarDelegate?
     
-    init(view: MonthRecordsViewControllerProtocol,
-        inputModel: MonthRecordsInputModel,
-        dayService: DayServiceProtocol) {
+    init(
+        view: MonthRecordsViewControllerProtocol,
+        dayService: DayServiceProtocol,
+        analyticsService: AnalyticsServiceProtocol,
+        inputModel: MonthRecordsInputModel
+    ) {
         self.view = view
         self.dayService = dayService
+        self.analyticsService = analyticsService
         month = inputModel.month
         delegate = inputModel.delegate
     }
@@ -31,6 +36,8 @@ final class MonthRecordsPresenter {
                 )
             )
         )
+        
+        analyticsService.sendEvent("month_page_note_selected")
     }
     
     func openDayRate(day: Day) {
@@ -45,6 +52,8 @@ final class MonthRecordsPresenter {
                 )
             )
         )
+        
+        analyticsService.sendEvent("month_page_day_rate_selected")
     }
     
     func updateDataSource() {
@@ -104,6 +113,7 @@ extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
     func viewLoaded() {
         view?.setupInitialState(title: month.monthRepresentation)
         updateDataSource()
+        analyticsService.sendEvent("month_page_loaded")
     }
 }
 

@@ -10,15 +10,20 @@ protocol DayNotePresenterProtocol: AnyObject {
 final class DayNotePresenter {
     private weak var view: DayNoteViewControllerProtocol?
     private let dayService: DayServiceProtocol
+    private let analyticsService: AnalyticsServiceProtocol
     private let date: Date
     private var note: NoteRecord?
     private weak var delegate: CalendarDelegate?
     
-    init(view: DayNoteViewControllerProtocol,
-         dayService: DayServiceProtocol,
-         inputModel: DayNoteInputModel) {
+    init(
+        view: DayNoteViewControllerProtocol,
+        dayService: DayServiceProtocol,
+        analyticsService: AnalyticsServiceProtocol,
+        inputModel: DayNoteInputModel
+    ) {
         self.view = view
         self.dayService = dayService
+        self.analyticsService = analyticsService
         date = inputModel.date
         note = inputModel.note
         delegate = inputModel.delegate
@@ -31,6 +36,7 @@ extension DayNotePresenter: DayNotePresenterProtocol {
             dateText: date.dateRepresentation,
             noteText: note?.text ?? ""
         )
+        analyticsService.sendEvent("note_page_loaded")
     }
     
     func closeTapped() {
@@ -41,10 +47,12 @@ extension DayNotePresenter: DayNotePresenterProtocol {
         view?.dismiss()
         if let note = note { dayService.removeNote(note) }
         delegate?.update()
+        analyticsService.sendEvent("note_page_removed")
     }
     
     func textDidEndEditing(text: String) {
         note = dayService.saveNote(date: date, note: note, text: text)
         delegate?.update()
+        analyticsService.sendEvent("note_page_text_edited")
     }
 }

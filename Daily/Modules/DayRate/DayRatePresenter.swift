@@ -9,15 +9,20 @@ protocol DayRatePresenterProtocol: AnyObject {
 final class DayRatePresenter {
     private weak var view: DayRateViewControllerProtocol?
     private var dayService: DayServiceProtocol
+    private let analyticsService: AnalyticsServiceProtocol
     private weak var calendarDelegate: CalendarDelegate?
     private var date: Date
     private var selectedRate: DayRate?
     
-    init(view: DayRateViewControllerProtocol,
-         dayService: DayServiceProtocol,
-         inputModel: DayRateInputModel) {
+    init(
+        view: DayRateViewControllerProtocol,
+        dayService: DayServiceProtocol,
+        analyticsService: AnalyticsServiceProtocol,
+        inputModel: DayRateInputModel
+    ) {
         self.view = view
         self.dayService = dayService
+        self.analyticsService = analyticsService
         calendarDelegate = inputModel.delegate
         date = inputModel.date
         selectedRate = inputModel.selectedRate
@@ -27,6 +32,17 @@ final class DayRatePresenter {
         dayService.rateDay(of: date, rate: selectedRate)
         calendarDelegate?.update()
         view?.dismiss()
+        
+        switch selectedRate {
+        case .bad:
+            analyticsService.sendEvent("rate_page_bad_rate_selected")
+        case .average:
+            analyticsService.sendEvent("rate_page_average_rate_selected")
+        case .good:
+            analyticsService.sendEvent("rate_page_good_rate_selected")
+        case .none:
+            break
+        }
     }
 }
 
@@ -54,6 +70,7 @@ extension DayRatePresenter: DayRatePresenterProtocol {
                 action: { [weak self] in self?.update(selectedRate: .good) }
             )
         )
+        analyticsService.sendEvent("rate_page_loaded")
     }
     
     func closeTapped() {
@@ -62,5 +79,6 @@ extension DayRatePresenter: DayRatePresenterProtocol {
     
     func removeTapped() {
         update(selectedRate: nil)
+        analyticsService.sendEvent("rate_page_removed")
     }
 }
