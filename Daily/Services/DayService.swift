@@ -1,6 +1,6 @@
 import CoreData
 
-protocol DayServiceProtocol {
+protocol DayServiceProtocol: AnyObject {
     func getDays(of month: Date) -> [Day]
     func rateDay(of date: Date, rate: DayRate?)
     func getDay(date: Date) -> Day?
