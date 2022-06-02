@@ -15,34 +15,16 @@ final class CalendarView: UIView {
     weak var delegate: CalendarViewDelegate?
     var month: Date = Date()
     let pageCount: CGFloat = 3
-    let buttonEdgeSize: CGFloat = 32
-    let upMonthButtonImage: UIImage? = UIImage(systemName: "arrow.right")
-    let downMonthButtonImage: UIImage? = UIImage(systemName: "arrow.left")
     var previousMonthView = CalendarMonthView()
     var currentMonthView = CalendarMonthView()
     var nextMonthView = CalendarMonthView()
-    
-    lazy var upMonthButton: UIButton = {
-        let button = UIButton()
-        button.setImage(upMonthButtonImage, for: .normal)
-        button.addTarget(self, action: #selector(swipeCalendarToNextMonth), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var downMonthButton: UIButton = {
-        let button = UIButton()
-        button.setImage(downMonthButtonImage, for: .normal)
-        button.addTarget(self, action: #selector(swipeCalendarToPreviousMonth), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var monthLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.apply(style: .primaryBig)
-        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonth)))
-        label.isUserInteractionEnabled = true
-        return label
+
+    lazy var hatView: CalendarHatView = {
+        let view = CalendarHatView()
+        view.upTapped = { [weak self] in self?.swipeCalendarToNextMonth() }
+        view.downTapped = { [weak self] in self?.swipeCalendarToPreviousMonth() }
+        view.forwardTapped = { [weak self] in self?.showMonth() }
+        return view
     }()
         
     lazy var scrollView: UIScrollView = {
@@ -77,35 +59,20 @@ final class CalendarView: UIView {
     }
     
     func setup() {
-        addSubview(upMonthButton)
-        addSubview(downMonthButton)
-        addSubview(monthLabel)
+        addSubview(hatView)
         addSubview(scrollView)
         
         scrollView.addSubview(previousMonthView)
         scrollView.addSubview(currentMonthView)
         scrollView.addSubview(nextMonthView)
         
-        downMonthButton
+        hatView
             .topToSuperview()
             .leading(to: scrollView, anchor: scrollView.leadingAnchor)
-            .height(buttonEdgeSize)
-            .width(buttonEdgeSize)
-        
-        upMonthButton
-            .topToSuperview()
             .trailing(to: scrollView, anchor: scrollView.trailingAnchor)
-            .height(buttonEdgeSize)
-            .width(buttonEdgeSize)
-        
-        monthLabel
-            .topToSuperview()
-            .leading(to: downMonthButton, anchor: downMonthButton.trailingAnchor)
-            .trailing(to: upMonthButton, anchor: upMonthButton.leadingAnchor)
-            .height(buttonEdgeSize)
         
         scrollView
-            .top(to: monthLabel, anchor: monthLabel.bottomAnchor, offset: 16)
+            .top(to: hatView, anchor: hatView.bottomAnchor, offset: 16)
             .trailingToSuperview()
             .leadingToSuperview()
             .bottomToSuperview()
@@ -154,7 +121,7 @@ final class CalendarView: UIView {
     @objc
     func showNextMonth() {
         month = month.addMonths(1)
-        monthLabel.text = month.monthRepresentation
+        hatView.nameLabel.text = month.monthRepresentation
         let newNextMonthView = previousMonthView
         previousMonthView = currentMonthView
         currentMonthView = nextMonthView
@@ -166,7 +133,7 @@ final class CalendarView: UIView {
     @objc
     func showPreviousMonthView() {
         month = month.addMonths(-1)
-        monthLabel.text = month.monthRepresentation
+        hatView.nameLabel.text = month.monthRepresentation
         let newPreviousMonthView = nextMonthView
         nextMonthView = currentMonthView
         currentMonthView = previousMonthView
@@ -200,7 +167,7 @@ extension CalendarView: UIScrollViewDelegate {
 
 extension CalendarView {
     func update() {
-        monthLabel.text = month.monthRepresentation
+        hatView.nameLabel.text = month.monthRepresentation
         fillMonthView(previousMonthView, month: month.addMonths(-1))
         fillMonthView(currentMonthView, month: month)
         fillMonthView(nextMonthView, month: month.addMonths(1))

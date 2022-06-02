@@ -23,6 +23,8 @@
 		912092352688AD6800F966BE /* DayRecordsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092342688AD6800F966BE /* DayRecordsPresenter.swift */; };
 		912092372688AFD900F966BE /* DayRecordsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092362688AFD900F966BE /* DayRecordsInputModel.swift */; };
 		912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092382688B0A900F966BE /* DayRateInputModel.swift */; };
+		912BCE6B283E7AFE005E1A6C /* CalendarHatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */; };
+		912BCE6D283E7B54005E1A6C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BCE6C283E7B54005E1A6C /* Grid.swift */; };
 		91419C5226B43ECB0031F519 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5126B43ECB0031F519 /* ReusableTableViewCell.swift */; };
 		91419C5526B43F920031F519 /* NoteRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5426B43F910031F519 /* NoteRecordView.swift */; };
 		91419C5726B44E790031F519 /* MonthRecordsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5626B44E790031F519 /* MonthRecordsAssembler.swift */; };
@@ -92,6 +94,8 @@
 		912092342688AD6800F966BE /* DayRecordsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsPresenter.swift; sourceTree = "<group>"; };
 		912092362688AFD900F966BE /* DayRecordsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsInputModel.swift; sourceTree = "<group>"; };
 		912092382688B0A900F966BE /* DayRateInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateInputModel.swift; sourceTree = "<group>"; };
+		912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHatView.swift; sourceTree = "<group>"; };
+		912BCE6C283E7B54005E1A6C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		91419C5126B43ECB0031F519 /* ReusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewCell.swift; sourceTree = "<group>"; };
 		91419C5426B43F910031F519 /* NoteRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRecordView.swift; sourceTree = "<group>"; };
 		91419C5626B44E790031F519 /* MonthRecordsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsAssembler.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				9157AB8E266AA91C003C4B66 /* LabelStyle.swift */,
 				84FF3F2922FEC4C100CEF093 /* Theme.swift */,
+				912BCE6C283E7B54005E1A6C /* Grid.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */,
 				9182AAA42673EAB9006E68BE /* CalendarWeekdayViewCell.swift */,
 				9182AAA82673EE22006E68BE /* CalendarDayViewCell.swift */,
+				912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				916C25E5267E15A4004A1CDF /* DayRateAssembler.swift in Sources */,
 				2D0CFA17239221FE00F8AFBB /* UIViewController+Transitionable.swift in Sources */,
 				9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */,
+				912BCE6D283E7B54005E1A6C /* Grid.swift in Sources */,
 				91419C5B26B44F290031F519 /* MonthRecordsViewController.swift in Sources */,
 				912092312688ACC300F966BE /* DayRecordsAssembler.swift in Sources */,
 				915D4E65277DB21E00D8F178 /* DayNoteRecordView.swift in Sources */,
@@ -532,6 +539,7 @@
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */,
 				915D4E67277DB59B00D8F178 /* DayActionsView.swift in Sources */,
+				912BCE6B283E7AFE005E1A6C /* CalendarHatView.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				9157AB7F266A6F87003C4B66 /* UILayoutGuide+Constrainable.swift in Sources */,
 				91419C5226B43ECB0031F519 /* ReusableTableViewCell.swift in Sources */,
