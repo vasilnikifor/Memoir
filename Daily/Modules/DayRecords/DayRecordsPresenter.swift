@@ -8,16 +8,21 @@ protocol DayRecordsPresenterProtocol {
 
 final class DayRecordsPresenter {
     private weak var view: DayRecordsViewControllerProtocol?
-    private var dayService: DayServiceProtocol
+    private let dayService: DayServiceProtocol
+    private let analyticsService: AnalyticsServiceProtocol
     private weak var delegate: CalendarDelegate?
     private let date: Date
     private var day: Day?
     
-    init(view: DayRecordsViewControllerProtocol,
-         dayService: DayServiceProtocol,
-         inputModel: DayRecordsInputModel) {
+    init(
+        view: DayRecordsViewControllerProtocol,
+        dayService: DayServiceProtocol,
+        analyticsService: AnalyticsServiceProtocol,
+        inputModel: DayRecordsInputModel
+    ) {
         self.view = view
         self.dayService = dayService
+        self.analyticsService = analyticsService
         delegate = inputModel.delegate
         date = inputModel.date
         day = inputModel.day
@@ -73,9 +78,11 @@ extension DayRecordsPresenter: DayRecordsPresenterProtocol {
     func viewLoaded() {
         view?.setupInitialState(title: date.dateRepresentation)
         updateDataSource()
+        analyticsService.sendEvent("day_page_loaded")
     }
     
     func rateDayTapped() {
+        analyticsService.sendEvent("day_page_rate_day_tapped")
         view?.present(
             DayRateAssembler.assemble(
                 DayRateInputModel(
@@ -88,6 +95,7 @@ extension DayRecordsPresenter: DayRecordsPresenterProtocol {
     }
     
     func addNoteTapped() {
+        analyticsService.sendEvent("day_page_rate_add_note_tapped")
         openNote(nil)
     }
 }

@@ -1,11 +1,3 @@
-//
-//  DayActionsView.swift
-//  Daily
-//
-//  Created by Vasilii Nikiforov on 30.12.21.
-//  Copyright © 2021 buldog.team. All rights reserved.
-//
-
 import UIKit
 
 struct DayActionsViewModel {
