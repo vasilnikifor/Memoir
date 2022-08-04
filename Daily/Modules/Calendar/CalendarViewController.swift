@@ -61,14 +61,14 @@ final class CalendarViewController: UIViewController {
         
         calendarView
             .centerYToSuperview()
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
         
         actionsStackView
             .leadingToSuperview()
             .trailingToSuperview()
             .bottomToSuperview(safeArea: true)
-            .height(48)
+            .height(.xxl)
     }
     
     @objc

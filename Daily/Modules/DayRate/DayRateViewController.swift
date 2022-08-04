@@ -67,8 +67,8 @@ final class DayRateViewController: UIViewController {
         
         rateStackView
             .centerYToSuperview()
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
             .height(60)
     }
     

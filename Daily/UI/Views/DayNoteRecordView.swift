@@ -47,20 +47,20 @@ final class DayNoteRecordView: UIView {
         
         cardView
             .topToSuperview()
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
             .bottomToSuperview()
         
         noteTextLabel
-            .topToSuperview(16)
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
+            .topToSuperview(.m)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
             
         timeLabel
-            .top(to: noteTextLabel, anchor: noteTextLabel.bottomAnchor, offset: 8)
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
-            .bottomToSuperview(-32)
+            .top(to: noteTextLabel, anchor: noteTextLabel.bottomAnchor, offset: .s)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
+            .bottomToSuperview(-.xl)
         
         addGestureRecognizer(
             UITapGestureRecognizer(
