@@ -49,11 +49,11 @@ final class DayNoteViewController: UIViewController {
         view.addSubview(textView)
         
         textView
-            .topToSuperview(16, safeArea: true)
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
+            .topToSuperview(.m, safeArea: true)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
         
-        textViewBottomToSuperviewBottomConstraint = textView.bottom(to: view, anchor: view.safeAreaLayoutGuide.bottomAnchor, offset: -16)
+        textViewBottomToSuperviewBottomConstraint = textView.bottom(to: view, anchor: view.safeAreaLayoutGuide.bottomAnchor, offset: -.m)
         
         view.addGestureRecognizer(
             UITapGestureRecognizer(
@@ -92,7 +92,7 @@ final class DayNoteViewController: UIViewController {
         keyboardAnimationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-            textViewBottomToSuperviewBottomConstraint?.constant = -(16 + keyboardFrame.height - view.safeAreaInsets.bottom)
+            textViewBottomToSuperviewBottomConstraint?.constant = -(.m + keyboardFrame.height - view.safeAreaInsets.bottom)
             UIView.animate(withDuration: keyboardAnimationDuration ?? .zero) { [weak self] in
                 self?.view.layoutIfNeeded()
             }
@@ -101,7 +101,7 @@ final class DayNoteViewController: UIViewController {
     
     @objc
     func keyboardWillHide() {
-        textViewBottomToSuperviewBottomConstraint?.constant = -16
+        textViewBottomToSuperviewBottomConstraint?.constant = -.m
         UIView.animate(withDuration: keyboardAnimationDuration ?? .zero) { [weak self] in
             self?.view.layoutIfNeeded()
         }

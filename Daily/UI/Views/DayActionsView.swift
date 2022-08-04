@@ -13,7 +13,7 @@ final class DayActionsView: UIView {
     
     var cardView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = .m
         view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         view.backgroundColor = Theme.topLayerBackgroundColor
         return view
@@ -60,16 +60,16 @@ final class DayActionsView: UIView {
         
         cardView
             .topToSuperview()
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
-            .bottomToSuperview(-8)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
+            .bottomToSuperview(-.s)
         
         actionsStackView
             .leadingToSuperview()
             .trailingToSuperview()
             .topToSuperview()
             .bottomToSuperview()
-            .height(48)
+            .height(.xxl)
     }
     
     @objc

@@ -11,7 +11,7 @@ final class DayHeaderView: UIView {
      
     var cardView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = .m
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         view.backgroundColor = Theme.topLayerBackgroundColor
         return view
@@ -45,23 +45,23 @@ final class DayHeaderView: UIView {
         cardView.addSubview(rateImageView)
         
         cardView
-            .topToSuperview(8)
-            .leadingToSuperview(16)
-            .trailingToSuperview(-16)
+            .topToSuperview(.s)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
             .bottomToSuperview()
         
         titleLabel
-            .topToSuperview(16)
-            .bottomToSuperview(-16)
-            .leadingToSuperview(16)
-            .trailing(to: rateImageView, anchor: rateImageView.leadingAnchor, offset: -4)
+            .topToSuperview(.m)
+            .bottomToSuperview(-.m)
+            .leadingToSuperview(.m)
+            .trailing(to: rateImageView, anchor: rateImageView.leadingAnchor, offset: -.xs)
         
         
         rateImageView
-            .height(32)
-            .width(32)
+            .height(.xl)
+            .width(.xl)
             .centerYToSuperview()
-            .trailingToSuperview(-16)
+            .trailingToSuperview(-.m)
         
         addGestureRecognizer(
             UITapGestureRecognizer(

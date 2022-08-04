@@ -72,7 +72,7 @@ final class CalendarView: UIView {
             .trailing(to: scrollView, anchor: scrollView.trailingAnchor)
         
         scrollView
-            .top(to: hatView, anchor: hatView.bottomAnchor, offset: 16)
+            .top(to: hatView, anchor: hatView.bottomAnchor, offset: .m)
             .trailingToSuperview()
             .leadingToSuperview()
             .bottomToSuperview()

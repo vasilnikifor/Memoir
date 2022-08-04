@@ -62,19 +62,19 @@ final class CalendarHatView: UIView {
         addSubview(forwardImageView)
         addSubview(nameLabel)
         
-        height(.l)
+        height(.xl)
         
         downButton
             .topToSuperview()
             .leadingToSuperview()
-            .height(.l)
-            .width(.l)
+            .height(.xl)
+            .width(.xl)
         
         upButton
             .topToSuperview()
             .trailingToSuperview()
-            .height(.l)
-            .width(.l)
+            .height(.xl)
+            .width(.xl)
         
         nameLabel
             .centerXToSuperview()

@@ -37,7 +37,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
                     CalendarDayViewModel(
                         date: processingDate,
                         isToday: processingDate == todayDate,
-                        state: .unactive,
+                        state: .inactive,
                         action: nil
                     )
                 )

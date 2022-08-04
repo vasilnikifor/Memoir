@@ -8,7 +8,7 @@ struct DayRateViewModel {
 }
 
 final class DayRateView: UIView {
-    private var aciton: (() -> ())?
+    private var action: (() -> ())?
     
     private lazy var rateView: UIImageView = {
         let imageView = UIImageView()
@@ -20,7 +20,7 @@ final class DayRateView: UIView {
     
     private let selectionView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 2
+        view.layer.cornerRadius = .xxs
         view.backgroundColor = Theme.primaryTextColor
         return view
     }()
@@ -47,14 +47,14 @@ final class DayRateView: UIView {
             
         selectionView
             .centerXToSuperview()
-            .bottom(to: rateView, anchor: rateView.bottomAnchor, offset: 8)
-            .height(4)
-            .width(4)
+            .bottom(to: rateView, anchor: rateView.bottomAnchor, offset: .s)
+            .height(.xs)
+            .width(.xs)
     }
     
     @objc
     private func viewTapped() {
-        aciton?()
+        action?()
     }
 }
 
@@ -64,6 +64,6 @@ extension DayRateView: ViewModelSettable {
         rateView.tintColor = viewModel.tintColor
         selectionView.backgroundColor = viewModel.tintColor
         selectionView.isHidden = !viewModel.isSelected
-        aciton = viewModel.action
+        action = viewModel.action
     }
 }

@@ -64,7 +64,7 @@ final class DayRecordsViewController: UIViewController {
             .leadingToSuperview()
             .trailingToSuperview()
             .bottomToSuperview(safeArea: true)
-            .height(48)
+            .height(.xxl)
         
         tableView
             .topToSuperview()

@@ -7,7 +7,7 @@ struct CalendarDayViewModel {
     let action: (() -> ())?
     
     enum State {
-        case unactive
+        case inactive
         case empty
         case filled(dayRate: DayRate?)
     }
@@ -15,7 +15,7 @@ struct CalendarDayViewModel {
 
 final class CalendarDayViewCell: UICollectionViewCell {
     private var acton: (() -> ())?
-    private var buttonHeigtConstraint: NSLayoutConstraint?
+    private var buttonHeightConstraint: NSLayoutConstraint?
     private var buttonWidthConstraint: NSLayoutConstraint?
     
     private lazy var button: UIButton = {
@@ -27,7 +27,7 @@ final class CalendarDayViewCell: UICollectionViewCell {
     
     private let isTodayView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 2
+        view.layer.cornerRadius = .xxs
         return view
     }()
     
@@ -43,10 +43,10 @@ final class CalendarDayViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let squereEdgeSize = min(frame.height, frame.width)
-        let buttonEdgeSize = squereEdgeSize - squereEdgeSize / 4
+        let squareEdgeSize = min(frame.height, frame.width)
+        let buttonEdgeSize = squareEdgeSize - squareEdgeSize / 4
         button.layer.cornerRadius = buttonEdgeSize / 2
-        buttonHeigtConstraint?.constant = buttonEdgeSize
+        buttonHeightConstraint?.constant = buttonEdgeSize
         buttonWidthConstraint?.constant = buttonEdgeSize
     }
 
@@ -58,14 +58,14 @@ final class CalendarDayViewCell: UICollectionViewCell {
             .centerXToSuperview()
             .centerYToSuperview()
         
-        buttonHeigtConstraint = button.height(height: .zero)
+        buttonHeightConstraint = button.height(height: .zero)
         buttonWidthConstraint = button.width(width: .zero)
         
         isTodayView
-            .height(4)
-            .width(4)
+            .height(.xs)
+            .width(.xs)
             .centerX(to: button)
-            .bottom(to: button, anchor: button.bottomAnchor, offset: -4)
+            .bottom(to: button, anchor: button.bottomAnchor, offset: -.xs)
     }
     
     @objc
@@ -80,7 +80,7 @@ extension CalendarDayViewCell: ViewModelSettable {
         isTodayView.isHidden = !viewModel.isToday
         button.setTitle(viewModel.date.dateNumber, for: .normal)
         switch viewModel.state {
-        case .unactive:
+        case .inactive:
             isTodayView.backgroundColor = Theme.secondaryTextColor
             button.backgroundColor = .clear
             button.setTitleColor(Theme.secondaryTextColor, for: .normal)
