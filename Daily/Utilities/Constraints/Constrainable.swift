@@ -29,7 +29,7 @@ extension Constrainable {
     func getSafe(_ superview: UIView?, safeArea: Bool) -> Constrainable {
         guard let superview = superview else { fatalError("This view has no superview.") }
         
-        if #available(iOS 11, *), safeArea {
+        if safeArea {
             return superview.safeAreaLayoutGuide
         } else {
             return superview

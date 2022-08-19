@@ -2,16 +2,16 @@ import Foundation
 
 final class DayRateAssembler {
     static func assemble(_ inputModel: DayRateInputModel) -> DayRateViewController {
-        let viewContorller = DayRateViewController()
+        let viewController = DayRateViewController()
         let dayService = DayService()
         let analyticsService = AnalyticsService()
         let presenter = DayRatePresenter(
-            view: viewContorller,
+            view: viewController,
             dayService: dayService,
             analyticsService: analyticsService,
             inputModel: inputModel
         )
-        viewContorller.presenter = presenter
-        return viewContorller
+        viewController.presenter = presenter
+        return viewController
     }
 }

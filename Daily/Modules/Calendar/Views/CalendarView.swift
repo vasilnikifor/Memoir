@@ -19,6 +19,14 @@ final class CalendarView: UIView {
     var currentMonthView = CalendarMonthView()
     var nextMonthView = CalendarMonthView()
 
+    let blurView: UIVisualEffectView = {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        view.layer.cornerRadius = .s
+        view.clipsToBounds = true
+        view.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return view
+    }()
+
     lazy var hatView: CalendarHatView = {
         let view = CalendarHatView()
         view.upTapped = { [weak self] in self?.swipeCalendarToNextMonth() }
@@ -59,23 +67,30 @@ final class CalendarView: UIView {
     }
     
     func setup() {
+        addSubview(blurView)
         addSubview(hatView)
         addSubview(scrollView)
+        
+        blurView
+            .topToSuperview()
+            .trailingToSuperview()
+            .leadingToSuperview()
+            .bottomToSuperview()
         
         scrollView.addSubview(previousMonthView)
         scrollView.addSubview(currentMonthView)
         scrollView.addSubview(nextMonthView)
         
         hatView
-            .topToSuperview()
-            .leading(to: scrollView, anchor: scrollView.leadingAnchor)
-            .trailing(to: scrollView, anchor: scrollView.trailingAnchor)
-        
+            .topToSuperview(.m)
+            .trailingToSuperview(-.m)
+            .leadingToSuperview(.m)
+
         scrollView
             .top(to: hatView, anchor: hatView.bottomAnchor, offset: .m)
-            .trailingToSuperview()
-            .leadingToSuperview()
-            .bottomToSuperview()
+            .trailingToSuperview(-.m)
+            .leadingToSuperview(.m)
+            .bottomToSuperview(-.m)
             .widthToHeight(of: scrollView)
     }
     
@@ -85,10 +100,10 @@ final class CalendarView: UIView {
         layoutMonthView(nextMonthView, onPage: 2)
     }
     
-    func layoutMonthView(_ monthView: CalendarMonthView, onPage pageNubmer: CGFloat) {
+    func layoutMonthView(_ monthView: CalendarMonthView, onPage pageNumber: CGFloat) {
         let pageSize = scrollView.frame.size
         monthView.frame = CGRect(
-            x: pageSize.width * pageNubmer,
+            x: pageSize.width * pageNumber,
             y: .zero,
             width: pageSize.width,
             height: pageSize.height

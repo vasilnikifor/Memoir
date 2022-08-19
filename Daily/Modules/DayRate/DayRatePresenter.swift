@@ -32,17 +32,6 @@ final class DayRatePresenter {
         dayService.rateDay(of: date, rate: selectedRate)
         calendarDelegate?.update()
         view?.dismiss()
-        
-        switch selectedRate {
-        case .bad:
-            analyticsService.sendEvent("rate_page_bad_rate_selected")
-        case .average:
-            analyticsService.sendEvent("rate_page_average_rate_selected")
-        case .good:
-            analyticsService.sendEvent("rate_page_good_rate_selected")
-        case .none:
-            break
-        }
     }
 }
 
@@ -70,7 +59,6 @@ extension DayRatePresenter: DayRatePresenterProtocol {
                 action: { [weak self] in self?.update(selectedRate: .good) }
             )
         )
-        analyticsService.sendEvent("rate_page_loaded")
     }
     
     func closeTapped() {
@@ -79,6 +67,5 @@ extension DayRatePresenter: DayRatePresenterProtocol {
     
     func removeTapped() {
         update(selectedRate: nil)
-        analyticsService.sendEvent("rate_page_removed")
     }
 }

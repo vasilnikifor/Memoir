@@ -1,44 +1,42 @@
 import UIKit
 
 protocol CalendarViewControllerProtocol: Transitionable, AnyObject {
-    func setupInitialState(calendarViewModel: CalendarViewModel)
-    func update()
-    func updateRateImage(image: UIImage)
+    func setupInitialState(calendarModel: CalendarViewModel)
+    func update(yesterdayConsoleModel: YesterdayConsoleView.Model?, todaysConsoleModel: TodayConsoleView.Model)
 }
 
 final class CalendarViewController: UIViewController {
     var presenter: CalendarPresenterProtocol?
-    
-    let calendarContentView: UIView = {
-        return UIView()
-    }()
-    
-    var calendarView: CalendarView = {
-        return CalendarView()
-    }()
-    
-    lazy var rateDayButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Theme.rateDayImage, for: .normal)
-        button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var addNoteButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Theme.addNoteImage, for: .normal)
-        button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var actionsStackView: UIStackView = {
+
+    lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = Theme.backgroundColor
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(rateDayButton)
-        stackView.addArrangedSubview(addNoteButton)
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = .m
+        stackView.addArrangedSubview(calendarView)
+        stackView.addArrangedSubview(yesterdayConsole)
+        stackView.addArrangedSubview(todayConsole)
+        stackView.layoutMargins = UIEdgeInsets(top: .m, left: .zero, bottom: .m, right: .zero)
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
+    }()
+
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+
+    let calendarView: CalendarView = {
+        CalendarView()
+    }()
+
+    let yesterdayConsole: YesterdayConsoleView = {
+        YesterdayConsoleView()
+    }()
+    
+    let todayConsole: TodayConsoleView = {
+        TodayConsoleView()
     }()
     
     override func viewDidLoad() {
@@ -47,52 +45,51 @@ final class CalendarViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     func setup() {
         view.backgroundColor = Theme.backgroundColor
-        view.addSubview(actionsStackView)
-        view.addSubview(calendarContentView)
-        calendarContentView.addSubview(calendarView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
         
-        calendarContentView
-            .leadingToSuperview()
-            .trailingToSuperview()
+        scrollView
             .topToSuperview()
-            .bottom(to: actionsStackView, anchor: actionsStackView.topAnchor)
-        
-        calendarView
-            .centerYToSuperview()
             .leadingToSuperview(.m)
             .trailingToSuperview(-.m)
-        
-        actionsStackView
-            .leadingToSuperview()
-            .trailingToSuperview()
-            .bottomToSuperview(safeArea: true)
-            .height(.xxl)
-    }
-    
-    @objc
-    func rateDateButtonTouchUpInside() {
-        presenter?.rateDayTapped()
-    }
-    
-    @objc
-    func addNoteButtonTouchUpInside() {
-        presenter?.addNoteTapped()
+            .bottomToSuperview()
+
+        stackView
+            .leadingToSuperview(safeArea: false)
+            .trailingToSuperview(safeArea: false)
+            .topToSuperview(safeArea: false)
+            .bottomToSuperview(relation: .lessThanOrEqual, safeArea: false)
+            .width(to: scrollView)
     }
 }
 
 extension CalendarViewController: CalendarViewControllerProtocol {
-    func setupInitialState(calendarViewModel: CalendarViewModel) {
-        calendarView.setup(with: calendarViewModel)
+    func setupInitialState(calendarModel: CalendarViewModel) {
+        calendarView.setup(with: calendarModel)
     }
-    
-    func update() {
+
+    func update(
+        yesterdayConsoleModel: YesterdayConsoleView.Model?,
+        todaysConsoleModel: TodayConsoleView.Model
+    ) {
         calendarView.update()
-    }
-    
-    func updateRateImage(image: UIImage) {
-        rateDayButton.setImage(image, for: .normal)
+        todayConsole.setup(with: todaysConsoleModel)
+        yesterdayConsole.isHidden = yesterdayConsoleModel == nil
+        if let yesterdayConsoleModel = yesterdayConsoleModel {
+            yesterdayConsole.setup(with: yesterdayConsoleModel)
+        }
     }
 }
 

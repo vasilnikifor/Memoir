@@ -5,7 +5,6 @@ extension UIViewController: Transitionable {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    
     func present(_ viewController: UIViewController) {
         present(UINavigationController(rootViewController: viewController), animated: true)
     }

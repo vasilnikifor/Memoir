@@ -7,6 +7,7 @@ struct CalendarMonthViewModel {
 
 final class CalendarMonthView: UIView {
     private let columnsCount: CGFloat = 7
+    private let rowsCount: CGFloat = 7
     private let maxWeeksInMonth: Int = 6
     private let shortMonthWeeks: Int = 4
     private let mediumMonthWeeks: Int = 5
@@ -14,6 +15,7 @@ final class CalendarMonthView: UIView {
     private var daysDataSource: [CalendarDayViewModel] = []
     private var month: Date = Date()
     private var delegate: CalendarViewDelegate?
+    private var weekdaysTopConstraint: NSLayoutConstraint?
     
     private lazy var weekdaysCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -47,15 +49,31 @@ final class CalendarMonthView: UIView {
         setup()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let daysCount = daysDataSource.count
+        let isFourWeeksMonth = daysCount == 28
+        let isFiveWeeksMonth = daysCount == 35
+        if isFourWeeksMonth {
+            weekdaysTopConstraint?.constant = weekdaysCollectionView.frame.height
+        } else if isFiveWeeksMonth {
+            weekdaysTopConstraint?.constant = weekdaysCollectionView.frame.height / 2
+        } else {
+            weekdaysTopConstraint?.constant = .zero
+        }
+    }
+    
     private func setup() {
         addSubview(weekdaysCollectionView)
         addSubview(calendarCollectionView)
-
+        
+        weekdaysTopConstraint = weekdaysCollectionView.top(to: self, anchor: self.topAnchor)
+        
         weekdaysCollectionView
-            .topToSuperview()
             .trailingToSuperview()
             .leadingToSuperview()
-            .height(to: calendarCollectionView, multiplier: 1 / (columnsCount - 1))
+            .height(to: self, multiplier: 1 / rowsCount)
 
         calendarCollectionView
             .top(to: weekdaysCollectionView, anchor: weekdaysCollectionView.bottomAnchor)

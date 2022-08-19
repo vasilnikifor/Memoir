@@ -20,6 +20,7 @@ final class CalendarDayViewCell: UICollectionViewCell {
     
     private lazy var button: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .clear
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
         return button
