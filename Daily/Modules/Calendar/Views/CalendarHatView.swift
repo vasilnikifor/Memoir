@@ -40,7 +40,6 @@ final class CalendarHatView: UIView {
         let label = UILabel()
         label.apply(style: .primaryBig)
         label.textAlignment = .center
-        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(forwardButtonTapped)))
         label.isUserInteractionEnabled = true
         return label
@@ -77,7 +76,7 @@ final class CalendarHatView: UIView {
             .width(.xl)
         
         nameLabel
-            .centerXToSuperview()
+            .centerYToSuperview()
             .centerXToSuperview()
         
         forwardImageView

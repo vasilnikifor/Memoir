@@ -2,11 +2,16 @@ import Foundation
 
 protocol CalendarFactoryDelegate: AnyObject {
     func dateSelected(_ date: Date, day: Day?)
+    func dateRated(_ date: Date, rate: DayRate?)
+    func rateDay(_ date: Date, rate: DayRate?)
+    func addNote(to date: Date)
 }
 
 protocol CalendarFactoryProtocol: AnyObject {
-    func make() -> [CalendarWeekdayViewModel]
-    func make(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel]
+    func makeWeekdays() -> [CalendarWeekdayViewModel]
+    func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel]
+    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Model?
+    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Model
 }
 
 final class CalendarFactory: CalendarFactoryProtocol {
@@ -16,13 +21,13 @@ final class CalendarFactory: CalendarFactoryProtocol {
         self.dayService = dayService
     }
     
-    func make() -> [CalendarWeekdayViewModel] {
+    func makeWeekdays() -> [CalendarWeekdayViewModel] {
         return Date.shortWeekdaySymbols.map {
             CalendarWeekdayViewModel(text: $0)
         }
     }
     
-    func make(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel] {
+    func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel] {
         var calendarDays: [CalendarDayViewModel] = []
         var processingDate = month.firstMonthCalendarDate.startOfDay
         let firstMonthDate = month.firstDayOfMonth.startOfDay
@@ -56,6 +61,103 @@ final class CalendarFactory: CalendarFactoryProtocol {
         }
 
         return calendarDays
+    }
+
+    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Model? {
+        let yesterdayDate = Date().addDays(-1).startOfDay
+        let yesterdayDay = dayService.getDay(date: yesterdayDate)
+
+        guard yesterdayDay?.rate == nil else { return nil }
+
+        //  FIXME: - cms
+        return YesterdayConsoleView.Model(
+            title: "How was yesterday?",
+            rateBadActionModel: .init(
+                title: "Bad",
+                image: Theme.badRateImage,
+                tintColor: Theme.badRateColor,
+                action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .bad) }
+            ),
+            rateNormActionModel: .init(
+                title: "Norm",
+                image: Theme.averageRateImage,
+                tintColor: Theme.averageRateColor,
+                action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .average) }
+            ),
+            rateGoodActionModel: .init(
+                title: "Good",
+                image: Theme.goodRateImage,
+                tintColor: Theme.goodRateColor,
+                action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .good) }
+            )
+        )
+    }
+    
+    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Model {
+        let todayDate = Date().startOfDay
+        let todayDay = dayService.getDay(date: todayDate)
+        var rateBadActionModel: ConsoleActionView.Model?
+        var rateNormActionModel: ConsoleActionView.Model?
+        var rateGoodActionModel: ConsoleActionView.Model?
+        
+        //  FIXME: - cms
+        switch todayDay?.rate {
+        case .bad:
+            rateBadActionModel = .init(
+                title: "Rate",
+                image: Theme.badRateImage,
+                tintColor: Theme.primaryTextColor,
+                action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .bad) }
+            )
+        case .average:
+            rateNormActionModel = .init(
+                title: "Rate",
+                image: Theme.averageRateImage,
+                tintColor: Theme.primaryTextColor,
+                action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .average) }
+            )
+        case .good:
+            rateGoodActionModel = .init(
+                title: "Rate",
+                image: Theme.goodRateImage,
+                tintColor: Theme.primaryTextColor,
+                action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .good) }
+            )
+        case .none:
+            rateBadActionModel = .init(
+                title: "Bad",
+                image: Theme.badRateImage,
+                tintColor: Theme.badRateColor,
+                action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .bad) }
+            )
+            rateNormActionModel = .init(
+                title: "Norm",
+                image: Theme.averageRateImage,
+                tintColor: Theme.averageRateColor,
+                action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .average) }
+            )
+            rateGoodActionModel = .init(
+                title: "Good",
+                image: Theme.goodRateImage,
+                tintColor: Theme.goodRateColor,
+                action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .good) }
+            )
+        }
+        
+        let addNoteActionModel: ConsoleActionView.Model = .init(
+            title: "Note",
+            image: Theme.addNoteImage,
+            tintColor: Theme.primaryTextColor,
+            action: { [weak delegate] in delegate?.addNote(to: todayDate) }
+        )
+
+        return .init(
+            title: "Today",
+            rateBadActionModel: rateBadActionModel,
+            rateNormActionModel: rateNormActionModel,
+            rateGoodActionModel: rateGoodActionModel,
+            addNoteActionModel: addNoteActionModel
+        )
     }
 }
 
