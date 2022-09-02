@@ -84,11 +84,12 @@ extension CalendarViewController: CalendarViewControllerProtocol {
         yesterdayConsoleModel: YesterdayConsoleView.Model?,
         todaysConsoleModel: TodayConsoleView.Model
     ) {
-        calendarView.update()
-        todayConsole.setup(with: todaysConsoleModel)
-        yesterdayConsole.isHidden = yesterdayConsoleModel == nil
-        if let yesterdayConsoleModel = yesterdayConsoleModel {
-            yesterdayConsole.setup(with: yesterdayConsoleModel)
+        calendarView.update() { [weak self] in
+            self?.todayConsole.setup(with: todaysConsoleModel)
+            self?.yesterdayConsole.isHidden = yesterdayConsoleModel == nil
+            if let yesterdayConsoleModel = yesterdayConsoleModel {
+                self?.yesterdayConsole.setup(with: yesterdayConsoleModel)
+            }
         }
     }
 }

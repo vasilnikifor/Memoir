@@ -13,7 +13,7 @@ extension YesterdayConsoleView {
 final class YesterdayConsoleView: UIView, ViewModelSettable {
     private let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-        view.layer.cornerRadius = .s
+        view.layer.cornerRadius = .m
         view.clipsToBounds = true
         return view
     }()

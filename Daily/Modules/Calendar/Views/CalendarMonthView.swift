@@ -84,11 +84,27 @@ final class CalendarMonthView: UIView {
         update()
     }
     
-    private func update() {
+    private func update(completion: (() -> Void)? = nil) {
         weekdaysDataSource = delegate?.getMonthsWeekDays() ?? []
         daysDataSource = delegate?.getMonthsDays(month: month) ?? []
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
         weekdaysCollectionView.reloadData()
+        weekdaysCollectionView.performBatchUpdates {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
         calendarCollectionView.reloadData()
+        calendarCollectionView.performBatchUpdates {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion?()
+        }
     }
 }
 
@@ -138,8 +154,14 @@ extension CalendarMonthView: UICollectionViewDelegateFlowLayout {
 
 extension CalendarMonthView: ViewModelSettable {
     func setup(with viewModel: CalendarMonthViewModel) {
+        setup(with: viewModel, completion: nil)
+    }
+    
+    func setup(with viewModel: CalendarMonthViewModel, completion: (() -> Void)? = nil) {
         month = viewModel.month
         delegate = viewModel.delegate
-        update()
+        update() {
+            completion?()
+        }
     }
 }
