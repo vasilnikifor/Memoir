@@ -8,12 +8,16 @@ extension TodayConsoleView {
         let rateGoodActionModel: ConsoleActionView.Model?
         let addNoteActionModel: ConsoleActionView.Model
     }
+
+    enum Appearance {
+        static let animationDuration: CGFloat = 0.2
+    }
 }
 
 final class TodayConsoleView: UIView, ViewModelSettable {
     private let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-        view.layer.cornerRadius = .s
+        view.layer.cornerRadius = .m
         view.clipsToBounds = true
         return view
     }()
@@ -78,17 +82,20 @@ final class TodayConsoleView: UIView, ViewModelSettable {
         }
 
         addNoteActionView.setup(with: model.addNoteActionModel)
-
+        
         let isBadDayActionVisible = model.rateBadActionModel != nil
         let isNormDayActionVisible = model.rateNormActionModel != nil
         let isGoodDayActionVisible = model.rateGoodActionModel != nil
-        
         rateBadActionView.isHidden = !isBadDayActionVisible
-        rateBadActionView.alpha = isBadDayActionVisible ? 1 : 0
         rateNormActionView.isHidden = !isNormDayActionVisible
-        rateNormActionView.alpha = isNormDayActionVisible ? 1 : 0
         rateGoodActionView.isHidden = !isGoodDayActionVisible
-        rateGoodActionView.alpha = isGoodDayActionVisible ? 1 : 0
+        
+        UIView.animate(withDuration: Appearance.animationDuration) {
+            self.rateBadActionView.alpha = isBadDayActionVisible ? 1 : 0
+            self.rateNormActionView.alpha = isNormDayActionVisible ? 1 : 0
+            self.rateGoodActionView.alpha = isGoodDayActionVisible ? 1 : 0
+            self.layoutIfNeeded()
+        }
     }
 
     private func setup() {

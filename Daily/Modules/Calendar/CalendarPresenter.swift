@@ -25,15 +25,18 @@ final class CalendarPresenter {
         self.dayService = dayService
         self.analyticsService = analyticsService
     }
+
+    @objc
+    private func timeChanged() {
+        update()
+    }
 }
 
 extension CalendarPresenter: CalendarPresenterProtocol {
     func viewLoaded() {
         view?.setupInitialState(calendarModel: CalendarViewModel(month: Date(), delegate: self))
-        view?.update(
-            yesterdayConsoleModel: factory.makeYesterdayConsole(delegate: self),
-            todaysConsoleModel: factory.makeTodayConsole(delegate: self)
-        )
+        update()
+        NotificationCenter.default.addObserver(self, selector: #selector(timeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
     }
 }
 

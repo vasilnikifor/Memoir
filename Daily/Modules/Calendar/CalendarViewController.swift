@@ -5,6 +5,12 @@ protocol CalendarViewControllerProtocol: Transitionable, AnyObject {
     func update(yesterdayConsoleModel: YesterdayConsoleView.Model?, todaysConsoleModel: TodayConsoleView.Model)
 }
 
+extension CalendarViewController {
+    enum Appearance {
+        static let animationDuration: CGFloat = 0.2
+    }
+}
+
 final class CalendarViewController: UIViewController {
     var presenter: CalendarPresenterProtocol?
 
@@ -84,11 +90,14 @@ extension CalendarViewController: CalendarViewControllerProtocol {
         yesterdayConsoleModel: YesterdayConsoleView.Model?,
         todaysConsoleModel: TodayConsoleView.Model
     ) {
-        calendarView.update()
-        todayConsole.setup(with: todaysConsoleModel)
-        yesterdayConsole.isHidden = yesterdayConsoleModel == nil
-        if let yesterdayConsoleModel = yesterdayConsoleModel {
-            yesterdayConsole.setup(with: yesterdayConsoleModel)
+        calendarView.update() { [weak self] in
+            guard let self = self else { return }
+            self.todayConsole.setup(with: todaysConsoleModel)
+            self.yesterdayConsole.isHidden = yesterdayConsoleModel == nil
+            if let yesterdayConsoleModel = yesterdayConsoleModel {
+                self.yesterdayConsole.setup(with: yesterdayConsoleModel)
+            }
+            UIView.animate(withDuration: Appearance.animationDuration, delay: .zero, animations: { self.view.layoutIfNeeded() })
         }
     }
 }

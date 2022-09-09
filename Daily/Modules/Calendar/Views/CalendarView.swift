@@ -21,7 +21,7 @@ final class CalendarView: UIView {
 
     let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-        view.layer.cornerRadius = .s
+        view.layer.cornerRadius = .m
         view.clipsToBounds = true
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
         return view
@@ -110,13 +110,10 @@ final class CalendarView: UIView {
         )
     }
     
-    func fillMonthView(_ monthView: CalendarMonthView, month: Date) {
-        monthView.setup(with:
-            CalendarMonthViewModel(
-                month: month,
-                delegate: delegate
-            )
-        )
+    func fillMonthView(_ monthView: CalendarMonthView, month: Date, completion: (() -> Void)? = nil) {
+        monthView.setup(with: CalendarMonthViewModel(month: month, delegate: delegate) ) {
+            completion?()
+        }
     }
     
     @objc
@@ -181,11 +178,29 @@ extension CalendarView: UIScrollViewDelegate {
 }
 
 extension CalendarView {
-    func update() {
+    func update(completion: (() -> Void)? = nil) {
         hatView.nameLabel.text = month.monthRepresentation
-        fillMonthView(previousMonthView, month: month.addMonths(-1))
-        fillMonthView(currentMonthView, month: month)
-        fillMonthView(nextMonthView, month: month.addMonths(1))
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        fillMonthView(previousMonthView, month: month.addMonths(-1)) {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        fillMonthView(currentMonthView, month: month){
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        fillMonthView(nextMonthView, month: month.addMonths(1)){
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion?()
+        }
     }
 }
 
