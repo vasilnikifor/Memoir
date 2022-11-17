@@ -4,21 +4,32 @@ protocol MonthRecordsPresenterProtocol {
     func viewLoaded()
 }
 
+extension MonthRecordsPresenter {
+    enum Mode {
+        case month
+        case year
+    }
+}
+
 final class MonthRecordsPresenter {
     weak var view: MonthRecordsViewControllerProtocol?
     let dayService: DayServiceProtocol
+    let cms: CmsProtocol
     let analyticsService: AnalyticsServiceProtocol
     let month: Date
     weak var delegate: CalendarDelegate?
+    var mode: Mode = .month
     
     init(
         view: MonthRecordsViewControllerProtocol,
         dayService: DayServiceProtocol,
+        cms: CmsProtocol,
         analyticsService: AnalyticsServiceProtocol,
         inputModel: MonthRecordsInputModel
     ) {
         self.view = view
         self.dayService = dayService
+        self.cms = cms
         self.analyticsService = analyticsService
         month = inputModel.month
         delegate = inputModel.delegate
@@ -56,16 +67,32 @@ final class MonthRecordsPresenter {
         analyticsService.sendEvent("month_page_day_rate_selected")
     }
     
-    func updateDataSource() {
+    func updateView() {
         var dataSource: [MonthRecordsDataSource] = []
-            
-        dayService.getDays(of: month).forEach { day in
+        var days: [Day] = []
+        
+        switch mode {
+        case .month:
+            days = dayService.getDays(month: month)
+        case .year:
+            days = dayService.getDays(year: month)
+        }
+        
+        days.forEach { day in
             guard !day.isEmpty else { return }
-            
+
+            let title: String
+            switch mode {
+            case .month:
+                title = day.date?.dateShortRepresentation ?? ""
+            case .year:
+                title = day.date?.dateRepresentation ?? ""
+            }
+
             dataSource.append(
                 .header(
                     viewModel: DayHeaderViewModel(
-                        title: day.date?.dateShortRepresentation ?? "",
+                        title: title,
                         rate: day.rate,
                         action: { [weak self] in self?.openDayRate(day: day)}
                     )
@@ -105,21 +132,66 @@ final class MonthRecordsPresenter {
             )
         }
         
-        view?.update(dataSource: dataSource)
+        let navigationTitle: String
+        switch mode {
+        case .month:
+            navigationTitle = month.monthRepresentation
+        case .year:
+            navigationTitle = month.yearRepresentation
+        }
+        let navigationTitleModel = NavigationTitleView.ViewModel(
+            title: navigationTitle,
+            action: { [weak self] in self?.selectMode() }
+        )
+        
+        view?.update(
+            navigationTitleModel: navigationTitleModel,
+            dataSource: dataSource
+        )
+    }
+
+    private func selectMode() {
+        view?.showRangeSelection(
+            ActionSheet(
+                title: cms.home.selectDateRange,
+                sheetActions: [
+                    ActionSheet.ActionSheetItem(
+                        title: month.monthRepresentation,
+                        style: .default,
+                        action: { [weak self] in
+                            self?.mode = .month
+                            self?.updateView()
+                        }
+                    ),
+                    ActionSheet.ActionSheetItem(
+                        title: month.yearRepresentation,
+                        style: .default,
+                        action: { [weak self] in
+                            self?.mode = .year
+                            self?.updateView()
+                        }
+                    ),
+                    ActionSheet.ActionSheetItem(
+                        title: cms.common.cancel,
+                        style: .cancel,
+                        action: nil
+                    )
+                ]
+            )
+        )
     }
 }
 
 extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
     func viewLoaded() {
-        view?.setupInitialState(title: month.monthRepresentation)
-        updateDataSource()
+        updateView()
         analyticsService.sendEvent("month_page_loaded")
     }
 }
 
 extension MonthRecordsPresenter: CalendarDelegate {
     func update() {
-        updateDataSource()
+        updateView()
         delegate?.update()
     }
 }
