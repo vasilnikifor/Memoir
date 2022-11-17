@@ -1,14 +1,18 @@
 import UIKit
 
 protocol MonthRecordsViewControllerProtocol: Transitionable, AnyObject {
-    func setupInitialState(title: String)
-    func update(dataSource: [MonthRecordsDataSource])
+    func update(navigationTitleModel: NavigationTitleView.ViewModel, dataSource: [MonthRecordsDataSource])
+    func showRangeSelection(_ actionSheet: ActionSheet)
 }
 
 final class MonthRecordsViewController: UIViewController {
     var presenter: MonthRecordsPresenterProtocol?
     var dataSource: [MonthRecordsDataSource] = []
-    
+
+    private let navigationTitleView: NavigationTitleView = {
+        NavigationTitleView()
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -26,6 +30,7 @@ final class MonthRecordsViewController: UIViewController {
     func setup() {
         view.addSubview(tableView)
         view.backgroundColor = Theme.bottomLayerBackgroundColor
+        navigationItem.titleView = navigationTitleView
         
         tableView
             .topToSuperview()
@@ -36,14 +41,29 @@ final class MonthRecordsViewController: UIViewController {
 }
 
 
+
 extension MonthRecordsViewController: MonthRecordsViewControllerProtocol {
-    func setupInitialState(title: String) {
-        self.title = title
-    }
-    
-    func update(dataSource: [MonthRecordsDataSource]) {
+    func update(navigationTitleModel: NavigationTitleView.ViewModel, dataSource: [MonthRecordsDataSource]) {
+        navigationTitleView.setup(with: navigationTitleModel)
         self.dataSource = dataSource
         tableView.reloadData()
+    }
+
+    func showRangeSelection(_ actionSheet: ActionSheet) {
+        let alert = UIAlertController(title: actionSheet.title, message: nil, preferredStyle: .actionSheet)
+        alert.popoverPresentationController?.sourceView = navigationTitleView
+
+        actionSheet.sheetActions.forEach { sheetActionItem in
+            alert.addAction(
+                UIAlertAction(
+                    title: sheetActionItem.title,
+                    style: sheetActionItem.style.alertActionStyle,
+                    handler: { _ in sheetActionItem.action?() }
+                )
+            )
+        }
+
+        present(alert, animated: true)
     }
 }
 

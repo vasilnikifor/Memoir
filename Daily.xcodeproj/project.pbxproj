@@ -23,6 +23,7 @@
 		912092352688AD6800F966BE /* DayRecordsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092342688AD6800F966BE /* DayRecordsPresenter.swift */; };
 		912092372688AFD900F966BE /* DayRecordsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092362688AFD900F966BE /* DayRecordsInputModel.swift */; };
 		912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092382688B0A900F966BE /* DayRateInputModel.swift */; };
+		912A277D2901A0BF00DC134E /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A277C2901A0BF00DC134E /* NavigationTitleView.swift */; };
 		912BCE6B283E7AFE005E1A6C /* CalendarHatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */; };
 		912BCE6D283E7B54005E1A6C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BCE6C283E7B54005E1A6C /* Grid.swift */; };
 		91419C5226B43ECB0031F519 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91419C5126B43ECB0031F519 /* ReusableTableViewCell.swift */; };
@@ -50,6 +51,14 @@
 		916673A3289C218D009ED818 /* TodayConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916673A2289C218D009ED818 /* TodayConsoleView.swift */; };
 		9166F4A1269A068400D66CEE /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166F4A0269A068400D66CEE /* UITableView+Extension.swift */; };
 		9166F4A3269A086400D66CEE /* DayRecordsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166F4A2269A086400D66CEE /* DayRecordsDataSource.swift */; };
+		916BC5442926959700E77E02 /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC5432926959700E77E02 /* ActionSheet.swift */; };
+		916BC5492926993300E77E02 /* Cms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC5482926993300E77E02 /* Cms.swift */; };
+		916BC54B2926997400E77E02 /* CmsCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC54A2926997400E77E02 /* CmsCommon.swift */; };
+		916BC54D29269AE300E77E02 /* MaintainedLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC54C29269AE300E77E02 /* MaintainedLocale.swift */; };
+		916BC54F29269BC100E77E02 /* Locale+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC54E29269BC100E77E02 /* Locale+Extension.swift */; };
+		916BC55129269D1B00E77E02 /* CmsHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC55029269D1B00E77E02 /* CmsHome.swift */; };
+		916BC55329269FE300E77E02 /* CmsCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC55229269FE300E77E02 /* CmsCalendar.swift */; };
+		916BC5552926A04900E77E02 /* CmsRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BC5542926A04900E77E02 /* CmsRate.swift */; };
 		916C25E5267E15A4004A1CDF /* DayRateAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916C25E4267E15A4004A1CDF /* DayRateAssembler.swift */; };
 		916C25E7267E15E1004A1CDF /* DayRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916C25E6267E15E1004A1CDF /* DayRateViewController.swift */; };
 		916C25E9267E163B004A1CDF /* DayRatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916C25E8267E163B004A1CDF /* DayRatePresenter.swift */; };
@@ -97,6 +106,7 @@
 		912092342688AD6800F966BE /* DayRecordsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsPresenter.swift; sourceTree = "<group>"; };
 		912092362688AFD900F966BE /* DayRecordsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsInputModel.swift; sourceTree = "<group>"; };
 		912092382688B0A900F966BE /* DayRateInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateInputModel.swift; sourceTree = "<group>"; };
+		912A277C2901A0BF00DC134E /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHatView.swift; sourceTree = "<group>"; };
 		912BCE6C283E7B54005E1A6C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		91419C5126B43ECB0031F519 /* ReusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +134,14 @@
 		916673A2289C218D009ED818 /* TodayConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayConsoleView.swift; sourceTree = "<group>"; };
 		9166F4A0269A068400D66CEE /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		9166F4A2269A086400D66CEE /* DayRecordsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsDataSource.swift; sourceTree = "<group>"; };
+		916BC5432926959700E77E02 /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
+		916BC5482926993300E77E02 /* Cms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cms.swift; sourceTree = "<group>"; };
+		916BC54A2926997400E77E02 /* CmsCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmsCommon.swift; sourceTree = "<group>"; };
+		916BC54C29269AE300E77E02 /* MaintainedLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintainedLocale.swift; sourceTree = "<group>"; };
+		916BC54E29269BC100E77E02 /* Locale+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extension.swift"; sourceTree = "<group>"; };
+		916BC55029269D1B00E77E02 /* CmsHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmsHome.swift; sourceTree = "<group>"; };
+		916BC55229269FE300E77E02 /* CmsCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmsCalendar.swift; sourceTree = "<group>"; };
+		916BC5542926A04900E77E02 /* CmsRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmsRate.swift; sourceTree = "<group>"; };
 		916C25E4267E15A4004A1CDF /* DayRateAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateAssembler.swift; sourceTree = "<group>"; };
 		916C25E6267E15E1004A1CDF /* DayRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateViewController.swift; sourceTree = "<group>"; };
 		916C25E8267E163B004A1CDF /* DayRatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRatePresenter.swift; sourceTree = "<group>"; };
@@ -190,6 +208,7 @@
 				9182AAAC2674AFCA006E68BE /* UICollectionView+Extension.swift */,
 				9166F4A0269A068400D66CEE /* UITableView+Extension.swift */,
 				9182AAB42674D1E5006E68BE /* String+Extension.swift */,
+				916BC54E29269BC100E77E02 /* Locale+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +219,8 @@
 				84008BF7224A11B8000CB9A2 /* Day.swift */,
 				8472597B22AD3C7400BCBA42 /* NoteRecord.swift */,
 				911080CE267624C000BCE949 /* DayRate.swift */,
+				916BC5432926959700E77E02 /* ActionSheet.swift */,
+				916BC54C29269AE300E77E02 /* MaintainedLocale.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -283,6 +304,7 @@
 				91D2B1D7289D6559001E7856 /* ConsoleActionView.swift */,
 				916673A2289C218D009ED818 /* TodayConsoleView.swift */,
 				91D2B1D9289D66B8001E7856 /* YesterdayConsoleView.swift */,
+				912A277C2901A0BF00DC134E /* NavigationTitleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +346,18 @@
 				9157AB86266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift */,
 			);
 			path = Constraints;
+			sourceTree = "<group>";
+		};
+		916BC5472926990100E77E02 /* Cms */ = {
+			isa = PBXGroup;
+			children = (
+				916BC5482926993300E77E02 /* Cms.swift */,
+				916BC54A2926997400E77E02 /* CmsCommon.swift */,
+				916BC55029269D1B00E77E02 /* CmsHome.swift */,
+				916BC55229269FE300E77E02 /* CmsCalendar.swift */,
+				916BC5542926A04900E77E02 /* CmsRate.swift */,
+			);
+			path = Cms;
 			sourceTree = "<group>";
 		};
 		916C25E3267E158D004A1CDF /* DayRate */ = {
@@ -372,6 +406,7 @@
 		C15815E32400435D0060B9FA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				916BC5472926990100E77E02 /* Cms */,
 				C15815E42400437E0060B9FA /* DAOService.swift */,
 				91F0A1FF2691998A00BD5E28 /* DayService.swift */,
 				919289CB2833C32A00BC6842 /* AnalyticsService.swift */,
@@ -500,24 +535,31 @@
 				9182AAA52673EAB9006E68BE /* CalendarWeekdayViewCell.swift in Sources */,
 				916C25E9267E163B004A1CDF /* DayRatePresenter.swift in Sources */,
 				9157AB6F266A61AE003C4B66 /* CalendarViewController.swift in Sources */,
+				916BC54F29269BC100E77E02 /* Locale+Extension.swift in Sources */,
+				916BC5492926993300E77E02 /* Cms.swift in Sources */,
 				84F8918622297AE700956265 /* Date+Extension.swift in Sources */,
 				91F854002687719B0098EEE5 /* DayNoteAssembler.swift in Sources */,
 				91C4A94C269B5BA500F7B420 /* IconRender.swift in Sources */,
+				916BC54D29269AE300E77E02 /* MaintainedLocale.swift in Sources */,
 				916673A3289C218D009ED818 /* TodayConsoleView.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */,
+				916BC54B2926997400E77E02 /* CmsCommon.swift in Sources */,
+				916BC5442926959700E77E02 /* ActionSheet.swift in Sources */,
 				91F85402268771E80098EEE5 /* DayNoteViewController.swift in Sources */,
 				9157AB7B266A6E6E003C4B66 /* Constrainable.swift in Sources */,
 				9157AB8F266AA91C003C4B66 /* LabelStyle.swift in Sources */,
 				9182AAA72673EBC4006E68BE /* ViewModelSettable.swift in Sources */,
 				91419C5926B44F0A0031F519 /* MonthRecordsInputModel.swift in Sources */,
 				9166F4A1269A068400D66CEE /* UITableView+Extension.swift in Sources */,
+				916BC55129269D1B00E77E02 /* CmsHome.swift in Sources */,
 				911080CF267624C000BCE949 /* DayRate.swift in Sources */,
 				9157AB81266A6FBC003C4B66 /* Constrainable+Position.swift in Sources */,
 				9157AB89266A7F44003C4B66 /* Constrainable+Size.swift in Sources */,
 				9157AB85266A728C003C4B66 /* Constrainable+Edge.swift in Sources */,
 				91419C5D26B44F8C0031F519 /* MonthRecordsPresenter.swift in Sources */,
 				912092332688AD0300F966BE /* DayRecordsViewController.swift in Sources */,
+				916BC5552926A04900E77E02 /* CmsRate.swift in Sources */,
 				919289CC2833C32A00BC6842 /* AnalyticsService.swift in Sources */,
 				91D2B1DA289D66B8001E7856 /* YesterdayConsoleView.swift in Sources */,
 				9157AB83266A71CD003C4B66 /* NSLayoutConstraint+Setter.swift in Sources */,
@@ -526,6 +568,7 @@
 				9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */,
 				912BCE6D283E7B54005E1A6C /* Grid.swift in Sources */,
 				91419C5B26B44F290031F519 /* MonthRecordsViewController.swift in Sources */,
+				912A277D2901A0BF00DC134E /* NavigationTitleView.swift in Sources */,
 				912092312688ACC300F966BE /* DayRecordsAssembler.swift in Sources */,
 				915D4E65277DB21E00D8F178 /* DayNoteRecordView.swift in Sources */,
 				91F854042687724A0098EEE5 /* DayNotePresenter.swift in Sources */,
@@ -547,6 +590,7 @@
 				9182AAA92673EE22006E68BE /* CalendarDayViewCell.swift in Sources */,
 				916C25EB267E1CFC004A1CDF /* Transitionable.swift in Sources */,
 				91F0A2022691B91500BD5E28 /* DayNoteInputModel.swift in Sources */,
+				916BC55329269FE300E77E02 /* CmsCalendar.swift in Sources */,
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */,
 				915D4E67277DB59B00D8F178 /* DayActionsView.swift in Sources */,

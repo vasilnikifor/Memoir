@@ -5,9 +5,11 @@ final class MonthRecordsAssembler {
         let viewController = MonthRecordsViewController()
         let dayService = DayService()
         let analyticsService = AnalyticsService()
+        let cms = Cms()
         let presenter = MonthRecordsPresenter(
             view: viewController,
             dayService: dayService,
+            cms: cms,
             analyticsService: analyticsService,
             inputModel: inputModel
         )

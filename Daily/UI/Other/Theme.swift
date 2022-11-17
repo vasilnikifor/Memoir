@@ -119,6 +119,6 @@ extension Theme {
     }
     
     static var addNoteImage: UIImage {
-        return UIImage(systemName: "square.and.pencil") ?? UIImage()
+        return UIImage(systemName: "pencil") ?? UIImage()
     }
 }
