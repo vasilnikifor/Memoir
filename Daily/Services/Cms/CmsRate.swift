@@ -3,7 +3,7 @@ import Foundation
 protocol CmsRateProtocol {
     var rate: String { get }
     var bad: String { get }
-    var norm: String { get }
+    var fine: String { get }
     var good: String { get }
 }
 
@@ -22,10 +22,10 @@ final class CmsRate: CmsRateProtocol {
         }
     }
 
-    var norm: String {
+    var fine: String {
         switch Locale.currentLocale {
         case .en:
-            return "Norm"
+            return "Fine"
         }
     }
 

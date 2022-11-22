@@ -137,7 +137,7 @@ final class MonthRecordsPresenter {
         case .month:
             navigationTitle = month.monthRepresentation
         case .year:
-            navigationTitle = month.yearRepresentation
+            navigationTitle = cms.home.wholeYear(year: month.yearRepresentation)
         }
         let navigationTitleModel = NavigationTitleView.ViewModel(
             title: navigationTitle,
@@ -164,7 +164,7 @@ final class MonthRecordsPresenter {
                         }
                     ),
                     ActionSheet.ActionSheetItem(
-                        title: month.yearRepresentation,
+                        title: cms.home.wholeYear(year: month.yearRepresentation),
                         style: .default,
                         action: { [weak self] in
                             self?.mode = .year
