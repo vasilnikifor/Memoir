@@ -2,6 +2,7 @@ import Foundation
 
 protocol DayNotePresenterProtocol: AnyObject {
     func viewLoaded()
+    func viewGoesBackground(text: String)
     func closeTapped()
     func removeTapped()
     func textDidEndEditing(text: String)
@@ -28,6 +29,12 @@ final class DayNotePresenter {
         note = inputModel.note
         delegate = inputModel.delegate
     }
+
+    private func updateNote(text: String) {
+        note = dayService.saveNote(date: date, note: note, text: text)
+        delegate?.update()
+        analyticsService.sendEvent("note_page_text_edited")
+    }
 }
 
 extension DayNotePresenter: DayNotePresenterProtocol {
@@ -38,7 +45,11 @@ extension DayNotePresenter: DayNotePresenterProtocol {
         )
         analyticsService.sendEvent("note_page_loaded")
     }
-    
+
+    func viewGoesBackground(text: String) {
+        updateNote(text: text)
+    }
+
     func closeTapped() {
         view?.dismiss()
     }
@@ -51,8 +62,6 @@ extension DayNotePresenter: DayNotePresenterProtocol {
     }
     
     func textDidEndEditing(text: String) {
-        note = dayService.saveNote(date: date, note: note, text: text)
-        delegate?.update()
-        analyticsService.sendEvent("note_page_text_edited")
+        updateNote(text: text)
     }
 }

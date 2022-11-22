@@ -75,6 +75,13 @@ final class DayNoteViewController: UIViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appMovedToBackground),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
     }
     
     @objc
@@ -110,6 +117,11 @@ final class DayNoteViewController: UIViewController {
     @objc
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+
+    @objc
+    func appMovedToBackground() {
+        presenter?.viewGoesBackground(text: textView.text)
     }
 }
 
