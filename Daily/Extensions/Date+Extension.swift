@@ -17,6 +17,12 @@ extension Date {
 }
 
 extension Date {
+    private static var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.currentLocale.locale
+        return dateFormatter
+    }()
+
     private var calendar: Calendar {
         var calendar = Date.calendar
         calendar.locale = Locale.currentLocale.locale
@@ -77,40 +83,35 @@ extension Date {
     
     /// "h:mm a"
     var timeRepresentation: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.currentLocale.locale
+        let dateFormatter = Date.dateFormatter
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: self)
     }
     
     /// "EE, MMM d"
     var dateRepresentation: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.currentLocale.locale
+        let dateFormatter = Date.dateFormatter
         dateFormatter.dateFormat = "EE, MMM d"
         return dateFormatter.string(from: self)
     }
     
     /// "EE, d"
     var dateShortRepresentation: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.currentLocale.locale
+        let dateFormatter = Date.dateFormatter
         dateFormatter.dateFormat = "EE, d"
         return dateFormatter.string(from: self)
     }
     
     /// "MMMM yyyy"
     var monthRepresentation: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.currentLocale.locale
+        let dateFormatter = Date.dateFormatter
         dateFormatter.dateFormat = "MMMM yyyy"
         return dateFormatter.string(from: self)
     }
 
     /// "yyyy"
     var yearRepresentation: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.currentLocale.locale
+        let dateFormatter = Date.dateFormatter
         dateFormatter.dateFormat = "yyyy"
         return dateFormatter.string(from: self)
     }
