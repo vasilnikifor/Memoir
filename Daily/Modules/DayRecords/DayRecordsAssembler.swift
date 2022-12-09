@@ -1,12 +1,16 @@
 import Foundation
 
 final class DayRecordsAssembler {
-    static func assemble(_ inputModel: DayRecordsInputModel) -> DayRecordsViewController {
+    static func assemble(
+        inputModel: DayRecordsInputModel,
+        coordinator: DayRecordsCoordinatorProtocol
+    ) -> DayRecordsViewController {
         let viewController = DayRecordsViewController()
         let dayService = DayService()
         let analyticsService = AnalyticsService()
         let presenter = DayRecordsPresenter(
             view: viewController,
+            coordinator: coordinator,
             dayService: dayService,
             analyticsService: analyticsService,
             inputModel: inputModel

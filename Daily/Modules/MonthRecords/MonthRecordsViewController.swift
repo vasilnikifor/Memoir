@@ -1,6 +1,6 @@
 import UIKit
 
-protocol MonthRecordsViewControllerProtocol: Transitionable, AnyObject {
+protocol MonthRecordsViewControllerProtocol: AnyObject {
     func update(navigationTitleModel: NavigationTitleView.ViewModel, dataSource: [MonthRecordsDataSource])
     func showRangeSelection(_ actionSheet: ActionSheet)
 }

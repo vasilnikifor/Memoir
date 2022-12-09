@@ -105,6 +105,8 @@ extension CalendarViewController: CalendarViewControllerProtocol {
         calendarModel: CalendarViewModel,
         backgroundImage: UIImage?
     ) {
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .highlighted)
         calendarView.setup(with: calendarModel)
         backgroundImageView.image = backgroundImage
     }

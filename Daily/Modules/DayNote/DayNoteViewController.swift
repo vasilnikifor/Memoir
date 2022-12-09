@@ -1,7 +1,7 @@
 import UIKit
 
-protocol DayNoteViewControllerProtocol: Transitionable, AnyObject {
-    func setupInitialState(dateText: String, noteText: String)
+protocol DayNoteViewControllerProtocol: AnyObject {
+    func setupInitialState(dateText: String, noteText: String?, placeholder: String?)
 }
 
 final class DayNoteViewController: UIViewController {
@@ -34,6 +34,13 @@ final class DayNoteViewController: UIViewController {
         textView.delegate = self
         return textView
     }()
+
+    let placeholderLabel: UILabel = {
+        let label = UILabel()
+        label.apply(style: .secondaryMedium)
+        label.numberOfLines = .zero
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +54,17 @@ final class DayNoteViewController: UIViewController {
         
         view.backgroundColor = Theme.backgroundColor
         view.addSubview(textView)
+        view.addSubview(placeholderLabel)
         
         textView
             .topToSuperview(.m, safeArea: true)
             .leadingToSuperview(.m)
             .trailingToSuperview(-.m)
+
+        placeholderLabel
+            .topToSuperview(.m + textView.textContainerInset.top, safeArea: true)
+            .leadingToSuperview(.m + textView.textContainerInset.left + .s)
+            .trailingToSuperview(-.m - textView.textContainerInset.right)
         
         textViewBottomToSuperviewBottomConstraint = textView.bottom(to: view, anchor: view.safeAreaLayoutGuide.bottomAnchor, offset: -.m)
         
@@ -126,16 +139,25 @@ final class DayNoteViewController: UIViewController {
 }
 
 extension DayNoteViewController: DayNoteViewControllerProtocol {
-    func setupInitialState(dateText: String, noteText: String) {
+    func setupInitialState(
+        dateText: String,
+        noteText: String?,
+        placeholder: String?
+    ) {
         title = dateText
         textView.text = noteText
-        if noteText.isEmpty {
+        if noteText.isEmptyOrNil {
             textView.becomeFirstResponder()
         }
+        placeholderLabel.text = placeholder
     }
 }
 
 extension DayNoteViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmptyOrNil
+    }
+
     func textViewDidEndEditing(_ textView: UITextView) {
         presenter?.textDidEndEditing(text: textView.text)
     }

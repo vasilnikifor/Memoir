@@ -1,7 +1,7 @@
 import Foundation
 
 final class CalendarAssembler {
-    static func assemble() -> CalendarViewController {
+    static func assemble(coordinator: CalendarCoordinatorProtocol) -> CalendarViewController {
         let viewController = CalendarViewController()
         let dayService = DayService()
         let cms = Cms()
@@ -9,9 +9,10 @@ final class CalendarAssembler {
         let analyticsService = AnalyticsService()
         let presenter = CalendarPresenter(
             view: viewController,
-            factory: factory,
+            coordinator: coordinator,
             dayService: dayService,
-            analyticsService: analyticsService
+            analyticsService: analyticsService,
+            factory: factory
         )
         viewController.presenter = presenter
         return viewController
