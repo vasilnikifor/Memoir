@@ -81,6 +81,8 @@
 		91ED30CB29437632002EC051 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ED30CA29437632002EC051 /* AppCoordinator.swift */; };
 		91ED30D0294376F7002EC051 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ED30CF294376F7002EC051 /* AppCoordinatorProtocol.swift */; };
 		91ED30D229439357002EC051 /* TransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ED30D129439357002EC051 /* TransitionHandler.swift */; };
+		91ED30D529439804002EC051 /* CmsNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ED30D429439804002EC051 /* CmsNote.swift */; };
+		91ED30D729439C57002EC051 /* OptionalString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ED30D629439C57002EC051 /* OptionalString+Extension.swift */; };
 		91F0A2002691998A00BD5E28 /* DayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F0A1FF2691998A00BD5E28 /* DayService.swift */; };
 		91F0A2022691B91500BD5E28 /* DayNoteInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F0A2012691B91500BD5E28 /* DayNoteInputModel.swift */; };
 		91F854002687719B0098EEE5 /* DayNoteAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F853FF2687719B0098EEE5 /* DayNoteAssembler.swift */; };
@@ -164,6 +166,8 @@
 		91ED30CA29437632002EC051 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		91ED30CF294376F7002EC051 /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		91ED30D129439357002EC051 /* TransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionHandler.swift; sourceTree = "<group>"; };
+		91ED30D429439804002EC051 /* CmsNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmsNote.swift; sourceTree = "<group>"; };
+		91ED30D629439C57002EC051 /* OptionalString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OptionalString+Extension.swift"; sourceTree = "<group>"; };
 		91F0A1FF2691998A00BD5E28 /* DayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayService.swift; sourceTree = "<group>"; };
 		91F0A2012691B91500BD5E28 /* DayNoteInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNoteInputModel.swift; sourceTree = "<group>"; };
 		91F853FF2687719B0098EEE5 /* DayNoteAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNoteAssembler.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				9166F4A0269A068400D66CEE /* UITableView+Extension.swift */,
 				9182AAB42674D1E5006E68BE /* String+Extension.swift */,
 				916BC54E29269BC100E77E02 /* Locale+Extension.swift */,
+				91ED30D629439C57002EC051 /* OptionalString+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				916BC55029269D1B00E77E02 /* CmsHome.swift */,
 				916BC55229269FE300E77E02 /* CmsCalendar.swift */,
 				916BC5542926A04900E77E02 /* CmsRate.swift */,
+				91ED30D429439804002EC051 /* CmsNote.swift */,
 			);
 			path = Cms;
 			sourceTree = "<group>";
@@ -574,6 +580,7 @@
 				916673A3289C218D009ED818 /* TodayConsoleView.swift in Sources */,
 				84008BFB224A11B8000CB9A2 /* Day.swift in Sources */,
 				9157AB7D266A6F12003C4B66 /* UIView+Constrainable.swift in Sources */,
+				91ED30D529439804002EC051 /* CmsNote.swift in Sources */,
 				916BC54B2926997400E77E02 /* CmsCommon.swift in Sources */,
 				916BC5442926959700E77E02 /* ActionSheet.swift in Sources */,
 				91F85402268771E80098EEE5 /* DayNoteViewController.swift in Sources */,
@@ -611,6 +618,7 @@
 				9182AAAD2674AFCA006E68BE /* UICollectionView+Extension.swift in Sources */,
 				9166F4A3269A086400D66CEE /* DayRecordsDataSource.swift in Sources */,
 				9157AB87266A7554003C4B66 /* NSLayoutAnchor+Constraints.swift in Sources */,
+				91ED30D729439C57002EC051 /* OptionalString+Extension.swift in Sources */,
 				91419C5726B44E790031F519 /* MonthRecordsAssembler.swift in Sources */,
 				912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */,
 				91ED30D0294376F7002EC051 /* AppCoordinatorProtocol.swift in Sources */,

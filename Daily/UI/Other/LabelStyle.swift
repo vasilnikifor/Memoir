@@ -5,6 +5,7 @@ enum LabelStyle {
     case primaryBig
     case primaryMedium
     case primarySmall
+    case secondaryMedium
     case secondarySmall
 }
 
@@ -23,6 +24,9 @@ extension UILabel {
         case .primarySmall:
             font = UIFont.systemFont(ofSize: 12)
             textColor = Theme.primaryTextColor
+        case .secondaryMedium:
+            font = UIFont.systemFont(ofSize: 17)
+            textColor = Theme.secondaryTextColor
         case .secondarySmall:
             font = UIFont.systemFont(ofSize: 12)
             textColor = Theme.secondaryTextColor
