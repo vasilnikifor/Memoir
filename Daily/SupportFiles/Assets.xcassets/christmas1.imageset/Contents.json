@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "fa213182-3899-4def-ba75-aa6e46c092a5 1.jpeg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "fa213182-3899-4def-ba75-aa6e46c092a5.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -34,9 +34,22 @@ final class CalendarPresenter {
 
 extension CalendarPresenter: CalendarPresenterProtocol {
     func viewLoaded() {
-        view?.setupInitialState(calendarModel: CalendarViewModel(month: Date(), delegate: self))
+        var backgroundImage: UIImage?
+        if Date().isNewYearTime {
+            backgroundImage = UIImage(named: "christmas1")
+        }
+
+        view?.setupInitialState(
+            calendarModel: CalendarViewModel(month: Date(), delegate: self),
+            backgroundImage: backgroundImage
+        )
         update()
-        NotificationCenter.default.addObserver(self, selector: #selector(timeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(timeChanged),
+            name: UIApplication.significantTimeChangeNotification,
+            object: nil
+        )
     }
 }
 
@@ -87,5 +100,15 @@ extension CalendarPresenter: CalendarDelegate {
             yesterdayConsoleModel: factory.makeYesterdayConsole(delegate: self),
             todaysConsoleModel: factory.makeTodayConsole(delegate: self)
         )
+    }
+}
+
+extension Date {
+    var isNewYearTime: Bool {
+        let currentDate = Date()
+        let currentDateYear = currentDate.year
+        let minDate = Date(year: currentDateYear, month: 12, day: 17)
+        let maxDate = Date(year: currentDateYear+1, month: 1, day: 7)
+        return currentDate >= minDate && currentDate <= maxDate
     }
 }

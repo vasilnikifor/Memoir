@@ -1,6 +1,16 @@
 import Foundation
 
 extension Date {
+    init(year: Int, month: Int, day: Int) {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        self = Date.calendar.date(from: dateComponents) ?? Date()
+    }
+}
+
+extension Date {
     private static var calendar: Calendar {
         var calendar = Calendar.current
         calendar.locale = Locale.currentLocale.locale
@@ -77,6 +87,11 @@ extension Date {
         return calendar.date(from: calendar.dateComponents([.hour, .minute, .second, .timeZone], from: self))!
     }
     
+    var year: Int {
+        let components = calendar.dateComponents([.year], from: self)
+        return components.year ?? .zero
+    }
+
     var dateNumber: String {
         return String(calendar.component(.day, from: self))
     }
