@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "fa213182-3899-4def-ba75-aa6e46c092a5 1.jpeg",
+      "filename" : "light.jpeg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "fa213182-3899-4def-ba75-aa6e46c092a5.jpeg",
+      "filename" : "dark.jpeg",
       "idiom" : "universal"
     }
   ],

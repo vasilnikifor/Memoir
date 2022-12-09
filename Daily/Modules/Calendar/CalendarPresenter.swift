@@ -109,7 +109,7 @@ extension Date {
     var isNewYearTime: Bool {
         let currentDate = Date()
         let currentDateYear = currentDate.year
-        let minDate = Date(year: currentDateYear, month: 12, day: 17)
+        let minDate = Date(year: currentDateYear, month: 12, day: 11)
         let maxDate = Date(year: currentDateYear+1, month: 1, day: 7)
         return currentDate >= minDate && currentDate <= maxDate
     }

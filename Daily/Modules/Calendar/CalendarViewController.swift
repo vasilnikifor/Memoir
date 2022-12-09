@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CalendarViewControllerProtocol: Transitionable, AnyObject {
+protocol CalendarViewControllerProtocol: AnyObject {
     func setupInitialState(
         calendarModel: CalendarViewModel,
         backgroundImage: UIImage?
