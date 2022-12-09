@@ -1,8 +1,14 @@
 import UIKit
 
 protocol CalendarViewControllerProtocol: AnyObject {
-    func setupInitialState(calendarModel: CalendarViewModel)
-    func update(yesterdayConsoleModel: YesterdayConsoleView.Model?, todaysConsoleModel: TodayConsoleView.Model)
+    func setupInitialState(
+        calendarModel: CalendarViewModel,
+        backgroundImage: UIImage?
+    )
+    func update(
+        yesterdayConsoleModel: YesterdayConsoleView.Model?,
+        todaysConsoleModel: TodayConsoleView.Model
+    )
 }
 
 extension CalendarViewController {
@@ -44,6 +50,12 @@ final class CalendarViewController: UIViewController {
     let todayConsole: TodayConsoleView = {
         TodayConsoleView()
     }()
+
+    let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +75,15 @@ final class CalendarViewController: UIViewController {
     
     func setup() {
         view.backgroundColor = Theme.backgroundColor
+        view.addSubview(backgroundImageView)
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
+        
+        backgroundImageView
+            .topToSuperview(safeArea: false)
+            .leadingToSuperview()
+            .trailingToSuperview()
+            .bottomToSuperview(safeArea: false)
         
         scrollView
             .topToSuperview()
@@ -82,10 +101,14 @@ final class CalendarViewController: UIViewController {
 }
 
 extension CalendarViewController: CalendarViewControllerProtocol {
-    func setupInitialState(calendarModel: CalendarViewModel) {
+    func setupInitialState(
+        calendarModel: CalendarViewModel,
+        backgroundImage: UIImage?
+    ) {
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .highlighted)
         calendarView.setup(with: calendarModel)
+        backgroundImageView.image = backgroundImage
     }
 
     func update(
