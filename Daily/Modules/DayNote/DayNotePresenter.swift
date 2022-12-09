@@ -17,6 +17,7 @@ final class DayNotePresenter {
     private weak var coordinator: DayNoteCoordinatorProtocol?
     private let dayService: DayServiceProtocol
     private let analyticsService: AnalyticsServiceProtocol
+    private let cms: CmsProtocol
     private let date: Date
     private var note: NoteRecord?
     private weak var delegate: CalendarDelegate?
@@ -26,12 +27,14 @@ final class DayNotePresenter {
         coordinator: DayNoteCoordinatorProtocol,
         dayService: DayServiceProtocol,
         analyticsService: AnalyticsServiceProtocol,
+        cms: CmsProtocol,
         inputModel: DayNoteInputModel
     ) {
         self.view = view
         self.coordinator = coordinator
         self.dayService = dayService
         self.analyticsService = analyticsService
+        self.cms = cms
         date = inputModel.date
         note = inputModel.note
         delegate = inputModel.delegate
@@ -48,7 +51,8 @@ extension DayNotePresenter: DayNotePresenterProtocol {
     func viewLoaded() {
         view?.setupInitialState(
             dateText: date.dateRepresentation,
-            noteText: note?.text ?? ""
+            noteText: note?.text,
+            placeholder: cms.note.question
         )
         analyticsService.sendEvent("note_page_loaded")
     }

@@ -18,9 +18,7 @@ extension Date {
 
 extension Date {
     private var calendar: Calendar {
-        var calendar = Date.calendar
-        calendar.locale = Locale.currentLocale.locale
-        return Date.calendar
+        Date.calendar
     }
     
     var firstMonthCalendarDate: Date {
