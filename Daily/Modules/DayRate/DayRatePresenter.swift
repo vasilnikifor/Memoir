@@ -1,5 +1,9 @@
 import Foundation
 
+protocol DayRateCoordinatorProtocol: AnyObject {
+    func dismiss()
+}
+
 protocol DayRatePresenterProtocol: AnyObject {
     func viewLoaded()
     func closeTapped()
@@ -8,19 +12,22 @@ protocol DayRatePresenterProtocol: AnyObject {
 
 final class DayRatePresenter {
     private weak var view: DayRateViewControllerProtocol?
+    private weak var coordinator: DayRateCoordinatorProtocol?
+    private weak var calendarDelegate: CalendarDelegate?
     private var dayService: DayServiceProtocol
     private let analyticsService: AnalyticsServiceProtocol
-    private weak var calendarDelegate: CalendarDelegate?
     private var date: Date
     private var selectedRate: DayRate?
     
     init(
         view: DayRateViewControllerProtocol,
+        coordinator: DayRateCoordinatorProtocol,
         dayService: DayServiceProtocol,
         analyticsService: AnalyticsServiceProtocol,
         inputModel: DayRateInputModel
     ) {
         self.view = view
+        self.coordinator = coordinator
         self.dayService = dayService
         self.analyticsService = analyticsService
         calendarDelegate = inputModel.delegate
@@ -31,7 +38,7 @@ final class DayRatePresenter {
     private func update(selectedRate: DayRate?) {
         dayService.rateDay(of: date, rate: selectedRate)
         calendarDelegate?.update()
-        view?.dismiss()
+        coordinator?.dismiss()
     }
 }
 
@@ -62,7 +69,7 @@ extension DayRatePresenter: DayRatePresenterProtocol {
     }
     
     func closeTapped() {
-        view?.dismiss()
+        coordinator?.dismiss()
     }
     
     func removeTapped() {

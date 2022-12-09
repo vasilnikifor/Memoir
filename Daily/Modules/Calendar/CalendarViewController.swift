@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CalendarViewControllerProtocol: Transitionable, AnyObject {
+protocol CalendarViewControllerProtocol: AnyObject {
     func setupInitialState(calendarModel: CalendarViewModel)
     func update(yesterdayConsoleModel: YesterdayConsoleView.Model?, todaysConsoleModel: TodayConsoleView.Model)
 }
@@ -83,6 +83,8 @@ final class CalendarViewController: UIViewController {
 
 extension CalendarViewController: CalendarViewControllerProtocol {
     func setupInitialState(calendarModel: CalendarViewModel) {
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .highlighted)
         calendarView.setup(with: calendarModel)
     }
 

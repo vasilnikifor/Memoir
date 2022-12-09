@@ -1,6 +1,6 @@
 import UIKit
 
-protocol DayRecordsViewControllerProtocol: Transitionable, AnyObject {
+protocol DayRecordsViewControllerProtocol: AnyObject {
     func setupInitialState(title: String)
     func update(rate: DayRate?, dataSource: [DayRecordsDataSource])
 }

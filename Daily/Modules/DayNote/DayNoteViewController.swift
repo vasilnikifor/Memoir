@@ -1,6 +1,6 @@
 import UIKit
 
-protocol DayNoteViewControllerProtocol: Transitionable, AnyObject {
+protocol DayNoteViewControllerProtocol: AnyObject {
     func setupInitialState(dateText: String, noteText: String)
 }
 

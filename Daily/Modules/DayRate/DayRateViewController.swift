@@ -1,6 +1,6 @@
 import UIKit
 
-protocol DayRateViewControllerProtocol: Transitionable, AnyObject {
+protocol DayRateViewControllerProtocol: AnyObject {
     func setupInitialState(dateText: String)
     
     func update(badRateViewModel: DayRateViewModel,

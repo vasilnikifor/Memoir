@@ -1,5 +1,10 @@
 import UIKit
 
+protocol DayRecordsCoordinatorProtocol: AnyObject {
+    func showDayNote(date: Date, note: NoteRecord?, delegate: CalendarDelegate?)
+    func showDayRate(date: Date, rate: DayRate?, delegate: CalendarDelegate?)
+}
+
 protocol DayRecordsPresenterProtocol {
     func viewLoaded()
     func rateDayTapped()
@@ -8,19 +13,22 @@ protocol DayRecordsPresenterProtocol {
 
 final class DayRecordsPresenter {
     private weak var view: DayRecordsViewControllerProtocol?
+    private weak var coordinator: DayRecordsCoordinatorProtocol?
+    private weak var delegate: CalendarDelegate?
     private let dayService: DayServiceProtocol
     private let analyticsService: AnalyticsServiceProtocol
-    private weak var delegate: CalendarDelegate?
     private let date: Date
     private var day: Day?
     
     init(
         view: DayRecordsViewControllerProtocol,
+        coordinator: DayRecordsCoordinatorProtocol,
         dayService: DayServiceProtocol,
         analyticsService: AnalyticsServiceProtocol,
         inputModel: DayRecordsInputModel
     ) {
         self.view = view
+        self.coordinator = coordinator
         self.dayService = dayService
         self.analyticsService = analyticsService
         delegate = inputModel.delegate
@@ -29,15 +37,7 @@ final class DayRecordsPresenter {
     }
     
     private func openNote(_ noteRecord: NoteRecord?) {
-        view?.present(
-            DayNoteAssembler.assemble(
-                DayNoteInputModel(
-                    date: date,
-                    note: noteRecord,
-                    delegate: self
-                )
-            )
-        )
+        coordinator?.showDayNote(date: date, note: noteRecord, delegate: self)
     }
     
     private func updateDataSource() {
@@ -82,21 +82,13 @@ extension DayRecordsPresenter: DayRecordsPresenterProtocol {
     }
     
     func rateDayTapped() {
+        coordinator?.showDayRate(date: date, rate: day?.rate, delegate: self)
         analyticsService.sendEvent("day_page_rate_day_tapped")
-        view?.present(
-            DayRateAssembler.assemble(
-                DayRateInputModel(
-                    date: date,
-                    selectedRate: day?.rate,
-                    delegate: self
-                )
-            )
-        )
     }
     
     func addNoteTapped() {
-        analyticsService.sendEvent("day_page_rate_add_note_tapped")
         openNote(nil)
+        analyticsService.sendEvent("day_page_rate_add_note_tapped")
     }
 }
 
