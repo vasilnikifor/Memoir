@@ -1,29 +1,39 @@
 import UIKit
 
-protocol CalendarPresenterProtocol: AnyObject {
-    func viewLoaded()
-}
-
 protocol CalendarDelegate: AnyObject {
     func update()
 }
 
+protocol CalendarCoordinatorProtocol: AnyObject {
+    func showMonthRecords(month: Date, delegate: CalendarDelegate?)
+    func showDayRecords(date: Date, day: Day?, delegate: CalendarDelegate?)
+    func showDayNote(date: Date, note: NoteRecord?, delegate: CalendarDelegate?)
+    func showDayRate(date: Date, rate: DayRate?, delegate: CalendarDelegate?)
+}
+
+protocol CalendarPresenterProtocol: AnyObject {
+    func viewLoaded()
+}
+
 final class CalendarPresenter {
     private weak var view: CalendarViewControllerProtocol?
-    private let factory: CalendarFactoryProtocol
-    private let dayService: DayServiceProtocol
+    private weak var coordinator: CalendarCoordinatorProtocol?
     private let analyticsService: AnalyticsServiceProtocol
+    private let dayService: DayServiceProtocol
+    private let factory: CalendarFactoryProtocol
     
     init(
         view: CalendarViewControllerProtocol,
-        factory: CalendarFactoryProtocol,
+        coordinator: CalendarCoordinatorProtocol,
         dayService: DayServiceProtocol,
-        analyticsService: AnalyticsServiceProtocol
+        analyticsService: AnalyticsServiceProtocol,
+        factory: CalendarFactoryProtocol
     ) {
         self.view = view
-        self.factory = factory
+        self.coordinator = coordinator
         self.dayService = dayService
         self.analyticsService = analyticsService
+        self.factory = factory
     }
 
     @objc
@@ -50,23 +60,17 @@ extension CalendarPresenter: CalendarViewDelegate {
     }
     
     func monthSelected(month: Date) {
-        let inputModel = MonthRecordsInputModel(month: month, delegate: self)
-        let viewController = MonthRecordsAssembler.assemble(inputModel)
-        view?.push(viewController)
+        coordinator?.showMonthRecords(month: month, delegate: self)
     }
 
     func addNote(to date: Date) {
-        let inputModel = DayNoteInputModel(date: date, note: nil, delegate: self)
-        let viewController = DayNoteAssembler.assemble(inputModel)
-        view?.present(viewController)
+        coordinator?.showDayNote(date: date, note: nil, delegate: self)
     }
 }
 
 extension CalendarPresenter: CalendarFactoryDelegate {
     func dateSelected(_ date: Date, day: Day?) {
-        let inputModel = DayRecordsInputModel(date: date, day: day, delegate: self)
-        let viewController = DayRecordsAssembler.assemble(inputModel)
-        view?.push(viewController)
+        coordinator?.showDayRecords(date: date, day: day, delegate: self)
     }
 
     func dateRated(_ date: Date, rate: DayRate?) {
@@ -75,9 +79,7 @@ extension CalendarPresenter: CalendarFactoryDelegate {
     }
 
     func rateDay(_ date: Date, rate: DayRate?) {
-        let inputModel = DayRateInputModel(date: date, selectedRate: rate, delegate: self)
-        let viewController = DayRateAssembler.assemble(inputModel)
-        view?.present(viewController)
+        coordinator?.showDayRate(date: date, rate: rate, delegate: self)
     }
 }
 

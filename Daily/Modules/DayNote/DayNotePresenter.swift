@@ -1,5 +1,9 @@
 import Foundation
 
+protocol DayNoteCoordinatorProtocol: AnyObject {
+    func dismiss()
+}
+
 protocol DayNotePresenterProtocol: AnyObject {
     func viewLoaded()
     func viewGoesBackground(text: String)
@@ -10,6 +14,7 @@ protocol DayNotePresenterProtocol: AnyObject {
 
 final class DayNotePresenter {
     private weak var view: DayNoteViewControllerProtocol?
+    private weak var coordinator: DayNoteCoordinatorProtocol?
     private let dayService: DayServiceProtocol
     private let analyticsService: AnalyticsServiceProtocol
     private let date: Date
@@ -18,11 +23,13 @@ final class DayNotePresenter {
     
     init(
         view: DayNoteViewControllerProtocol,
+        coordinator: DayNoteCoordinatorProtocol,
         dayService: DayServiceProtocol,
         analyticsService: AnalyticsServiceProtocol,
         inputModel: DayNoteInputModel
     ) {
         self.view = view
+        self.coordinator = coordinator
         self.dayService = dayService
         self.analyticsService = analyticsService
         date = inputModel.date
@@ -51,11 +58,11 @@ extension DayNotePresenter: DayNotePresenterProtocol {
     }
 
     func closeTapped() {
-        view?.dismiss()
+        coordinator?.dismiss()
     }
     
     func removeTapped() {
-        view?.dismiss()
+        coordinator?.dismiss()
         if let note = note { dayService.removeNote(note) }
         delegate?.update()
         analyticsService.sendEvent("note_page_removed")

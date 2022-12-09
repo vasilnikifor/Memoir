@@ -1,5 +1,10 @@
 import UIKit
 
+protocol MonthRecordsCoordinatorProtocol: AnyObject {
+    func showDayNote(date: Date, note: NoteRecord?, delegate: CalendarDelegate?)
+    func showDayRate(date: Date, rate: DayRate?, delegate: CalendarDelegate?)
+}
+
 protocol MonthRecordsPresenterProtocol {
     func viewLoaded()
 }
@@ -13,57 +18,40 @@ extension MonthRecordsPresenter {
 
 final class MonthRecordsPresenter {
     weak var view: MonthRecordsViewControllerProtocol?
-    let dayService: DayServiceProtocol
-    let cms: CmsProtocol
-    let analyticsService: AnalyticsServiceProtocol
-    let month: Date
     weak var delegate: CalendarDelegate?
+    weak var coordinator: MonthRecordsCoordinatorProtocol?
+    let dayService: DayServiceProtocol
+    let analyticsService: AnalyticsServiceProtocol
+    let cms: CmsProtocol
+    let month: Date
     var mode: Mode = .month
     
     init(
         view: MonthRecordsViewControllerProtocol,
+        coordinator: MonthRecordsCoordinatorProtocol,
         dayService: DayServiceProtocol,
-        cms: CmsProtocol,
         analyticsService: AnalyticsServiceProtocol,
+        cms: CmsProtocol,
         inputModel: MonthRecordsInputModel
     ) {
         self.view = view
+        self.coordinator = coordinator
         self.dayService = dayService
-        self.cms = cms
         self.analyticsService = analyticsService
+        self.cms = cms
         month = inputModel.month
         delegate = inputModel.delegate
     }
     
     func openNote(day: Day, noteRecord: NoteRecord?) {
         guard let date = day.date else { return }
-        
-        view?.present(
-            DayNoteAssembler.assemble(
-                DayNoteInputModel(
-                    date: date,
-                    note: noteRecord,
-                    delegate: self
-                )
-            )
-        )
-        
+        coordinator?.showDayNote(date: date, note: noteRecord, delegate: self)
         analyticsService.sendEvent("month_page_note_selected")
     }
     
     func openDayRate(day: Day) {
         guard let date = day.date else { return }
-        
-        view?.present(
-            DayRateAssembler.assemble(
-                DayRateInputModel(
-                    date: date,
-                    selectedRate: day.rate,
-                    delegate: self
-                )
-            )
-        )
-        
+        coordinator?.showDayRate(date: date, rate: day.rate, delegate: self)
         analyticsService.sendEvent("month_page_day_rate_selected")
     }
     
