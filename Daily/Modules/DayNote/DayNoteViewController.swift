@@ -150,6 +150,7 @@ extension DayNoteViewController: DayNoteViewControllerProtocol {
             textView.becomeFirstResponder()
         }
         placeholderLabel.text = placeholder
+        placeholderLabel.isHidden = !textView.text.isEmptyOrNil
     }
 }
 
