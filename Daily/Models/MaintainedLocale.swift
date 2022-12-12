@@ -5,7 +5,13 @@ enum MaintainedLocale {
     
     var locale: Locale {
         switch self {
-        case .en: return Locale(identifier: "en")
+        case .en:
+            let currentLocale = Calendar.current.locale
+            if let locale = currentLocale, locale.identifier.hasPrefix("en") {
+                return locale
+            } else {
+                return Locale(identifier: "en_GB")
+            }
         }
     }
 }
