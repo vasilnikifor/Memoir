@@ -23,6 +23,8 @@
 		912092352688AD6800F966BE /* DayRecordsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092342688AD6800F966BE /* DayRecordsPresenter.swift */; };
 		912092372688AFD900F966BE /* DayRecordsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092362688AFD900F966BE /* DayRecordsInputModel.swift */; };
 		912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092382688B0A900F966BE /* DayRateInputModel.swift */; };
+		91295AB72951FC1400A2A9BF /* MonthRecordsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91295AB62951FC1400A2A9BF /* MonthRecordsFactory.swift */; };
+		91295AB92952003A00A2A9BF /* MonthRecordsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91295AB82952003A00A2A9BF /* MonthRecordsMode.swift */; };
 		912A277D2901A0BF00DC134E /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A277C2901A0BF00DC134E /* NavigationTitleView.swift */; };
 		912BCE6B283E7AFE005E1A6C /* CalendarHatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */; };
 		912BCE6D283E7B54005E1A6C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BCE6C283E7B54005E1A6C /* Grid.swift */; };
@@ -110,6 +112,8 @@
 		912092342688AD6800F966BE /* DayRecordsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsPresenter.swift; sourceTree = "<group>"; };
 		912092362688AFD900F966BE /* DayRecordsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsInputModel.swift; sourceTree = "<group>"; };
 		912092382688B0A900F966BE /* DayRateInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateInputModel.swift; sourceTree = "<group>"; };
+		91295AB62951FC1400A2A9BF /* MonthRecordsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsFactory.swift; sourceTree = "<group>"; };
+		91295AB82952003A00A2A9BF /* MonthRecordsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsMode.swift; sourceTree = "<group>"; };
 		912A277C2901A0BF00DC134E /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHatView.swift; sourceTree = "<group>"; };
 		912BCE6C283E7B54005E1A6C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				91419C5826B44F0A0031F519 /* MonthRecordsInputModel.swift */,
 				91419C5C26B44F8C0031F519 /* MonthRecordsPresenter.swift */,
 				91419C6026B595C50031F519 /* MonthRecordsDataSource.swift */,
+				91295AB62951FC1400A2A9BF /* MonthRecordsFactory.swift */,
+				91295AB82952003A00A2A9BF /* MonthRecordsMode.swift */,
 			);
 			path = MonthRecords;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 				916C25E5267E15A4004A1CDF /* DayRateAssembler.swift in Sources */,
 				2D0CFA17239221FE00F8AFBB /* UINavigationController+TransitionHandler.swift in Sources */,
 				9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */,
+				91295AB92952003A00A2A9BF /* MonthRecordsMode.swift in Sources */,
 				912BCE6D283E7B54005E1A6C /* Grid.swift in Sources */,
 				91419C5B26B44F290031F519 /* MonthRecordsViewController.swift in Sources */,
 				912A277D2901A0BF00DC134E /* NavigationTitleView.swift in Sources */,
@@ -611,6 +618,7 @@
 				915D4E65277DB21E00D8F178 /* DayNoteRecordView.swift in Sources */,
 				91F854042687724A0098EEE5 /* DayNotePresenter.swift in Sources */,
 				91ED30CB29437632002EC051 /* AppCoordinator.swift in Sources */,
+				91295AB72951FC1400A2A9BF /* MonthRecordsFactory.swift in Sources */,
 				9182AAAF2674B960006E68BE /* CalendarPresenter.swift in Sources */,
 				84F8917522290E8D00956265 /* Daily.xcdatamodeld in Sources */,
 				8472597C22AD3C7400BCBA42 /* NoteRecord.swift in Sources */,

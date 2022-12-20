@@ -13,6 +13,22 @@ final class MonthRecordsViewController: UIViewController {
         NavigationTitleView()
     }()
 
+    private lazy var searchBarButtonItem: UIBarButtonItem = {
+        UIBarButtonItem(
+            image: UIImage(systemName: "magnifyingglass"),
+            style: .plain,
+            target: self,
+            action: #selector(searchButtonDidTap)
+        )
+    }()
+
+    private lazy var searchViewController: UISearchController = {
+        let controller = UISearchController()
+        controller.searchResultsUpdater = self
+        controller.showsSearchResultsController = true
+        return controller
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -20,23 +36,32 @@ final class MonthRecordsViewController: UIViewController {
         tableView.backgroundColor = .clear
         return tableView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewLoaded()
         setup()
     }
-    
+
     func setup() {
         view.addSubview(tableView)
         view.backgroundColor = Theme.bottomLayerBackgroundColor
         navigationItem.titleView = navigationTitleView
+        navigationItem.searchController = searchViewController
+        navigationItem.rightBarButtonItem = searchBarButtonItem
         
         tableView
             .topToSuperview()
             .leadingToSuperview()
             .trailingToSuperview()
             .bottomToSuperview(safeArea: false)
+    }
+
+    @objc
+    private func searchButtonDidTap() {
+        DispatchQueue.main.async {
+            self.searchViewController.searchBar.becomeFirstResponder()
+        }
     }
 }
 
@@ -74,12 +99,18 @@ extension MonthRecordsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
-        case .header(viewModel: let viewModel):
+        case .header(let viewModel):
             return tableView.dequeueReusableCell(DayHeaderView.self, viewModel: viewModel)
         case .note(let viewModel):
             return tableView.dequeueReusableCell(DayNoteRecordView.self, viewModel: viewModel)
         case .actions(let viewModel):
             return tableView.dequeueReusableCell(DayActionsView.self, viewModel: viewModel)
         }
+    }
+}
+
+extension MonthRecordsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        presenter?.searchTextDidChange(searchController.searchBar.text)
     }
 }
