@@ -9,32 +9,19 @@ protocol MonthRecordsFactoryProtocol: AnyObject {
     func makeDataSource(
         searchText: String?,
         mode: MonthRecordsMode,
-        month: Date,
+        days: [Day],
         delegate: MonthRecordsFactoryDelegate
     ) -> [MonthRecordsDataSource]
 }
 
 final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
-    private let dayService: DayServiceProtocol
-
-    init(dayService: DayServiceProtocol) {
-        self.dayService = dayService
-    }
-
     func makeDataSource(
         searchText: String?,
         mode: MonthRecordsMode,
-        month: Date,
+        days: [Day],
         delegate: MonthRecordsFactoryDelegate
     ) -> [MonthRecordsDataSource] {
         var dataSource: [MonthRecordsDataSource] = []
-        var days: [Day] = []
-        switch mode {
-        case .month:
-            days = dayService.getDays(month: month)
-        case .year:
-            days = dayService.getDays(year: month)
-        }
 
         days.forEach { day in
             guard !day.isEmpty else { return }

@@ -14,12 +14,14 @@ final class MonthRecordsPresenter {
     weak var view: MonthRecordsViewControllerProtocol?
     weak var delegate: CalendarDelegate?
     weak var coordinator: MonthRecordsCoordinatorProtocol?
+    let dayService: DayServiceProtocol
     let analyticsService: AnalyticsServiceProtocol
     let cms: CmsProtocol
     let factory: MonthRecordsFactoryProtocol
     let month: Date
     var mode: MonthRecordsMode = .month
     var searchText: String? = nil
+    var days: [Day] = []
 
     init(
         view: MonthRecordsViewControllerProtocol,
@@ -32,6 +34,7 @@ final class MonthRecordsPresenter {
     ) {
         self.view = view
         self.coordinator = coordinator
+        self.dayService = dayService
         self.analyticsService = analyticsService
         self.cms = cms
         self.factory = factory
@@ -43,7 +46,7 @@ final class MonthRecordsPresenter {
         let dataSource: [MonthRecordsDataSource] = factory.makeDataSource(
             searchText: searchText,
             mode: mode,
-            month: month,
+            days: days,
             delegate: self
         )
 
@@ -99,6 +102,12 @@ final class MonthRecordsPresenter {
 
 extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
     func viewLoaded() {
+        switch mode {
+        case .month:
+            days = dayService.getDays(month: month)
+        case .year:
+            days = dayService.getDays(year: month)
+        }
         updateView()
         analyticsService.sendEvent("month_page_loaded")
     }
@@ -111,6 +120,12 @@ extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
 
 extension MonthRecordsPresenter: CalendarDelegate {
     func update() {
+        switch mode {
+        case .month:
+            days = dayService.getDays(month: month)
+        case .year:
+            days = dayService.getDays(year: month)
+        }
         updateView()
         delegate?.update()
     }
