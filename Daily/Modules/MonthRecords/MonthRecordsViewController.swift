@@ -34,6 +34,7 @@ final class MonthRecordsViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
+        tableView.keyboardDismissMode = .onDrag
         return tableView
     }()
 
