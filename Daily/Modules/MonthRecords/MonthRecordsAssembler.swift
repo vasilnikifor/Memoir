@@ -9,7 +9,7 @@ final class MonthRecordsAssembler {
         let dayService = DayService()
         let analyticsService = AnalyticsService()
         let cms = Cms()
-        let factory = MonthRecordsFactory(dayService: dayService)
+        let factory = MonthRecordsFactory()
         let presenter = MonthRecordsPresenter(
             view: viewController,
             coordinator: coordinator,
