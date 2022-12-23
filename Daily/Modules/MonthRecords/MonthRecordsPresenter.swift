@@ -76,18 +76,12 @@ final class MonthRecordsPresenter {
                     ActionSheet.ActionSheetItem(
                         title: month.monthRepresentation,
                         style: .default,
-                        action: { [weak self] in
-                            self?.mode = .month
-                            self?.updateView()
-                        }
+                        action: { [weak self] in self?.updateMode(.month) }
                     ),
                     ActionSheet.ActionSheetItem(
                         title: cms.home.wholeYear(year: month.yearRepresentation),
                         style: .default,
-                        action: { [weak self] in
-                            self?.mode = .year
-                            self?.updateView()
-                        }
+                        action: { [weak self] in self?.updateMode(.year) }
                     ),
                     ActionSheet.ActionSheetItem(
                         title: cms.common.cancel,
@@ -97,6 +91,17 @@ final class MonthRecordsPresenter {
                 ]
             )
         )
+    }
+
+    private func updateMode(_ selectedMode: MonthRecordsMode) {
+        mode = selectedMode
+        switch mode {
+        case .month:
+            days = dayService.getDays(month: month)
+        case .year:
+            days = dayService.getDays(year: month)
+        }
+        updateView()
     }
 }
 
