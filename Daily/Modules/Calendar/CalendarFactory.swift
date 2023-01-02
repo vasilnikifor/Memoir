@@ -83,13 +83,13 @@ final class CalendarFactory: CalendarFactoryProtocol {
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .bad) }
             ),
             rateNormActionModel: .init(
-                title: cms.rate.fine,
+                title: cms.rate.good,
                 image: Theme.averageRateImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .average) }
             ),
             rateGoodActionModel: .init(
-                title: cms.rate.good,
+                title: cms.rate.great,
                 image: Theme.goodRateImage,
                 tintColor: Theme.goodRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .good) }
@@ -134,13 +134,13 @@ final class CalendarFactory: CalendarFactoryProtocol {
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .bad) }
             )
             rateNormActionModel = .init(
-                title: cms.rate.fine,
+                title: cms.rate.good,
                 image: Theme.averageRateImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .average) }
             )
             rateGoodActionModel = .init(
-                title: cms.rate.good,
+                title: cms.rate.great,
                 image: Theme.goodRateImage,
                 tintColor: Theme.goodRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .good) }

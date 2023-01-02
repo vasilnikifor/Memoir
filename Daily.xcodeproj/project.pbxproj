@@ -318,8 +318,6 @@
 				915D4E64277DB21E00D8F178 /* DayNoteRecordView.swift */,
 				915D4E66277DB59B00D8F178 /* DayActionsView.swift */,
 				91D2B1D7289D6559001E7856 /* ConsoleActionView.swift */,
-				916673A2289C218D009ED818 /* TodayConsoleView.swift */,
-				91D2B1D9289D66B8001E7856 /* YesterdayConsoleView.swift */,
 				912A277C2901A0BF00DC134E /* NavigationTitleView.swift */,
 			);
 			path = Views;
@@ -405,6 +403,8 @@
 				9182AAA42673EAB9006E68BE /* CalendarWeekdayViewCell.swift */,
 				9182AAA82673EE22006E68BE /* CalendarDayViewCell.swift */,
 				912BCE6A283E7AFE005E1A6C /* CalendarHatView.swift */,
+				91D2B1D9289D66B8001E7856 /* YesterdayConsoleView.swift */,
+				916673A2289C218D009ED818 /* TodayConsoleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

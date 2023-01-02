@@ -46,8 +46,6 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                         return nil
                     }
                 }
-
-            if records.isEmpty { return }
             
             dataSource.append(
                 .header(
