@@ -83,19 +83,39 @@ extension Theme {
 // MARK: - Images
 extension Theme {
     static var badRateImage: UIImage {
+        UIImage(systemName: "hand.thumbsdown") ?? UIImage()
+    }
+
+    static var badRateFilledImage: UIImage {
         UIImage(systemName: "hand.thumbsdown.fill") ?? UIImage()
     }
-    
+
     static var averageRateImage: UIImage {
+        UIImage(systemName: "hand.thumbsup") ?? UIImage()
+    }
+
+    static var averageRateFilledImage: UIImage {
         UIImage(systemName: "hand.thumbsup.fill") ?? UIImage()
     }
-    
+
     static var goodRateImage: UIImage {
+        UIImage(systemName: "star") ?? UIImage()
+    }
+
+    static var goodRateFilledImage: UIImage {
+        UIImage(systemName: "star.fill") ?? UIImage()
+    }
+
+    static var rateDayImage: UIImage {
+        return UIImage(systemName: "star") ?? UIImage()
+    }
+
+    static var rateDayFilledImage: UIImage {
         return UIImage(systemName: "star.fill") ?? UIImage()
     }
     
-    static var noRateImage: UIImage {
-        return UIImage(systemName: "star") ?? UIImage()
+    static var addNoteImage: UIImage {
+        UIImage(systemName: "square.and.pencil") ?? UIImage()
     }
     
     static var closeImage: UIImage {
@@ -108,13 +128,5 @@ extension Theme {
     
     static var doneImage: UIImage {
         return UIImage(systemName: "checkmark") ?? UIImage()
-    }
-    
-    static var rateDayImage: UIImage {
-        return UIImage(systemName: "star") ?? UIImage()
-    }
-    
-    static var addNoteImage: UIImage {
-        return UIImage(systemName: "pencil") ?? UIImage()
     }
 }

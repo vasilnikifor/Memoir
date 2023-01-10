@@ -80,7 +80,7 @@ final class DayHeaderView: UIView {
 extension DayHeaderView: ViewModelSettable {
     func setup(with viewModel: DayHeaderViewModel) {
         titleLabel.text = viewModel.title
-        rateImageView.image = viewModel.rate.image
+        rateImageView.image = viewModel.rate.filledImage
         rateImageView.tintColor = viewModel.rate.tintColor
         rateImageView.isHidden = viewModel.rate == nil
         action = viewModel.action

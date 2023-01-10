@@ -78,19 +78,19 @@ final class CalendarFactory: CalendarFactoryProtocol {
             title: cms.home.howWasYesterday,
             rateBadActionModel: .init(
                 title: cms.rate.bad,
-                image: Theme.badRateImage,
+                image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .bad) }
             ),
             rateNormActionModel: .init(
                 title: cms.rate.good,
-                image: Theme.averageRateImage,
+                image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .average) }
             ),
             rateGoodActionModel: .init(
                 title: cms.rate.great,
-                image: Theme.goodRateImage,
+                image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .good) }
             )
@@ -129,19 +129,19 @@ final class CalendarFactory: CalendarFactoryProtocol {
         case .none:
             rateBadActionModel = .init(
                 title: cms.rate.bad,
-                image: Theme.badRateImage,
+                image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .bad) }
             )
             rateNormActionModel = .init(
                 title: cms.rate.good,
-                image: Theme.averageRateImage,
+                image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .average) }
             )
             rateGoodActionModel = .init(
                 title: cms.rate.great,
-                image: Theme.goodRateImage,
+                image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .good) }
             )

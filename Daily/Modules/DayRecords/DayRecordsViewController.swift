@@ -91,13 +91,17 @@ extension DayRecordsViewController: DayRecordsViewControllerProtocol {
     
     func update(rate: DayRate?, dataSource: [DayRecordsDataSource]) {
         if rate != nil {
-            let button = UIBarButtonItem(image: rate.image, style: .plain, target: self, action: #selector(rateDateButtonTouchUpInside))
-            button.tintColor = rate.tintColor
-            navigationItem.rightBarButtonItem = button
+            rateDayBarButton.image = rate.filledImage
+            rateDayBarButton.tintColor = rate.tintColor
+            navigationItem.rightBarButtonItem = rateDayBarButton
+            rateDayButton.setImage(rate.filledImage, for: .normal)
+            rateDayButton.tintColor = rate.tintColor
         } else {
             navigationItem.rightBarButtonItem = nil
+            rateDayButton.setImage(rate.image, for: .normal)
+            rateDayButton.tintColor = rate.tintColor
         }
-        rateDayButton.setImage(rate.image, for: .normal)
+
         self.dataSource = dataSource
         tableView.reloadData()
     }
