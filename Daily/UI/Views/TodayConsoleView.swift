@@ -40,7 +40,7 @@ final class TodayConsoleView: UIView, ViewModelSettable {
     private let rateGoodActionView: ConsoleActionView = {
         ConsoleActionView()
     }()
-    
+
     private let addNoteActionView: ConsoleActionView = {
         return ConsoleActionView()
     }()
@@ -60,15 +60,15 @@ final class TodayConsoleView: UIView, ViewModelSettable {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-    
+
     func setup(with model: Model) {
         titleLabel.text = model.title
-        
+
         if let rateBadActionModel = model.rateBadActionModel {
             rateBadActionView.setup(with: rateBadActionModel)
         }
@@ -82,14 +82,14 @@ final class TodayConsoleView: UIView, ViewModelSettable {
         }
 
         addNoteActionView.setup(with: model.addNoteActionModel)
-        
+
         let isBadDayActionVisible = model.rateBadActionModel != nil
         let isNormDayActionVisible = model.rateNormActionModel != nil
         let isGoodDayActionVisible = model.rateGoodActionModel != nil
         rateBadActionView.isHidden = !isBadDayActionVisible
         rateNormActionView.isHidden = !isNormDayActionVisible
         rateGoodActionView.isHidden = !isGoodDayActionVisible
-        
+
         UIView.animate(withDuration: Appearance.animationDuration) {
             self.rateBadActionView.alpha = isBadDayActionVisible ? 1 : 0
             self.rateNormActionView.alpha = isNormDayActionVisible ? 1 : 0

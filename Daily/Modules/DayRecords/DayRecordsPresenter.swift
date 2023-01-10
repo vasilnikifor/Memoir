@@ -19,7 +19,7 @@ final class DayRecordsPresenter {
     private let analyticsService: AnalyticsServiceProtocol
     private let date: Date
     private var day: Day?
-    
+
     init(
         view: DayRecordsViewControllerProtocol,
         coordinator: DayRecordsCoordinatorProtocol,
@@ -35,15 +35,15 @@ final class DayRecordsPresenter {
         date = inputModel.date
         day = inputModel.day
     }
-    
+
     private func openNote(_ noteRecord: NoteRecord?) {
         coordinator?.showDayNote(date: date, note: noteRecord, delegate: self)
     }
-    
+
     private func updateDataSource() {
         day = dayService.getDay(date: date)
-        
-        let dataSource:  [DayRecordsDataSource]
+
+        let dataSource: [DayRecordsDataSource]
         if let records = day?.records {
             dataSource = records
                 .sorted { record1, record2 in
@@ -69,7 +69,7 @@ final class DayRecordsPresenter {
         } else {
             dataSource = []
         }
-        
+
         view?.update(rate: day?.rate, dataSource: dataSource)
     }
 }
@@ -80,18 +80,17 @@ extension DayRecordsPresenter: DayRecordsPresenterProtocol {
         updateDataSource()
         analyticsService.sendEvent("day_page_loaded")
     }
-    
+
     func rateDayTapped() {
         coordinator?.showDayRate(date: date, rate: day?.rate, delegate: self)
         analyticsService.sendEvent("day_page_rate_day_tapped")
     }
-    
+
     func addNoteTapped() {
         openNote(nil)
         analyticsService.sendEvent("day_page_rate_add_note_tapped")
     }
 }
-
 
 extension DayRecordsPresenter: CalendarDelegate {
     func update() {

@@ -4,8 +4,8 @@ struct CalendarDayViewModel {
     let date: Date
     let isToday: Bool
     let state: State
-    let action: (() -> ())?
-    
+    let action: (() -> Void)?
+
     enum State {
         case inactive
         case empty
@@ -14,10 +14,10 @@ struct CalendarDayViewModel {
 }
 
 final class CalendarDayViewCell: UICollectionViewCell {
-    private var acton: (() -> ())?
+    private var acton: (() -> Void)?
     private var buttonHeightConstraint: NSLayoutConstraint?
     private var buttonWidthConstraint: NSLayoutConstraint?
-    
+
     private lazy var button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
@@ -25,13 +25,13 @@ final class CalendarDayViewCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
         return button
     }()
-    
+
     private let isTodayView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = .xxs
         return view
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -41,7 +41,7 @@ final class CalendarDayViewCell: UICollectionViewCell {
         super.init(coder: coder)
         setup()
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         let squareEdgeSize = min(frame.height, frame.width)
@@ -54,21 +54,21 @@ final class CalendarDayViewCell: UICollectionViewCell {
     private func setup() {
         contentView.addSubview(button)
         contentView.addSubview(isTodayView)
-        
+
         button
             .centerXToSuperview()
             .centerYToSuperview()
-        
+
         buttonHeightConstraint = button.height(height: .zero)
         buttonWidthConstraint = button.width(width: .zero)
-        
+
         isTodayView
             .height(.xs)
             .width(.xs)
             .centerX(to: button)
             .bottom(to: button, anchor: button.bottomAnchor, offset: -.xs)
     }
-    
+
     @objc
     private func buttonTouchUpInside() {
         acton?()

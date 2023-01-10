@@ -18,7 +18,7 @@ final class DayRatePresenter {
     private let analyticsService: AnalyticsServiceProtocol
     private var date: Date
     private var selectedRate: DayRate?
-    
+
     init(
         view: DayRateViewControllerProtocol,
         coordinator: DayRateCoordinatorProtocol,
@@ -34,7 +34,7 @@ final class DayRatePresenter {
         date = inputModel.date
         selectedRate = inputModel.selectedRate
     }
-    
+
     private func update(selectedRate: DayRate?) {
         dayService.rateDay(of: date, rate: selectedRate)
         calendarDelegate?.update()
@@ -45,7 +45,7 @@ final class DayRatePresenter {
 extension DayRatePresenter: DayRatePresenterProtocol {
     func viewLoaded() {
         view?.setupInitialState(dateText: date.dateRepresentation)
-        
+
         view?.update(
             badRateViewModel: DayRateViewModel(
                 image: Theme.badRateImage,
@@ -67,11 +67,11 @@ extension DayRatePresenter: DayRatePresenterProtocol {
             )
         )
     }
-    
+
     func closeTapped() {
         coordinator?.dismiss()
     }
-    
+
     func removeTapped() {
         update(selectedRate: nil)
     }

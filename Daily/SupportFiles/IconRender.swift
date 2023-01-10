@@ -6,7 +6,7 @@ final class IconRender: UIViewController {
         view.backgroundColor = .clear
         return view
     }()
-    
+
     let image: UIImageView = {
         let image = UIImageView()
         //image.frame = icon.bounds
@@ -29,7 +29,6 @@ final class IconRender: UIViewController {
 //    let edge: CGFloat = 167
 //    let edge: CGFloat = 180
 //    let edge: CGFloat = 1024
-
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -72,16 +71,16 @@ final class IconRender: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addSubview(icon)
         icon.addSubview(image)
-        
+
         icon
             .centerXToSuperview()
             .centerYToSuperview()
             .height(edge/3)
             .width(edge/3)
-        
+
         image
             .centerXToSuperview()
             .centerYToSuperview()

@@ -1,18 +1,19 @@
 import UIKit
 
+// swiftlint:disable identifier_name
 extension CGFloat {
     /// 2
     static let xxs: CGFloat = 2
-    
+
     /// 4
     static let xs: CGFloat = 4
-    
+
     /// 8
     static let s: CGFloat = 8
-    
+
     /// 16
     static let m: CGFloat = 16
-    
+
     /// 24
     static let l: CGFloat = 24
 

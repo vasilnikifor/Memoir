@@ -5,13 +5,13 @@ extension ConsoleActionView {
         let title: String
         let image: UIImage
         let tintColor: UIColor
-        let action: (() -> ())?
+        let action: (() -> Void)?
     }
 }
 
 final class ConsoleActionView: UIView, ViewModelSettable {
-    private var action: (() -> ())?
-    
+    private var action: (() -> Void)?
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -26,30 +26,30 @@ final class ConsoleActionView: UIView, ViewModelSettable {
         label.numberOfLines = .zero
         return label
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-    
+
     func setup(with model: Model) {
         iconImageView.image = model.image
         iconImageView.tintColor = model.tintColor
         titleLabel.text = model.title
         action = model.action
     }
-    
+
     private func setup() {
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(viewTapped)))
-        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+
         addSubview(iconImageView)
         addSubview(titleLabel)
-        
+
         iconImageView
             .topToSuperview()
             .centerXToSuperview()
@@ -62,7 +62,7 @@ final class ConsoleActionView: UIView, ViewModelSettable {
             .trailingToSuperview()
             .bottomToSuperview()
     }
-    
+
     @objc
     private func viewTapped() {
         action?()

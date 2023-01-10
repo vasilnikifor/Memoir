@@ -1,9 +1,9 @@
 import UIKit
 
 extension Constrainable {
-    
+
     // MARK: - Top
-    
+
     @discardableResult
     func top(to item: Constrainable,
              anchor: NSLayoutYAxisAnchor? = nil,
@@ -17,7 +17,7 @@ extension Constrainable {
             .with(priority: priority)
             .set(active: isActive)
     }
-    
+
     @discardableResult
     func top(to item: Constrainable,
              anchor: NSLayoutYAxisAnchor? = nil,
@@ -27,7 +27,7 @@ extension Constrainable {
         top(to: item, anchor: anchor, offset: offset, relation: relation, priority: priority, isActive: true)
         return self
     }
-    
+
     @discardableResult
     func topToSuperview(_ offset: CGFloat = 0,
                         relation: NSLayoutConstraint.Relation = .equal,
@@ -36,9 +36,9 @@ extension Constrainable {
         let safely = getSafe(container, safeArea: safeArea)
         return top(to: safely, offset: offset, relation: relation, priority: priority)
     }
-    
+
     // MARK: - Bottom
-    
+
     @discardableResult
     func bottom(to item: Constrainable,
                 anchor: NSLayoutYAxisAnchor? = nil,
@@ -52,7 +52,7 @@ extension Constrainable {
             .with(priority: priority)
             .set(active: isActive)
     }
-    
+
     @discardableResult
     func bottom(to item: Constrainable,
                 anchor: NSLayoutYAxisAnchor? = nil,
@@ -62,7 +62,7 @@ extension Constrainable {
         bottom(to: item, anchor: anchor, offset: offset, relation: relation, priority: priority, isActive: true)
         return self
     }
-    
+
     @discardableResult
     func bottomToSuperview(_ offset: CGFloat = 0,
                            relation: NSLayoutConstraint.Relation = .equal,
@@ -71,9 +71,9 @@ extension Constrainable {
         let safely = getSafe(container, safeArea: safeArea)
         return bottom(to: safely, offset: offset, relation: relation, priority: priority)
     }
-    
+
     // MARK: - Leading
-    
+
     @discardableResult
     func leading(to item: Constrainable,
                  anchor: NSLayoutXAxisAnchor? = nil,
@@ -87,7 +87,7 @@ extension Constrainable {
             .with(priority: priority)
             .set(active: isActive)
     }
-    
+
     @discardableResult
     func leading(to item: Constrainable,
                  anchor: NSLayoutXAxisAnchor? = nil,
@@ -102,22 +102,22 @@ extension Constrainable {
                 isActive: true)
         return self
     }
-    
+
     @discardableResult
     func leadingToSuperview(_ offset: CGFloat = 0,
                             relation: NSLayoutConstraint.Relation = .equal,
                             priority: UILayoutPriority = .required,
                             safeArea: Bool = true) -> Constrainable {
-        
+
         let safely = getSafe(container, safeArea: safeArea)
         return leading(to: safely,
                        offset: offset,
                        relation: relation,
                        priority: priority)
     }
-    
+
     // MARK: - Trailing
-    
+
     @discardableResult
     func trailing(to item: Constrainable,
                   anchor: NSLayoutXAxisAnchor? = nil,
@@ -131,7 +131,7 @@ extension Constrainable {
             .with(priority: priority)
             .set(active: isActive)
     }
-    
+
     @discardableResult
     func trailing(to item: Constrainable,
                   anchor: NSLayoutXAxisAnchor? = nil,
@@ -141,7 +141,7 @@ extension Constrainable {
         trailing(to: item, anchor: anchor, offset: offset, relation: relation, priority: priority, isActive: true)
         return self
     }
-    
+
     @discardableResult
     func trailingToSuperview(_ offset: CGFloat = 0,
                              relation: NSLayoutConstraint.Relation = .equal,

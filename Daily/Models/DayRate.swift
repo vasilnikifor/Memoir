@@ -20,7 +20,7 @@ extension Optional where Wrapped == DayRate {
             return Theme.goodRateImage
         }
     }
-    
+
     var tintColor: UIColor? {
         switch self {
         case .none:
