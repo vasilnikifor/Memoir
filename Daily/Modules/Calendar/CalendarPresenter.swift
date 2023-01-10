@@ -21,7 +21,7 @@ final class CalendarPresenter {
     private let analyticsService: AnalyticsServiceProtocol
     private let dayService: DayServiceProtocol
     private let factory: CalendarFactoryProtocol
-    
+
     init(
         view: CalendarViewControllerProtocol,
         coordinator: CalendarCoordinatorProtocol,
@@ -68,11 +68,11 @@ extension CalendarPresenter: CalendarViewDelegate {
     func getMonthsWeekDays() -> [CalendarWeekdayViewModel] {
         return factory.makeWeekdays()
     }
-    
+
     func getMonthsDays(month: Date) -> [CalendarDayViewModel] {
         return factory.makeCalendar(month: month, delegate: self)
     }
-    
+
     func monthSelected(month: Date) {
         coordinator?.showMonthRecords(month: month, delegate: self)
     }

@@ -22,7 +22,7 @@ extension Theme {
     static var secondaryTextColor: UIColor {
         return .placeholderText
     }
-    
+
     static var backgroundColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
@@ -30,7 +30,7 @@ extension Theme {
                 : white
         }
     }
-    
+
     static var bottomLayerBackgroundColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
@@ -38,7 +38,7 @@ extension Theme {
                 : UIColor.systemGray6
         }
     }
-    
+
     static var topLayerBackgroundColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
@@ -46,7 +46,7 @@ extension Theme {
                 : white
         }
     }
-    
+
     static var badRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
@@ -54,7 +54,7 @@ extension Theme {
                 : lightRed
         }
     }
-    
+
     static var averageRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
@@ -62,7 +62,7 @@ extension Theme {
                 : lightBlue
         }
     }
-    
+
     static var goodRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
@@ -70,7 +70,7 @@ extension Theme {
                 : lightGreen
         }
     }
-    
+
     static var noRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
@@ -85,35 +85,35 @@ extension Theme {
     static var badRateImage: UIImage {
         return UIImage(systemName: "star.slash") ?? UIImage()
     }
-    
+
     static var averageRateImage: UIImage {
         return UIImage(systemName: "star.leadinghalf.fill") ?? UIImage()
     }
-    
+
     static var goodRateImage: UIImage {
         return UIImage(systemName: "star.fill") ?? UIImage()
     }
-    
+
     static var noRateImage: UIImage {
         return UIImage(systemName: "star") ?? UIImage()
     }
-    
+
     static var closeImage: UIImage {
         return UIImage(systemName: "xmark") ?? UIImage()
     }
-    
+
     static var removeImage: UIImage {
         return UIImage(systemName: "trash") ?? UIImage()
     }
-    
+
     static var doneImage: UIImage {
         return UIImage(systemName: "checkmark") ?? UIImage()
     }
-    
+
     static var rateDayImage: UIImage {
         return UIImage(systemName: "star") ?? UIImage()
     }
-    
+
     static var addNoteImage: UIImage {
         return UIImage(systemName: "pencil") ?? UIImage()
     }

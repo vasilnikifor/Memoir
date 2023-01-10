@@ -46,7 +46,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                         return nil
                     }
                 }
-            
+
             dataSource.append(
                 .header(
                     viewModel: DayHeaderViewModel(
@@ -56,7 +56,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                     )
                 )
             )
-            
+
             records
                 .sorted { record1, record2 in
                     guard let record1Time = record1.time, let record2Time = record2.time else { return false }
@@ -86,7 +86,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                 )
             )
         }
-        
+
         return dataSource
     }
 }

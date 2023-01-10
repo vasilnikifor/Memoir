@@ -50,7 +50,7 @@ final class MonthRecordsViewController: UIViewController {
         navigationItem.titleView = navigationTitleView
         navigationItem.searchController = searchViewController
         navigationItem.rightBarButtonItem = searchBarButtonItem
-        
+
         tableView
             .topToSuperview()
             .leadingToSuperview()
@@ -65,8 +65,6 @@ final class MonthRecordsViewController: UIViewController {
         }
     }
 }
-
-
 
 extension MonthRecordsViewController: MonthRecordsViewControllerProtocol {
     func update(navigationTitleModel: NavigationTitleView.ViewModel, dataSource: [MonthRecordsDataSource]) {
@@ -97,7 +95,7 @@ extension MonthRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataSource.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
         case .header(let viewModel):

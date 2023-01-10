@@ -17,7 +17,7 @@ protocol CalendarFactoryProtocol: AnyObject {
 final class CalendarFactory: CalendarFactoryProtocol {
     private let dayService: DayServiceProtocol
     private let cms: CmsProtocol
-    
+
     init(
         dayService: DayServiceProtocol,
         cms: CmsProtocol
@@ -25,13 +25,13 @@ final class CalendarFactory: CalendarFactoryProtocol {
         self.dayService = dayService
         self.cms = cms
     }
-    
+
     func makeWeekdays() -> [CalendarWeekdayViewModel] {
         return Date.shortWeekdaySymbols.map {
             CalendarWeekdayViewModel(text: $0)
         }
     }
-    
+
     func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel] {
         var calendarDays: [CalendarDayViewModel] = []
         var processingDate = month.firstMonthCalendarDate.startOfDay
@@ -40,7 +40,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
         let lastCalendarDate = month.lastMonthCalendarDate.startOfDay
         let todayDate = Date().startOfDay
         let days = dayService.getDays(month: month)
-        
+
         while processingDate <= lastCalendarDate {
             if processingDate < firstMonthDate || processingDate > lastMonthDate {
                 calendarDays.append(
@@ -58,7 +58,9 @@ final class CalendarFactory: CalendarFactoryProtocol {
                         date: processingDate,
                         isToday: processingDate == todayDate,
                         state: (day?.isEmpty ?? true) ? .empty : .filled(dayRate: day?.rate),
-                        action: { [processingDate, weak day, weak delegate] in delegate?.dateSelected(processingDate, day: day) }
+                        action: { [processingDate, weak day, weak delegate] in
+                            delegate?.dateSelected(processingDate, day: day)
+                        }
                     )
                 )
             }
@@ -96,14 +98,14 @@ final class CalendarFactory: CalendarFactoryProtocol {
             )
         )
     }
-    
+
     func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Model {
         let todayDate = Date().startOfDay
         let todayDay = dayService.getDay(date: todayDate)
         var rateBadActionModel: ConsoleActionView.Model?
         var rateNormActionModel: ConsoleActionView.Model?
         var rateGoodActionModel: ConsoleActionView.Model?
-        
+
         switch todayDay?.rate {
         case .bad:
             rateBadActionModel = .init(
@@ -146,7 +148,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .good) }
             )
         }
-        
+
         let addNoteActionModel: ConsoleActionView.Model = .init(
             title: cms.common.note,
             image: Theme.addNoteImage,
@@ -163,4 +165,3 @@ final class CalendarFactory: CalendarFactoryProtocol {
         )
     }
 }
-

@@ -51,12 +51,12 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-    
+
     func setup(with model: Model) {
         titleLabel.text = model.title
         rateBadActionView.setup(with: model.rateBadActionModel)
