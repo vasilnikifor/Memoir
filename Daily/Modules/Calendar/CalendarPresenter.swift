@@ -45,8 +45,9 @@ final class CalendarPresenter {
 extension CalendarPresenter: CalendarPresenterProtocol {
     func viewLoaded() {
         var backgroundImage: UIImage?
-        if Date().isNewYearTime {
-            backgroundImage = UIImage(named: "christmas1")
+        let todayDate = Date()
+        if todayDate.isNewYearTime {
+            backgroundImage = UIImage(named: "christmas")
         }
 
         view?.setupInitialState(
@@ -107,10 +108,57 @@ extension CalendarPresenter: CalendarDelegate {
 
 extension Date {
     var isNewYearTime: Bool {
+        return isDateInRange(minDate: 17, minMonth: 12, maxDate: 31, maxMonth: 12)
+            || isDateInRange(minDate: 1, minMonth: 1, maxDate: 7, maxMonth: 1)
+    }
+
+    var isSpringDay: Bool {
+        isDateInRange(
+            minDate: 1, minMonth: 3,
+            maxDate: 1, maxMonth: 3
+        )
+    }
+
+    var isCosmonauticsDay: Bool {
+        isDateInRange(
+            minDate: 12, minMonth: 4,
+            maxDate: 12, maxMonth: 4
+        )
+    }
+
+    var isSummerDay: Bool {
+        isDateInRange(
+            minDate: 1, minMonth: 6,
+            maxDate: 1, maxMonth: 6
+        )
+    }
+
+    var isAutumnDay: Bool {
+        isDateInRange(
+            minDate: 1, minMonth: 9,
+            maxDate: 1, maxMonth: 9
+        )
+    }
+
+    var isHalloweenTime: Bool {
+        isDateInRange(
+            minDate: 25, minMonth: 10,
+            maxDate: 31, maxMonth: 10
+        )
+    }
+
+    var isWinterDay: Bool {
+        isDateInRange(
+            minDate: 1, minMonth: 12,
+            maxDate: 1, maxMonth: 12
+        )
+    }
+
+    private func isDateInRange(minDate: Int, minMonth: Int, maxDate: Int, maxMonth: Int) -> Bool {
         let currentDate = Date()
         let currentDateYear = currentDate.year
-        let minDate = Date(year: currentDateYear, month: 12, day: 11)
-        let maxDate = Date(year: currentDateYear+1, month: 1, day: 7)
+        let minDate = Date(year: currentDateYear, month: minMonth, day: minDate).startOfDay
+        let maxDate = Date(year: currentDateYear, month: maxMonth, day: maxDate).endOfDay
         return currentDate >= minDate && currentDate <= maxDate
     }
 }
