@@ -37,7 +37,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
             let records: [Record] = (day.records ?? [])
                 .compactMap { record in
                     guard let record = record as? Record else { return nil }
-                    guard let searchText = searchText, !searchText.isEmpty else { return record }
+                    guard let searchText = searchText?.trimmingCharacters(in: .whitespaces), !searchText.isEmpty else { return record }
                     guard let noteRecord = record as? NoteRecord else { return nil }
 
                     if noteRecord.text?.range(of: searchText, options: .caseInsensitive) != nil {
@@ -46,6 +46,8 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                         return nil
                     }
                 }
+
+            if records.isEmpty { return }
 
             dataSource.append(
                 .header(
