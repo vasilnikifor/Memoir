@@ -52,7 +52,7 @@ extension DayNotePresenter: DayNotePresenterProtocol {
         view?.setupInitialState(
             dateText: date.dateRepresentation,
             noteText: note?.text,
-            placeholder: cms.note.question
+            placeholder: cms.note.placeholder
         )
         analyticsService.sendEvent("note_page_loaded")
     }
