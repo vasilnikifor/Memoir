@@ -115,7 +115,6 @@ extension Date {
     }
 
     var isSpringDay: Bool {
-        return true
         isDateInRange(
             minDate: 1, minMonth: 3,
             maxDate: 7, maxMonth: 3
