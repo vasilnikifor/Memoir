@@ -48,6 +48,8 @@ extension CalendarPresenter: CalendarPresenterProtocol {
         let todayDate = Date()
         if todayDate.isNewYearTime {
             backgroundImage = UIImage(named: "christmas")
+        } else if todayDate.isSpringDay {
+            backgroundImage = UIImage(named: "spring")
         }
 
         view?.setupInitialState(
@@ -115,7 +117,7 @@ extension Date {
     var isSpringDay: Bool {
         isDateInRange(
             minDate: 1, minMonth: 3,
-            maxDate: 1, maxMonth: 3
+            maxDate: 7, maxMonth: 3
         )
     }
 
