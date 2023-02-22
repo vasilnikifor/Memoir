@@ -31,6 +31,22 @@ extension Theme {
         }
     }
 
+    static var primaryTintColor: UIColor {
+        return UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? white
+                : black
+        }
+    }
+
+    static var primaryReversedTintColor: UIColor {
+        return UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? black
+                : white
+        }
+    }
+
     static var bottomLayerBackgroundColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark

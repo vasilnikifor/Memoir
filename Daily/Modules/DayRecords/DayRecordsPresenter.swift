@@ -15,20 +15,24 @@ final class DayRecordsPresenter {
     private weak var view: DayRecordsViewControllerProtocol?
     private weak var coordinator: DayRecordsCoordinatorProtocol?
     private weak var delegate: CalendarDelegate?
+    private let cms: CmsProtocol
     private let dayService: DayServiceProtocol
     private let analyticsService: AnalyticsServiceProtocol
     private let date: Date
     private var day: Day?
+    private let emptyStateIllustration = UIImage(named: "illustration\(Int.random(in: 1...9))")
 
     init(
         view: DayRecordsViewControllerProtocol,
         coordinator: DayRecordsCoordinatorProtocol,
+        cms: CmsProtocol,
         dayService: DayServiceProtocol,
         analyticsService: AnalyticsServiceProtocol,
         inputModel: DayRecordsInputModel
     ) {
         self.view = view
         self.coordinator = coordinator
+        self.cms = cms
         self.dayService = dayService
         self.analyticsService = analyticsService
         delegate = inputModel.delegate
@@ -44,7 +48,9 @@ final class DayRecordsPresenter {
         day = dayService.getDay(date: date)
 
         let dataSource: [DayRecordsDataSource]
-        if let records = day?.records {
+        let emptyStateModel:  EmptyStateView.Model?
+        if let records = day?.records, records.count > 0 {
+            emptyStateModel = nil
             dataSource = records
                 .sorted { record1, record2 in
                     guard let record1 = record1 as? Record,
@@ -68,9 +74,24 @@ final class DayRecordsPresenter {
                 }
         } else {
             dataSource = []
+            emptyStateModel = .init(
+                illustrationImage: emptyStateIllustration,
+                title: cms.note.emptyStateTitle,
+                subtitle: cms.note.emptyStateSubtitle,
+                buttonIcon: Theme.addNoteImage,
+                buttonTitle: cms.note.addNote,
+                buttonAction: { [weak self] in
+                    self?.openNote(nil)
+                    self?.analyticsService.sendEvent("day_page_rate_add_note_empty_state_tapped")
+                }
+            )
         }
 
-        view?.update(rate: day?.rate, dataSource: dataSource)
+        view?.update(
+            rate: day?.rate,
+            dataSource: dataSource,
+            emptyStateModel: emptyStateModel
+        )
     }
 }
 
