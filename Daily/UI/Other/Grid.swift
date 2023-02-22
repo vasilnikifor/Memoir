@@ -22,4 +22,10 @@ extension CGFloat {
 
     /// 48
     static let xxl: CGFloat = 48
+
+    /// 56
+    static let buttonHeight: CGFloat = 56
+
+    /// 96
+    static let illustrationHeight: CGFloat = 160
 }

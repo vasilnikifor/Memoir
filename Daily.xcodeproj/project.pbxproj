@@ -23,6 +23,8 @@
 		912092352688AD6800F966BE /* DayRecordsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092342688AD6800F966BE /* DayRecordsPresenter.swift */; };
 		912092372688AFD900F966BE /* DayRecordsInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092362688AFD900F966BE /* DayRecordsInputModel.swift */; };
 		912092392688B0A900F966BE /* DayRateInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912092382688B0A900F966BE /* DayRateInputModel.swift */; };
+		9127491F29A523E800936E4F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127491E29A523E800936E4F /* EmptyStateView.swift */; };
+		9127498C29A64F1400936E4F /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127498B29A64F1400936E4F /* ButtonStyle.swift */; };
 		91295AB72951FC1400A2A9BF /* MonthRecordsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91295AB62951FC1400A2A9BF /* MonthRecordsFactory.swift */; };
 		91295AB92952003A00A2A9BF /* MonthRecordsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91295AB82952003A00A2A9BF /* MonthRecordsMode.swift */; };
 		912A277D2901A0BF00DC134E /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912A277C2901A0BF00DC134E /* NavigationTitleView.swift */; };
@@ -112,6 +114,8 @@
 		912092342688AD6800F966BE /* DayRecordsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsPresenter.swift; sourceTree = "<group>"; };
 		912092362688AFD900F966BE /* DayRecordsInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsInputModel.swift; sourceTree = "<group>"; };
 		912092382688B0A900F966BE /* DayRateInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRateInputModel.swift; sourceTree = "<group>"; };
+		9127491E29A523E800936E4F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		9127498B29A64F1400936E4F /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		91295AB62951FC1400A2A9BF /* MonthRecordsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsFactory.swift; sourceTree = "<group>"; };
 		91295AB82952003A00A2A9BF /* MonthRecordsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsMode.swift; sourceTree = "<group>"; };
 		912A277C2901A0BF00DC134E /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				9157AB8E266AA91C003C4B66 /* LabelStyle.swift */,
 				84FF3F2922FEC4C100CEF093 /* Theme.swift */,
 				912BCE6C283E7B54005E1A6C /* Grid.swift */,
+				9127498B29A64F1400936E4F /* ButtonStyle.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				916673A2289C218D009ED818 /* TodayConsoleView.swift */,
 				91D2B1D9289D66B8001E7856 /* YesterdayConsoleView.swift */,
 				912A277C2901A0BF00DC134E /* NavigationTitleView.swift */,
+				9127491E29A523E800936E4F /* EmptyStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -638,10 +644,12 @@
 				91F0A2002691998A00BD5E28 /* DayService.swift in Sources */,
 				9182AAA92673EE22006E68BE /* CalendarDayViewCell.swift in Sources */,
 				91F0A2022691B91500BD5E28 /* DayNoteInputModel.swift in Sources */,
+				9127491F29A523E800936E4F /* EmptyStateView.swift in Sources */,
 				916BC55329269FE300E77E02 /* CmsCalendar.swift in Sources */,
 				84FF3F2A22FEC4C200CEF093 /* Theme.swift in Sources */,
 				9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */,
 				915D4E67277DB59B00D8F178 /* DayActionsView.swift in Sources */,
+				9127498C29A64F1400936E4F /* ButtonStyle.swift in Sources */,
 				912BCE6B283E7AFE005E1A6C /* CalendarHatView.swift in Sources */,
 				84F8916D22290E8D00956265 /* AppDelegate.swift in Sources */,
 				91D2B1D8289D6559001E7856 /* ConsoleActionView.swift in Sources */,
@@ -794,7 +802,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
 				INFOPLIST_FILE = Daily/SupportFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -818,7 +826,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3F9XHJ5DR4;
 				INFOPLIST_FILE = Daily/SupportFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

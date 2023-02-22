@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "undraw_maker_launch.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "undraw_relaunch_day.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "undraw_connection.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "undraw_moonlight.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

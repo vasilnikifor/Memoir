@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "undraw_christmas.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "undraw_stars.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

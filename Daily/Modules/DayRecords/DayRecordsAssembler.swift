@@ -6,11 +6,13 @@ final class DayRecordsAssembler {
         coordinator: DayRecordsCoordinatorProtocol
     ) -> DayRecordsViewController {
         let viewController = DayRecordsViewController()
+        let cms = Cms()
         let dayService = DayService()
         let analyticsService = AnalyticsService()
         let presenter = DayRecordsPresenter(
             view: viewController,
             coordinator: coordinator,
+            cms: cms,
             dayService: dayService,
             analyticsService: analyticsService,
             inputModel: inputModel
