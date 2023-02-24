@@ -48,6 +48,11 @@ final class DayNoteViewController: UIViewController {
         setup()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter?.viewGoesBackground(text: textView.text)
+    }
+
     func setup() {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
