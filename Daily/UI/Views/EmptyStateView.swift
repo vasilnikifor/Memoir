@@ -93,13 +93,13 @@ final class EmptyStateView: UIView {
 
         titleLabel
             .top(to: illustrationImageView, anchor: illustrationImageView.bottomAnchor, offset: .m)
-            .leadingToSuperview(.m)
-            .trailingToSuperview(-.m)
+            .leadingToSuperview(.xl)
+            .trailingToSuperview(-.xl)
 
         subtitleLabel
             .top(to: titleLabel, anchor: titleLabel.bottomAnchor, offset: .s)
-            .leadingToSuperview(.m)
-            .trailingToSuperview(-.m)
+            .leadingToSuperview(.xl)
+            .trailingToSuperview(-.xl)
             .bottomToSuperview()
     }
 }
