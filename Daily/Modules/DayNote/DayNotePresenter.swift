@@ -21,7 +21,7 @@ final class DayNotePresenter {
     private let date: Date
     private var note: NoteRecord?
     private weak var delegate: CalendarDelegate?
-    
+
     init(
         view: DayNoteViewControllerProtocol,
         coordinator: DayNoteCoordinatorProtocol,
@@ -52,7 +52,7 @@ extension DayNotePresenter: DayNotePresenterProtocol {
         view?.setupInitialState(
             dateText: date.dateRepresentation,
             noteText: note?.text,
-            placeholder: cms.note.question
+            placeholder: cms.note.placeholder
         )
         analyticsService.sendEvent("note_page_loaded")
     }
@@ -64,14 +64,14 @@ extension DayNotePresenter: DayNotePresenterProtocol {
     func closeTapped() {
         coordinator?.dismiss()
     }
-    
+
     func removeTapped() {
         coordinator?.dismiss()
         if let note = note { dayService.removeNote(note) }
         delegate?.update()
         analyticsService.sendEvent("note_page_removed")
     }
-    
+
     func textDidEndEditing(text: String) {
         updateNote(text: text)
     }

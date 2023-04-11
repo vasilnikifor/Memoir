@@ -18,7 +18,7 @@ final class DayRatePresenter {
     private let analyticsService: AnalyticsServiceProtocol
     private var date: Date
     private var selectedRate: DayRate?
-    
+
     init(
         view: DayRateViewControllerProtocol,
         coordinator: DayRateCoordinatorProtocol,
@@ -34,7 +34,7 @@ final class DayRatePresenter {
         date = inputModel.date
         selectedRate = inputModel.selectedRate
     }
-    
+
     private func update(selectedRate: DayRate?) {
         dayService.rateDay(of: date, rate: selectedRate)
         calendarDelegate?.update()
@@ -45,33 +45,33 @@ final class DayRatePresenter {
 extension DayRatePresenter: DayRatePresenterProtocol {
     func viewLoaded() {
         view?.setupInitialState(dateText: date.dateRepresentation)
-        
+
         view?.update(
             badRateViewModel: DayRateViewModel(
-                image: Theme.badRateImage,
+                image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 isSelected: selectedRate == .bad,
                 action: { [weak self] in self?.update(selectedRate: .bad) }
             ),
             averageRateViewModel: DayRateViewModel(
-                image: Theme.averageRateImage,
+                image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 isSelected: selectedRate == .average,
                 action: { [weak self] in self?.update(selectedRate: .average) }
             ),
             goodRateViewModel: DayRateViewModel(
-                image: Theme.goodRateImage,
+                image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
                 isSelected: selectedRate == .good,
                 action: { [weak self] in self?.update(selectedRate: .good) }
             )
         )
     }
-    
+
     func closeTapped() {
         coordinator?.dismiss()
     }
-    
+
     func removeTapped() {
         update(selectedRate: nil)
     }

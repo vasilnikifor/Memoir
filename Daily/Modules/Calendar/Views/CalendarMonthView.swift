@@ -14,9 +14,9 @@ final class CalendarMonthView: UIView {
     private var weekdaysDataSource: [CalendarWeekdayViewModel] = []
     private var daysDataSource: [CalendarDayViewModel] = []
     private var month: Date = Date()
-    private var delegate: CalendarViewDelegate?
+    private weak var delegate: CalendarViewDelegate?
     private var weekdaysTopConstraint: NSLayoutConstraint?
-    
+
     private lazy var weekdaysCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
@@ -38,7 +38,7 @@ final class CalendarMonthView: UIView {
         collectionView.delegate = self
         return collectionView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -51,7 +51,7 @@ final class CalendarMonthView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         let daysCount = daysDataSource.count
         let isFourWeeksMonth = daysCount == 28
         let isFiveWeeksMonth = daysCount == 35
@@ -63,13 +63,13 @@ final class CalendarMonthView: UIView {
             weekdaysTopConstraint?.constant = .zero
         }
     }
-    
+
     private func setup() {
         addSubview(weekdaysCollectionView)
         addSubview(calendarCollectionView)
-        
+
         weekdaysTopConstraint = weekdaysCollectionView.top(to: self, anchor: self.topAnchor)
-        
+
         weekdaysCollectionView
             .trailingToSuperview()
             .leadingToSuperview()
@@ -83,25 +83,25 @@ final class CalendarMonthView: UIView {
 
         update()
     }
-    
+
     private func update(completion: (() -> Void)? = nil) {
         weekdaysDataSource = delegate?.getMonthsWeekDays() ?? []
         daysDataSource = delegate?.getMonthsDays(month: month) ?? []
-        
+
         let dispatchGroup = DispatchGroup()
-        
+
         dispatchGroup.enter()
         weekdaysCollectionView.reloadData()
         weekdaysCollectionView.performBatchUpdates {
             dispatchGroup.leave()
         }
-        
+
         dispatchGroup.enter()
         calendarCollectionView.reloadData()
         calendarCollectionView.performBatchUpdates {
             dispatchGroup.leave()
         }
-        
+
         dispatchGroup.notify(queue: .main) {
             completion?()
         }
@@ -109,7 +109,10 @@ final class CalendarMonthView: UIView {
 }
 
 extension CalendarMonthView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         switch collectionView {
         case weekdaysCollectionView:
             return weekdaysDataSource.count
@@ -120,7 +123,10 @@ extension CalendarMonthView: UICollectionViewDataSource {
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         switch collectionView {
         case weekdaysCollectionView:
             let cell = collectionView.dequeueReusableCell(CalendarWeekdayViewCell.self, for: indexPath)
@@ -137,17 +143,29 @@ extension CalendarMonthView: UICollectionViewDataSource {
 }
 
 extension CalendarMonthView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         var cellEdgeSize = collectionView.frame.width / columnsCount
         cellEdgeSize.round(.down)
         return CGSize(width: cellEdgeSize, height: cellEdgeSize)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return .zero
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return .zero
     }
 }
@@ -156,7 +174,7 @@ extension CalendarMonthView: ViewModelSettable {
     func setup(with viewModel: CalendarMonthViewModel) {
         setup(with: viewModel, completion: nil)
     }
-    
+
     func setup(with viewModel: CalendarMonthViewModel, completion: (() -> Void)? = nil) {
         month = viewModel.month
         delegate = viewModel.delegate

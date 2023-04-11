@@ -17,13 +17,13 @@ final class DayService: DayServiceProtocol {
     func getDays(year: Date) -> [Day] {
         return getDays(start: year.firstDayOfYear, end: year.lastDayOfYear)
     }
-    
+
     func rateDay(of date: Date, rate: DayRate?) {
         let day = findOrCreateDay(of: date)
         day.rate = rate
         saveDay(day)
     }
-    
+
     func getDay(date: Date) -> Day? {
         let request: NSFetchRequest<Day> = Day.fetchRequest()
         request.predicate = NSPredicate(format: "date = %@", date.startOfDay as CVarArg)
@@ -33,7 +33,7 @@ final class DayService: DayServiceProtocol {
             return nil
         }
     }
-    
+
     func saveNote(date: Date, note: NoteRecord?, text: String) -> NoteRecord? {
         let text = text.trimmingCharacters(in: .whitespacesAndNewlines)
         if let note = note, text.isEmpty {
@@ -55,7 +55,7 @@ final class DayService: DayServiceProtocol {
             return nil
         }
     }
-    
+
     func removeNote(_ note: NoteRecord) {
         DAOService.context.delete(note)
         if let day = note.day {
@@ -95,8 +95,12 @@ final class DayService: DayServiceProtocol {
         let request: NSFetchRequest<Day> = Day.fetchRequest()
         let startOfTheMonthPredicate = NSPredicate(format: "date >= %@", start as CVarArg)
         let endOfTheMonthPredicate = NSPredicate(format: "date <= %@", end as CVarArg)
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [startOfTheMonthPredicate, endOfTheMonthPredicate])
+
+        request.predicate = NSCompoundPredicate(
+            andPredicateWithSubpredicates: [startOfTheMonthPredicate, endOfTheMonthPredicate]
+        )
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+
         do {
             return try DAOService.viewContext.fetch(request)
         } catch {

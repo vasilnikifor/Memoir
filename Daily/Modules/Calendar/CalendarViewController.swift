@@ -46,7 +46,7 @@ final class CalendarViewController: UIViewController {
     let yesterdayConsole: YesterdayConsoleView = {
         YesterdayConsoleView()
     }()
-    
+
     let todayConsole: TodayConsoleView = {
         TodayConsoleView()
     }()
@@ -56,13 +56,13 @@ final class CalendarViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewLoaded()
         setup()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -72,19 +72,19 @@ final class CalendarViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+
     func setup() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = Theme.bottomLayerBackgroundColor
         view.addSubview(backgroundImageView)
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
-        
+
         backgroundImageView
             .topToSuperview(safeArea: false)
             .leadingToSuperview()
             .trailingToSuperview()
             .bottomToSuperview(safeArea: false)
-        
+
         scrollView
             .topToSuperview()
             .leadingToSuperview(.m)
@@ -121,9 +121,11 @@ extension CalendarViewController: CalendarViewControllerProtocol {
             if let yesterdayConsoleModel = yesterdayConsoleModel {
                 self.yesterdayConsole.setup(with: yesterdayConsoleModel)
             }
-            UIView.animate(withDuration: Appearance.animationDuration, delay: .zero, animations: { self.view.layoutIfNeeded() })
+            UIView.animate(
+                withDuration: Appearance.animationDuration,
+                delay: .zero,
+                animations: { self.view.layoutIfNeeded() }
+            )
         }
     }
 }
-
-

@@ -4,6 +4,7 @@ import UIKit
 extension YesterdayConsoleView {
     struct Model {
         let title: String
+        let isBlurred: Bool
         let rateBadActionModel: ConsoleActionView.Model
         let rateNormActionModel: ConsoleActionView.Model
         let rateGoodActionModel: ConsoleActionView.Model
@@ -13,6 +14,15 @@ extension YesterdayConsoleView {
 final class YesterdayConsoleView: UIView, ViewModelSettable {
     private let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        view.isVisible = false
+        view.layer.cornerRadius = .m
+        view.clipsToBounds = true
+        return view
+    }()
+
+    private let cardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Theme.foregroundColor
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         return view
@@ -51,14 +61,16 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-    
+
     func setup(with model: Model) {
         titleLabel.text = model.title
+        blurView.isVisible = model.isBlurred
+        cardView.isVisible = !model.isBlurred
         rateBadActionView.setup(with: model.rateBadActionModel)
         rateNormActionView.setup(with: model.rateNormActionModel)
         rateGoodActionView.setup(with: model.rateGoodActionModel)
@@ -66,10 +78,17 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
 
     private func setup() {
         addSubview(blurView)
+        addSubview(cardView)
         addSubview(titleLabel)
         addSubview(actionsStackView)
 
         blurView
+            .topToSuperview()
+            .bottomToSuperview()
+            .leadingToSuperview()
+            .trailingToSuperview()
+
+        cardView
             .topToSuperview()
             .bottomToSuperview()
             .leadingToSuperview()

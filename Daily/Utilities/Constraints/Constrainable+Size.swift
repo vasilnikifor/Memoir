@@ -27,7 +27,7 @@ extension Constrainable {
         self.width(width: width, relation: relation, priority: priority)
         return self
     }
-    
+
     @discardableResult
     func width(
         to item: Constrainable,
@@ -40,11 +40,16 @@ extension Constrainable {
     ) -> NSLayoutConstraint {
         return prepare()
             .widthAnchor
-            .constraint(relation: relation, dimension: dimension ?? item.widthAnchor, multiplier: multiplier, constant: offset)
+            .constraint(
+                relation: relation,
+                dimension: dimension ?? item.widthAnchor,
+                multiplier: multiplier,
+                constant: offset
+            )
             .with(priority: priority)
             .set(active: isActive)
     }
-    
+
     @discardableResult
     func width(
         to item: Constrainable,
@@ -63,7 +68,7 @@ extension Constrainable {
               isActive: true)
         return self
     }
-    
+
     @discardableResult
     func widthToHeight(
         of item: Constrainable,
@@ -105,7 +110,7 @@ extension Constrainable {
         self.height(height: height, relation: relation, priority: priority)
         return self
     }
-    
+
     @discardableResult
     func height(
         to item: Constrainable,
@@ -118,11 +123,16 @@ extension Constrainable {
     ) -> NSLayoutConstraint {
         return prepare()
             .heightAnchor
-            .constraint(relation: relation, dimension: dimension ?? item.heightAnchor, multiplier: multiplier, constant: offset)
+            .constraint(
+                relation: relation,
+                dimension: dimension ?? item.heightAnchor,
+                multiplier: multiplier,
+                constant: offset
+            )
             .with(priority: priority)
             .set(active: isActive)
     }
-    
+
     @discardableResult
     func height(
         to item: Constrainable,

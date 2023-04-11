@@ -20,7 +20,7 @@ final class MonthRecordsPresenter {
     let factory: MonthRecordsFactoryProtocol
     let month: Date
     var mode: MonthRecordsMode = .month
-    var searchText: String? = nil
+    var searchText: String?
     var days: [Day] = []
 
     init(

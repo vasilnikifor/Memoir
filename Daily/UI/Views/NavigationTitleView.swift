@@ -13,7 +13,7 @@ extension NavigationTitleView {
 
 final class NavigationTitleView: UIView, ViewModelSettable {
     private var action: (() -> Void)?
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.apply(style: .headerMedium)
@@ -44,11 +44,11 @@ final class NavigationTitleView: UIView, ViewModelSettable {
         titleLabel.text = model.title
         action = model.action
     }
-    
+
     private func setup() {
         addSubview(titleLabel)
         addSubview(downImageView)
-        
+
         titleLabel
             .topToSuperview()
             .bottomToSuperview()

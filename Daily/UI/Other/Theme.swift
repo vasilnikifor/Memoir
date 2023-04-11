@@ -14,14 +14,10 @@ extension Theme {
     private static let lightGreen = UIColor(red: 0.65, green: 0.84, blue: 0.65, alpha: 1.00) // #a5d6a7
     private static let darkGray = UIColor(red: 0.26, green: 0.26, blue: 0.26, alpha: 1.00) // #424242
     private static let lightGray = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00) // #eeeeee
+    private static let surfaceLight: UIColor =  #colorLiteral(red: 0.949019134, green: 0.9490200877, blue: 0.9705254436, alpha: 1) // #F2F2F7 // FIXME:
+    private static let surfaceDark: UIColor = .black // #000000 // FIXME:
 
-    static var primaryTextColor: UIColor {
-        return .label
-    }
-
-    static var secondaryTextColor: UIColor {
-        return .placeholderText
-    }
+    // MARK: -
     
     static var backgroundColor: UIColor {
         return UIColor { (trait) -> UIColor in
@@ -30,16 +26,8 @@ extension Theme {
                 : white
         }
     }
-    
-    static var bottomLayerBackgroundColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? black
-                : UIColor.systemGray6
-        }
-    }
-    
-    static var topLayerBackgroundColor: UIColor {
+
+    static var foregroundColor: UIColor {
         return UIColor { (trait) -> UIColor in
             trait.userInterfaceStyle == .dark
                 ? UIColor.systemGray6
@@ -47,35 +35,90 @@ extension Theme {
         }
     }
     
+    static var surfaceColor: UIColor {
+        UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? surfaceDark
+                : surfaceLight
+        }
+    }
+
+    
+
+    static var primaryTextColor: UIColor {
+        UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? white
+                : black
+        }
+    }
+
+    static var reversedPrimaryTextColor: UIColor {
+        UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? black
+                : white
+        }
+    }
+
+
+    static var secondaryTextColor: UIColor {
+        return .placeholderText
+    }
+
+    static var primaryTintColor: UIColor {
+        return UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? white
+                : black
+        }
+    }
+
+    static var primaryReversedTintColor: UIColor {
+        return UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? black
+                : white
+        }
+    }
+
+    static var bottomLayerBackgroundColor: UIColor {
+        return UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? black
+                : UIColor.systemGray6
+        }
+    }
+
+    static var topLayerBackgroundColor: UIColor {
+        return UIColor { (trait) -> UIColor in
+            trait.userInterfaceStyle == .dark
+                ? UIColor.systemGray6
+                : white
+        }
+    }
+
     static var badRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? darkRed
-                : lightRed
+            return UIColor.systemRed
         }
     }
-    
+
     static var averageRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? darkBlue
-                : lightBlue
+            return UIColor.systemBlue
         }
     }
-    
+
     static var goodRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? darkGreen
-                : lightGreen
+            return UIColor.systemGreen
         }
     }
-    
+
     static var noRateColor: UIColor {
         return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? darkGray
-                : lightGray
+            return UIColor.systemGray
         }
     }
 }
@@ -117,15 +160,15 @@ extension Theme {
     static var addNoteImage: UIImage {
         UIImage(systemName: "square.and.pencil") ?? UIImage()
     }
-    
+
     static var closeImage: UIImage {
         return UIImage(systemName: "xmark") ?? UIImage()
     }
-    
+
     static var removeImage: UIImage {
         return UIImage(systemName: "trash") ?? UIImage()
     }
-    
+
     static var doneImage: UIImage {
         return UIImage(systemName: "checkmark") ?? UIImage()
     }

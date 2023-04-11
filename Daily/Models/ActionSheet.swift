@@ -3,13 +3,13 @@ import UIKit
 struct ActionSheet {
     let title: String?
     let sheetActions: [ActionSheetItem]
-    
+
     struct ActionSheetItem {
         let title: String
         let style: ActionSheetStyle
         let action: (() -> Void)?
     }
-    
+
     enum ActionSheetStyle {
         case `default`
         case cancel

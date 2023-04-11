@@ -1,7 +1,7 @@
 import FirebaseAnalytics
 
 protocol AnalyticsServiceProtocol {
-    func sendEvent(_ name: String, parameters: [String : Any]?)
+    func sendEvent(_ name: String, parameters: [String: Any]?)
 }
 
 extension AnalyticsServiceProtocol {
@@ -11,7 +11,7 @@ extension AnalyticsServiceProtocol {
 }
 
 final class AnalyticsService: AnalyticsServiceProtocol {
-    func sendEvent(_ name: String, parameters: [String : Any]?) {
+    func sendEvent(_ name: String, parameters: [String: Any]?) {
         Analytics.logEvent(name, parameters: parameters)
     }
 }

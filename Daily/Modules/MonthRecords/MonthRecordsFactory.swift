@@ -37,7 +37,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
             let records: [Record] = (day.records ?? [])
                 .compactMap { record in
                     guard let record = record as? Record else { return nil }
-                    guard let searchText = searchText, !searchText.isEmpty else { return record }
+                    guard let searchText = searchText?.trimmingCharacters(in: .whitespaces), !searchText.isEmpty else { return record }
                     guard let noteRecord = record as? NoteRecord else { return nil }
 
                     if noteRecord.text?.range(of: searchText, options: .caseInsensitive) != nil {
@@ -46,7 +46,9 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                         return nil
                     }
                 }
-            
+
+            if records.isEmpty { return }
+
             dataSource.append(
                 .header(
                     viewModel: DayHeaderViewModel(
@@ -56,7 +58,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                     )
                 )
             )
-            
+
             records
                 .sorted { record1, record2 in
                     guard let record1Time = record1.time, let record2Time = record2.time else { return false }
@@ -86,7 +88,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                 )
             )
         }
-        
+
         return dataSource
     }
 }

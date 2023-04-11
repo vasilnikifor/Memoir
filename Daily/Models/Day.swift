@@ -16,7 +16,7 @@ extension Day {
                 return nil
             }
         }
-        
+
         set {
             switch newValue {
             case .none:
@@ -30,7 +30,7 @@ extension Day {
             }
         }
     }
-    
+
     var isEmpty: Bool {
         if rate == nil, (records?.count ?? .zero) == .zero {
             return true

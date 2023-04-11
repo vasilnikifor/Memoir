@@ -21,7 +21,7 @@ final class CalendarPresenter {
     private let analyticsService: AnalyticsServiceProtocol
     private let dayService: DayServiceProtocol
     private let factory: CalendarFactoryProtocol
-    
+
     init(
         view: CalendarViewControllerProtocol,
         coordinator: CalendarCoordinatorProtocol,
@@ -48,10 +48,16 @@ extension CalendarPresenter: CalendarPresenterProtocol {
         let todayDate = Date()
         if todayDate.isNewYearTime {
             backgroundImage = UIImage(named: "christmas")
+        } else if todayDate.isSpringDay {
+            backgroundImage = UIImage(named: "spring")
         }
 
         view?.setupInitialState(
-            calendarModel: CalendarViewModel(month: Date(), delegate: self),
+            calendarModel: CalendarViewModel(
+                month: Date(),
+                isBackgroundBlurred: backgroundImage != nil,
+                delegate: self
+            ),
             backgroundImage: backgroundImage
         )
         update()
@@ -68,11 +74,11 @@ extension CalendarPresenter: CalendarViewDelegate {
     func getMonthsWeekDays() -> [CalendarWeekdayViewModel] {
         return factory.makeWeekdays()
     }
-    
+
     func getMonthsDays(month: Date) -> [CalendarDayViewModel] {
         return factory.makeCalendar(month: month, delegate: self)
     }
-    
+
     func monthSelected(month: Date) {
         coordinator?.showMonthRecords(month: month, delegate: self)
     }
@@ -107,6 +113,16 @@ extension CalendarPresenter: CalendarDelegate {
 }
 
 extension Date {
+    var isHolliday: Bool {
+        return isNewYearTime
+            || isSpringDay
+            || isCosmonauticsDay
+            || isSummerDay
+            || isAutumnDay
+            || isHalloweenTime
+            || isWinterDay
+    }
+
     var isNewYearTime: Bool {
         return isDateInRange(minDate: 17, minMonth: 12, maxDate: 31, maxMonth: 12)
             || isDateInRange(minDate: 1, minMonth: 1, maxDate: 7, maxMonth: 1)
@@ -115,7 +131,7 @@ extension Date {
     var isSpringDay: Bool {
         isDateInRange(
             minDate: 1, minMonth: 3,
-            maxDate: 1, maxMonth: 3
+            maxDate: 7, maxMonth: 3
         )
     }
 
@@ -132,13 +148,6 @@ extension Date {
             maxDate: 1, maxMonth: 6
         )
     }
-
-//    var isPrideHoliday: Bool {
-//        isDateInRange(
-//            minDate: 1, minMonth: 6,
-//            maxDate: 1, maxMonth: 6
-//        )
-//    }
 
     var isAutumnDay: Bool {
         isDateInRange(
