@@ -8,6 +8,7 @@ protocol CalendarViewDelegate: AnyObject {
 
 struct CalendarViewModel {
     let month: Date
+    let isBackgroundBlurred: Bool
     weak var delegate: CalendarViewDelegate?
 }
 
@@ -21,9 +22,19 @@ final class CalendarView: UIView {
 
     let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        view.isVisible = false
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return view
+    }()
+    
+    let cardView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = .m
+        view.clipsToBounds = true
+        view.setContentHuggingPriority(.defaultLow, for: .vertical)
+        view.backgroundColor = Theme.foregroundColor
         return view
     }()
 
@@ -68,8 +79,15 @@ final class CalendarView: UIView {
 
     func setup() {
         addSubview(blurView)
+        addSubview(cardView)
         addSubview(hatView)
         addSubview(scrollView)
+
+        cardView
+            .topToSuperview()
+            .trailingToSuperview()
+            .leadingToSuperview()
+            .bottomToSuperview()
 
         blurView
             .topToSuperview()
@@ -208,6 +226,8 @@ extension CalendarView: ViewModelSettable {
     func setup(with viewModel: CalendarViewModel) {
         month = viewModel.month
         delegate = viewModel.delegate
+        blurView.isVisible = viewModel.isBackgroundBlurred
+        cardView.isVisible = !viewModel.isBackgroundBlurred
         update()
     }
 }

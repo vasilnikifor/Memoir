@@ -78,21 +78,22 @@ final class CalendarFactory: CalendarFactoryProtocol {
 
         return YesterdayConsoleView.Model(
             title: cms.home.howWasYesterday,
+            isBlurred: Date().isHolliday,
             rateBadActionModel: .init(
                 title: cms.rate.bad,
-                image: Theme.badRateImage,
+                image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .bad) }
             ),
             rateNormActionModel: .init(
-                title: cms.rate.fine,
-                image: Theme.averageRateImage,
+                title: cms.rate.good,
+                image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .average) }
             ),
             rateGoodActionModel: .init(
-                title: cms.rate.good,
-                image: Theme.goodRateImage,
+                title: cms.rate.great,
+                image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .good) }
             )
@@ -131,19 +132,19 @@ final class CalendarFactory: CalendarFactoryProtocol {
         case .none:
             rateBadActionModel = .init(
                 title: cms.rate.bad,
-                image: Theme.badRateImage,
+                image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .bad) }
             )
             rateNormActionModel = .init(
-                title: cms.rate.fine,
-                image: Theme.averageRateImage,
+                title: cms.rate.good,
+                image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .average) }
             )
             rateGoodActionModel = .init(
-                title: cms.rate.good,
-                image: Theme.goodRateImage,
+                title: cms.rate.great,
+                image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .good) }
             )
@@ -158,6 +159,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
 
         return .init(
             title: cms.calendar.today,
+            isBlurred: Date().isHolliday,
             rateBadActionModel: rateBadActionModel,
             rateNormActionModel: rateNormActionModel,
             rateGoodActionModel: rateGoodActionModel,

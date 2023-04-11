@@ -113,14 +113,18 @@ extension DayRecordsViewController: DayRecordsViewControllerProtocol {
         emptyStateModel: EmptyStateView.Model?
     ) {
         if rate != nil {
-            rateDayBarButton.image = rate.image
+            rateDayBarButton.image = rate.filledImage
             rateDayBarButton.tintColor = rate.tintColor
             navigationItem.rightBarButtonItem = rateDayBarButton
         } else {
             navigationItem.rightBarButtonItem = nil
+            rateDayButton.setImage(rate.image, for: .normal)
+            rateDayButton.tintColor = rate.tintColor
         }
 
-        rateDayButton.setImage(rate.image, for: .normal)
+        rateDayButton.setImage(rate.filledImage, for: .normal)
+        rateDayButton.tintColor = rate.tintColor
+        
         self.dataSource = dataSource
         tableView.reloadData()
 

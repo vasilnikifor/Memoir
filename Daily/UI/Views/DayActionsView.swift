@@ -84,7 +84,12 @@ final class DayActionsView: UIView {
 
 extension DayActionsView: ViewModelSettable {
     func setup(with viewModel: DayActionsViewModel) {
-        rateDayButton.setImage(viewModel.rate.image, for: .normal)
+        if viewModel.rate == nil {
+            rateDayButton.setImage(viewModel.rate.image, for: .normal)
+        } else {
+            rateDayButton.setImage(viewModel.rate.filledImage, for: .normal)
+        }
+        rateDayButton.tintColor = viewModel.rate.tintColor
         rateAction = viewModel.rateAction
         addNoteAction = viewModel.addNoteAction
     }

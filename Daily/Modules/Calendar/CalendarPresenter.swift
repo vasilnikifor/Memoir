@@ -53,7 +53,11 @@ extension CalendarPresenter: CalendarPresenterProtocol {
         }
 
         view?.setupInitialState(
-            calendarModel: CalendarViewModel(month: Date(), delegate: self),
+            calendarModel: CalendarViewModel(
+                month: Date(),
+                isBackgroundBlurred: backgroundImage != nil,
+                delegate: self
+            ),
             backgroundImage: backgroundImage
         )
         update()
@@ -109,6 +113,16 @@ extension CalendarPresenter: CalendarDelegate {
 }
 
 extension Date {
+    var isHolliday: Bool {
+        return isNewYearTime
+            || isSpringDay
+            || isCosmonauticsDay
+            || isSummerDay
+            || isAutumnDay
+            || isHalloweenTime
+            || isWinterDay
+    }
+
     var isNewYearTime: Bool {
         return isDateInRange(minDate: 17, minMonth: 12, maxDate: 31, maxMonth: 12)
             || isDateInRange(minDate: 1, minMonth: 1, maxDate: 7, maxMonth: 1)

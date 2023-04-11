@@ -74,7 +74,7 @@ final class CalendarViewController: UIViewController {
     }
 
     func setup() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = Theme.bottomLayerBackgroundColor
         view.addSubview(backgroundImageView)
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)

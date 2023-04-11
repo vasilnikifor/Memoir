@@ -48,19 +48,19 @@ extension DayRatePresenter: DayRatePresenterProtocol {
 
         view?.update(
             badRateViewModel: DayRateViewModel(
-                image: Theme.badRateImage,
+                image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 isSelected: selectedRate == .bad,
                 action: { [weak self] in self?.update(selectedRate: .bad) }
             ),
             averageRateViewModel: DayRateViewModel(
-                image: Theme.averageRateImage,
+                image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 isSelected: selectedRate == .average,
                 action: { [weak self] in self?.update(selectedRate: .average) }
             ),
             goodRateViewModel: DayRateViewModel(
-                image: Theme.goodRateImage,
+                image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
                 isSelected: selectedRate == .good,
                 action: { [weak self] in self?.update(selectedRate: .good) }

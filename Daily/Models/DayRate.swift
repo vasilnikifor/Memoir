@@ -21,10 +21,23 @@ extension Optional where Wrapped == DayRate {
         }
     }
 
+    var filledImage: UIImage? {
+        switch self {
+        case .none:
+            return Theme.rateDayImage
+        case .bad:
+            return Theme.badRateFilledImage
+        case .average:
+            return Theme.averageRateFilledImage
+        case .good:
+            return Theme.goodRateFilledImage
+        }
+    }
+    
     var tintColor: UIColor? {
         switch self {
         case .none:
-            return nil
+            return Theme.primaryTextColor
         case .bad:
             return Theme.badRateColor
         case .average:
