@@ -16,7 +16,6 @@ final class DayNotePresenter {
     private weak var view: DayNoteViewControllerProtocol?
     private weak var coordinator: DayNoteCoordinatorProtocol?
     private let dayService: DayServiceProtocol
-    private let analyticsService: AnalyticsServiceProtocol
     private let cms: CmsProtocol
     private let date: Date
     private var note: NoteRecord?
@@ -26,14 +25,12 @@ final class DayNotePresenter {
         view: DayNoteViewControllerProtocol,
         coordinator: DayNoteCoordinatorProtocol,
         dayService: DayServiceProtocol,
-        analyticsService: AnalyticsServiceProtocol,
         cms: CmsProtocol,
         inputModel: DayNoteInputModel
     ) {
         self.view = view
         self.coordinator = coordinator
         self.dayService = dayService
-        self.analyticsService = analyticsService
         self.cms = cms
         date = inputModel.date
         note = inputModel.note
@@ -43,7 +40,6 @@ final class DayNotePresenter {
     private func updateNote(text: String) {
         note = dayService.saveNote(date: date, note: note, text: text)
         delegate?.update()
-        analyticsService.sendEvent("note_page_text_edited")
     }
 }
 
@@ -54,7 +50,6 @@ extension DayNotePresenter: DayNotePresenterProtocol {
             noteText: note?.text,
             placeholder: cms.note.placeholder
         )
-        analyticsService.sendEvent("note_page_loaded")
     }
 
     func viewGoesBackground(text: String) {
@@ -69,7 +64,6 @@ extension DayNotePresenter: DayNotePresenterProtocol {
         coordinator?.dismiss()
         if let note = note { dayService.removeNote(note) }
         delegate?.update()
-        analyticsService.sendEvent("note_page_removed")
     }
 
     func textDidEndEditing(text: String) {

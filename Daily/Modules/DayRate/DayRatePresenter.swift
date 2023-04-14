@@ -15,7 +15,6 @@ final class DayRatePresenter {
     private weak var coordinator: DayRateCoordinatorProtocol?
     private weak var calendarDelegate: CalendarDelegate?
     private var dayService: DayServiceProtocol
-    private let analyticsService: AnalyticsServiceProtocol
     private var date: Date
     private var selectedRate: DayRate?
 
@@ -23,13 +22,11 @@ final class DayRatePresenter {
         view: DayRateViewControllerProtocol,
         coordinator: DayRateCoordinatorProtocol,
         dayService: DayServiceProtocol,
-        analyticsService: AnalyticsServiceProtocol,
         inputModel: DayRateInputModel
     ) {
         self.view = view
         self.coordinator = coordinator
         self.dayService = dayService
-        self.analyticsService = analyticsService
         calendarDelegate = inputModel.delegate
         date = inputModel.date
         selectedRate = inputModel.selectedRate

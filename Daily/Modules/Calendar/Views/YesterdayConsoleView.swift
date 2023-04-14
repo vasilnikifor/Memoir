@@ -4,7 +4,7 @@ import UIKit
 extension YesterdayConsoleView {
     struct Model {
         let title: String
-        let isBlurred: Bool
+        let isBackgroundBlurred: Bool
         let rateBadActionModel: ConsoleActionView.Model
         let rateNormActionModel: ConsoleActionView.Model
         let rateGoodActionModel: ConsoleActionView.Model
@@ -22,7 +22,7 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
 
     private let cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.foregroundColor
+        view.backgroundColor = Theme.layeredForeground
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         return view
@@ -69,8 +69,8 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
 
     func setup(with model: Model) {
         titleLabel.text = model.title
-        blurView.isVisible = model.isBlurred
-        cardView.isVisible = !model.isBlurred
+        blurView.isVisible = model.isBackgroundBlurred
+        cardView.isVisible = !model.isBackgroundBlurred
         rateBadActionView.setup(with: model.rateBadActionModel)
         rateNormActionView.setup(with: model.rateNormActionModel)
         rateGoodActionView.setup(with: model.rateGoodActionModel)

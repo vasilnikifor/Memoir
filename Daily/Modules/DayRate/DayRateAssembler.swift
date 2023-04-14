@@ -7,12 +7,10 @@ final class DayRateAssembler {
     ) -> DayRateViewController {
         let viewController = DayRateViewController()
         let dayService = DayService()
-        let analyticsService = AnalyticsService()
         let presenter = DayRatePresenter(
             view: viewController,
             coordinator: coordinator,
             dayService: dayService,
-            analyticsService: analyticsService,
             inputModel: inputModel
         )
         viewController.presenter = presenter

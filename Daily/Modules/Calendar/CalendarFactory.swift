@@ -78,7 +78,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
 
         return YesterdayConsoleView.Model(
             title: cms.home.howWasYesterday,
-            isBlurred: Date().isHolliday,
+            isBackgroundBlurred: Date().isHolliday,
             rateBadActionModel: .init(
                 title: cms.rate.bad,
                 image: Theme.badRateFilledImage,
@@ -112,21 +112,21 @@ final class CalendarFactory: CalendarFactoryProtocol {
             rateBadActionModel = .init(
                 title: cms.rate.rate,
                 image: Theme.badRateImage,
-                tintColor: Theme.primaryTextColor,
+                tintColor: Theme.primaryText,
                 action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .bad) }
             )
         case .average:
             rateNormActionModel = .init(
                 title: cms.rate.rate,
                 image: Theme.averageRateImage,
-                tintColor: Theme.primaryTextColor,
+                tintColor: Theme.primaryText,
                 action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .average) }
             )
         case .good:
             rateGoodActionModel = .init(
                 title: cms.rate.rate,
                 image: Theme.goodRateImage,
-                tintColor: Theme.primaryTextColor,
+                tintColor: Theme.primaryText,
                 action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .good) }
             )
         case .none:
@@ -153,13 +153,13 @@ final class CalendarFactory: CalendarFactoryProtocol {
         let addNoteActionModel: ConsoleActionView.Model = .init(
             title: cms.common.note,
             image: Theme.addNoteImage,
-            tintColor: Theme.primaryTextColor,
+            tintColor: Theme.primaryText,
             action: { [weak delegate] in delegate?.addNote(to: todayDate) }
         )
 
         return .init(
             title: cms.calendar.today,
-            isBlurred: Date().isHolliday,
+            isBackgroundBlurred: Date().isHolliday,
             rateBadActionModel: rateBadActionModel,
             rateNormActionModel: rateNormActionModel,
             rateGoodActionModel: rateGoodActionModel,

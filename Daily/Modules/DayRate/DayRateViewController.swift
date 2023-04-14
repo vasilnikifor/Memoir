@@ -63,7 +63,7 @@ final class DayRateViewController: UIViewController {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
 
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = Theme.background
         view.addSubview(rateStackView)
 
         rateStackView

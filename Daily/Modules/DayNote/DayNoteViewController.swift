@@ -29,7 +29,7 @@ final class DayNoteViewController: UIViewController {
 
     lazy var textView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = Theme.backgroundColor
+        textView.backgroundColor = Theme.background
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.delegate = self
         return textView
@@ -57,7 +57,7 @@ final class DayNoteViewController: UIViewController {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
 
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = Theme.background
         view.addSubview(textView)
         view.addSubview(placeholderLabel)
 

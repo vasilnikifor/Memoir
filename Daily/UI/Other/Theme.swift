@@ -4,123 +4,24 @@ enum Theme {}
 
 // MARK: - Colors
 extension Theme {
-    private static let black = UIColor.black
     private static let white = UIColor.white
-    private static let darkRed = UIColor(red: 0.78, green: 0.16, blue: 0.16, alpha: 1.00) // #c62828
-    private static let lightRed = UIColor(red: 0.94, green: 0.60, blue: 0.60, alpha: 1.00) // #ef9a9a
-    private static let darkBlue = UIColor(red: 0.08, green: 0.40, blue: 0.75, alpha: 1.00) // #1565c0
-    private static let lightBlue = UIColor(red: 0.56, green: 0.79, blue: 0.98, alpha: 1.00) // #90caf9
-    private static let darkGreen = UIColor(red: 0.18, green: 0.49, blue: 0.20, alpha: 1.00) // #2e7d32
-    private static let lightGreen = UIColor(red: 0.65, green: 0.84, blue: 0.65, alpha: 1.00) // #a5d6a7
-    private static let darkGray = UIColor(red: 0.26, green: 0.26, blue: 0.26, alpha: 1.00) // #424242
-    private static let lightGray = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00) // #eeeeee
-    private static let surfaceLight: UIColor =  #colorLiteral(red: 0.949019134, green: 0.9490200877, blue: 0.9705254436, alpha: 1) // #F2F2F7 // FIXME:
-    private static let surfaceDark: UIColor = .black // #000000 // FIXME:
+    private static let black = UIColor.black
+    private static let darkGray = UIColor.systemGray6
 
     // MARK: -
-    
-    static var backgroundColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? black
-                : white
-        }
-    }
 
-    static var foregroundColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? UIColor.systemGray6
-                : white
-        }
-    }
-    
-    static var surfaceColor: UIColor {
-        UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? surfaceDark
-                : surfaceLight
-        }
-    }
-
-    
-
-    static var primaryTextColor: UIColor {
-        UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? white
-                : black
-        }
-    }
-
-    static var reversedPrimaryTextColor: UIColor {
-        UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? black
-                : white
-        }
-    }
-
-
-    static var secondaryTextColor: UIColor {
-        return .placeholderText
-    }
-
-    static var primaryTintColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? white
-                : black
-        }
-    }
-
-    static var primaryReversedTintColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? black
-                : white
-        }
-    }
-
-    static var bottomLayerBackgroundColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? black
-                : UIColor.systemGray6
-        }
-    }
-
-    static var topLayerBackgroundColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            trait.userInterfaceStyle == .dark
-                ? UIColor.systemGray6
-                : white
-        }
-    }
-
-    static var badRateColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            return UIColor.systemRed
-        }
-    }
-
-    static var averageRateColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            return UIColor.systemBlue
-        }
-    }
-
-    static var goodRateColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            return UIColor.systemGreen
-        }
-    }
-
-    static var noRateColor: UIColor {
-        return UIColor { (trait) -> UIColor in
-            return UIColor.systemGray
-        }
-    }
+    static var layeredBackground = UIColor(darkGray, black)
+    static var layeredForeground = UIColor(white, darkGray)
+    static var background = UIColor(white, black)
+    static var primaryText = UIColor(black, white)
+    static var reversedPrimaryText = UIColor(white, black)
+    static var secondaryText: UIColor { .secondaryLabel }
+    static var primaryTint = UIColor(black, white)
+    static var primaryReversedTint = UIColor(white, black)
+    static var badRateColor: UIColor { .systemRed }
+    static var averageRateColor: UIColor { .systemBlue }
+    static var goodRateColor: UIColor { .systemGreen }
+    static var noRateColor: UIColor { .systemGray }
 }
 
 // MARK: - Images
@@ -171,5 +72,13 @@ extension Theme {
 
     static var doneImage: UIImage {
         return UIImage(systemName: "checkmark") ?? UIImage()
+    }
+}
+
+extension UIColor {
+    convenience init(_ light: UIColor, _ dark: UIColor) {
+        self.init { trait -> UIColor in
+            trait.userInterfaceStyle == .light ? light : dark
+        }
     }
 }

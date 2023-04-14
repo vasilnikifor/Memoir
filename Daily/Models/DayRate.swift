@@ -37,7 +37,7 @@ extension Optional where Wrapped == DayRate {
     var tintColor: UIColor? {
         switch self {
         case .none:
-            return Theme.primaryTextColor
+            return Theme.primaryText
         case .bad:
             return Theme.badRateColor
         case .average:

@@ -46,7 +46,7 @@ final class MonthRecordsViewController: UIViewController {
 
     func setup() {
         view.addSubview(tableView)
-        view.backgroundColor = Theme.bottomLayerBackgroundColor
+        view.backgroundColor = Theme.layeredBackground
         navigationItem.titleView = navigationTitleView
         navigationItem.searchController = searchViewController
         navigationItem.rightBarButtonItem = searchBarButtonItem

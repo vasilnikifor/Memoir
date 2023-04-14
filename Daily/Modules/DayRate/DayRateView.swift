@@ -21,7 +21,7 @@ final class DayRateView: UIView {
     private let selectionView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = .xxs
-        view.backgroundColor = Theme.primaryTextColor
+        view.backgroundColor = Theme.primaryText
         return view
     }()
 

@@ -1,6 +1,5 @@
 import UIKit
 import CoreData
-import FirebaseCore
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,8 +10,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        FirebaseApp.configure()
-
         let rootViewController = UINavigationController()
         appCoordinator = AppCoordinator(transitionHandler: rootViewController)
         appCoordinator?.start()
@@ -20,7 +17,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
-        window?.tintColor = .label
+        window?.tintColor = Theme.primaryTint
 
         return true
     }

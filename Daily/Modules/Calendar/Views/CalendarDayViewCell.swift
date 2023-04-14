@@ -82,18 +82,22 @@ extension CalendarDayViewCell: ViewModelSettable {
         button.setTitle(viewModel.date.dateNumber, for: .normal)
         switch viewModel.state {
         case .inactive:
-            isTodayView.backgroundColor = Theme.secondaryTextColor
+            isTodayView.isHidden = true
+            isTodayView.backgroundColor = Theme.secondaryText
             button.backgroundColor = .clear
-            button.setTitleColor(Theme.secondaryTextColor, for: .normal)
+            button.setTitleColor(Theme.secondaryText, for: .normal)
             button.isEnabled = false
+            button.isHidden = true
         case .empty:
-            isTodayView.backgroundColor = Theme.primaryTextColor
+            isTodayView.backgroundColor = Theme.primaryText
+            button.isHidden = false
             button.backgroundColor = .clear
-            button.setTitleColor(Theme.primaryTextColor, for: .normal)
+            button.setTitleColor(Theme.primaryText, for: .normal)
             button.isEnabled = true
         case .filled(let dayRate):
-            isTodayView.backgroundColor = Theme.reversedPrimaryTextColor
-            button.setTitleColor(Theme.reversedPrimaryTextColor, for: .normal)
+            isTodayView.backgroundColor = Theme.reversedPrimaryText
+            button.isHidden = false
+            button.setTitleColor(Theme.reversedPrimaryText, for: .normal)
             button.isEnabled = true
             switch dayRate {
             case .bad:

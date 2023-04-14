@@ -13,7 +13,7 @@ final class DayHeaderView: UIView {
         let view = UIView()
         view.layer.cornerRadius = .m
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        view.backgroundColor = Theme.topLayerBackgroundColor
+        view.backgroundColor = Theme.layeredForeground
         return view
     }()
 
@@ -39,7 +39,7 @@ final class DayHeaderView: UIView {
     }
 
     func setup() {
-        backgroundColor = Theme.bottomLayerBackgroundColor
+        backgroundColor = Theme.layeredBackground
         addSubview(cardView)
         cardView.addSubview(titleLabel)
         cardView.addSubview(rateImageView)

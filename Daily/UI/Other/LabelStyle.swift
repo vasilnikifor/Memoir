@@ -14,22 +14,22 @@ extension UILabel {
         switch style {
         case .headerMedium:
             font = UIFont.boldSystemFont(ofSize: 17)
-            textColor = Theme.primaryTextColor
+            textColor = Theme.primaryText
         case .primaryBig:
             font = UIFont.systemFont(ofSize: 24)
-            textColor = Theme.primaryTextColor
+            textColor = Theme.primaryText
         case .primaryMedium:
             font = UIFont.systemFont(ofSize: 17)
-            textColor = Theme.primaryTextColor
+            textColor = Theme.primaryText
         case .primarySmall:
             font = UIFont.systemFont(ofSize: 12)
-            textColor = Theme.primaryTextColor
+            textColor = Theme.primaryText
         case .secondaryMedium:
             font = UIFont.systemFont(ofSize: 17)
-            textColor = Theme.secondaryTextColor
+            textColor = Theme.secondaryText
         case .secondarySmall:
             font = UIFont.systemFont(ofSize: 12)
-            textColor = Theme.secondaryTextColor
+            textColor = Theme.secondaryText
         }
     }
 }

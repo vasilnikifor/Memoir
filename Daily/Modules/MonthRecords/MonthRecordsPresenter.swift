@@ -15,7 +15,6 @@ final class MonthRecordsPresenter {
     weak var delegate: CalendarDelegate?
     weak var coordinator: MonthRecordsCoordinatorProtocol?
     let dayService: DayServiceProtocol
-    let analyticsService: AnalyticsServiceProtocol
     let cms: CmsProtocol
     let factory: MonthRecordsFactoryProtocol
     let month: Date
@@ -27,7 +26,6 @@ final class MonthRecordsPresenter {
         view: MonthRecordsViewControllerProtocol,
         coordinator: MonthRecordsCoordinatorProtocol,
         dayService: DayServiceProtocol,
-        analyticsService: AnalyticsServiceProtocol,
         cms: CmsProtocol,
         factory: MonthRecordsFactoryProtocol,
         inputModel: MonthRecordsInputModel
@@ -35,7 +33,6 @@ final class MonthRecordsPresenter {
         self.view = view
         self.coordinator = coordinator
         self.dayService = dayService
-        self.analyticsService = analyticsService
         self.cms = cms
         self.factory = factory
         month = inputModel.month
@@ -114,7 +111,6 @@ extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
             days = dayService.getDays(year: month)
         }
         updateView()
-        analyticsService.sendEvent("month_page_loaded")
     }
 
     func searchTextDidChange(_ searchText: String?) {
@@ -140,12 +136,10 @@ extension MonthRecordsPresenter: MonthRecordsFactoryDelegate {
     func openNote(day: Day, noteRecord: NoteRecord?) {
         guard let date = day.date else { return }
         coordinator?.showDayNote(date: date, note: noteRecord, delegate: self)
-        analyticsService.sendEvent("month_page_note_selected")
     }
 
     func openDayRate(day: Day) {
         guard let date = day.date else { return }
         coordinator?.showDayRate(date: date, rate: day.rate, delegate: self)
-        analyticsService.sendEvent("month_page_day_rate_selected")
     }
 }

@@ -18,7 +18,6 @@ protocol CalendarPresenterProtocol: AnyObject {
 final class CalendarPresenter {
     private weak var view: CalendarViewControllerProtocol?
     private weak var coordinator: CalendarCoordinatorProtocol?
-    private let analyticsService: AnalyticsServiceProtocol
     private let dayService: DayServiceProtocol
     private let factory: CalendarFactoryProtocol
 
@@ -26,13 +25,11 @@ final class CalendarPresenter {
         view: CalendarViewControllerProtocol,
         coordinator: CalendarCoordinatorProtocol,
         dayService: DayServiceProtocol,
-        analyticsService: AnalyticsServiceProtocol,
         factory: CalendarFactoryProtocol
     ) {
         self.view = view
         self.coordinator = coordinator
         self.dayService = dayService
-        self.analyticsService = analyticsService
         self.factory = factory
     }
 
@@ -55,7 +52,7 @@ extension CalendarPresenter: CalendarPresenterProtocol {
         view?.setupInitialState(
             calendarModel: CalendarViewModel(
                 month: Date(),
-                isBackgroundBlurred: backgroundImage != nil,
+                isBackgroundBlurred: Date().isHolliday,
                 delegate: self
             ),
             backgroundImage: backgroundImage
@@ -116,11 +113,11 @@ extension Date {
     var isHolliday: Bool {
         return isNewYearTime
             || isSpringDay
-            || isCosmonauticsDay
-            || isSummerDay
-            || isAutumnDay
-            || isHalloweenTime
-            || isWinterDay
+//            || isCosmonauticsDay
+//            || isSummerDay
+//            || isAutumnDay
+//            || isHalloweenTime
+//            || isWinterDay
     }
 
     var isNewYearTime: Bool {

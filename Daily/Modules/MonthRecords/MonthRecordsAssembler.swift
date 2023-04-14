@@ -7,14 +7,12 @@ final class MonthRecordsAssembler {
     ) -> MonthRecordsViewController {
         let viewController = MonthRecordsViewController()
         let dayService = DayService()
-        let analyticsService = AnalyticsService()
         let cms = Cms()
         let factory = MonthRecordsFactory()
         let presenter = MonthRecordsPresenter(
             view: viewController,
             coordinator: coordinator,
             dayService: dayService,
-            analyticsService: analyticsService,
             cms: cms,
             factory: factory,
             inputModel: inputModel

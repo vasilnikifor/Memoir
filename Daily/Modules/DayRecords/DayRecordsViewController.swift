@@ -41,7 +41,7 @@ final class DayRecordsViewController: UIViewController {
 
     private lazy var actionsStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = Theme.backgroundColor
+        stackView.backgroundColor = Theme.background
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(rateDayButton)
@@ -67,7 +67,7 @@ final class DayRecordsViewController: UIViewController {
     }
 
     private func setup() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = Theme.background
         view.addSubview(actionsStackView)
         view.addSubview(tableView)
         view.addSubview(emptyStateView)

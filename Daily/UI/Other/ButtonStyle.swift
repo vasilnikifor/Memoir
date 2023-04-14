@@ -9,8 +9,8 @@ extension UIButton {
         switch style {
         case .primary:
             layer.cornerRadius = .m
-            backgroundColor = Theme.primaryTintColor
-            setTitleColor(Theme.primaryReversedTintColor, for: .normal)
+            backgroundColor = Theme.primaryTint
+            setTitleColor(Theme.primaryReversedTint, for: .normal)
         }
     }
 }

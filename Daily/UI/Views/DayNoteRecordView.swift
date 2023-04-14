@@ -11,7 +11,7 @@ final class DayNoteRecordView: UIView {
 
     var cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.topLayerBackgroundColor
+        view.backgroundColor = Theme.layeredForeground
         return view
     }()
 
@@ -40,7 +40,7 @@ final class DayNoteRecordView: UIView {
     }
 
     func setup() {
-        backgroundColor = Theme.bottomLayerBackgroundColor
+        backgroundColor = Theme.layeredBackground
         addSubview(cardView)
         cardView.addSubview(noteTextLabel)
         cardView.addSubview(timeLabel)

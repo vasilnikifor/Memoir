@@ -8,13 +8,11 @@ final class DayRecordsAssembler {
         let viewController = DayRecordsViewController()
         let cms = Cms()
         let dayService = DayService()
-        let analyticsService = AnalyticsService()
         let presenter = DayRecordsPresenter(
             view: viewController,
             coordinator: coordinator,
             cms: cms,
             dayService: dayService,
-            analyticsService: analyticsService,
             inputModel: inputModel
         )
         viewController.presenter = presenter
