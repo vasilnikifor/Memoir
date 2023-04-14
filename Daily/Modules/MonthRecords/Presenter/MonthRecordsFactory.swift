@@ -58,7 +58,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                     if let noteRecord = record as? NoteRecord {
                         dataSource.append(
                             .note(
-                                viewModel: MonthRecordsDayNoteRecordViewModel(
+                                viewModel: MonthRecordsRecordViewModel(
                                     text: noteRecord.text ?? "",
                                     time: (noteRecord.time ?? Date()).timeRepresentation,
                                     action: { [weak delegate] in delegate?.openNote(day: day, noteRecord: noteRecord)}
@@ -112,7 +112,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
         }
         
         return .header(
-            viewModel: MonthRecordsDayHeaderViewModel(
+            viewModel: MonthRecordsHeaderViewModel(
                 title: title,
                 isRateIconVisible: isRateIconVisible,
                 rateIconImage: rateIconImage,
@@ -145,7 +145,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
         }
 
         return .actions(
-            viewModel: MonthRecordsDayActionsViewModel(
+            viewModel: MonthRecordsFooterViewModel(
                 rateImage: rateImage,
                 rateTintColor: rateTintColor,
                 rateAction: { [weak delegate] in delegate?.openDayRate(day: day) },

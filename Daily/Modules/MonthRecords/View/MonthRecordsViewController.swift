@@ -99,11 +99,11 @@ extension MonthRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
         case .header(let viewModel):
-            return tableView.dequeueReusableCell(MonthRecordsDayHeaderView.self, viewModel: viewModel)
+            return tableView.dequeueReusableCell(MonthRecordsHeaderView.self, viewModel: viewModel)
         case .note(let viewModel):
-            return tableView.dequeueReusableCell(MonthRecordsDayNoteRecordView.self, viewModel: viewModel)
+            return tableView.dequeueReusableCell(MonthRecordsRecordView.self, viewModel: viewModel)
         case .actions(let viewModel):
-            return tableView.dequeueReusableCell(MonthRecordsDayActionsView.self, viewModel: viewModel)
+            return tableView.dequeueReusableCell(MonthRecordsFooterView.self, viewModel: viewModel)
         }
     }
 }

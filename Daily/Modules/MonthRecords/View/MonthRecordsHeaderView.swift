@@ -1,6 +1,6 @@
 import UIKit
 
-struct MonthRecordsDayHeaderViewModel {
+struct MonthRecordsHeaderViewModel {
     let title: String
     let isRateIconVisible: Bool
     let rateIconImage: UIImage?
@@ -8,7 +8,7 @@ struct MonthRecordsDayHeaderViewModel {
     let action: (() -> Void)?
 }
 
-final class MonthRecordsDayHeaderView: UIView {
+final class MonthRecordsHeaderView: UIView {
     private var action: (() -> Void)?
 
     private var cardView: UIView = {
@@ -78,8 +78,8 @@ final class MonthRecordsDayHeaderView: UIView {
     }
 }
 
-extension MonthRecordsDayHeaderView: ViewModelSettable {
-    func setup(with viewModel: MonthRecordsDayHeaderViewModel) {
+extension MonthRecordsHeaderView: ViewModelSettable {
+    func setup(with viewModel: MonthRecordsHeaderViewModel) {
         titleLabel.text = viewModel.title
         rateImageView.image = viewModel.rateIconImage
         rateImageView.tintColor = viewModel.rateIconTint

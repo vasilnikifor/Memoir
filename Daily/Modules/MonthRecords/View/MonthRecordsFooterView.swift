@@ -1,13 +1,13 @@
 import UIKit
 
-struct MonthRecordsDayActionsViewModel {
+struct MonthRecordsFooterViewModel {
     let rateImage: UIImage
     let rateTintColor: UIColor
     let rateAction: (() -> Void)?
     let addNoteAction: (() -> Void)?
 }
 
-final class MonthRecordsDayActionsView: UIView {
+final class MonthRecordsFooterView: UIView {
     var rateAction: (() -> Void)?
     var addNoteAction: (() -> Void)?
 
@@ -83,8 +83,8 @@ final class MonthRecordsDayActionsView: UIView {
     }
 }
 
-extension MonthRecordsDayActionsView: ViewModelSettable {
-    func setup(with viewModel: MonthRecordsDayActionsViewModel) {
+extension MonthRecordsFooterView: ViewModelSettable {
+    func setup(with viewModel: MonthRecordsFooterViewModel) {
         rateDayButton.setImage(viewModel.rateImage, for: .normal)
         rateDayButton.tintColor = viewModel.rateTintColor
         rateAction = viewModel.rateAction
