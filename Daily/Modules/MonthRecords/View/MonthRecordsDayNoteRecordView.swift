@@ -1,12 +1,12 @@
 import UIKit
 
-struct DayNoteRecordViewModel {
+struct MonthRecordsDayNoteRecordViewModel {
     let text: String
     let time: String
     let action: (() -> Void)?
 }
 
-final class DayNoteRecordView: UIView {
+final class MonthRecordsDayNoteRecordView: UIView {
     var action: (() -> Void)?
 
     var cardView: UIView = {
@@ -76,8 +76,8 @@ final class DayNoteRecordView: UIView {
     }
 }
 
-extension DayNoteRecordView: ViewModelSettable {
-    func setup(with viewModel: DayNoteRecordViewModel) {
+extension MonthRecordsDayNoteRecordView: ViewModelSettable {
+    func setup(with viewModel: MonthRecordsDayNoteRecordViewModel) {
         noteTextLabel.text = viewModel.text
         timeLabel.text = viewModel.time
         action = viewModel.action

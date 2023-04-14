@@ -101,7 +101,7 @@ extension MonthRecordsViewController: UITableViewDataSource {
         case .header(let viewModel):
             return tableView.dequeueReusableCell(MonthRecordsDayHeaderView.self, viewModel: viewModel)
         case .note(let viewModel):
-            return tableView.dequeueReusableCell(DayNoteRecordView.self, viewModel: viewModel)
+            return tableView.dequeueReusableCell(MonthRecordsDayNoteRecordView.self, viewModel: viewModel)
         case .actions(let viewModel):
             return tableView.dequeueReusableCell(MonthRecordsDayActionsView.self, viewModel: viewModel)
         }

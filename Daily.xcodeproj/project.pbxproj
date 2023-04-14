@@ -50,7 +50,7 @@
 		9157AB8B266A8CC8003C4B66 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8A266A8CC8003C4B66 /* CalendarView.swift */; };
 		9157AB8D266A8CF0003C4B66 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */; };
 		9157AB8F266AA91C003C4B66 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157AB8E266AA91C003C4B66 /* LabelStyle.swift */; };
-		915D4E65277DB21E00D8F178 /* DayNoteRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D4E64277DB21E00D8F178 /* DayNoteRecordView.swift */; };
+		915D4E65277DB21E00D8F178 /* MonthRecordsDayNoteRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D4E64277DB21E00D8F178 /* MonthRecordsDayNoteRecordView.swift */; };
 		915D4E67277DB59B00D8F178 /* MonthRecordsDayActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D4E66277DB59B00D8F178 /* MonthRecordsDayActionsView.swift */; };
 		916673A3289C218D009ED818 /* TodayConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916673A2289C218D009ED818 /* TodayConsoleView.swift */; };
 		9166F4A1269A068400D66CEE /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166F4A0269A068400D66CEE /* UITableView+Extension.swift */; };
@@ -139,7 +139,7 @@
 		9157AB8A266A8CC8003C4B66 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9157AB8C266A8CF0003C4B66 /* CalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
 		9157AB8E266AA91C003C4B66 /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
-		915D4E64277DB21E00D8F178 /* DayNoteRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNoteRecordView.swift; sourceTree = "<group>"; };
+		915D4E64277DB21E00D8F178 /* MonthRecordsDayNoteRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsDayNoteRecordView.swift; sourceTree = "<group>"; };
 		915D4E66277DB59B00D8F178 /* MonthRecordsDayActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsDayActionsView.swift; sourceTree = "<group>"; };
 		916673A2289C218D009ED818 /* TodayConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayConsoleView.swift; sourceTree = "<group>"; };
 		9166F4A0269A068400D66CEE /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -289,6 +289,7 @@
 		911F076C29E9A6C4006948CA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				915D4E64277DB21E00D8F178 /* MonthRecordsDayNoteRecordView.swift */,
 				915D4E66277DB59B00D8F178 /* MonthRecordsDayActionsView.swift */,
 				91419C5A26B44F290031F519 /* MonthRecordsViewController.swift */,
 				91419C5E26B591DD0031F519 /* MonthRecordsDayTitleView.swift */,
@@ -342,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				91419C5426B43F910031F519 /* NoteRecordView.swift */,
-				915D4E64277DB21E00D8F178 /* DayNoteRecordView.swift */,
 				91D2B1D7289D6559001E7856 /* ConsoleActionView.swift */,
 				912A277C2901A0BF00DC134E /* NavigationTitleView.swift */,
 				9127491E29A523E800936E4F /* EmptyStateView.swift */,
@@ -637,7 +637,7 @@
 				91419C5B26B44F290031F519 /* MonthRecordsViewController.swift in Sources */,
 				912A277D2901A0BF00DC134E /* NavigationTitleView.swift in Sources */,
 				912092312688ACC300F966BE /* DayRecordsAssembler.swift in Sources */,
-				915D4E65277DB21E00D8F178 /* DayNoteRecordView.swift in Sources */,
+				915D4E65277DB21E00D8F178 /* MonthRecordsDayNoteRecordView.swift in Sources */,
 				91F854042687724A0098EEE5 /* DayNotePresenter.swift in Sources */,
 				91ED30CB29437632002EC051 /* AppCoordinator.swift in Sources */,
 				91295AB72951FC1400A2A9BF /* MonthRecordsFactory.swift in Sources */,

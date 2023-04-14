@@ -58,7 +58,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                     if let noteRecord = record as? NoteRecord {
                         dataSource.append(
                             .note(
-                                viewModel: DayNoteRecordViewModel(
+                                viewModel: MonthRecordsDayNoteRecordViewModel(
                                     text: noteRecord.text ?? "",
                                     time: (noteRecord.time ?? Date()).timeRepresentation,
                                     action: { [weak delegate] in delegate?.openNote(day: day, noteRecord: noteRecord)}
