@@ -36,7 +36,7 @@ final class EmptyStateView: UIView {
 
     private let mainButton: UIButton = {
         let button = UIButton()
-        button.apply(style: .primary)
+        button.apply(style: .accent)
         return button
     }()
 

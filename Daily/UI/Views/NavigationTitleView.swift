@@ -1,10 +1,6 @@
 import UIKit
 
 extension NavigationTitleView {
-    enum Constants {
-        static let downImage: UIImage? = UIImage(systemName: "chevron.down")
-    }
-
     struct ViewModel {
         let title: String?
         let action: (() -> Void)?
@@ -24,7 +20,7 @@ final class NavigationTitleView: UIView, ViewModelSettable {
 
     private lazy var downImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Constants.downImage
+        imageView.image = Theme.arrowUnfoldImage
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         return imageView

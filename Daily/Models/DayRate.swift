@@ -8,7 +8,7 @@ enum DayRate: CaseIterable {
 }
 
 extension Optional where Wrapped == DayRate {
-    var image: UIImage? {
+    var image: UIImage {
         switch self {
         case .none:
             return Theme.rateDayImage
@@ -21,7 +21,7 @@ extension Optional where Wrapped == DayRate {
         }
     }
 
-    var filledImage: UIImage? {
+    var filledImage: UIImage {
         switch self {
         case .none:
             return Theme.rateDayImage
@@ -33,8 +33,8 @@ extension Optional where Wrapped == DayRate {
             return Theme.goodRateFilledImage
         }
     }
-    
-    var tintColor: UIColor? {
+
+    var tintColor: UIColor {
         switch self {
         case .none:
             return Theme.primaryText

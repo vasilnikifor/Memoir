@@ -8,8 +8,6 @@ extension Theme {
     private static let black = UIColor.black
     private static let darkGray = UIColor.systemGray6
 
-    // MARK: -
-
     static var layeredBackground = UIColor(darkGray, black)
     static var layeredForeground = UIColor(white, darkGray)
     static var background = UIColor(white, black)
@@ -73,9 +71,29 @@ extension Theme {
     static var doneImage: UIImage {
         return UIImage(systemName: "checkmark") ?? UIImage()
     }
+
+    static var searchImage: UIImage {
+        return UIImage(systemName: "magnifyingglass") ?? UIImage()
+    }
+
+    static var arrowRightImage: UIImage {
+        return UIImage(systemName: "arrow.right") ?? UIImage()
+    }
+
+    static var arrowLeftImage: UIImage {
+        return UIImage(systemName: "arrow.left") ?? UIImage()
+    }
+
+    static var arrowOpenImage: UIImage {
+        return UIImage(systemName: "chevron.forward") ?? UIImage()
+    }
+
+    static var arrowUnfoldImage: UIImage {
+        return UIImage(systemName: "chevron.down") ?? UIImage()
+    }
 }
 
-extension UIColor {
+fileprivate extension UIColor {
     convenience init(_ light: UIColor, _ dark: UIColor) {
         self.init { trait -> UIColor in
             trait.userInterfaceStyle == .light ? light : dark

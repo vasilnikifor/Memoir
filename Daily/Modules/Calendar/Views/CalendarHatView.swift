@@ -1,13 +1,5 @@
 import UIKit
 
-extension CalendarHatView {
-    enum Constants {
-        static let upImage: UIImage? = UIImage(systemName: "arrow.right")
-        static let downImage: UIImage? = UIImage(systemName: "arrow.left")
-        static let forwardImage: UIImage? = UIImage(systemName: "chevron.forward")
-    }
-}
-
 final class CalendarHatView: UIView {
     var upTapped: (() -> Void)?
     var downTapped: (() -> Void)?
@@ -15,21 +7,21 @@ final class CalendarHatView: UIView {
 
     lazy var downButton: UIButton = {
         let button = UIButton()
-        button.setImage(Constants.downImage, for: .normal)
+        button.setImage(Theme.arrowLeftImage, for: .normal)
         button.addTarget(self, action: #selector(downButtonTapped), for: .touchUpInside)
         return button
     }()
 
     lazy var upButton: UIButton = {
         let button = UIButton()
-        button.setImage(Constants.upImage, for: .normal)
+        button.setImage(Theme.arrowRightImage, for: .normal)
         button.addTarget(self, action: #selector(upButtonTapped), for: .touchUpInside)
         return button
     }()
 
     lazy var forwardImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Constants.forwardImage
+        imageView.image = Theme.arrowOpenImage
         imageView.contentMode = .scaleAspectFit
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(forwardButtonTapped)))
         imageView.isUserInteractionEnabled = true

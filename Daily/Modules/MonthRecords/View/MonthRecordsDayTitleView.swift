@@ -1,15 +1,17 @@
 import UIKit
 
-struct DayHeaderViewModel {
+struct MonthRecordsDayHeaderViewModel {
     let title: String
-    let rate: DayRate?
+    let isRateIconVisible: Bool
+    let rateIconImage: UIImage?
+    let rateIconTint: UIColor?
     let action: (() -> Void)?
 }
 
-final class DayHeaderView: UIView {
-    var action: (() -> Void)?
+final class MonthRecordsDayHeaderView: UIView {
+    private var action: (() -> Void)?
 
-    var cardView: UIView = {
+    private var cardView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = .m
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -17,14 +19,14 @@ final class DayHeaderView: UIView {
         return view
     }()
 
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.apply(style: .primaryBig)
         label.numberOfLines = .zero
         return label
     }()
 
-    let rateImageView: UIImageView = {
+    private let rateImageView: UIImageView = {
         return UIImageView()
     }()
 
@@ -38,7 +40,7 @@ final class DayHeaderView: UIView {
         setup()
     }
 
-    func setup() {
+    private func setup() {
         backgroundColor = Theme.layeredBackground
         addSubview(cardView)
         cardView.addSubview(titleLabel)
@@ -71,17 +73,17 @@ final class DayHeaderView: UIView {
     }
 
     @objc
-    func viewTouchUpInside() {
+    private func viewTouchUpInside() {
         action?()
     }
 }
 
-extension DayHeaderView: ViewModelSettable {
-    func setup(with viewModel: DayHeaderViewModel) {
+extension MonthRecordsDayHeaderView: ViewModelSettable {
+    func setup(with viewModel: MonthRecordsDayHeaderViewModel) {
         titleLabel.text = viewModel.title
-        rateImageView.image = viewModel.rate.filledImage
-        rateImageView.tintColor = viewModel.rate.tintColor
-        rateImageView.isHidden = viewModel.rate == nil
+        rateImageView.image = viewModel.rateIconImage
+        rateImageView.tintColor = viewModel.rateIconTint
+        rateImageView.isVisible = viewModel.isRateIconVisible
         action = viewModel.action
     }
 }

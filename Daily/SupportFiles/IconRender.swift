@@ -9,7 +9,7 @@ final class IconRender: UIViewController {
 
     let image: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "star.fill")
+        image.image = Theme.rateDayFilledImage
         image.tintColor = .white
         image.contentMode = .scaleAspectFit
         return image

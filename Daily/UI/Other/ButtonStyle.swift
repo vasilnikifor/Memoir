@@ -1,13 +1,13 @@
 import UIKit
 
 enum ButtonStyle {
-    case primary
+    case accent
 }
 
 extension UIButton {
     func apply(style: ButtonStyle) {
         switch style {
-        case .primary:
+        case .accent:
             layer.cornerRadius = .m
             backgroundColor = Theme.primaryTint
             setTitleColor(Theme.primaryReversedTint, for: .normal)
