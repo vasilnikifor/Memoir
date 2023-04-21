@@ -20,8 +20,8 @@ final class EmptyStateView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.apply(style: .primaryBig)
-        label.textAlignment = .center
+        label.apply(style: .headerBig)
+        label.textAlignment = .left
         label.numberOfLines = .zero
         return label
     }()
@@ -29,7 +29,7 @@ final class EmptyStateView: UIView {
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.apply(style: .secondaryMedium)
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = .zero
         return label
     }()
@@ -38,14 +38,6 @@ final class EmptyStateView: UIView {
         let button = UIButton()
         button.apply(style: .accent)
         return button
-    }()
-
-    private let illustrationDescriptionView: UIView = {
-        UIView()
-    }()
-
-    private let illustrationDescriptionCenteringView: UIView = {
-        UIView()
     }()
     
     override init(frame: CGRect) {
@@ -59,48 +51,32 @@ final class EmptyStateView: UIView {
     }
 
     private func setup() {
-        addSubview(illustrationDescriptionCenteringView)
+        addSubview(illustrationImageView)
+        addSubview(titleLabel)
+        addSubview(subtitleLabel)
         addSubview(mainButton)
 
-        illustrationDescriptionCenteringView
-            .topToSuperview()
-            .leadingToSuperview()
-            .trailingToSuperview()
-            .bottom(to: mainButton, anchor: mainButton.topAnchor)
+        titleLabel
+            .topToSuperview(.l)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
+
+        subtitleLabel
+            .top(to: titleLabel, anchor: titleLabel.bottomAnchor, offset: .m)
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
+        
+        illustrationImageView
+            .leadingToSuperview(.m)
+            .trailingToSuperview(-.m)
+            .height(.illustrationHeight)
+            .centerYToSuperview()
 
         mainButton
             .bottomToSuperview(-.m)
             .leadingToSuperview(.m)
             .trailingToSuperview(-.m)
             .height(.buttonHeight)
-
-        illustrationDescriptionCenteringView.addSubview(illustrationDescriptionView)
-
-        illustrationDescriptionView
-            .leadingToSuperview()
-            .trailingToSuperview()
-            .centerYToSuperview()
-
-        illustrationDescriptionView.addSubview(illustrationImageView)
-        illustrationDescriptionView.addSubview(titleLabel)
-        illustrationDescriptionView.addSubview(subtitleLabel)
-
-        illustrationImageView
-            .topToSuperview()
-            .leadingToSuperview(.m)
-            .trailingToSuperview(-.m)
-            .height(.illustrationHeight)
-
-        titleLabel
-            .top(to: illustrationImageView, anchor: illustrationImageView.bottomAnchor, offset: .m)
-            .leadingToSuperview(.xl)
-            .trailingToSuperview(-.xl)
-
-        subtitleLabel
-            .top(to: titleLabel, anchor: titleLabel.bottomAnchor, offset: .s)
-            .leadingToSuperview(.xl)
-            .trailingToSuperview(-.xl)
-            .bottomToSuperview()
     }
 }
 

@@ -1,6 +1,7 @@
 import UIKit
 
 enum LabelStyle {
+    case headerBig
     case headerMedium
     case primaryBig
     case primaryMedium
@@ -12,6 +13,9 @@ enum LabelStyle {
 extension UILabel {
     func apply(style: LabelStyle) {
         switch style {
+        case .headerBig:
+            font = UIFont.boldSystemFont(ofSize: 27)
+            textColor = Theme.primaryText
         case .headerMedium:
             font = UIFont.boldSystemFont(ofSize: 17)
             textColor = Theme.primaryText
