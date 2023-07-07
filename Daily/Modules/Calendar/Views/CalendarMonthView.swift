@@ -130,11 +130,11 @@ extension CalendarMonthView: UICollectionViewDataSource {
         switch collectionView {
         case weekdaysCollectionView:
             let cell = collectionView.dequeueReusableCell(CalendarWeekdayViewCell.self, for: indexPath)
-            cell.setup(with: weekdaysDataSource[indexPath.row])
+            cell.configure(with: weekdaysDataSource[indexPath.row])
             return cell
         case calendarCollectionView:
             let cell = collectionView.dequeueReusableCell(CalendarDayViewCell.self, for: indexPath)
-            cell.setup(with: daysDataSource[indexPath.row])
+            cell.configure(with: daysDataSource[indexPath.row])
             return cell
         default:
             return UICollectionViewCell()
@@ -170,8 +170,8 @@ extension CalendarMonthView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension CalendarMonthView: ViewModelSettable {
-    func setup(with viewModel: CalendarMonthViewModel) {
+extension CalendarMonthView: Configurable {
+    func configure(with viewModel: CalendarMonthViewModel) {
         setup(with: viewModel, completion: nil)
     }
 

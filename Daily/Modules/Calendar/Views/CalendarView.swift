@@ -222,8 +222,8 @@ extension CalendarView {
     }
 }
 
-extension CalendarView: ViewModelSettable {
-    func setup(with viewModel: CalendarViewModel) {
+extension CalendarView: Configurable {
+    func configure(with viewModel: CalendarViewModel) {
         month = viewModel.month
         delegate = viewModel.delegate
         blurView.isVisible = viewModel.isBackgroundBlurred

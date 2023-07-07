@@ -83,8 +83,8 @@ final class MonthRecordsFooterView: UIView {
     }
 }
 
-extension MonthRecordsFooterView: ViewModelSettable {
-    func setup(with viewModel: MonthRecordsFooterViewModel) {
+extension MonthRecordsFooterView: Configurable {
+    func configure(with viewModel: MonthRecordsFooterViewModel) {
         rateDayButton.setImage(viewModel.rateImage, for: .normal)
         rateDayButton.tintColor = viewModel.rateTintColor
         rateAction = viewModel.rateAction

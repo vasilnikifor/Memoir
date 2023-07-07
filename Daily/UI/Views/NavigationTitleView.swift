@@ -7,7 +7,7 @@ extension NavigationTitleView {
     }
 }
 
-final class NavigationTitleView: UIView, ViewModelSettable {
+final class NavigationTitleView: UIView, Configurable {
     private var action: (() -> Void)?
 
     private lazy var titleLabel: UILabel = {
@@ -36,7 +36,7 @@ final class NavigationTitleView: UIView, ViewModelSettable {
         setup()
     }
 
-    func setup(with model: ViewModel) {
+    func configure(with model: ViewModel) {
         titleLabel.text = model.title
         action = model.action
     }

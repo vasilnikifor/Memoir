@@ -63,8 +63,8 @@ final class NoteRecordView: UIView {
     }
 }
 
-extension NoteRecordView: ViewModelSettable {
-    func setup(with viewModel: NoteRecordViewModel) {
+extension NoteRecordView: Configurable {
+    func configure(with viewModel: NoteRecordViewModel) {
         noteTextLabel.text = viewModel.text
         timeLabel.text = viewModel.time
         action = viewModel.action

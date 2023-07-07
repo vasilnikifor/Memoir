@@ -6,8 +6,8 @@ protocol CalendarViewControllerProtocol: AnyObject {
         backgroundImage: UIImage?
     )
     func update(
-        yesterdayConsoleModel: YesterdayConsoleView.Model?,
-        todaysConsoleModel: TodayConsoleView.Model
+        yesterdayConsoleModel: YesterdayConsoleView.Configuration?,
+        todaysConsoleModel: TodayConsoleView.Configuration
     )
 }
 
@@ -106,20 +106,20 @@ extension CalendarViewController: CalendarViewControllerProtocol {
         backgroundImage: UIImage?
     ) {
         navigationItem.backButtonTitle = " "
-        calendarView.setup(with: calendarModel)
+        calendarView.configure(with: calendarModel)
         backgroundImageView.image = backgroundImage
     }
 
     func update(
-        yesterdayConsoleModel: YesterdayConsoleView.Model?,
-        todaysConsoleModel: TodayConsoleView.Model
+        yesterdayConsoleModel: YesterdayConsoleView.Configuration?,
+        todaysConsoleModel: TodayConsoleView.Configuration
     ) {
         calendarView.update() { [weak self] in
             guard let self = self else { return }
-            self.todayConsole.setup(with: todaysConsoleModel)
+            self.todayConsole.configure(with: todaysConsoleModel)
             self.yesterdayConsole.isHidden = yesterdayConsoleModel == nil
             if let yesterdayConsoleModel = yesterdayConsoleModel {
-                self.yesterdayConsole.setup(with: yesterdayConsoleModel)
+                self.yesterdayConsole.configure(with: yesterdayConsoleModel)
             }
             UIView.animate(
                 withDuration: Appearance.animationDuration,

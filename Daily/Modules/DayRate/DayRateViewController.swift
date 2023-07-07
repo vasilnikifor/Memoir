@@ -94,8 +94,8 @@ extension DayRateViewController: DayRateViewControllerProtocol {
         averageRateViewModel: DayRateViewModel,
         goodRateViewModel: DayRateViewModel
     ) {
-        badRateView.setup(with: badRateViewModel)
-        averageRateView.setup(with: averageRateViewModel)
-        goodRateView.setup(with: goodRateViewModel)
+        badRateView.configure(with: badRateViewModel)
+        averageRateView.configure(with: averageRateViewModel)
+        goodRateView.configure(with: goodRateViewModel)
     }
 }

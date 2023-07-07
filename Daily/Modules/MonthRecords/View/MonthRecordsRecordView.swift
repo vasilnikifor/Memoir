@@ -76,8 +76,8 @@ final class MonthRecordsRecordView: UIView {
     }
 }
 
-extension MonthRecordsRecordView: ViewModelSettable {
-    func setup(with viewModel: MonthRecordsRecordViewModel) {
+extension MonthRecordsRecordView: Configurable {
+    func configure(with viewModel: MonthRecordsRecordViewModel) {
         noteTextLabel.text = viewModel.text
         timeLabel.text = viewModel.time
         action = viewModel.action

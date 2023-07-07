@@ -68,7 +68,7 @@ final class MonthRecordsViewController: UIViewController {
 
 extension MonthRecordsViewController: MonthRecordsViewControllerProtocol {
     func update(navigationTitleModel: NavigationTitleView.ViewModel, dataSource: [MonthRecordsDataSource]) {
-        navigationTitleView.setup(with: navigationTitleModel)
+        navigationTitleView.configure(with: navigationTitleModel)
         self.dataSource = dataSource
         tableView.reloadData()
     }
@@ -98,12 +98,12 @@ extension MonthRecordsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
-        case .header(let viewModel):
-            return tableView.dequeueReusableCell(MonthRecordsHeaderView.self, viewModel: viewModel)
-        case .note(let viewModel):
-            return tableView.dequeueReusableCell(MonthRecordsRecordView.self, viewModel: viewModel)
-        case .actions(let viewModel):
-            return tableView.dequeueReusableCell(MonthRecordsFooterView.self, viewModel: viewModel)
+        case .header(let configuration):
+            return tableView.dequeueReusableCell(MonthRecordsHeaderView.self, configuration: configuration)
+        case .note(let configuration):
+            return tableView.dequeueReusableCell(MonthRecordsRecordView.self, configuration: configuration)
+        case .actions(let configuration):
+            return tableView.dequeueReusableCell(MonthRecordsFooterView.self, configuration: configuration)
         }
     }
 }

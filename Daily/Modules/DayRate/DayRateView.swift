@@ -58,8 +58,8 @@ final class DayRateView: UIView {
     }
 }
 
-extension DayRateView: ViewModelSettable {
-    func setup(with viewModel: DayRateViewModel) {
+extension DayRateView: Configurable {
+    func configure(with viewModel: DayRateViewModel) {
         rateView.image = viewModel.image
         rateView.tintColor = viewModel.tintColor
         selectionView.backgroundColor = viewModel.tintColor
