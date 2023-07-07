@@ -84,9 +84,9 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
         let title: String
         switch mode {
         case .month:
-            title = day.date?.dateShortRepresentation.orEmpty
+            title = day.date?.dateShortRepresentation ?? .empty
         case .year:
-            title = day.date?.dateRepresentation.orEmpty
+            title = day.date?.dateRepresentation ?? .empty
         }
 
         let isRateIconVisible: Bool
