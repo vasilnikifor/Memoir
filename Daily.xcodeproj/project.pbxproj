@@ -195,9 +195,9 @@
 			isa = PBXGroup;
 			children = (
 				9157AB8E266AA91C003C4B66 /* LabelStyle.swift */,
+				9127498B29A64F1400936E4F /* ButtonStyle.swift */,
 				84FF3F2922FEC4C100CEF093 /* Theme.swift */,
 				912BCE6C283E7B54005E1A6C /* Grid.swift */,
-				9127498B29A64F1400936E4F /* ButtonStyle.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 		2DD0AFC6239172E4009BED48 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				91419C5326B43F6C0031F519 /* Views */,
+				91419C5326B43F6C0031F519 /* Components */,
 				916C25EC267E2102004A1CDF /* Utilities */,
 				2D8770A423B79E5100A38D9F /* Other */,
 			);
@@ -317,6 +317,7 @@
 		9120922F2688AC7700F966BE /* DayRecords */ = {
 			isa = PBXGroup;
 			children = (
+				91419C5426B43F910031F519 /* NoteRecordView.swift */,
 				912092302688ACC300F966BE /* DayRecordsAssembler.swift */,
 				912092322688AD0300F966BE /* DayRecordsViewController.swift */,
 				912092342688AD6800F966BE /* DayRecordsPresenter.swift */,
@@ -336,14 +337,13 @@
 			path = MonthRecords;
 			sourceTree = "<group>";
 		};
-		91419C5326B43F6C0031F519 /* Views */ = {
+		91419C5326B43F6C0031F519 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				91419C5426B43F910031F519 /* NoteRecordView.swift */,
 				912A277C2901A0BF00DC134E /* NavigationTitleView.swift */,
 				9127491E29A523E800936E4F /* EmptyStateView.swift */,
 			);
-			path = Views;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		9157AB6B266A6164003C4B66 /* Modules */ = {
