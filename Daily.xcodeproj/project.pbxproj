@@ -75,7 +75,6 @@
 		9182AAB32674CF05006E68BE /* CalendarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9182AAB22674CF05006E68BE /* CalendarFactory.swift */; };
 		9182AAB52674D1E5006E68BE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9182AAB42674D1E5006E68BE /* String+Extension.swift */; };
 		918EC3D829C7596B00A55A27 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918EC3D729C7596B00A55A27 /* UIView+extension.swift */; };
-		919289CA2833C02800BC6842 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 919289C92833C02800BC6842 /* GoogleService-Info.plist */; };
 		91B7730427D75DBF0065701C /* PrivacyPolicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 91B7730327D75DBF0065701C /* PrivacyPolicy.md */; };
 		91C4A94C269B5BA500F7B420 /* IconRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C4A94B269B5BA500F7B420 /* IconRender.swift */; };
 		91D2B1D8289D6559001E7856 /* ConsoleActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2B1D7289D6559001E7856 /* ConsoleActionView.swift */; };
@@ -164,7 +163,6 @@
 		9182AAB22674CF05006E68BE /* CalendarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFactory.swift; sourceTree = "<group>"; };
 		9182AAB42674D1E5006E68BE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		918EC3D729C7596B00A55A27 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
-		919289C92833C02800BC6842 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		91B7730327D75DBF0065701C /* PrivacyPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PrivacyPolicy.md; sourceTree = "<group>"; };
 		91C4A94B269B5BA500F7B420 /* IconRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRender.swift; sourceTree = "<group>"; };
 		91D2B1D7289D6559001E7856 /* ConsoleActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleActionView.swift; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 		84F8918122294A2F00956265 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				919289C92833C02800BC6842 /* GoogleService-Info.plist */,
 				84F8917322290E8D00956265 /* Daily.xcdatamodeld */,
 				84F8917B22290E9000956265 /* Info.plist */,
 				84F8916C22290E8D00956265 /* AppDelegate.swift */,
@@ -503,7 +500,6 @@
 				84F8916522290E8D00956265 /* Sources */,
 				84F8916622290E8D00956265 /* Frameworks */,
 				84F8916722290E8D00956265 /* Resources */,
-				919289CD2833CBA000BC6842 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -558,35 +554,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F8917A22290E9000956265 /* LaunchScreen.storyboard in Resources */,
-				919289CA2833C02800BC6842 /* GoogleService-Info.plist in Resources */,
 				84F8917722290E9000956265 /* Assets.xcassets in Resources */,
 				91B7730427D75DBF0065701C /* PrivacyPolicy.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		919289CD2833CBA000BC6842 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84F8916522290E8D00956265 /* Sources */ = {
