@@ -75,8 +75,8 @@ final class CalendarDayViewCell: UICollectionViewCell {
     }
 }
 
-extension CalendarDayViewCell: ViewModelSettable {
-    func setup(with viewModel: CalendarDayViewModel) {
+extension CalendarDayViewCell: Configurable {
+    func configure(with viewModel: CalendarDayViewModel) {
         acton = viewModel.action
         isTodayView.isHidden = !viewModel.isToday
         button.setTitle(viewModel.date.dateNumber, for: .normal)

@@ -130,7 +130,7 @@ extension DayRecordsViewController: DayRecordsViewControllerProtocol {
 
         if let model = emptyStateModel {
             emptyStateView.isHidden = false
-            emptyStateView.setup(with: model)
+            emptyStateView.configure(with: model)
         } else {
             emptyStateView.isHidden = true
         }
@@ -144,8 +144,8 @@ extension DayRecordsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
-        case .note(let viewModel):
-            return tableView.dequeueReusableCell(NoteRecordView.self, viewModel: viewModel)
+        case .note(let configuration):
+            return tableView.dequeueReusableCell(NoteRecordView.self, configuration: configuration)
         }
     }
 }

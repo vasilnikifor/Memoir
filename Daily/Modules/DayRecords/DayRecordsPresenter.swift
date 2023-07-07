@@ -60,7 +60,7 @@ final class DayRecordsPresenter {
                     if let noteRecord = record as? NoteRecord {
                         return .note(
                             viewModel: NoteRecordViewModel(
-                                text: noteRecord.text ?? "",
+                                text: noteRecord.text.orEmpty,
                                 time: (noteRecord.time ?? Date()).timeRepresentation,
                                 action: { [weak self, weak noteRecord] in self?.openNote(noteRecord)}
                             )

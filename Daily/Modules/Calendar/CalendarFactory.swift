@@ -10,8 +10,8 @@ protocol CalendarFactoryDelegate: AnyObject {
 protocol CalendarFactoryProtocol: AnyObject {
     func makeWeekdays() -> [CalendarWeekdayViewModel]
     func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel]
-    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Model?
-    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Model
+    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Configuration?
+    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Configuration
 }
 
 final class CalendarFactory: CalendarFactoryProtocol {
@@ -70,28 +70,28 @@ final class CalendarFactory: CalendarFactoryProtocol {
         return calendarDays
     }
 
-    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Model? {
+    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Configuration? {
         let yesterdayDate = Date().addDays(-1).startOfDay
         let yesterdayDay = dayService.getDay(date: yesterdayDate)
 
         guard yesterdayDay?.rate == nil else { return nil }
 
-        return YesterdayConsoleView.Model(
+        return YesterdayConsoleView.Configuration(
             title: cms.home.howWasYesterday,
             isBackgroundBlurred: Date().isHolliday,
-            rateBadActionModel: .init(
+            rateBadButtonConfiguration: .init(
                 title: cms.rate.bad,
                 image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .bad) }
             ),
-            rateNormActionModel: .init(
+            rateNormButtonConfiguration: .init(
                 title: cms.rate.good,
                 image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .average) }
             ),
-            rateGoodActionModel: .init(
+            rateGoodButtonConfiguration: .init(
                 title: cms.rate.great,
                 image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
@@ -100,49 +100,49 @@ final class CalendarFactory: CalendarFactoryProtocol {
         )
     }
 
-    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Model {
+    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Configuration {
         let todayDate = Date().startOfDay
         let todayDay = dayService.getDay(date: todayDate)
-        var rateBadActionModel: ConsoleActionView.Model?
-        var rateNormActionModel: ConsoleActionView.Model?
-        var rateGoodActionModel: ConsoleActionView.Model?
+        var rateBadButtonConfiguration: ConsoleButton.Configuration?
+        var rateNormButtonConfiguration: ConsoleButton.Configuration?
+        var rateGoodButtonConfiguration: ConsoleButton.Configuration?
 
         switch todayDay?.rate {
         case .bad:
-            rateBadActionModel = .init(
+            rateBadButtonConfiguration = .init(
                 title: cms.rate.rate,
                 image: Theme.badRateImage,
                 tintColor: Theme.primaryText,
                 action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .bad) }
             )
         case .average:
-            rateNormActionModel = .init(
+            rateNormButtonConfiguration = .init(
                 title: cms.rate.rate,
                 image: Theme.averageRateImage,
                 tintColor: Theme.primaryText,
                 action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .average) }
             )
         case .good:
-            rateGoodActionModel = .init(
+            rateGoodButtonConfiguration = .init(
                 title: cms.rate.rate,
                 image: Theme.goodRateImage,
                 tintColor: Theme.primaryText,
                 action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .good) }
             )
         case .none:
-            rateBadActionModel = .init(
+            rateBadButtonConfiguration = .init(
                 title: cms.rate.bad,
                 image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .bad) }
             )
-            rateNormActionModel = .init(
+            rateNormButtonConfiguration = .init(
                 title: cms.rate.good,
                 image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .average) }
             )
-            rateGoodActionModel = .init(
+            rateGoodButtonConfiguration = .init(
                 title: cms.rate.great,
                 image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
@@ -150,7 +150,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
             )
         }
 
-        let addNoteActionModel: ConsoleActionView.Model = .init(
+        let addNoteActionModel = ConsoleButton.Configuration(
             title: cms.common.note,
             image: Theme.addNoteImage,
             tintColor: Theme.primaryText,
@@ -160,10 +160,10 @@ final class CalendarFactory: CalendarFactoryProtocol {
         return .init(
             title: cms.calendar.today,
             isBackgroundBlurred: Date().isHolliday,
-            rateBadActionModel: rateBadActionModel,
-            rateNormActionModel: rateNormActionModel,
-            rateGoodActionModel: rateGoodActionModel,
-            addNoteActionModel: addNoteActionModel
+            rateBadButtonConfiguration: rateBadButtonConfiguration,
+            rateNormButtonConfiguration: rateNormButtonConfiguration,
+            rateGoodButtonConfiguration: rateGoodButtonConfiguration,
+            addNoteButtonConfiguration: addNoteActionModel
         )
     }
 }

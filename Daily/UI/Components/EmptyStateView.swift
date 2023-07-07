@@ -35,9 +35,7 @@ final class EmptyStateView: UIView {
     }()
 
     private let mainButton: UIButton = {
-        let button = UIButton()
-        button.apply(style: .accent)
-        return button
+        UIButton(style: .filled)
     }()
     
     override init(frame: CGRect) {
@@ -80,8 +78,8 @@ final class EmptyStateView: UIView {
     }
 }
 
-extension EmptyStateView: ViewModelSettable {
-    func setup(with model: Model) {
+extension EmptyStateView: Configurable {
+    func configure(with model: Model) {
         illustrationImageView.image = model.illustrationImage
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle

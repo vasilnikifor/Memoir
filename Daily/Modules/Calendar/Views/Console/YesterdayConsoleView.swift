@@ -2,16 +2,16 @@ import Foundation
 import UIKit
 
 extension YesterdayConsoleView {
-    struct Model {
+    struct Configuration {
         let title: String
         let isBackgroundBlurred: Bool
-        let rateBadActionModel: ConsoleActionView.Model
-        let rateNormActionModel: ConsoleActionView.Model
-        let rateGoodActionModel: ConsoleActionView.Model
+        let rateBadButtonConfiguration: ConsoleButton.Configuration
+        let rateNormButtonConfiguration: ConsoleButton.Configuration
+        let rateGoodButtonConfiguration: ConsoleButton.Configuration
     }
 }
 
-final class YesterdayConsoleView: UIView, ViewModelSettable {
+final class YesterdayConsoleView: UIView, Configurable {
     private let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
         view.isVisible = false
@@ -35,25 +35,25 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
         return label
     }()
 
-    private let rateBadActionView: ConsoleActionView = {
-        ConsoleActionView()
+    private lazy var rateBadButton: ConsoleButton = {
+        ConsoleButton()
     }()
 
-    private let rateNormActionView: ConsoleActionView = {
-        ConsoleActionView()
+    private lazy var rateNormButton: ConsoleButton = {
+        ConsoleButton()
     }()
 
-    private let rateGoodActionView: ConsoleActionView = {
-        ConsoleActionView()
+    private lazy var rateGoodButton: ConsoleButton = {
+        ConsoleButton()
     }()
 
-    private lazy var actionsStackView: UIStackView = {
+    private lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(rateBadActionView)
-        stackView.addArrangedSubview(rateNormActionView)
-        stackView.addArrangedSubview(rateGoodActionView)
+        stackView.addArrangedSubview(rateBadButton)
+        stackView.addArrangedSubview(rateNormButton)
+        stackView.addArrangedSubview(rateGoodButton)
         return stackView
     }()
 
@@ -67,20 +67,20 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
         setup()
     }
 
-    func setup(with model: Model) {
-        titleLabel.text = model.title
-        blurView.isVisible = model.isBackgroundBlurred
-        cardView.isVisible = !model.isBackgroundBlurred
-        rateBadActionView.setup(with: model.rateBadActionModel)
-        rateNormActionView.setup(with: model.rateNormActionModel)
-        rateGoodActionView.setup(with: model.rateGoodActionModel)
+    func configure(with configuration: Configuration) {
+        titleLabel.text = configuration.title
+        blurView.isVisible = configuration.isBackgroundBlurred
+        cardView.isVisible = !configuration.isBackgroundBlurred
+        rateBadButton.configure(with: configuration.rateBadButtonConfiguration)
+        rateNormButton.configure(with: configuration.rateNormButtonConfiguration)
+        rateGoodButton.configure(with: configuration.rateGoodButtonConfiguration)
     }
 
     private func setup() {
         addSubview(blurView)
         addSubview(cardView)
         addSubview(titleLabel)
-        addSubview(actionsStackView)
+        addSubview(buttonsStackView)
 
         blurView
             .topToSuperview()
@@ -99,7 +99,7 @@ final class YesterdayConsoleView: UIView, ViewModelSettable {
             .leadingToSuperview(.m)
             .trailingToSuperview(-.m)
 
-        actionsStackView
+        buttonsStackView
             .top(to: titleLabel, anchor: titleLabel.bottomAnchor, offset: .s)
             .leadingToSuperview(.m)
             .trailingToSuperview(-.m)

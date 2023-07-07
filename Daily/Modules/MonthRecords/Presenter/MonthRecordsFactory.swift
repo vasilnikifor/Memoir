@@ -59,7 +59,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                         dataSource.append(
                             .note(
                                 viewModel: MonthRecordsRecordViewModel(
-                                    text: noteRecord.text ?? "",
+                                    text: noteRecord.text.orEmpty,
                                     time: (noteRecord.time ?? Date()).timeRepresentation,
                                     action: { [weak delegate] in delegate?.openNote(day: day, noteRecord: noteRecord)}
                                 )
@@ -84,9 +84,9 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
         let title: String
         switch mode {
         case .month:
-            title = day.date?.dateShortRepresentation ?? ""
+            title = day.date?.dateShortRepresentation ?? .empty
         case .year:
-            title = day.date?.dateRepresentation ?? ""
+            title = day.date?.dateRepresentation ?? .empty
         }
 
         let isRateIconVisible: Bool

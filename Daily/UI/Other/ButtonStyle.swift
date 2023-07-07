@@ -1,16 +1,29 @@
 import UIKit
 
-enum ButtonStyle {
-    case accent
+
+extension UIButton {
+    enum Style {
+        case consoleButton
+        case filled
+    }
 }
 
 extension UIButton {
-    func apply(style: ButtonStyle) {
+    convenience init(style: Style, action: (() -> Void)? = nil) {
         switch style {
-        case .accent:
-            layer.cornerRadius = .m
-            backgroundColor = Theme.primaryTint
-            setTitleColor(Theme.primaryReversedTint, for: .normal)
+        case .consoleButton:
+            var configuration = UIButton.Configuration.borderless()
+            configuration.imagePlacement = .top
+            configuration.imagePadding = .m
+            configuration.buttonSize = .mini
+            self.init(configuration: configuration)
+        case .filled:
+            self.init(configuration: UIButton.Configuration.filled())
+        }
+
+        if let action {
+            addAction(UIAction { _ in action() }, for: .touchUpInside)
         }
     }
 }
+

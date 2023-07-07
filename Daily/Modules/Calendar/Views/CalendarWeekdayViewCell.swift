@@ -29,8 +29,8 @@ final class CalendarWeekdayViewCell: UICollectionViewCell {
     }
 }
 
-extension CalendarWeekdayViewCell: ViewModelSettable {
-    func setup(with viewModel: CalendarWeekdayViewModel) {
+extension CalendarWeekdayViewCell: Configurable {
+    func configure(with viewModel: CalendarWeekdayViewModel) {
         titleLabel.text = viewModel.text
     }
 }

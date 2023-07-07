@@ -1,6 +1,6 @@
 import UIKit
 
-final class ReusableTableViewCell<View: ViewModelSettable & UIView>: UITableViewCell, ViewModelSettable {
+final class ReusableTableViewCell<View: Configurable & UIView>: UITableViewCell, Configurable {
     private let mainView = View(frame: .zero)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -24,7 +24,7 @@ final class ReusableTableViewCell<View: ViewModelSettable & UIView>: UITableView
             .bottomToSuperview()
     }
 
-    func setup(with viewModel: View.ViewModel) {
-        mainView.setup(with: viewModel)
+    func configure(with configuration: View.Configuration) {
+        mainView.configure(with: configuration)
     }
 }

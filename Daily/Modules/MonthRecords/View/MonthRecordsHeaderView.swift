@@ -78,8 +78,8 @@ final class MonthRecordsHeaderView: UIView {
     }
 }
 
-extension MonthRecordsHeaderView: ViewModelSettable {
-    func setup(with viewModel: MonthRecordsHeaderViewModel) {
+extension MonthRecordsHeaderView: Configurable {
+    func configure(with viewModel: MonthRecordsHeaderViewModel) {
         titleLabel.text = viewModel.title
         rateImageView.image = viewModel.rateIconImage
         rateImageView.tintColor = viewModel.rateIconTint
