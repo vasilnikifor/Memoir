@@ -1,6 +1,8 @@
 import Foundation
 
 extension String {
+    static let empty = ""
+
     var capitalizedFirstLetter: String {
         return prefix(1).capitalized + dropFirst()
     }
