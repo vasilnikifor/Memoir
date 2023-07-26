@@ -2,7 +2,7 @@ import UIKit
 
 protocol CalendarViewControllerProtocol: AnyObject {
     func setupInitialState(
-        calendarModel: CalendarViewModel,
+        calendarModel: CalendarViewConfiguration,
         backgroundImage: UIImage?
     )
     func update(
@@ -102,7 +102,7 @@ final class CalendarViewController: UIViewController {
 
 extension CalendarViewController: CalendarViewControllerProtocol {
     func setupInitialState(
-        calendarModel: CalendarViewModel,
+        calendarModel: CalendarViewConfiguration,
         backgroundImage: UIImage?
     ) {
         navigationItem.backButtonTitle = " "

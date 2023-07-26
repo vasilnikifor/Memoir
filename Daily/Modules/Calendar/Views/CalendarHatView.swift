@@ -1,40 +1,56 @@
 import UIKit
 
 final class CalendarHatView: UIView {
-    var upTapped: (() -> Void)?
-    var downTapped: (() -> Void)?
-    var forwardTapped: (() -> Void)?
+    var onNextMonthTap: (() -> Void)?
+    var onPreviousMonthTap: (() -> Void)?
+    var onCurrentMonthTap: (() -> Void)?
 
-    lazy var downButton: UIButton = {
+    var previousMonthAccessibilityLabel: String? {
+        didSet {
+            previousMonthButton.accessibilityLabel = previousMonthAccessibilityLabel
+        }
+    }
+
+    var nextMonthAccessibilityLabel: String? {
+        didSet {
+            nextMonthButton.accessibilityLabel = nextMonthAccessibilityLabel
+        }
+    }
+
+    var currentMonthButtonTitle: String? {
+        didSet {
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
+            let attributedString = NSAttributedString(string: currentMonthButtonTitle ?? .empty, attributes: attributes)
+            currentButton.setAttributedTitle(attributedString, for: .normal)
+        }
+    }
+
+    private lazy var previousMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(Theme.arrowLeftImage, for: .normal)
-        button.addTarget(self, action: #selector(downButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(previousMonthButtonTapped), for: .touchUpInside)
+        button.layer.cornerRadius = .s
         return button
     }()
 
-    lazy var upButton: UIButton = {
+    private lazy var nextMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(Theme.arrowRightImage, for: .normal)
-        button.addTarget(self, action: #selector(upButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nextMonthButtonTapped), for: .touchUpInside)
+        button.layer.cornerRadius = .s
         return button
     }()
 
-    lazy var forwardImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Theme.arrowOpenImage
-        imageView.contentMode = .scaleAspectFit
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(forwardButtonTapped)))
-        imageView.isUserInteractionEnabled = true
-        return imageView
-    }()
-
-    lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.apply(style: .primaryBig)
-        label.textAlignment = .center
-        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(forwardButtonTapped)))
-        label.isUserInteractionEnabled = true
-        return label
+    private lazy var currentButton: UIButton = {
+        var configuration = UIButton.Configuration.borderless()
+        configuration.imagePlacement = .trailing
+        configuration.imagePadding = .m
+        configuration.buttonSize = .large
+        let button = UIButton(configuration: configuration)
+        button.addTarget(self, action: #selector(currentButtonTapped), for: .touchUpInside)
+        button.setImage(Theme.arrowOpenImage, for: .normal)
+        button.layer.cornerRadius = .s
+        return button
     }()
 
     override init(frame: CGRect) {
@@ -48,48 +64,43 @@ final class CalendarHatView: UIView {
     }
 
     private func setup() {
-        addSubview(upButton)
-        addSubview(downButton)
-        addSubview(forwardImageView)
-        addSubview(nameLabel)
+        addSubview(nextMonthButton)
+        addSubview(previousMonthButton)
+        addSubview(currentButton)
 
         height(.xl)
 
-        downButton
+        previousMonthButton
             .topToSuperview()
             .leadingToSuperview()
             .height(.xl)
             .width(.xl)
 
-        upButton
+        nextMonthButton
             .topToSuperview()
             .trailingToSuperview()
             .height(.xl)
             .width(.xl)
 
-        nameLabel
-            .centerYToSuperview()
-            .centerXToSuperview()
-
-        forwardImageView
-            .height(.m)
-            .width(.m)
-            .leading(to: nameLabel, anchor: nameLabel.trailingAnchor, offset: .s)
-            .centerYToSuperview()
+        currentButton
+            .topToSuperview()
+            .leading(to: previousMonthButton, anchor: previousMonthButton.trailingAnchor, offset: .s)
+            .trailing(to: nextMonthButton, anchor: nextMonthButton.leadingAnchor, offset: -.s)
+            .height(.xl)
     }
 
     @objc
-    func upButtonTapped() {
-        upTapped?()
+    private func nextMonthButtonTapped() {
+        onNextMonthTap?()
     }
 
     @objc
-    func downButtonTapped() {
-        downTapped?()
+    private func previousMonthButtonTapped() {
+        onPreviousMonthTap?()
     }
 
     @objc
-    func forwardButtonTapped() {
-        forwardTapped?()
+    private func currentButtonTapped() {
+        onCurrentMonthTap?()
     }
 }

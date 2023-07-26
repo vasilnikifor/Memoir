@@ -19,17 +19,20 @@ final class CalendarPresenter {
     private weak var view: CalendarViewControllerProtocol?
     private weak var coordinator: CalendarCoordinatorProtocol?
     private let dayService: DayServiceProtocol
+    private let cms: CmsProtocol
     private let factory: CalendarFactoryProtocol
 
     init(
         view: CalendarViewControllerProtocol,
         coordinator: CalendarCoordinatorProtocol,
         dayService: DayServiceProtocol,
+        cms: CmsProtocol,
         factory: CalendarFactoryProtocol
     ) {
         self.view = view
         self.coordinator = coordinator
         self.dayService = dayService
+        self.cms = cms
         self.factory = factory
     }
 
@@ -50,9 +53,11 @@ extension CalendarPresenter: CalendarPresenterProtocol {
         }
 
         view?.setupInitialState(
-            calendarModel: CalendarViewModel(
+            calendarModel: CalendarViewConfiguration(
                 month: Date(),
                 isBackgroundBlurred: Date().isHolliday,
+                previousMonthAccessibilityLabel: cms.calendar.previousMonth,
+                nextMonthAccessibilityLabel: cms.calendar.nextMonth,
                 delegate: self
             ),
             backgroundImage: backgroundImage
