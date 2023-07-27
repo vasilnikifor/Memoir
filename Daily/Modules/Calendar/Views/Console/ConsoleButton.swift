@@ -18,6 +18,7 @@ final class ConsoleButton: UIButton {
         configuration.imagePadding = .m
         configuration.buttonSize = .mini
         self.init(configuration: configuration)
+        layer.cornerRadius = .s
     }
 
     @objc

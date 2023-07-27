@@ -45,17 +45,17 @@ final class CalendarPresenter {
 extension CalendarPresenter: CalendarPresenterProtocol {
     func viewLoaded() {
         var backgroundImage: UIImage?
-        let todayDate = Date()
-        if todayDate.isNewYearTime {
+        let todaysDate = Date()
+        if todaysDate.isNewYearTime {
             backgroundImage = UIImage(named: "christmas")
-        } else if todayDate.isSpringDay {
+        } else if todaysDate.isSpringDay {
             backgroundImage = UIImage(named: "spring")
         }
 
         view?.setupInitialState(
             calendarModel: CalendarViewConfiguration(
-                month: Date(),
-                isBackgroundBlurred: Date().isHolliday,
+                month: todaysDate,
+                isBackgroundBlurred: todaysDate.isHolliday,
                 previousMonthAccessibilityLabel: cms.calendar.previousMonth,
                 nextMonthAccessibilityLabel: cms.calendar.nextMonth,
                 delegate: self
@@ -109,7 +109,8 @@ extension CalendarPresenter: CalendarDelegate {
     func update() {
         view?.update(
             yesterdayConsoleModel: factory.makeYesterdayConsole(delegate: self),
-            todaysConsoleModel: factory.makeTodayConsole(delegate: self)
+            todaysConsoleModel: factory.makeTodayConsole(delegate: self),
+            addNoteConsole: factory.makeNoteConsole(delegate: self)
         )
     }
 }

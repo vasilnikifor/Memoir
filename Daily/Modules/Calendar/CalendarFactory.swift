@@ -10,8 +10,10 @@ protocol CalendarFactoryDelegate: AnyObject {
 protocol CalendarFactoryProtocol: AnyObject {
     func makeWeekdays() -> [CalendarWeekdayViewModel]
     func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel]
-    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Configuration?
-    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Configuration
+    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration?
+    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration?
+    func makeNoteConsole(delegate: CalendarFactoryDelegate) -> NoteConsoleView.Configuration
+    
 }
 
 final class CalendarFactory: CalendarFactoryProtocol {
@@ -70,100 +72,67 @@ final class CalendarFactory: CalendarFactoryProtocol {
         return calendarDays
     }
 
-    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> YesterdayConsoleView.Configuration? {
-        let yesterdayDate = Date().addDays(-1).startOfDay
-        let yesterdayDay = dayService.getDay(date: yesterdayDate)
+    func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration? {
+        return makeRateConsole(for: Date().addDays(-1).startOfDay, delegate: delegate)
+    }
 
-        guard yesterdayDay?.rate == nil else { return nil }
+    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration? {
+        return makeRateConsole(for: Date().startOfDay, delegate: delegate)
+    }
 
-        return YesterdayConsoleView.Configuration(
-            title: cms.home.howWasYesterday,
-            isBackgroundBlurred: Date().isHolliday,
+    func makeNoteConsole(delegate: CalendarFactoryDelegate) -> NoteConsoleView.Configuration {
+        let currentDate = Date()
+        return NoteConsoleView.Configuration(
+            title: cms.note.addNote,
+            image: Theme.addNoteImage,
+            isBackgroundBlurred: currentDate.isHolliday,
+            action: { [weak delegate] in delegate?.addNote(to: currentDate) }
+        )
+    }
+
+    private func makeRateConsole(
+        for configurableDate: Date,
+        delegate: CalendarFactoryDelegate
+    ) -> RateConsoleView.Configuration? {
+        let date = configurableDate.startOfDay
+        let day = dayService.getDay(date: date)
+
+        guard day?.rate == nil else { return nil }
+
+        let today = Date().startOfDay
+        let isYesterday = today.addDays(-1) == date
+        let isToday = today == date
+        let title: String
+
+        if isToday {
+            title = cms.home.howIsToday
+        } else if isYesterday {
+            title = cms.home.howWasYesterday
+        } else {
+            title = .empty
+        }
+
+        return RateConsoleView.Configuration(
+            title: title,
+            isBackgroundBlurred: today.isHolliday,
             rateBadButtonConfiguration: .init(
                 title: cms.rate.bad,
                 image: Theme.badRateFilledImage,
                 tintColor: Theme.badRateColor,
-                action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .bad) }
+                action: { [weak delegate] in delegate?.dateRated(date, rate: .bad) }
             ),
             rateNormButtonConfiguration: .init(
                 title: cms.rate.good,
                 image: Theme.averageRateFilledImage,
                 tintColor: Theme.averageRateColor,
-                action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .average) }
+                action: { [weak delegate] in delegate?.dateRated(date, rate: .average) }
             ),
             rateGoodButtonConfiguration: .init(
                 title: cms.rate.great,
                 image: Theme.goodRateFilledImage,
                 tintColor: Theme.goodRateColor,
-                action: { [weak delegate] in delegate?.dateRated(yesterdayDate, rate: .good) }
+                action: { [weak delegate] in delegate?.dateRated(date, rate: .good) }
             )
-        )
-    }
-
-    func makeTodayConsole(delegate: CalendarFactoryDelegate) -> TodayConsoleView.Configuration {
-        let todayDate = Date().startOfDay
-        let todayDay = dayService.getDay(date: todayDate)
-        var rateBadButtonConfiguration: ConsoleButton.Configuration?
-        var rateNormButtonConfiguration: ConsoleButton.Configuration?
-        var rateGoodButtonConfiguration: ConsoleButton.Configuration?
-
-        switch todayDay?.rate {
-        case .bad:
-            rateBadButtonConfiguration = .init(
-                title: cms.rate.rate,
-                image: Theme.badRateImage,
-                tintColor: Theme.primaryText,
-                action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .bad) }
-            )
-        case .average:
-            rateNormButtonConfiguration = .init(
-                title: cms.rate.rate,
-                image: Theme.averageRateImage,
-                tintColor: Theme.primaryText,
-                action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .average) }
-            )
-        case .good:
-            rateGoodButtonConfiguration = .init(
-                title: cms.rate.rate,
-                image: Theme.goodRateImage,
-                tintColor: Theme.primaryText,
-                action: { [weak delegate] in delegate?.rateDay(todayDate, rate: .good) }
-            )
-        case .none:
-            rateBadButtonConfiguration = .init(
-                title: cms.rate.bad,
-                image: Theme.badRateFilledImage,
-                tintColor: Theme.badRateColor,
-                action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .bad) }
-            )
-            rateNormButtonConfiguration = .init(
-                title: cms.rate.good,
-                image: Theme.averageRateFilledImage,
-                tintColor: Theme.averageRateColor,
-                action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .average) }
-            )
-            rateGoodButtonConfiguration = .init(
-                title: cms.rate.great,
-                image: Theme.goodRateFilledImage,
-                tintColor: Theme.goodRateColor,
-                action: { [weak delegate] in delegate?.dateRated(todayDate, rate: .good) }
-            )
-        }
-
-        let addNoteActionModel = ConsoleButton.Configuration(
-            title: cms.common.note,
-            image: Theme.addNoteImage,
-            tintColor: Theme.primaryText,
-            action: { [weak delegate] in delegate?.addNote(to: todayDate) }
-        )
-
-        return .init(
-            title: cms.calendar.today,
-            isBackgroundBlurred: Date().isHolliday,
-            rateBadButtonConfiguration: rateBadButtonConfiguration,
-            rateNormButtonConfiguration: rateNormButtonConfiguration,
-            rateGoodButtonConfiguration: rateGoodButtonConfiguration,
-            addNoteButtonConfiguration: addNoteActionModel
         )
     }
 }

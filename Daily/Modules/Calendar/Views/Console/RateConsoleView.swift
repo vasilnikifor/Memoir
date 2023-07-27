@@ -1,23 +1,19 @@
 import UIKit
 
-extension TodayConsoleView {
+extension RateConsoleView {
     struct Configuration {
         let title: String
         let isBackgroundBlurred: Bool
-        let rateBadButtonConfiguration: ConsoleButton.Configuration?
-        let rateNormButtonConfiguration: ConsoleButton.Configuration?
-        let rateGoodButtonConfiguration: ConsoleButton.Configuration?
-        let addNoteButtonConfiguration: ConsoleButton.Configuration
-    }
-
-    enum Appearance {
-        static let animationDuration: CGFloat = 0.2
+        let rateBadButtonConfiguration: ConsoleButton.Configuration
+        let rateNormButtonConfiguration: ConsoleButton.Configuration
+        let rateGoodButtonConfiguration: ConsoleButton.Configuration
     }
 }
 
-final class TodayConsoleView: UIView, Configurable {
+final class RateConsoleView: UIView, Configurable {
     private let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        view.isVisible = false
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         return view
@@ -25,9 +21,9 @@ final class TodayConsoleView: UIView, Configurable {
 
     private let cardView: UIView = {
         let view = UIView()
+        view.backgroundColor = Theme.layeredForeground
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
-        view.backgroundColor = Theme.layeredForeground
         return view
     }()
 
@@ -50,18 +46,14 @@ final class TodayConsoleView: UIView, Configurable {
         ConsoleButton()
     }()
 
-    private lazy var addNoteButton: ConsoleButton = {
-        ConsoleButton()
-    }()
-
     private lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.spacing = .s
         stackView.addArrangedSubview(rateBadButton)
         stackView.addArrangedSubview(rateNormButton)
         stackView.addArrangedSubview(rateGoodButton)
-        stackView.addArrangedSubview(addNoteButton)
         return stackView
     }()
 
@@ -79,34 +71,9 @@ final class TodayConsoleView: UIView, Configurable {
         titleLabel.text = configuration.title
         blurView.isVisible = configuration.isBackgroundBlurred
         cardView.isVisible = !configuration.isBackgroundBlurred
-
-        if let configuration = configuration.rateBadButtonConfiguration {
-            rateBadButton.configure(with: configuration)
-        }
-
-        if let configuration = configuration.rateNormButtonConfiguration {
-            rateNormButton.configure(with: configuration)
-        }
-
-        if let configuration = configuration.rateGoodButtonConfiguration {
-            rateGoodButton.configure(with: configuration)
-        }
-
-        addNoteButton.configure(with: configuration.addNoteButtonConfiguration)
-
-        let isBadDayButtonVisible = configuration.rateBadButtonConfiguration != nil
-        let isNormDayButtonVisible = configuration.rateNormButtonConfiguration != nil
-        let isGoodDayButtonVisible = configuration.rateGoodButtonConfiguration != nil
-        rateBadButton.isHidden = !isBadDayButtonVisible
-        rateNormButton.isHidden = !isNormDayButtonVisible
-        rateGoodButton.isHidden = !isGoodDayButtonVisible
-
-        UIView.animate(withDuration: Appearance.animationDuration) {
-            self.rateBadButton.alpha = isBadDayButtonVisible ? 1 : 0
-            self.rateNormButton.alpha = isNormDayButtonVisible ? 1 : 0
-            self.rateGoodButton.alpha = isGoodDayButtonVisible ? 1 : 0
-            self.layoutIfNeeded()
-        }
+        rateBadButton.configure(with: configuration.rateBadButtonConfiguration)
+        rateNormButton.configure(with: configuration.rateNormButtonConfiguration)
+        rateGoodButton.configure(with: configuration.rateGoodButtonConfiguration)
     }
 
     private func setup() {
