@@ -2,7 +2,7 @@ import UIKit
 
 protocol CalendarViewDelegate: AnyObject {
     func getMonthsWeekDays() -> [CalendarWeekdayViewModel]
-    func getMonthsDays(month: Date) -> [CalendarDayViewModel]
+    func getMonthsDays(month: Date) -> [CalendarDayViewConfiguration]
     func monthSelected(month: Date)
 }
 

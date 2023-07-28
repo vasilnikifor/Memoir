@@ -1,6 +1,6 @@
 import UIKit
 
-struct CalendarDayViewModel {
+struct CalendarDayViewConfiguration {
     let date: Date
     let isToday: Bool
     let state: State
@@ -59,11 +59,12 @@ final class CalendarDayViewCell: UICollectionViewCell {
 }
 
 extension CalendarDayViewCell: Configurable {
-    func configure(with viewModel: CalendarDayViewModel) {
-        acton = viewModel.action
-        button.setTitle(viewModel.date.dateNumber, for: .normal)
+    func configure(with configuration: CalendarDayViewConfiguration) {
+        acton = configuration.action
+        button.setTitle(configuration.date.dateNumber, for: .normal)
+        button.accessibilityLabel = configuration.date.dateLongRepresentation
         button.layer.borderColor = Theme.primaryTint.cgColor
-        switch viewModel.state {
+        switch configuration.state {
         case .inactive:
             button.backgroundColor = .clear
             button.setTitleColor(Theme.secondaryText, for: .normal)
@@ -75,12 +76,12 @@ extension CalendarDayViewCell: Configurable {
             button.backgroundColor = .clear
             button.setTitleColor(Theme.primaryText, for: .normal)
             button.isEnabled = true
-            button.layer.borderWidth = viewModel.isToday ? .xxxs : .zero
+            button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
         case .filled(let dayRate):
             button.isHidden = false
             button.setTitleColor(Theme.reversedPrimaryText, for: .normal)
             button.isEnabled = true
-            button.layer.borderWidth = viewModel.isToday ? .xxxs : .zero
+            button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
             switch dayRate {
             case .bad:
                 button.backgroundColor = Theme.badRateColor

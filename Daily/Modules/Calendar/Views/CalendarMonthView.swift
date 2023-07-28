@@ -12,7 +12,7 @@ final class CalendarMonthView: UIView {
     private let shortMonthWeeks: Int = 4
     private let mediumMonthWeeks: Int = 5
     private var weekdaysDataSource: [CalendarWeekdayViewModel] = []
-    private var daysDataSource: [CalendarDayViewModel] = []
+    private var daysDataSource: [CalendarDayViewConfiguration] = []
     private var month: Date = Date()
     private weak var delegate: CalendarViewDelegate?
     private var weekdaysTopConstraint: NSLayoutConstraint?

@@ -9,7 +9,7 @@ protocol CalendarFactoryDelegate: AnyObject {
 
 protocol CalendarFactoryProtocol: AnyObject {
     func makeWeekdays() -> [CalendarWeekdayViewModel]
-    func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel]
+    func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewConfiguration]
     func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration?
     func makeTodayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration?
     func makeNoteConsole(delegate: CalendarFactoryDelegate) -> NoteConsoleView.Configuration
@@ -44,8 +44,8 @@ final class CalendarFactory: CalendarFactoryProtocol {
         }
     }
 
-    func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewModel] {
-        var calendarDays: [CalendarDayViewModel] = []
+    func makeCalendar(month: Date, delegate: CalendarFactoryDelegate) -> [CalendarDayViewConfiguration] {
+        var calendarDays: [CalendarDayViewConfiguration] = []
         var processingDate = month.firstMonthCalendarDate.startOfDay
         let firstMonthDate = month.firstDayOfMonth.startOfDay
         let lastMonthDate = month.lastDayOfMonth.startOfDay
@@ -56,7 +56,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
         while processingDate <= lastCalendarDate {
             if processingDate < firstMonthDate || processingDate > lastMonthDate {
                 calendarDays.append(
-                    CalendarDayViewModel(
+                    CalendarDayViewConfiguration(
                         date: processingDate,
                         isToday: processingDate == todayDate,
                         state: .inactive,
@@ -66,7 +66,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
             } else {
                 let day = days.first(where: { $0.date?.startOfDay == processingDate })
                 calendarDays.append(
-                    CalendarDayViewModel(
+                    CalendarDayViewConfiguration(
                         date: processingDate,
                         isToday: processingDate == todayDate,
                         state: (day?.isEmpty ?? true) ? .empty : .filled(dayRate: day?.rate),

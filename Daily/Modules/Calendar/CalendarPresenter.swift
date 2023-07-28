@@ -77,7 +77,7 @@ extension CalendarPresenter: CalendarViewDelegate {
         return factory.makeWeekdays()
     }
 
-    func getMonthsDays(month: Date) -> [CalendarDayViewModel] {
+    func getMonthsDays(month: Date) -> [CalendarDayViewConfiguration] {
         return factory.makeCalendar(month: month, delegate: self)
     }
 

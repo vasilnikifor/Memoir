@@ -115,6 +115,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
 
+    /// "d MMMM"
+    var dateLongRepresentation: String {
+        let dateFormatter = Date.dateFormatter
+        dateFormatter.dateFormat = "d MMMM"
+        return dateFormatter.string(from: self)
+    }
+
     /// "MMMM yyyy"
     var monthRepresentation: String {
         let dateFormatter = Date.dateFormatter
