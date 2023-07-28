@@ -2,12 +2,13 @@ import UIKit
 
 protocol CalendarViewControllerProtocol: AnyObject {
     func setupInitialState(
-        calendarModel: CalendarViewModel,
+        calendarModel: CalendarViewConfiguration,
         backgroundImage: UIImage?
     )
     func update(
-        yesterdayConsoleModel: YesterdayConsoleView.Configuration?,
-        todaysConsoleModel: TodayConsoleView.Configuration
+        yesterdayConsoleModel: RateConsoleView.Configuration?,
+        todaysConsoleModel: RateConsoleView.Configuration?,
+        addNoteConsole: NoteConsoleView.Configuration
     )
 }
 
@@ -21,13 +22,16 @@ final class CalendarViewController: UIViewController {
     var presenter: CalendarPresenterProtocol?
 
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
+        let arrangedSubviews = [
+            calendarView,
+            yesterdayRateConsoleView,
+            todayRateConsoleView,
+            addNoteConsoleView,
+        ]
+        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = .m
-        stackView.addArrangedSubview(calendarView)
-        stackView.addArrangedSubview(yesterdayConsole)
-        stackView.addArrangedSubview(todayConsole)
         stackView.layoutMargins = UIEdgeInsets(top: .m, left: .zero, bottom: .m, right: .zero)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
@@ -43,12 +47,16 @@ final class CalendarViewController: UIViewController {
         CalendarView()
     }()
 
-    let yesterdayConsole: YesterdayConsoleView = {
-        YesterdayConsoleView()
+    let yesterdayRateConsoleView: RateConsoleView = {
+        RateConsoleView()
     }()
 
-    let todayConsole: TodayConsoleView = {
-        TodayConsoleView()
+    let todayRateConsoleView: RateConsoleView = {
+        RateConsoleView()
+    }()
+
+    let addNoteConsoleView: NoteConsoleView = {
+        NoteConsoleView()
     }()
 
     let backgroundImageView: UIImageView = {
@@ -102,7 +110,7 @@ final class CalendarViewController: UIViewController {
 
 extension CalendarViewController: CalendarViewControllerProtocol {
     func setupInitialState(
-        calendarModel: CalendarViewModel,
+        calendarModel: CalendarViewConfiguration,
         backgroundImage: UIImage?
     ) {
         navigationItem.backButtonTitle = " "
@@ -111,16 +119,25 @@ extension CalendarViewController: CalendarViewControllerProtocol {
     }
 
     func update(
-        yesterdayConsoleModel: YesterdayConsoleView.Configuration?,
-        todaysConsoleModel: TodayConsoleView.Configuration
+        yesterdayConsoleModel: RateConsoleView.Configuration?,
+        todaysConsoleModel: RateConsoleView.Configuration?,
+        addNoteConsole: NoteConsoleView.Configuration
     ) {
         calendarView.update() { [weak self] in
-            guard let self = self else { return }
-            self.todayConsole.configure(with: todaysConsoleModel)
-            self.yesterdayConsole.isHidden = yesterdayConsoleModel == nil
-            if let yesterdayConsoleModel = yesterdayConsoleModel {
-                self.yesterdayConsole.configure(with: yesterdayConsoleModel)
+            guard let self else { return }
+
+            self.yesterdayRateConsoleView.isHidden = yesterdayConsoleModel == nil
+            self.todayRateConsoleView.isHidden = todaysConsoleModel == nil
+            self.addNoteConsoleView.configure(with: addNoteConsole)
+
+            if let yesterdayConsoleModel {
+                self.yesterdayRateConsoleView.configure(with: yesterdayConsoleModel)
             }
+
+            if let todaysConsoleModel {
+                self.todayRateConsoleView.configure(with: todaysConsoleModel)
+            }
+
             UIView.animate(
                 withDuration: Appearance.animationDuration,
                 delay: .zero,

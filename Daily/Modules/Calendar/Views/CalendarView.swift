@@ -2,13 +2,15 @@ import UIKit
 
 protocol CalendarViewDelegate: AnyObject {
     func getMonthsWeekDays() -> [CalendarWeekdayViewModel]
-    func getMonthsDays(month: Date) -> [CalendarDayViewModel]
+    func getMonthsDays(month: Date) -> [CalendarDayViewConfiguration]
     func monthSelected(month: Date)
 }
 
-struct CalendarViewModel {
+struct CalendarViewConfiguration {
     let month: Date
     let isBackgroundBlurred: Bool
+    let previousMonthAccessibilityLabel: String
+    let nextMonthAccessibilityLabel: String
     weak var delegate: CalendarViewDelegate?
 }
 
@@ -40,9 +42,9 @@ final class CalendarView: UIView {
 
     lazy var hatView: CalendarHatView = {
         let view = CalendarHatView()
-        view.upTapped = { [weak self] in self?.swipeCalendarToNextMonth() }
-        view.downTapped = { [weak self] in self?.swipeCalendarToPreviousMonth() }
-        view.forwardTapped = { [weak self] in self?.showMonth() }
+        view.onNextMonthTap = { [weak self] in self?.swipeCalendarToNextMonth() }
+        view.onPreviousMonthTap = { [weak self] in self?.swipeCalendarToPreviousMonth() }
+        view.onCurrentMonthTap = { [weak self] in self?.showMonth() }
         return view
     }()
 
@@ -151,7 +153,7 @@ final class CalendarView: UIView {
     @objc
     func showNextMonth() {
         month = month.addMonths(1)
-        hatView.nameLabel.text = month.monthRepresentation
+        hatView.currentMonthButtonTitle = month.monthRepresentation
         let newNextMonthView = previousMonthView
         previousMonthView = currentMonthView
         currentMonthView = nextMonthView
@@ -163,7 +165,7 @@ final class CalendarView: UIView {
     @objc
     func showPreviousMonthView() {
         month = month.addMonths(-1)
-        hatView.nameLabel.text = month.monthRepresentation
+        hatView.currentMonthButtonTitle = month.monthRepresentation
         let newPreviousMonthView = nextMonthView
         nextMonthView = currentMonthView
         currentMonthView = previousMonthView
@@ -197,7 +199,7 @@ extension CalendarView: UIScrollViewDelegate {
 
 extension CalendarView {
     func update(completion: (() -> Void)? = nil) {
-        hatView.nameLabel.text = month.monthRepresentation
+        hatView.currentMonthButtonTitle = month.monthRepresentation
 
         let dispatchGroup = DispatchGroup()
 
@@ -223,11 +225,13 @@ extension CalendarView {
 }
 
 extension CalendarView: Configurable {
-    func configure(with viewModel: CalendarViewModel) {
-        month = viewModel.month
-        delegate = viewModel.delegate
-        blurView.isVisible = viewModel.isBackgroundBlurred
-        cardView.isVisible = !viewModel.isBackgroundBlurred
+    func configure(with configuration: CalendarViewConfiguration) {
+        month = configuration.month
+        hatView.previousMonthAccessibilityLabel = configuration.previousMonthAccessibilityLabel
+        hatView.nextMonthAccessibilityLabel = configuration.nextMonthAccessibilityLabel
+        delegate = configuration.delegate
+        blurView.isVisible = configuration.isBackgroundBlurred
+        cardView.isVisible = !configuration.isBackgroundBlurred
         update()
     }
 }

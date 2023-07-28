@@ -3,6 +3,7 @@ import Foundation
 protocol CmsHomeProtocol {
     var selectDateRange: String { get }
     var howWasYesterday: String { get }
+    var howIsToday: String { get }
     func wholeYear(year: String) -> String
 }
 
@@ -18,6 +19,13 @@ final class CmsHome: CmsHomeProtocol {
         switch Locale.currentLocale {
         case .en:
             return "How was yesterday?"
+        }
+    }
+
+    var howIsToday: String {
+        switch Locale.currentLocale {
+        case .en:
+            return "How are you today?"
         }
     }
 

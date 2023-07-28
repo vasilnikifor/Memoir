@@ -19,17 +19,20 @@ final class CalendarPresenter {
     private weak var view: CalendarViewControllerProtocol?
     private weak var coordinator: CalendarCoordinatorProtocol?
     private let dayService: DayServiceProtocol
+    private let cms: CmsProtocol
     private let factory: CalendarFactoryProtocol
 
     init(
         view: CalendarViewControllerProtocol,
         coordinator: CalendarCoordinatorProtocol,
         dayService: DayServiceProtocol,
+        cms: CmsProtocol,
         factory: CalendarFactoryProtocol
     ) {
         self.view = view
         self.coordinator = coordinator
         self.dayService = dayService
+        self.cms = cms
         self.factory = factory
     }
 
@@ -42,17 +45,21 @@ final class CalendarPresenter {
 extension CalendarPresenter: CalendarPresenterProtocol {
     func viewLoaded() {
         var backgroundImage: UIImage?
-        let todayDate = Date()
-        if todayDate.isNewYearTime {
+        let todaysDate = Date()
+        if todaysDate.isNewYearTime {
             backgroundImage = UIImage(named: "christmas")
-        } else if todayDate.isSpringDay {
+        } else if todaysDate.isSpringDay {
             backgroundImage = UIImage(named: "spring")
+        } else if todaysDate.isAugustDay {
+            backgroundImage = UIImage(named: "august")
         }
 
         view?.setupInitialState(
-            calendarModel: CalendarViewModel(
-                month: Date(),
-                isBackgroundBlurred: Date().isHolliday,
+            calendarModel: CalendarViewConfiguration(
+                month: todaysDate,
+                isBackgroundBlurred: todaysDate.isWallpaperDay,
+                previousMonthAccessibilityLabel: cms.calendar.previousMonth,
+                nextMonthAccessibilityLabel: cms.calendar.nextMonth,
                 delegate: self
             ),
             backgroundImage: backgroundImage
@@ -72,7 +79,7 @@ extension CalendarPresenter: CalendarViewDelegate {
         return factory.makeWeekdays()
     }
 
-    func getMonthsDays(month: Date) -> [CalendarDayViewModel] {
+    func getMonthsDays(month: Date) -> [CalendarDayViewConfiguration] {
         return factory.makeCalendar(month: month, delegate: self)
     }
 
@@ -104,20 +111,17 @@ extension CalendarPresenter: CalendarDelegate {
     func update() {
         view?.update(
             yesterdayConsoleModel: factory.makeYesterdayConsole(delegate: self),
-            todaysConsoleModel: factory.makeTodayConsole(delegate: self)
+            todaysConsoleModel: factory.makeTodayConsole(delegate: self),
+            addNoteConsole: factory.makeNoteConsole(delegate: self)
         )
     }
 }
 
 extension Date {
-    var isHolliday: Bool {
+    var isWallpaperDay: Bool {
         return isNewYearTime
             || isSpringDay
-//            || isCosmonauticsDay
-//            || isSummerDay
-//            || isAutumnDay
-//            || isHalloweenTime
-//            || isWinterDay
+            || isAugustDay
     }
 
     var isNewYearTime: Bool {
@@ -143,6 +147,13 @@ extension Date {
         isDateInRange(
             minDate: 1, minMonth: 6,
             maxDate: 1, maxMonth: 6
+        )
+    }
+
+    var isAugustDay: Bool {
+        isDateInRange(
+            minDate: 1, minMonth: 8,
+            maxDate: 1, maxMonth: 8
         )
     }
 

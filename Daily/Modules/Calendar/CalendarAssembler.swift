@@ -10,6 +10,7 @@ final class CalendarAssembler {
             view: viewController,
             coordinator: coordinator,
             dayService: dayService,
+            cms: cms,
             factory: factory
         )
         viewController.presenter = presenter
