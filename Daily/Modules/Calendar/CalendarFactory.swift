@@ -29,8 +29,18 @@ final class CalendarFactory: CalendarFactoryProtocol {
     }
 
     func makeWeekdays() -> [CalendarWeekdayViewModel] {
-        return Date.shortWeekdaySymbols.map {
-            CalendarWeekdayViewModel(text: $0)
+        let calendar = Date.calendar
+        let weekdaySymbols = calendar.weekdaySymbols
+        let shortWeekdaySymbols = calendar.shortWeekdaySymbols
+        let firstWeekdayIndices = calendar.firstWeekday - 1
+        let lastWeekdayIndices = shortWeekdaySymbols.count - 1
+        var weekdayIndices: [Int] = []
+        (firstWeekdayIndices...lastWeekdayIndices).forEach { weekdayIndices.append($0) }
+        (0..<firstWeekdayIndices).forEach { weekdayIndices.append($0) }
+        return weekdayIndices.map {
+            let weekdaySymbol = weekdaySymbols[$0]
+            let shortWeekdaySymbol = shortWeekdaySymbols[$0]
+            return CalendarWeekdayViewModel(text: shortWeekdaySymbol, accessibilityLabel: weekdaySymbol)
         }
     }
 
@@ -84,7 +94,6 @@ final class CalendarFactory: CalendarFactoryProtocol {
         let currentDate = Date()
         return NoteConsoleView.Configuration(
             title: cms.note.addNote,
-            image: Theme.addNoteImage,
             isBackgroundBlurred: currentDate.isHolliday,
             action: { [weak delegate] in delegate?.addNote(to: currentDate) }
         )

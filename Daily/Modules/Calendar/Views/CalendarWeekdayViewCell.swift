@@ -2,6 +2,7 @@ import UIKit
 
 struct CalendarWeekdayViewModel {
     let text: String
+    let accessibilityLabel: String
 }
 
 final class CalendarWeekdayViewCell: UICollectionViewCell {
@@ -32,5 +33,6 @@ final class CalendarWeekdayViewCell: UICollectionViewCell {
 extension CalendarWeekdayViewCell: Configurable {
     func configure(with viewModel: CalendarWeekdayViewModel) {
         titleLabel.text = viewModel.text
+        titleLabel.accessibilityLabel = viewModel.accessibilityLabel
     }
 }

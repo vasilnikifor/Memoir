@@ -11,20 +11,10 @@ extension Date {
 }
 
 extension Date {
-    private static var calendar: Calendar {
+    static var calendar: Calendar {
         var calendar = Calendar.current
         calendar.locale = Locale.currentLocale.locale
         return calendar
-    }
-
-    static var shortWeekdaySymbols: [String] {
-        let shortWeekdaySymbols = calendar.shortWeekdaySymbols
-        let firstWeekdayIndex = calendar.firstWeekday - 1
-        let lastWeekdayIndex = shortWeekdaySymbols.count - 1
-        let firstWeekdays = shortWeekdaySymbols[firstWeekdayIndex...lastWeekdayIndex]
-        let lastWeekdays = shortWeekdaySymbols[0..<firstWeekdayIndex]
-        let weekdays: [String] = Array(firstWeekdays + lastWeekdays)
-        return weekdays.map { $0.capitalizedFirstLetter }
     }
 }
 

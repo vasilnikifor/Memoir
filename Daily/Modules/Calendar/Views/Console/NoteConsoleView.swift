@@ -3,7 +3,6 @@ import UIKit
 extension NoteConsoleView {
     struct Configuration {
         let title: String
-        let image: UIImage
         let isBackgroundBlurred: Bool
         let action: (() -> Void)?
     }
@@ -30,16 +29,11 @@ final class NoteConsoleView: UIView, Configurable {
 
     private lazy var addNoteButton: UIButton = {
         var configuration = UIButton.Configuration.borderless()
+        configuration.imagePadding = .m
         let button = UIButton(configuration: configuration)
         button.layer.cornerRadius = .s
         button.addTarget(self, action: #selector(addNotButtonDidTap), for: .touchUpInside)
         return button
-    }()
-
-    private let iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
     }()
 
     override init(frame: CGRect) {
@@ -56,7 +50,6 @@ final class NoteConsoleView: UIView, Configurable {
         blurView.isVisible = configuration.isBackgroundBlurred
         cardView.isVisible = !configuration.isBackgroundBlurred
         addNoteButton.setTitle(configuration.title, for: .normal)
-        iconImageView.image = configuration.image
         action = configuration.action
     }
 
@@ -64,7 +57,6 @@ final class NoteConsoleView: UIView, Configurable {
         addSubview(blurView)
         addSubview(cardView)
         addSubview(addNoteButton)
-        addSubview(iconImageView)
 
         blurView
             .topToSuperview()
@@ -84,12 +76,6 @@ final class NoteConsoleView: UIView, Configurable {
             .leadingToSuperview()
             .trailingToSuperview()
             .height(.buttonHeight)
-
-        iconImageView
-            .centerYToSuperview()
-            .leadingToSuperview(.m)
-            .height(.l)
-            .width(.l)
     }
 
     @objc

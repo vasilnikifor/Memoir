@@ -21,7 +21,7 @@ final class CalendarHatView: UIView {
         didSet {
             let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
             let attributedString = NSAttributedString(string: currentMonthButtonTitle ?? .empty, attributes: attributes)
-            currentButton.setAttributedTitle(attributedString, for: .normal)
+            currentMonthButton.setAttributedTitle(attributedString, for: .normal)
         }
     }
 
@@ -41,11 +41,10 @@ final class CalendarHatView: UIView {
         return button
     }()
 
-    private lazy var currentButton: UIButton = {
+    private lazy var currentMonthButton: UIButton = {
         var configuration = UIButton.Configuration.borderless()
         configuration.imagePlacement = .trailing
         configuration.imagePadding = .m
-        configuration.buttonSize = .large
         let button = UIButton(configuration: configuration)
         button.addTarget(self, action: #selector(currentButtonTapped), for: .touchUpInside)
         button.setImage(Theme.arrowOpenImage, for: .normal)
@@ -66,7 +65,7 @@ final class CalendarHatView: UIView {
     private func setup() {
         addSubview(nextMonthButton)
         addSubview(previousMonthButton)
-        addSubview(currentButton)
+        addSubview(currentMonthButton)
 
         height(.xl)
 
@@ -82,7 +81,7 @@ final class CalendarHatView: UIView {
             .height(.xl)
             .width(.xl)
 
-        currentButton
+        currentMonthButton
             .topToSuperview()
             .leading(to: previousMonthButton, anchor: previousMonthButton.trailingAnchor, offset: .s)
             .trailing(to: nextMonthButton, anchor: nextMonthButton.leadingAnchor, offset: -.s)
