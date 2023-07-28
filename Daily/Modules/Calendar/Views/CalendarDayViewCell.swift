@@ -26,12 +26,6 @@ final class CalendarDayViewCell: UICollectionViewCell {
         return button
     }()
 
-    private let isTodayView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = .xxs
-        return view
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -53,20 +47,9 @@ final class CalendarDayViewCell: UICollectionViewCell {
 
     private func setup() {
         contentView.addSubview(button)
-        contentView.addSubview(isTodayView)
-
-        button
-            .centerXToSuperview()
-            .centerYToSuperview()
-
+        button.centerXToSuperview().centerYToSuperview()
         buttonHeightConstraint = button.height(height: .zero)
         buttonWidthConstraint = button.width(width: .zero)
-
-        isTodayView
-            .height(.xs)
-            .width(.xs)
-            .centerX(to: button)
-            .bottom(to: button, anchor: button.bottomAnchor, offset: -.xs)
     }
 
     @objc
@@ -78,27 +61,26 @@ final class CalendarDayViewCell: UICollectionViewCell {
 extension CalendarDayViewCell: Configurable {
     func configure(with viewModel: CalendarDayViewModel) {
         acton = viewModel.action
-        isTodayView.isHidden = !viewModel.isToday
         button.setTitle(viewModel.date.dateNumber, for: .normal)
+        button.layer.borderColor = Theme.primaryTint.cgColor
         switch viewModel.state {
         case .inactive:
-            isTodayView.isHidden = true
-            isTodayView.backgroundColor = Theme.secondaryText
             button.backgroundColor = .clear
             button.setTitleColor(Theme.secondaryText, for: .normal)
             button.isEnabled = false
             button.isHidden = true
+            button.layer.borderWidth = .zero
         case .empty:
-            isTodayView.backgroundColor = Theme.primaryText
             button.isHidden = false
             button.backgroundColor = .clear
             button.setTitleColor(Theme.primaryText, for: .normal)
             button.isEnabled = true
+            button.layer.borderWidth = viewModel.isToday ? .xxxs : .zero
         case .filled(let dayRate):
-            isTodayView.backgroundColor = Theme.reversedPrimaryText
             button.isHidden = false
             button.setTitleColor(Theme.reversedPrimaryText, for: .normal)
             button.isEnabled = true
+            button.layer.borderWidth = viewModel.isToday ? .xxxs : .zero
             switch dayRate {
             case .bad:
                 button.backgroundColor = Theme.badRateColor
