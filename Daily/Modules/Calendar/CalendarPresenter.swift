@@ -50,12 +50,14 @@ extension CalendarPresenter: CalendarPresenterProtocol {
             backgroundImage = UIImage(named: "christmas")
         } else if todaysDate.isSpringDay {
             backgroundImage = UIImage(named: "spring")
+        } else if todaysDate.isAugustDay {
+            backgroundImage = UIImage(named: "august")
         }
 
         view?.setupInitialState(
             calendarModel: CalendarViewConfiguration(
                 month: todaysDate,
-                isBackgroundBlurred: todaysDate.isHolliday,
+                isBackgroundBlurred: todaysDate.isWallpaperDay,
                 previousMonthAccessibilityLabel: cms.calendar.previousMonth,
                 nextMonthAccessibilityLabel: cms.calendar.nextMonth,
                 delegate: self
@@ -116,14 +118,10 @@ extension CalendarPresenter: CalendarDelegate {
 }
 
 extension Date {
-    var isHolliday: Bool {
+    var isWallpaperDay: Bool {
         return isNewYearTime
             || isSpringDay
-//            || isCosmonauticsDay
-//            || isSummerDay
-//            || isAutumnDay
-//            || isHalloweenTime
-//            || isWinterDay
+            || isAugustDay
     }
 
     var isNewYearTime: Bool {
@@ -149,6 +147,13 @@ extension Date {
         isDateInRange(
             minDate: 1, minMonth: 6,
             maxDate: 1, maxMonth: 6
+        )
+    }
+
+    var isAugustDay: Bool {
+        isDateInRange(
+            minDate: 1, minMonth: 8,
+            maxDate: 1, maxMonth: 8
         )
     }
 

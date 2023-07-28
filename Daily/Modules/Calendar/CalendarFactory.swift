@@ -94,7 +94,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
         let currentDate = Date()
         return NoteConsoleView.Configuration(
             title: cms.note.addNote,
-            isBackgroundBlurred: currentDate.isHolliday,
+            isBackgroundBlurred: currentDate.isWallpaperDay,
             action: { [weak delegate] in delegate?.addNote(to: currentDate) }
         )
     }
@@ -123,7 +123,7 @@ final class CalendarFactory: CalendarFactoryProtocol {
 
         return RateConsoleView.Configuration(
             title: title,
-            isBackgroundBlurred: today.isHolliday,
+            isBackgroundBlurred: today.isWallpaperDay,
             rateBadButtonConfiguration: .init(
                 title: cms.rate.bad,
                 image: Theme.badRateFilledImage,
