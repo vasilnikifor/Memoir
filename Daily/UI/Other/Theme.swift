@@ -76,6 +76,10 @@ extension Theme {
         return UIImage(systemName: "magnifyingglass") ?? UIImage()
     }
 
+    static var moreImage: UIImage {
+        return UIImage(systemName: "ellipsis") ?? UIImage()
+    }
+
     static var arrowRightImage: UIImage {
         return UIImage(systemName: "arrow.right") ?? UIImage()
     }
