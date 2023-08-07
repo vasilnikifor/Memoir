@@ -27,7 +27,7 @@ final class CalendarHatView: UIView {
 
     private lazy var previousMonthButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.arrowLeftImage, for: .normal)
+        button.setImage(.arrowLeft, for: .normal)
         button.addTarget(self, action: #selector(previousMonthButtonTapped), for: .touchUpInside)
         button.layer.cornerRadius = .s
         return button
@@ -35,7 +35,7 @@ final class CalendarHatView: UIView {
 
     private lazy var nextMonthButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.arrowRightImage, for: .normal)
+        button.setImage(.arrowRight, for: .normal)
         button.addTarget(self, action: #selector(nextMonthButtonTapped), for: .touchUpInside)
         button.layer.cornerRadius = .s
         return button
@@ -47,7 +47,7 @@ final class CalendarHatView: UIView {
         configuration.imagePadding = .m
         let button = UIButton(configuration: configuration)
         button.addTarget(self, action: #selector(currentButtonTapped), for: .touchUpInside)
-        button.setImage(Theme.arrowOpenImage, for: .normal)
+        button.setImage(.arrowOpen, for: .normal)
         button.layer.cornerRadius = .s
         return button
     }()

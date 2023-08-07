@@ -11,7 +11,7 @@ final class MonthRecordsRecordView: UIView {
 
     var cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.layeredForeground
+        view.backgroundColor = .dLayeredForeground
         return view
     }()
 
@@ -40,7 +40,7 @@ final class MonthRecordsRecordView: UIView {
     }
 
     func setup() {
-        backgroundColor = Theme.layeredBackground
+        backgroundColor = .dLayeredBackground
         addSubview(cardView)
         cardView.addSubview(noteTextLabel)
         cardView.addSubview(timeLabel)

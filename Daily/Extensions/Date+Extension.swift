@@ -108,6 +108,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
 
+    /// "MMMM d, EE"
+    var dateFullRepresentation: String {
+        let dateFormatter = Date.dateFormatter
+        dateFormatter.dateFormat = "MMMM d, EE"
+        return dateFormatter.string(from: self)
+    }
+
     /// "EE, d"
     var dateShortRepresentation: String {
         let dateFormatter = Date.dateFormatter

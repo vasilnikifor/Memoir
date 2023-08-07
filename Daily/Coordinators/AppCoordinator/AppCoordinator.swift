@@ -39,6 +39,12 @@ extension AppCoordinator: CalendarCoordinatorProtocol, DayRecordsCoordinatorProt
         let viewController = DayRateAssembler.assemble(inputModel: inputModel, coordinator: self)
         transitionHandler.present(viewController)
     }
+
+    func share(url: URL, completion: (() -> Void)?) {
+        let viewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        viewController.completionWithItemsHandler = { _, _, _, _ in completion?() }
+        transitionHandler.present(viewController)
+    }
 }
 
 extension AppCoordinator: DayNoteCoordinatorProtocol, DayRateCoordinatorProtocol {

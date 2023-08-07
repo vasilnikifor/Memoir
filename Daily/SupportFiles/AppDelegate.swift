@@ -17,7 +17,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
-        window?.tintColor = Theme.primaryTint
+        window?.tintColor = .dPrimaryTint
 
         return true
     }

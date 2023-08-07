@@ -12,6 +12,10 @@ protocol MonthRecordsFactoryProtocol: AnyObject {
         days: [Day],
         delegate: MonthRecordsFactoryDelegate
     ) -> [MonthRecordsDataSource]
+
+    func makeSharingText(
+        days: [Day]
+    ) -> NSMutableAttributedString
 }
 
 final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
@@ -76,6 +80,70 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
         return dataSource
     }
 
+    func makeSharingText(
+        days: [Day]
+    ) -> NSMutableAttributedString {
+        let titleAttributes = [
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 27),
+            NSAttributedString.Key.foregroundColor: UIColor.dPrimaryText,
+        ]
+        let timeAttributes = [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
+            NSAttributedString.Key.foregroundColor: UIColor.dSecondaryText,
+        ]
+        let textAttributes = [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17),
+            NSAttributedString.Key.foregroundColor: UIColor.dPrimaryText,
+        ]
+
+        let text = days.reduce(into: NSMutableAttributedString()) { result, day in
+            guard !day.isEmpty, let date = day.date  else { return }
+
+            let dateTitle = makeDateTitle(date: date, rate: day.rate)
+            let dateAttributedTitle = NSAttributedString(string: dateTitle, attributes: titleAttributes)
+            result.append(dateAttributedTitle)
+
+            (day.records ?? [])
+                .compactMap { record in
+                    return record as? NoteRecord
+                }
+                .sorted { l, r in
+                    guard let lTime = l.time, let rTime = r.time else { return false }
+                    return lTime < rTime
+                }
+                .forEach { noteRecord in
+                    if let time = noteRecord.time, let text = noteRecord.text {
+                        result.append(
+                            NSAttributedString(
+                                string: .lineBreak + time.timeRepresentation + .lineBreak,
+                                attributes: timeAttributes
+                            )
+                        )
+                        result.append(
+                            NSAttributedString(
+                                string: text + .lineBreak,
+                                attributes: textAttributes
+                            )
+                        )
+                    }
+                }
+
+            let daySpaceText = .lineBreak + .lineBreak + .lineBreak
+            let daySpace = NSAttributedString(string: daySpaceText, attributes: titleAttributes)
+            result.append(daySpace)
+        }
+
+        return text
+    }
+
+    private func makeDateTitle(date: Date, rate: DayRate?) -> String {
+        if let rate {
+            return date.dateFullRepresentation + .space + rate.emoji + .lineBreak
+        } else {
+            return date.dateFullRepresentation + .lineBreak
+        }
+    }
+
     private func makeHeader(
         day: Day,
         mode: MonthRecordsMode,
@@ -99,16 +167,16 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
             rateIconTint = nil
         case .bad:
             isRateIconVisible = true
-            rateIconImage = Theme.badRateFilledImage
-            rateIconTint = Theme.badRateColor
+            rateIconImage = .badRateFilled
+            rateIconTint = .dBadRateColor
         case .average:
             isRateIconVisible = true
-            rateIconImage = Theme.averageRateFilledImage
-            rateIconTint = Theme.averageRateColor
+            rateIconImage = .averageRateFilled
+            rateIconTint = .dAverageRateColor
         case .good:
             isRateIconVisible = true
-            rateIconImage = Theme.goodRateFilledImage
-            rateIconTint = Theme.goodRateColor
+            rateIconImage = .goodRateFilled
+            rateIconTint = .dGoodRateColor
         }
         
         return .header(
@@ -131,17 +199,17 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
         
         switch day.rate {
         case .none:
-            rateImage = Theme.rateDayImage
-            rateTintColor = Theme.primaryTint
+            rateImage = .rateDay
+            rateTintColor = .dPrimaryTint
         case .bad:
-            rateImage = Theme.badRateFilledImage
-            rateTintColor = Theme.badRateColor
+            rateImage = .badRateFilled
+            rateTintColor = .dBadRateColor
         case .average:
-            rateImage = Theme.averageRateFilledImage
-            rateTintColor = Theme.averageRateColor
+            rateImage = .averageRateFilled
+            rateTintColor = .dAverageRateColor
         case .good:
-            rateImage = Theme.goodRateFilledImage
-            rateTintColor = Theme.goodRateColor
+            rateImage = .goodRateFilled
+            rateTintColor = .dGoodRateColor
         }
 
         return .actions(

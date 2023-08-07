@@ -18,7 +18,7 @@ final class DayRecordsViewController: UIViewController {
 
     private lazy var rateDayBarButton: UIBarButtonItem = {
         return UIBarButtonItem(
-            image: Theme.rateDayImage,
+            image: .rateDay,
             style: .plain,
             target: self,
             action: #selector(rateDateButtonTouchUpInside)
@@ -27,21 +27,21 @@ final class DayRecordsViewController: UIViewController {
 
     private lazy var rateDayButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.rateDayImage, for: .normal)
+        button.setImage(.rateDay, for: .normal)
         button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
 
     private lazy var addNoteButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.addNoteImage, for: .normal)
+        button.setImage(.addNote, for: .normal)
         button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
 
     private lazy var actionsStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = Theme.background
+        stackView.backgroundColor = .dBackground
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(rateDayButton)
@@ -67,7 +67,7 @@ final class DayRecordsViewController: UIViewController {
     }
 
     private func setup() {
-        view.backgroundColor = Theme.background
+        view.backgroundColor = .dBackground
         view.addSubview(actionsStackView)
         view.addSubview(tableView)
         view.addSubview(emptyStateView)

@@ -21,7 +21,7 @@ final class NoteConsoleView: UIView, Configurable {
 
     private let cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.layeredForeground
+        view.backgroundColor = .dLayeredForeground
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         return view

@@ -15,7 +15,7 @@ final class DayRateViewController: UIViewController {
 
     private lazy var closeButton: UIBarButtonItem = {
         return UIBarButtonItem(
-            image: Theme.closeImage,
+            image: .close,
             style: .plain,
             target: self,
             action: #selector(closeButtonTouchUpInside)
@@ -24,7 +24,7 @@ final class DayRateViewController: UIViewController {
 
     private lazy var removeButton: UIBarButtonItem = {
         return UIBarButtonItem(
-            image: Theme.removeImage,
+            image: .remove,
             style: .plain,
             target: self,
             action: #selector(removeButtonTouchUpInside)
@@ -63,7 +63,7 @@ final class DayRateViewController: UIViewController {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
 
-        view.backgroundColor = Theme.background
+        view.backgroundColor = .dBackground
         view.addSubview(rateStackView)
 
         rateStackView

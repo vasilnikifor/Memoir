@@ -2,6 +2,8 @@ import Foundation
 
 extension String {
     static let empty = ""
+    static let space = " "
+    static let lineBreak = "\n"
 
     var capitalizedFirstLetter: String {
         return prefix(1).capitalized + dropFirst()

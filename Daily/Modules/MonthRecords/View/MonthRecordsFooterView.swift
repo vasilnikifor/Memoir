@@ -15,20 +15,20 @@ final class MonthRecordsFooterView: UIView {
         let view = UIView()
         view.layer.cornerRadius = .m
         view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        view.backgroundColor = Theme.layeredForeground
+        view.backgroundColor = .dLayeredForeground
         return view
     }()
 
     lazy var rateDayButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.rateDayImage, for: .normal)
+        button.setImage(.rateDay, for: .normal)
         button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
 
     lazy var addNoteButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.addNoteImage, for: .normal)
+        button.setImage(.addNote, for: .normal)
         button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
@@ -54,7 +54,7 @@ final class MonthRecordsFooterView: UIView {
     }
 
     func setup() {
-        backgroundColor = Theme.layeredBackground
+        backgroundColor = .dLayeredBackground
         addSubview(cardView)
         cardView.addSubview(actionsStackView)
 

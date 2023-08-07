@@ -9,7 +9,7 @@ final class IconRender: UIViewController {
 
     let image: UIImageView = {
         let image = UIImageView()
-        image.image = Theme.rateDayFilledImage
+        image.image = .rateDayFilled
         image.tintColor = .white
         image.contentMode = .scaleAspectFit
         return image
@@ -24,7 +24,11 @@ final class IconRender: UIViewController {
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 0)
         gradient.frame = icon.bounds
-        gradient.colors = [Theme.badRateColor.cgColor, Theme.averageRateColor.cgColor, Theme.goodRateColor.cgColor]
+        gradient.colors = [
+            UIColor.dBadRateColor.cgColor,
+            UIColor.dAverageRateColor.cgColor,
+            UIColor.dGoodRateColor.cgColor,
+        ]
 
         icon.layer.insertSublayer(gradient, at: 0)
 

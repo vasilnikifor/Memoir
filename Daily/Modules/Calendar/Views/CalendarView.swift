@@ -36,7 +36,7 @@ final class CalendarView: UIView {
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
-        view.backgroundColor = Theme.layeredForeground
+        view.backgroundColor = .dLayeredForeground
         return view
     }()
 

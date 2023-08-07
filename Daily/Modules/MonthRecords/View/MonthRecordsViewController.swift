@@ -3,6 +3,7 @@ import UIKit
 protocol MonthRecordsViewControllerProtocol: AnyObject {
     func update(navigationTitleModel: NavigationTitleView.ViewModel, dataSource: [MonthRecordsDataSource])
     func showRangeSelection(_ actionSheet: ActionSheet)
+    func showSearch()
 }
 
 final class MonthRecordsViewController: UIViewController {
@@ -13,12 +14,12 @@ final class MonthRecordsViewController: UIViewController {
         NavigationTitleView()
     }()
 
-    private lazy var searchBarButtonItem: UIBarButtonItem = {
+    private lazy var moreBarButtonItem: UIBarButtonItem = {
         UIBarButtonItem(
-            image: Theme.searchImage,
+            image: .more,
             style: .plain,
             target: self,
-            action: #selector(searchButtonDidTap)
+            action: #selector(moreButtonDidTap)
         )
     }()
 
@@ -46,10 +47,10 @@ final class MonthRecordsViewController: UIViewController {
 
     func setup() {
         view.addSubview(tableView)
-        view.backgroundColor = Theme.layeredBackground
+        view.backgroundColor = .dLayeredBackground
         navigationItem.titleView = navigationTitleView
         navigationItem.searchController = searchViewController
-        navigationItem.rightBarButtonItem = searchBarButtonItem
+        navigationItem.rightBarButtonItem = moreBarButtonItem
 
         tableView
             .topToSuperview()
@@ -59,10 +60,8 @@ final class MonthRecordsViewController: UIViewController {
     }
 
     @objc
-    private func searchButtonDidTap() {
-        DispatchQueue.main.async {
-            self.searchViewController.searchBar.becomeFirstResponder()
-        }
+    private func moreButtonDidTap() {
+        presenter?.moreDidTap()
     }
 }
 
@@ -78,16 +77,22 @@ extension MonthRecordsViewController: MonthRecordsViewControllerProtocol {
         alert.popoverPresentationController?.sourceView = navigationTitleView
 
         actionSheet.sheetActions.forEach { sheetActionItem in
-            alert.addAction(
-                UIAlertAction(
-                    title: sheetActionItem.title,
-                    style: sheetActionItem.style.alertActionStyle,
-                    handler: { _ in sheetActionItem.action?() }
-                )
+            let action = UIAlertAction(
+                title: sheetActionItem.title,
+                style: sheetActionItem.style.alertActionStyle,
+                handler: { _ in sheetActionItem.action?() }
             )
+            action.setValue(sheetActionItem.icon, forKey: .icon)
+            alert.addAction(action)
         }
 
         present(alert, animated: true)
+    }
+
+    func showSearch() {
+        DispatchQueue.main.async {
+            self.searchViewController.searchBar.becomeFirstResponder()
+        }
     }
 }
 
@@ -112,4 +117,9 @@ extension MonthRecordsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         presenter?.searchTextDidChange(searchController.searchBar.text)
     }
+}
+
+fileprivate extension String {
+    /// UIAlertAction icon value key
+    static let icon = "image"
 }

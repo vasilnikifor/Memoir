@@ -75,7 +75,7 @@ final class DayRecordsPresenter {
                 illustrationImage: emptyStateIllustration,
                 title: cms.note.emptyStateTitle,
                 subtitle: cms.note.emptyStateSubtitle,
-                buttonIcon: Theme.addNoteImage,
+                buttonIcon: .addNote,
                 buttonTitle: cms.note.addNote,
                 buttonAction: { [weak self] in
                     self?.openNote(nil)

@@ -63,34 +63,34 @@ extension CalendarDayViewCell: Configurable {
         acton = configuration.action
         button.setTitle(configuration.date.dateNumber, for: .normal)
         button.accessibilityLabel = configuration.date.dateLongRepresentation
-        button.layer.borderColor = Theme.primaryTint.cgColor
+        button.layer.borderColor = UIColor.dPrimaryTint.cgColor
         switch configuration.state {
         case .inactive:
             button.backgroundColor = .clear
-            button.setTitleColor(Theme.secondaryText, for: .normal)
+            button.setTitleColor(.dSecondaryText, for: .normal)
             button.isEnabled = false
             button.isHidden = true
             button.layer.borderWidth = .zero
         case .empty:
             button.isHidden = false
             button.backgroundColor = .clear
-            button.setTitleColor(Theme.primaryText, for: .normal)
+            button.setTitleColor(.dPrimaryText, for: .normal)
             button.isEnabled = true
             button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
         case .filled(let dayRate):
             button.isHidden = false
-            button.setTitleColor(Theme.reversedPrimaryText, for: .normal)
+            button.setTitleColor(.dReversedPrimaryText, for: .normal)
             button.isEnabled = true
             button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
             switch dayRate {
             case .bad:
-                button.backgroundColor = Theme.badRateColor
+                button.backgroundColor = .dBadRateColor
             case .average:
-                button.backgroundColor = Theme.averageRateColor
+                button.backgroundColor = .dAverageRateColor
             case .good:
-                button.backgroundColor = Theme.goodRateColor
+                button.backgroundColor = .dGoodRateColor
             case .none:
-                button.backgroundColor = Theme.noRateColor
+                button.backgroundColor = .dNoRateColor
             }
         }
     }

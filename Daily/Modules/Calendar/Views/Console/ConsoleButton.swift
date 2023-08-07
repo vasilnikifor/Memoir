@@ -34,6 +34,6 @@ extension ConsoleButton: Configurable {
         setImage(configuration.image, for: .normal)
         setTitle(configuration.title, for: .normal)
         tintColor = configuration.tintColor
-        setTitleColor(Theme.primaryText, for: .normal)
+        setTitleColor(.dPrimaryText, for: .normal)
     }
 }
