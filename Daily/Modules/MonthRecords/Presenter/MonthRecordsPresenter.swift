@@ -79,7 +79,7 @@ final class MonthRecordsPresenter {
                         title: cms.common.cancel,
                         style: .cancel,
                         action: nil
-                    )
+                    ),
                 ]
             )
         )
@@ -165,7 +165,7 @@ extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
                         title: cms.common.cancel,
                         style: .cancel,
                         action: nil
-                    )
+                    ),
                 ]
             )
         )

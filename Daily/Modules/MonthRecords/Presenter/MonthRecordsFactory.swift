@@ -65,7 +65,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                                 viewModel: MonthRecordsRecordViewModel(
                                     text: noteRecord.text.orEmpty,
                                     time: (noteRecord.time ?? Date()).timeRepresentation,
-                                    action: { [weak delegate] in delegate?.openNote(day: day, noteRecord: noteRecord)}
+                                    action: { [weak delegate] in delegate?.openNote(day: day, noteRecord: noteRecord) }
                                 )
                             )
                         )
@@ -73,7 +73,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
                 }
 
             dataSource.append(
-               makeActions(day: day, delegate: delegate)
+                makeActions(day: day, delegate: delegate)
             )
         }
 
@@ -97,7 +97,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
         ]
 
         let text = days.reduce(into: NSMutableAttributedString()) { result, day in
-            guard !day.isEmpty, let date = day.date  else { return }
+            guard !day.isEmpty, let date = day.date else { return }
 
             let dateTitle = makeDateTitle(date: date, rate: day.rate)
             let dateAttributedTitle = NSAttributedString(string: dateTitle, attributes: titleAttributes)
@@ -105,7 +105,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
 
             (day.records ?? [])
                 .compactMap { record in
-                    return record as? NoteRecord
+                    record as? NoteRecord
                 }
                 .sorted { l, r in
                     guard let lTime = l.time, let rTime = r.time else { return false }
@@ -178,7 +178,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
             rateIconImage = .goodRateFilled
             rateIconTint = .dGoodRateColor
         }
-        
+
         return .header(
             viewModel: MonthRecordsHeaderViewModel(
                 title: title,
@@ -196,7 +196,7 @@ final class MonthRecordsFactory: MonthRecordsFactoryProtocol {
     ) -> MonthRecordsDataSource {
         let rateImage: UIImage
         let rateTintColor: UIColor
-        
+
         switch day.rate {
         case .none:
             rateImage = .rateDay

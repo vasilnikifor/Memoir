@@ -34,17 +34,11 @@ final class RateConsoleView: UIView, Configurable {
         return label
     }()
 
-    private lazy var rateBadButton: ConsoleButton = {
-        ConsoleButton()
-    }()
+    private lazy var rateBadButton: ConsoleButton = .init()
 
-    private lazy var rateNormButton: ConsoleButton = {
-        ConsoleButton()
-    }()
+    private lazy var rateNormButton: ConsoleButton = .init()
 
-    private lazy var rateGoodButton: ConsoleButton = {
-        ConsoleButton()
-    }()
+    private lazy var rateGoodButton: ConsoleButton = .init()
 
     private lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView()

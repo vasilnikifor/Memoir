@@ -19,12 +19,10 @@ extension UIColor {
     static var dNoRateColor: UIColor { .systemGray }
 }
 
-fileprivate extension UIColor {
+private extension UIColor {
     convenience init(_ light: UIColor, _ dark: UIColor) {
         self.init { trait -> UIColor in
             trait.userInterfaceStyle == .light ? light : dark
         }
     }
 }
-
-

@@ -43,21 +43,13 @@ final class CalendarViewController: UIViewController {
         return scrollView
     }()
 
-    let calendarView: CalendarView = {
-        CalendarView()
-    }()
+    let calendarView: CalendarView = .init()
 
-    let yesterdayRateConsoleView: RateConsoleView = {
-        RateConsoleView()
-    }()
+    let yesterdayRateConsoleView: RateConsoleView = .init()
 
-    let todayRateConsoleView: RateConsoleView = {
-        RateConsoleView()
-    }()
+    let todayRateConsoleView: RateConsoleView = .init()
 
-    let addNoteConsoleView: NoteConsoleView = {
-        NoteConsoleView()
-    }()
+    let addNoteConsoleView: NoteConsoleView = .init()
 
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -123,7 +115,7 @@ extension CalendarViewController: CalendarViewControllerProtocol {
         todaysConsoleModel: RateConsoleView.Configuration?,
         addNoteConsole: NoteConsoleView.Configuration
     ) {
-        calendarView.update() { [weak self] in
+        calendarView.update { [weak self] in
             guard let self else { return }
 
             self.yesterdayRateConsoleView.isHidden = yesterdayConsoleModel == nil

@@ -34,10 +34,8 @@ final class EmptyStateView: UIView {
         return label
     }()
 
-    private let mainButton: UIButton = {
-        UIButton(style: .filled)
-    }()
-    
+    private let mainButton: UIButton = .init(style: .filled)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -63,7 +61,7 @@ final class EmptyStateView: UIView {
             .top(to: titleLabel, anchor: titleLabel.bottomAnchor, offset: .m)
             .leadingToSuperview(.m)
             .trailingToSuperview(-.m)
-        
+
         illustrationImageView
             .leadingToSuperview(.m)
             .trailingToSuperview(-.m)

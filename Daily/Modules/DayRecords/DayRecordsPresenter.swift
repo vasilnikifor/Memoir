@@ -19,7 +19,7 @@ final class DayRecordsPresenter {
     private let dayService: DayServiceProtocol
     private let date: Date
     private var day: Day?
-    private let emptyStateIllustration = UIImage(named: "illustration\(Int.random(in: 1...9))")
+    private let emptyStateIllustration = UIImage(named: "illustration\(Int.random(in: 1 ... 9))")
 
     init(
         view: DayRecordsViewControllerProtocol,
@@ -45,7 +45,7 @@ final class DayRecordsPresenter {
         day = dayService.getDay(date: date)
 
         let dataSource: [DayRecordsDataSource]
-        let emptyStateModel:  EmptyStateView.Model?
+        let emptyStateModel: EmptyStateView.Model?
         if let records = day?.records, records.count > 0 {
             emptyStateModel = nil
             dataSource = records
@@ -62,7 +62,7 @@ final class DayRecordsPresenter {
                             viewModel: NoteRecordViewModel(
                                 text: noteRecord.text.orEmpty,
                                 time: (noteRecord.time ?? Date()).timeRepresentation,
-                                action: { [weak self, weak noteRecord] in self?.openNote(noteRecord)}
+                                action: { [weak self, weak noteRecord] in self?.openNote(noteRecord) }
                             )
                         )
                     } else {

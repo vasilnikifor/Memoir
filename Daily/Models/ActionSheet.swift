@@ -34,6 +34,7 @@ extension ActionSheet {
         }
     }
 }
+
 struct ActionSheet {
     let title: String?
     let sheetActions: [ActionSheetItem]

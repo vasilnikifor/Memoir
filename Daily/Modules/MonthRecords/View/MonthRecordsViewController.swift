@@ -10,18 +10,14 @@ final class MonthRecordsViewController: UIViewController {
     var presenter: MonthRecordsPresenterProtocol?
     var dataSource: [MonthRecordsDataSource] = []
 
-    private let navigationTitleView: NavigationTitleView = {
-        NavigationTitleView()
-    }()
+    private let navigationTitleView: NavigationTitleView = .init()
 
-    private lazy var moreBarButtonItem: UIBarButtonItem = {
-        UIBarButtonItem(
-            image: .more,
-            style: .plain,
-            target: self,
-            action: #selector(moreButtonDidTap)
-        )
-    }()
+    private lazy var moreBarButtonItem: UIBarButtonItem = .init(
+        image: .more,
+        style: .plain,
+        target: self,
+        action: #selector(moreButtonDidTap)
+    )
 
     private lazy var searchViewController: UISearchController = {
         let controller = UISearchController()
@@ -97,17 +93,17 @@ extension MonthRecordsViewController: MonthRecordsViewControllerProtocol {
 }
 
 extension MonthRecordsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         dataSource.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
-        case .header(let configuration):
+        case let .header(configuration):
             return tableView.dequeueReusableCell(MonthRecordsHeaderView.self, configuration: configuration)
-        case .note(let configuration):
+        case let .note(configuration):
             return tableView.dequeueReusableCell(MonthRecordsRecordView.self, configuration: configuration)
-        case .actions(let configuration):
+        case let .actions(configuration):
             return tableView.dequeueReusableCell(MonthRecordsFooterView.self, configuration: configuration)
         }
     }
@@ -119,7 +115,7 @@ extension MonthRecordsViewController: UISearchResultsUpdating {
     }
 }
 
-fileprivate extension String {
+private extension String {
     /// UIAlertAction icon value key
     static let icon = "image"
 }

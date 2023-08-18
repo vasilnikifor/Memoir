@@ -26,9 +26,7 @@ final class MonthRecordsHeaderView: UIView {
         return label
     }()
 
-    private let rateImageView: UIImageView = {
-        return UIImageView()
-    }()
+    private let rateImageView: UIImageView = .init()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

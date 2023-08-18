@@ -1,6 +1,6 @@
-//import UIKit
+// import UIKit
 //
-//final class IconRender: UIViewController {
+// final class IconRender: UIViewController {
 //    lazy var icon: UIView = {
 //        let view = UIView()
 //        view.backgroundColor = .clear
@@ -64,4 +64,4 @@
 //            .height(edge/3)
 //            .width(edge/3)
 //    }
-//}
+// }

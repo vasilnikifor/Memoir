@@ -77,7 +77,7 @@ extension CalendarDayViewCell: Configurable {
             button.setTitleColor(.dPrimaryText, for: .normal)
             button.isEnabled = true
             button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
-        case .filled(let dayRate):
+        case let .filled(dayRate):
             button.isHidden = false
             button.setTitleColor(.dReversedPrimaryText, for: .normal)
             button.isEnabled = true

@@ -1,7 +1,6 @@
 import UIKit
 
 extension Constrainable {
-
     // MARK: - Width
 
     @discardableResult
