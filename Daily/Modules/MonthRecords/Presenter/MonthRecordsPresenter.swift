@@ -3,24 +3,26 @@ import UIKit
 protocol MonthRecordsCoordinatorProtocol: AnyObject {
     func showDayNote(date: Date, note: NoteRecord?, delegate: CalendarDelegate?)
     func showDayRate(date: Date, rate: DayRate?, delegate: CalendarDelegate?)
+    func share(url: URL, completion: (() -> Void)?)
 }
 
 protocol MonthRecordsPresenterProtocol {
     func viewLoaded()
+    func moreDidTap()
     func searchTextDidChange(_ searchText: String?)
 }
 
 final class MonthRecordsPresenter {
-    weak var view: MonthRecordsViewControllerProtocol?
-    weak var delegate: CalendarDelegate?
-    weak var coordinator: MonthRecordsCoordinatorProtocol?
-    let dayService: DayServiceProtocol
-    let cms: CmsProtocol
-    let factory: MonthRecordsFactoryProtocol
-    let month: Date
-    var mode: MonthRecordsMode = .month
-    var searchText: String?
-    var days: [Day] = []
+    private weak var view: MonthRecordsViewControllerProtocol?
+    private weak var delegate: CalendarDelegate?
+    private weak var coordinator: MonthRecordsCoordinatorProtocol?
+    private let dayService: DayServiceProtocol
+    private let cms: CmsProtocol
+    private let factory: MonthRecordsFactoryProtocol
+    private let month: Date
+    private var mode: MonthRecordsMode = .month
+    private var searchText: String?
+    private var days: [Day] = []
 
     init(
         view: MonthRecordsViewControllerProtocol,
@@ -39,7 +41,7 @@ final class MonthRecordsPresenter {
         delegate = inputModel.delegate
     }
 
-    func updateView() {
+    private func updateView() {
         let dataSource: [MonthRecordsDataSource] = factory.makeDataSource(
             searchText: searchText,
             mode: mode,
@@ -47,15 +49,8 @@ final class MonthRecordsPresenter {
             delegate: self
         )
 
-        let navigationTitle: String
-        switch mode {
-        case .month:
-            navigationTitle = month.monthRepresentation
-        case .year:
-            navigationTitle = cms.home.wholeYear(year: month.yearRepresentation)
-        }
         let navigationTitleModel = NavigationTitleView.ViewModel(
-            title: navigationTitle,
+            title: makeTitle(),
             action: { [weak self] in self?.selectMode() }
         )
 
@@ -84,7 +79,7 @@ final class MonthRecordsPresenter {
                         title: cms.common.cancel,
                         style: .cancel,
                         action: nil
-                    )
+                    ),
                 ]
             )
         )
@@ -100,6 +95,38 @@ final class MonthRecordsPresenter {
         }
         updateView()
     }
+
+    private func shareNotes() {
+        let documentDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        guard let directory = documentDirectories.first else { return }
+        let title = makeTitle()
+        let text = factory.makeSharingText(days: days)
+        let path = directory.appendingPathComponent("\(title).rtf")
+        let file = try? text.data(
+            from: .init(location: .zero, length: text.length),
+            documentAttributes: [
+                .documentType: NSAttributedString.DocumentType.rtf,
+                .characterEncoding: String.Encoding.utf8,
+            ]
+        )
+        try? file?.write(to: path)
+        coordinator?.share(url: path) {
+            try? FileManager.default.removeItem(at: path)
+        }
+    }
+
+    private func searchNotes() {
+        view?.showSearch()
+    }
+
+    private func makeTitle() -> String {
+        switch mode {
+        case .month:
+            return month.monthRepresentation
+        case .year:
+            return cms.home.wholeYear(year: month.yearRepresentation)
+        }
+    }
 }
 
 extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
@@ -113,9 +140,35 @@ extension MonthRecordsPresenter: MonthRecordsPresenterProtocol {
         updateView()
     }
 
-    func searchTextDidChange(_ searchText: String?) {
-        self.searchText = searchText
+    func searchTextDidChange(_ newSearchText: String?) {
+        searchText = newSearchText
         updateView()
+    }
+
+    func moreDidTap() {
+        view?.showRangeSelection(
+            ActionSheet(
+                sheetActions: [
+                    ActionSheet.ActionSheetItem(
+                        title: cms.common.search,
+                        icon: .search,
+                        style: .default,
+                        action: { [weak self] in self?.searchNotes() }
+                    ),
+                    ActionSheet.ActionSheetItem(
+                        title: cms.common.share,
+                        icon: .share,
+                        style: .default,
+                        action: { [weak self] in self?.shareNotes() }
+                    ),
+                    ActionSheet.ActionSheetItem(
+                        title: cms.common.cancel,
+                        style: .cancel,
+                        action: nil
+                    ),
+                ]
+            )
+        )
     }
 }
 

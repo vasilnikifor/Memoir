@@ -45,20 +45,20 @@ extension DayRatePresenter: DayRatePresenterProtocol {
 
         view?.update(
             badRateViewModel: DayRateViewModel(
-                image: Theme.badRateFilledImage,
-                tintColor: Theme.badRateColor,
+                image: .badRateFilled,
+                tintColor: .dBadRateColor,
                 isSelected: selectedRate == .bad,
                 action: { [weak self] in self?.update(selectedRate: .bad) }
             ),
             averageRateViewModel: DayRateViewModel(
-                image: Theme.averageRateFilledImage,
-                tintColor: Theme.averageRateColor,
+                image: .averageRateFilled,
+                tintColor: .dAverageRateColor,
                 isSelected: selectedRate == .average,
                 action: { [weak self] in self?.update(selectedRate: .average) }
             ),
             goodRateViewModel: DayRateViewModel(
-                image: Theme.goodRateFilledImage,
-                tintColor: Theme.goodRateColor,
+                image: .goodRateFilled,
+                tintColor: .dGoodRateColor,
                 isSelected: selectedRate == .good,
                 action: { [weak self] in self?.update(selectedRate: .good) }
             )

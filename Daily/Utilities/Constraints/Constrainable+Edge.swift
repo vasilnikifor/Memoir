@@ -1,7 +1,6 @@
 import UIKit
 
 extension Constrainable {
-
     // MARK: - Top
 
     @discardableResult
@@ -10,7 +9,8 @@ extension Constrainable {
              offset: CGFloat = 0,
              relation: NSLayoutConstraint.Relation = .equal,
              priority: UILayoutPriority = .required,
-             isActive: Bool = true) -> NSLayoutConstraint {
+             isActive: Bool = true) -> NSLayoutConstraint
+    {
         return prepare()
             .topAnchor
             .constraint(relation: relation, anchor: anchor ?? item.topAnchor, constant: offset)
@@ -23,7 +23,8 @@ extension Constrainable {
              anchor: NSLayoutYAxisAnchor? = nil,
              offset: CGFloat = 0,
              relation: NSLayoutConstraint.Relation = .equal,
-             priority: UILayoutPriority = .required) -> Constrainable {
+             priority: UILayoutPriority = .required) -> Constrainable
+    {
         top(to: item, anchor: anchor, offset: offset, relation: relation, priority: priority, isActive: true)
         return self
     }
@@ -32,7 +33,8 @@ extension Constrainable {
     func topToSuperview(_ offset: CGFloat = 0,
                         relation: NSLayoutConstraint.Relation = .equal,
                         priority: UILayoutPriority = .required,
-                        safeArea: Bool = true) -> Constrainable {
+                        safeArea: Bool = true) -> Constrainable
+    {
         let safely = getSafe(container, safeArea: safeArea)
         return top(to: safely, offset: offset, relation: relation, priority: priority)
     }
@@ -45,7 +47,8 @@ extension Constrainable {
                 offset: CGFloat = 0,
                 relation: NSLayoutConstraint.Relation = .equal,
                 priority: UILayoutPriority = .required,
-                isActive: Bool = true) -> NSLayoutConstraint {
+                isActive: Bool = true) -> NSLayoutConstraint
+    {
         return prepare()
             .bottomAnchor
             .constraint(relation: relation, anchor: anchor ?? item.bottomAnchor, constant: offset)
@@ -58,7 +61,8 @@ extension Constrainable {
                 anchor: NSLayoutYAxisAnchor? = nil,
                 offset: CGFloat = 0,
                 relation: NSLayoutConstraint.Relation = .equal,
-                priority: UILayoutPriority = .required) -> Constrainable {
+                priority: UILayoutPriority = .required) -> Constrainable
+    {
         bottom(to: item, anchor: anchor, offset: offset, relation: relation, priority: priority, isActive: true)
         return self
     }
@@ -67,7 +71,8 @@ extension Constrainable {
     func bottomToSuperview(_ offset: CGFloat = 0,
                            relation: NSLayoutConstraint.Relation = .equal,
                            priority: UILayoutPriority = .required,
-                           safeArea: Bool = true) -> Constrainable {
+                           safeArea: Bool = true) -> Constrainable
+    {
         let safely = getSafe(container, safeArea: safeArea)
         return bottom(to: safely, offset: offset, relation: relation, priority: priority)
     }
@@ -80,7 +85,8 @@ extension Constrainable {
                  offset: CGFloat = 0,
                  relation: NSLayoutConstraint.Relation = .equal,
                  priority: UILayoutPriority = .required,
-                 isActive: Bool = true) -> NSLayoutConstraint {
+                 isActive: Bool = true) -> NSLayoutConstraint
+    {
         return prepare()
             .leadingAnchor
             .constraint(relation: relation, anchor: anchor ?? item.leadingAnchor, constant: offset)
@@ -93,7 +99,8 @@ extension Constrainable {
                  anchor: NSLayoutXAxisAnchor? = nil,
                  offset: CGFloat = 0,
                  relation: NSLayoutConstraint.Relation = .equal,
-                 priority: UILayoutPriority = .required) -> Constrainable {
+                 priority: UILayoutPriority = .required) -> Constrainable
+    {
         leading(to: item,
                 anchor: anchor,
                 offset: offset,
@@ -107,8 +114,8 @@ extension Constrainable {
     func leadingToSuperview(_ offset: CGFloat = 0,
                             relation: NSLayoutConstraint.Relation = .equal,
                             priority: UILayoutPriority = .required,
-                            safeArea: Bool = true) -> Constrainable {
-
+                            safeArea: Bool = true) -> Constrainable
+    {
         let safely = getSafe(container, safeArea: safeArea)
         return leading(to: safely,
                        offset: offset,
@@ -124,7 +131,8 @@ extension Constrainable {
                   offset: CGFloat = 0,
                   relation: NSLayoutConstraint.Relation = .equal,
                   priority: UILayoutPriority = .required,
-                  isActive: Bool = true) -> NSLayoutConstraint {
+                  isActive: Bool = true) -> NSLayoutConstraint
+    {
         return prepare()
             .trailingAnchor
             .constraint(relation: relation, anchor: anchor ?? item.trailingAnchor, constant: offset)
@@ -137,7 +145,8 @@ extension Constrainable {
                   anchor: NSLayoutXAxisAnchor? = nil,
                   offset: CGFloat = 0,
                   relation: NSLayoutConstraint.Relation = .equal,
-                  priority: UILayoutPriority = .required) -> Constrainable {
+                  priority: UILayoutPriority = .required) -> Constrainable
+    {
         trailing(to: item, anchor: anchor, offset: offset, relation: relation, priority: priority, isActive: true)
         return self
     }
@@ -146,7 +155,8 @@ extension Constrainable {
     func trailingToSuperview(_ offset: CGFloat = 0,
                              relation: NSLayoutConstraint.Relation = .equal,
                              priority: UILayoutPriority = .required,
-                             safeArea: Bool = true) -> Constrainable {
+                             safeArea: Bool = true) -> Constrainable
+    {
         let safely = getSafe(container, safeArea: safeArea)
         return trailing(to: safely, offset: offset, relation: relation, priority: priority)
     }

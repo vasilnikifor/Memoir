@@ -16,7 +16,7 @@ struct CalendarViewConfiguration {
 
 final class CalendarView: UIView {
     weak var delegate: CalendarViewDelegate?
-    var month: Date = Date()
+    var month: Date = .init()
     let pageCount: CGFloat = 3
     var previousMonthView = CalendarMonthView()
     var currentMonthView = CalendarMonthView()
@@ -30,13 +30,13 @@ final class CalendarView: UIView {
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
         return view
     }()
-    
+
     let cardView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
-        view.backgroundColor = Theme.layeredForeground
+        view.backgroundColor = .dLayeredForeground
         return view
     }()
 
@@ -131,7 +131,7 @@ final class CalendarView: UIView {
     }
 
     func fillMonthView(_ monthView: CalendarMonthView, month: Date, completion: (() -> Void)? = nil) {
-        monthView.setup(with: CalendarMonthViewModel(month: month, delegate: delegate) ) {
+        monthView.setup(with: CalendarMonthViewModel(month: month, delegate: delegate)) {
             completion?()
         }
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIView: Constrainable { }
+extension UIView: Constrainable {}
 
 extension UIView {
     var container: UIView? { return superview }
@@ -12,7 +12,7 @@ extension UIView {
     }
 
     func constraint(for attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
-        var item: UIView? = self.superview
+        var item: UIView? = superview
         if attribute == .width || attribute == .height { item = self }
 
         return item?

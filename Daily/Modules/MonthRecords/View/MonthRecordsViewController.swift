@@ -3,24 +3,21 @@ import UIKit
 protocol MonthRecordsViewControllerProtocol: AnyObject {
     func update(navigationTitleModel: NavigationTitleView.ViewModel, dataSource: [MonthRecordsDataSource])
     func showRangeSelection(_ actionSheet: ActionSheet)
+    func showSearch()
 }
 
 final class MonthRecordsViewController: UIViewController {
     var presenter: MonthRecordsPresenterProtocol?
     var dataSource: [MonthRecordsDataSource] = []
 
-    private let navigationTitleView: NavigationTitleView = {
-        NavigationTitleView()
-    }()
+    private let navigationTitleView: NavigationTitleView = .init()
 
-    private lazy var searchBarButtonItem: UIBarButtonItem = {
-        UIBarButtonItem(
-            image: Theme.searchImage,
-            style: .plain,
-            target: self,
-            action: #selector(searchButtonDidTap)
-        )
-    }()
+    private lazy var moreBarButtonItem: UIBarButtonItem = .init(
+        image: .more,
+        style: .plain,
+        target: self,
+        action: #selector(moreButtonDidTap)
+    )
 
     private lazy var searchViewController: UISearchController = {
         let controller = UISearchController()
@@ -46,10 +43,10 @@ final class MonthRecordsViewController: UIViewController {
 
     func setup() {
         view.addSubview(tableView)
-        view.backgroundColor = Theme.layeredBackground
+        view.backgroundColor = .dLayeredBackground
         navigationItem.titleView = navigationTitleView
         navigationItem.searchController = searchViewController
-        navigationItem.rightBarButtonItem = searchBarButtonItem
+        navigationItem.rightBarButtonItem = moreBarButtonItem
 
         tableView
             .topToSuperview()
@@ -59,10 +56,8 @@ final class MonthRecordsViewController: UIViewController {
     }
 
     @objc
-    private func searchButtonDidTap() {
-        DispatchQueue.main.async {
-            self.searchViewController.searchBar.becomeFirstResponder()
-        }
+    private func moreButtonDidTap() {
+        presenter?.moreDidTap()
     }
 }
 
@@ -78,31 +73,37 @@ extension MonthRecordsViewController: MonthRecordsViewControllerProtocol {
         alert.popoverPresentationController?.sourceView = navigationTitleView
 
         actionSheet.sheetActions.forEach { sheetActionItem in
-            alert.addAction(
-                UIAlertAction(
-                    title: sheetActionItem.title,
-                    style: sheetActionItem.style.alertActionStyle,
-                    handler: { _ in sheetActionItem.action?() }
-                )
+            let action = UIAlertAction(
+                title: sheetActionItem.title,
+                style: sheetActionItem.style.alertActionStyle,
+                handler: { _ in sheetActionItem.action?() }
             )
+            action.setValue(sheetActionItem.icon, forKey: .icon)
+            alert.addAction(action)
         }
 
         present(alert, animated: true)
     }
+
+    func showSearch() {
+        DispatchQueue.main.async {
+            self.searchViewController.searchBar.becomeFirstResponder()
+        }
+    }
 }
 
 extension MonthRecordsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         dataSource.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
-        case .header(let configuration):
+        case let .header(configuration):
             return tableView.dequeueReusableCell(MonthRecordsHeaderView.self, configuration: configuration)
-        case .note(let configuration):
+        case let .note(configuration):
             return tableView.dequeueReusableCell(MonthRecordsRecordView.self, configuration: configuration)
-        case .actions(let configuration):
+        case let .actions(configuration):
             return tableView.dequeueReusableCell(MonthRecordsFooterView.self, configuration: configuration)
         }
     }
@@ -112,4 +113,9 @@ extension MonthRecordsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         presenter?.searchTextDidChange(searchController.searchBar.text)
     }
+}
+
+private extension String {
+    /// UIAlertAction icon value key
+    static let icon = "image"
 }

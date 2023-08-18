@@ -13,7 +13,6 @@ protocol CalendarFactoryProtocol: AnyObject {
     func makeYesterdayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration?
     func makeTodayConsole(delegate: CalendarFactoryDelegate) -> RateConsoleView.Configuration?
     func makeNoteConsole(delegate: CalendarFactoryDelegate) -> NoteConsoleView.Configuration
-    
 }
 
 final class CalendarFactory: CalendarFactoryProtocol {
@@ -35,8 +34,8 @@ final class CalendarFactory: CalendarFactoryProtocol {
         let firstWeekdayIndices = calendar.firstWeekday - 1
         let lastWeekdayIndices = shortWeekdaySymbols.count - 1
         var weekdayIndices: [Int] = []
-        (firstWeekdayIndices...lastWeekdayIndices).forEach { weekdayIndices.append($0) }
-        (0..<firstWeekdayIndices).forEach { weekdayIndices.append($0) }
+        (firstWeekdayIndices ... lastWeekdayIndices).forEach { weekdayIndices.append($0) }
+        (0 ..< firstWeekdayIndices).forEach { weekdayIndices.append($0) }
         return weekdayIndices.map {
             let weekdaySymbol = weekdaySymbols[$0]
             let shortWeekdaySymbol = shortWeekdaySymbols[$0]
@@ -126,20 +125,20 @@ final class CalendarFactory: CalendarFactoryProtocol {
             isBackgroundBlurred: today.isWallpaperDay,
             rateBadButtonConfiguration: .init(
                 title: cms.rate.bad,
-                image: Theme.badRateFilledImage,
-                tintColor: Theme.badRateColor,
+                image: .badRateFilled,
+                tintColor: .dBadRateColor,
                 action: { [weak delegate] in delegate?.dateRated(date, rate: .bad) }
             ),
             rateNormButtonConfiguration: .init(
                 title: cms.rate.good,
-                image: Theme.averageRateFilledImage,
-                tintColor: Theme.averageRateColor,
+                image: .averageRateFilled,
+                tintColor: .dAverageRateColor,
                 action: { [weak delegate] in delegate?.dateRated(date, rate: .average) }
             ),
             rateGoodButtonConfiguration: .init(
                 title: cms.rate.great,
-                image: Theme.goodRateFilledImage,
-                tintColor: Theme.goodRateColor,
+                image: .goodRateFilled,
+                tintColor: .dGoodRateColor,
                 action: { [weak delegate] in delegate?.dateRated(date, rate: .good) }
             )
         )

@@ -48,25 +48,25 @@ extension Date {
 
     var firstDayOfMonth: Date {
         return calendar
-            .date(from: calendar.dateComponents([.year, .month, .timeZone], from: self.startOfDay))!
+            .date(from: calendar.dateComponents([.year, .month, .timeZone], from: startOfDay))!
             .startOfDay
     }
 
     var firstDayOfYear: Date {
         return calendar
-            .date(from: calendar.dateComponents([.year, .timeZone], from: self.startOfDay))!
+            .date(from: calendar.dateComponents([.year, .timeZone], from: startOfDay))!
             .startOfDay
     }
 
     var lastDayOfMonth: Date {
         return calendar
-            .date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth)!
+            .date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfMonth)!
             .startOfDay
     }
 
     var lastDayOfYear: Date {
         return calendar
-            .date(byAdding: DateComponents(month: 12, day: -1), to: self.firstDayOfYear)!
+            .date(byAdding: DateComponents(month: 12, day: -1), to: firstDayOfYear)!
             .startOfDay
     }
 
@@ -105,6 +105,13 @@ extension Date {
     var dateRepresentation: String {
         let dateFormatter = Date.dateFormatter
         dateFormatter.dateFormat = "EE, MMM d"
+        return dateFormatter.string(from: self)
+    }
+
+    /// "MMMM d, EE"
+    var dateFullRepresentation: String {
+        let dateFormatter = Date.dateFormatter
+        dateFormatter.dateFormat = "MMMM d, EE"
         return dateFormatter.string(from: self)
     }
 

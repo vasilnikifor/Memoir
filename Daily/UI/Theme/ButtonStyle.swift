@@ -1,6 +1,5 @@
 import UIKit
 
-
 extension UIButton {
     enum Style {
         case consoleButton
@@ -26,4 +25,3 @@ extension UIButton {
         }
     }
 }
-

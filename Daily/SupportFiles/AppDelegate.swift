@@ -1,5 +1,5 @@
-import UIKit
 import CoreData
+import UIKit
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,8 +7,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var appCoordinator: AppCoordinator?
 
     func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+        _: UIApplication,
+        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         let rootViewController = UINavigationController()
         appCoordinator = AppCoordinator(transitionHandler: rootViewController)
@@ -17,7 +17,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
-        window?.tintColor = Theme.primaryTint
+        window?.tintColor = .dPrimaryTint
 
         return true
     }

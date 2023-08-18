@@ -16,32 +16,30 @@ final class DayRecordsViewController: UIViewController {
     var presenter: DayRecordsPresenterProtocol?
     private var dataSource: [DayRecordsDataSource] = []
 
-    private lazy var rateDayBarButton: UIBarButtonItem = {
-        return UIBarButtonItem(
-            image: Theme.rateDayImage,
-            style: .plain,
-            target: self,
-            action: #selector(rateDateButtonTouchUpInside)
-        )
-    }()
+    private lazy var rateDayBarButton: UIBarButtonItem = .init(
+        image: .rateDay,
+        style: .plain,
+        target: self,
+        action: #selector(rateDateButtonTouchUpInside)
+    )
 
     private lazy var rateDayButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.rateDayImage, for: .normal)
+        button.setImage(.rateDay, for: .normal)
         button.addTarget(self, action: #selector(rateDateButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
 
     private lazy var addNoteButton: UIButton = {
         let button = UIButton()
-        button.setImage(Theme.addNoteImage, for: .normal)
+        button.setImage(.addNote, for: .normal)
         button.addTarget(self, action: #selector(addNoteButtonTouchUpInside), for: .touchUpInside)
         return button
     }()
 
     private lazy var actionsStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = Theme.background
+        stackView.backgroundColor = .dBackground
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(rateDayButton)
@@ -56,9 +54,7 @@ final class DayRecordsViewController: UIViewController {
         return tableView
     }()
 
-    private let emptyStateView: EmptyStateView = {
-        EmptyStateView()
-    }()
+    private let emptyStateView: EmptyStateView = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,17 +63,17 @@ final class DayRecordsViewController: UIViewController {
     }
 
     private func setup() {
-        view.backgroundColor = Theme.background
+        view.backgroundColor = .dBackground
         view.addSubview(actionsStackView)
         view.addSubview(tableView)
         view.addSubview(emptyStateView)
-        
+
         actionsStackView
             .leadingToSuperview()
             .trailingToSuperview()
             .bottomToSuperview(safeArea: true)
             .height(.xxl)
-        
+
         tableView
             .topToSuperview()
             .leadingToSuperview()
@@ -124,7 +120,7 @@ extension DayRecordsViewController: DayRecordsViewControllerProtocol {
 
         rateDayButton.setImage(rate.filledImage, for: .normal)
         rateDayButton.tintColor = rate.tintColor
-        
+
         self.dataSource = dataSource
         tableView.reloadData()
 
@@ -138,13 +134,13 @@ extension DayRecordsViewController: DayRecordsViewControllerProtocol {
 }
 
 extension DayRecordsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return dataSource.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
-        case .note(let configuration):
+        case let .note(configuration):
             return tableView.dequeueReusableCell(NoteRecordView.self, configuration: configuration)
         }
     }

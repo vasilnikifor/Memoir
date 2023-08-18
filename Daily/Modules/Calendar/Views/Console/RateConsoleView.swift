@@ -21,7 +21,7 @@ final class RateConsoleView: UIView, Configurable {
 
     private let cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.layeredForeground
+        view.backgroundColor = .dLayeredForeground
         view.layer.cornerRadius = .m
         view.clipsToBounds = true
         return view
@@ -34,17 +34,11 @@ final class RateConsoleView: UIView, Configurable {
         return label
     }()
 
-    private lazy var rateBadButton: ConsoleButton = {
-        ConsoleButton()
-    }()
+    private lazy var rateBadButton: ConsoleButton = .init()
 
-    private lazy var rateNormButton: ConsoleButton = {
-        ConsoleButton()
-    }()
+    private lazy var rateNormButton: ConsoleButton = .init()
 
-    private lazy var rateGoodButton: ConsoleButton = {
-        ConsoleButton()
-    }()
+    private lazy var rateGoodButton: ConsoleButton = .init()
 
     private lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView()

@@ -1,7 +1,7 @@
-import Foundation
 import CoreData
+import Foundation
 
-final public class Day: NSManagedObject {}
+public final class Day: NSManagedObject {}
 
 extension Day {
     var rate: DayRate? {

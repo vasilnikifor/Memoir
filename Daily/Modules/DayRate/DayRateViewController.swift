@@ -13,35 +13,25 @@ protocol DayRateViewControllerProtocol: AnyObject {
 final class DayRateViewController: UIViewController {
     var presenter: DayRatePresenterProtocol?
 
-    private lazy var closeButton: UIBarButtonItem = {
-        return UIBarButtonItem(
-            image: Theme.closeImage,
-            style: .plain,
-            target: self,
-            action: #selector(closeButtonTouchUpInside)
-        )
-    }()
+    private lazy var closeButton: UIBarButtonItem = .init(
+        image: .close,
+        style: .plain,
+        target: self,
+        action: #selector(closeButtonTouchUpInside)
+    )
 
-    private lazy var removeButton: UIBarButtonItem = {
-        return UIBarButtonItem(
-            image: Theme.removeImage,
-            style: .plain,
-            target: self,
-            action: #selector(removeButtonTouchUpInside)
-        )
-    }()
+    private lazy var removeButton: UIBarButtonItem = .init(
+        image: .remove,
+        style: .plain,
+        target: self,
+        action: #selector(removeButtonTouchUpInside)
+    )
 
-    private lazy var badRateView: DayRateView = {
-        return DayRateView()
-    }()
+    private lazy var badRateView: DayRateView = .init()
 
-    private lazy var averageRateView: DayRateView = {
-        return DayRateView()
-    }()
+    private lazy var averageRateView: DayRateView = .init()
 
-    private lazy var goodRateView: DayRateView = {
-        return DayRateView()
-    }()
+    private lazy var goodRateView: DayRateView = .init()
 
     private lazy var rateStackView: UIStackView = {
         let stackView = UIStackView()
@@ -63,7 +53,7 @@ final class DayRateViewController: UIViewController {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
 
-        view.backgroundColor = Theme.background
+        view.backgroundColor = .dBackground
         view.addSubview(rateStackView)
 
         rateStackView

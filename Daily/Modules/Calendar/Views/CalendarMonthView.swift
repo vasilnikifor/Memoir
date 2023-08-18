@@ -13,7 +13,7 @@ final class CalendarMonthView: UIView {
     private let mediumMonthWeeks: Int = 5
     private var weekdaysDataSource: [CalendarWeekdayViewModel] = []
     private var daysDataSource: [CalendarDayViewConfiguration] = []
-    private var month: Date = Date()
+    private var month: Date = .init()
     private weak var delegate: CalendarViewDelegate?
     private var weekdaysTopConstraint: NSLayoutConstraint?
 
@@ -68,7 +68,7 @@ final class CalendarMonthView: UIView {
         addSubview(weekdaysCollectionView)
         addSubview(calendarCollectionView)
 
-        weekdaysTopConstraint = weekdaysCollectionView.top(to: self, anchor: self.topAnchor)
+        weekdaysTopConstraint = weekdaysCollectionView.top(to: self, anchor: topAnchor)
 
         weekdaysCollectionView
             .trailingToSuperview()
@@ -111,7 +111,7 @@ final class CalendarMonthView: UIView {
 extension CalendarMonthView: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
+        numberOfItemsInSection _: Int
     ) -> Int {
         switch collectionView {
         case weekdaysCollectionView:
@@ -145,8 +145,8 @@ extension CalendarMonthView: UICollectionViewDataSource {
 extension CalendarMonthView: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
+        layout _: UICollectionViewLayout,
+        sizeForItemAt _: IndexPath
     ) -> CGSize {
         var cellEdgeSize = collectionView.frame.width / columnsCount
         cellEdgeSize.round(.down)
@@ -154,17 +154,17 @@ extension CalendarMonthView: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int
+        _: UICollectionView,
+        layout _: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt _: Int
     ) -> CGFloat {
         return .zero
     }
 
     func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int
+        _: UICollectionView,
+        layout _: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt _: Int
     ) -> CGFloat {
         return .zero
     }
@@ -178,7 +178,7 @@ extension CalendarMonthView: Configurable {
     func setup(with viewModel: CalendarMonthViewModel, completion: (() -> Void)? = nil) {
         month = viewModel.month
         delegate = viewModel.delegate
-        update() {
+        update {
             completion?()
         }
     }

@@ -15,7 +15,7 @@ final class MonthRecordsHeaderView: UIView {
         let view = UIView()
         view.layer.cornerRadius = .m
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        view.backgroundColor = Theme.layeredForeground
+        view.backgroundColor = .dLayeredForeground
         return view
     }()
 
@@ -26,9 +26,7 @@ final class MonthRecordsHeaderView: UIView {
         return label
     }()
 
-    private let rateImageView: UIImageView = {
-        return UIImageView()
-    }()
+    private let rateImageView: UIImageView = .init()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,7 +39,7 @@ final class MonthRecordsHeaderView: UIView {
     }
 
     private func setup() {
-        backgroundColor = Theme.layeredBackground
+        backgroundColor = .dLayeredBackground
         addSubview(cardView)
         cardView.addSubview(titleLabel)
         cardView.addSubview(rateImageView)

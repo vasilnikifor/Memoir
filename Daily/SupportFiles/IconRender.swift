@@ -9,7 +9,7 @@ final class IconRender: UIViewController {
 
     let image: UIImageView = {
         let image = UIImageView()
-        image.image = Theme.rateDayFilledImage
+        image.image = .rateDayFilled
         image.tintColor = .white
         image.contentMode = .scaleAspectFit
         return image
@@ -24,12 +24,16 @@ final class IconRender: UIViewController {
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 0)
         gradient.frame = icon.bounds
-        gradient.colors = [Theme.badRateColor.cgColor, Theme.averageRateColor.cgColor, Theme.goodRateColor.cgColor]
+        gradient.colors = [
+            UIColor.dBadRateColor.cgColor,
+            UIColor.dAverageRateColor.cgColor,
+            UIColor.dGoodRateColor.cgColor,
+        ]
 
         icon.layer.insertSublayer(gradient, at: 0)
 
         let renderer = UIGraphicsImageRenderer(bounds: icon.bounds)
-        let renderedImage =  renderer.image { rendererContext in
+        let renderedImage = renderer.image { rendererContext in
             icon.layer.render(in: rendererContext.cgContext)
         }
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -49,13 +53,13 @@ final class IconRender: UIViewController {
         icon
             .centerXToSuperview()
             .centerYToSuperview()
-            .height(edge/3)
-            .width(edge/3)
+            .height(edge / 3)
+            .width(edge / 3)
 
         image
             .centerXToSuperview()
             .centerYToSuperview()
-            .height((edge/3)/1.3)
-            .width((edge/3)/1.3)
+            .height((edge / 3) / 1.3)
+            .width((edge / 3) / 1.3)
     }
 }

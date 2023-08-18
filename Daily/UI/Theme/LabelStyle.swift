@@ -15,25 +15,25 @@ extension UILabel {
         switch style {
         case .headerBig:
             font = UIFont.boldSystemFont(ofSize: 27)
-            textColor = Theme.primaryText
+            textColor = .dPrimaryText
         case .headerMedium:
             font = UIFont.boldSystemFont(ofSize: 17)
-            textColor = Theme.primaryText
+            textColor = .dPrimaryText
         case .primaryBig:
             font = UIFont.systemFont(ofSize: 24)
-            textColor = Theme.primaryText
+            textColor = .dPrimaryText
         case .primaryMedium:
             font = UIFont.systemFont(ofSize: 17)
-            textColor = Theme.primaryText
+            textColor = .dPrimaryText
         case .primarySmall:
             font = UIFont.systemFont(ofSize: 12)
-            textColor = Theme.primaryText
+            textColor = .dPrimaryText
         case .secondaryMedium:
             font = UIFont.systemFont(ofSize: 17)
-            textColor = Theme.secondaryText
+            textColor = .dSecondaryText
         case .secondarySmall:
             font = UIFont.systemFont(ofSize: 12)
-            textColor = Theme.secondaryText
+            textColor = .dSecondaryText
         }
     }
 }

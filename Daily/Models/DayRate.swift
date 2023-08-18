@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 enum DayRate: CaseIterable {
@@ -7,43 +6,53 @@ enum DayRate: CaseIterable {
     case good
 }
 
+extension DayRate {
+    var emoji: String {
+        switch self {
+        case .bad: return "👎"
+        case .average: return "👍"
+        case .good: return "⭐️"
+        }
+    }
+}
+
 extension Optional where Wrapped == DayRate {
     var image: UIImage {
         switch self {
         case .none:
-            return Theme.rateDayImage
+            return .rateDay
         case .bad:
-            return Theme.badRateImage
+            return .badRate
         case .average:
-            return Theme.averageRateImage
+            return .averageRate
         case .good:
-            return Theme.goodRateImage
+            return .goodRate
         }
     }
 
     var filledImage: UIImage {
         switch self {
         case .none:
-            return Theme.rateDayImage
+            return .rateDay
         case .bad:
-            return Theme.badRateFilledImage
+            return .badRateFilled
         case .average:
-            return Theme.averageRateFilledImage
+            return .averageRateFilled
         case .good:
-            return Theme.goodRateFilledImage
+            return .goodRateFilled
         }
     }
 
     var tintColor: UIColor {
         switch self {
         case .none:
-            return Theme.primaryText
+            return .dPrimaryText
         case .bad:
-            return Theme.badRateColor
+            return .dBadRateColor
         case .average:
-            return Theme.averageRateColor
+            return .dAverageRateColor
         case .good:
-            return Theme.goodRateColor
+            return .dGoodRateColor
         }
     }
 }

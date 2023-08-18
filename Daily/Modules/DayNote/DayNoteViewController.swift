@@ -9,27 +9,23 @@ final class DayNoteViewController: UIViewController {
     var textViewBottomConstraint: NSLayoutConstraint?
     var keyboardAnimationDuration: Double?
 
-    lazy var closeButton: UIBarButtonItem = {
-        return UIBarButtonItem(
-            image: Theme.closeImage,
-            style: .plain,
-            target: self,
-            action: #selector(closeButtonTouchUpInside)
-        )
-    }()
+    lazy var closeButton: UIBarButtonItem = .init(
+        image: .close,
+        style: .plain,
+        target: self,
+        action: #selector(closeButtonTouchUpInside)
+    )
 
-    lazy var removeButton: UIBarButtonItem = {
-        return UIBarButtonItem(
-            image: Theme.removeImage,
-            style: .plain,
-            target: self,
-            action: #selector(removeButtonTouchUpInside)
-        )
-    }()
+    lazy var removeButton: UIBarButtonItem = .init(
+        image: .remove,
+        style: .plain,
+        target: self,
+        action: #selector(removeButtonTouchUpInside)
+    )
 
     lazy var textView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = Theme.background
+        textView.backgroundColor = .dBackground
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.delegate = self
         return textView
@@ -57,7 +53,7 @@ final class DayNoteViewController: UIViewController {
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = removeButton
 
-        view.backgroundColor = Theme.background
+        view.backgroundColor = .dBackground
         view.addSubview(textView)
         view.addSubview(placeholderLabel)
 

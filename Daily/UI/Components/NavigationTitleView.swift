@@ -20,7 +20,7 @@ final class NavigationTitleView: UIView, Configurable {
 
     private lazy var downImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Theme.arrowUnfoldImage
+        imageView.image = .arrowUnfold
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         return imageView
