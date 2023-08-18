@@ -30,8 +30,8 @@ final class NoteConsoleView: UIView, Configurable {
     private lazy var addNoteButton: UIButton = {
         var configuration = UIButton.Configuration.borderless()
         configuration.imagePadding = .m
+        configuration.cornerStyle = .large
         let button = UIButton(configuration: configuration)
-        button.layer.cornerRadius = .s
         button.addTarget(self, action: #selector(addNotButtonDidTap), for: .touchUpInside)
         return button
     }()
