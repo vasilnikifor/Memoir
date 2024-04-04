@@ -52,6 +52,8 @@ extension CalendarPresenter: CalendarPresenterProtocol {
             backgroundImage = UIImage(named: "spring")
         } else if todaysDate.isAugustDay {
             backgroundImage = UIImage(named: "august")
+        } else if todaysDate.isCosmicDay {
+            backgroundImage = UIImage(named: "cosmic")
         }
 
         view?.setupInitialState(
@@ -122,6 +124,7 @@ extension Date {
         return isNewYearTime
             || isSpringDay
             || isAugustDay
+            || isCosmicDay
     }
 
     var isNewYearTime: Bool {
@@ -136,7 +139,7 @@ extension Date {
         )
     }
 
-    var isCosmonauticsDay: Bool {
+    var isCosmicDay: Bool {
         isDateInRange(
             minDate: 12, minMonth: 4,
             maxDate: 12, maxMonth: 4
