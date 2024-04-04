@@ -8,6 +8,7 @@ protocol DayNotePresenterProtocol: AnyObject {
     func viewLoaded()
     func viewGoesBackground(text: String)
     func closeTapped()
+    func doneTapped()
     func removeTapped()
     func textDidEndEditing(text: String)
 }
@@ -57,6 +58,10 @@ extension DayNotePresenter: DayNotePresenterProtocol {
     }
 
     func closeTapped() {
+        coordinator?.dismiss()
+    }
+
+    func doneTapped() {
         coordinator?.dismiss()
     }
 
