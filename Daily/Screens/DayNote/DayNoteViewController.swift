@@ -23,11 +23,24 @@ final class DayNoteViewController: UIViewController {
         action: #selector(removeButtonTouchUpInside)
     )
 
+    lazy var doneButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: .done, style: .plain, target: self, action: #selector(doneTapped))
+        button.tintColor = .dPrimaryTint
+        return button
+    }()
+
     lazy var textView: UITextView = {
+        let flexibleSpaceBarItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let toolBar = UIToolbar()
+        toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        toolBar.items = [flexibleSpaceBarItem, doneButton]
+        toolBar.sizeToFit()
         let textView = UITextView()
         textView.backgroundColor = .dBackground
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.delegate = self
+        textView.inputAccessoryView = toolBar
         return textView
     }()
 
@@ -138,8 +151,13 @@ final class DayNoteViewController: UIViewController {
     }
 
     @objc
-    func appMovedToBackground() {
+    private func appMovedToBackground() {
         presenter?.viewGoesBackground(text: textView.text)
+    }
+
+    @objc
+    private func doneTapped() {
+        presenter?.doneTapped()
     }
 }
 

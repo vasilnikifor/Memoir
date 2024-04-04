@@ -261,7 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				91ED30C92943761E002EC051 /* Coordinators */,
-				9157AB6B266A6164003C4B66 /* Modules */,
+				9157AB6B266A6164003C4B66 /* Screens */,
 				84F796A12233A58E00596CD5 /* Models */,
 				84D6840F222D6AD5003F08F9 /* Extensions */,
 				C15815E32400435D0060B9FA /* Services */,
@@ -349,7 +349,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		9157AB6B266A6164003C4B66 /* Modules */ = {
+		9157AB6B266A6164003C4B66 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				91419C5026B43B3E0031F519 /* MonthRecords */,
@@ -358,7 +358,7 @@
 				916C25E3267E158D004A1CDF /* DayRate */,
 				9157AB6C266A6173003C4B66 /* Calendar */,
 			);
-			path = Modules;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		9157AB6C266A6173003C4B66 /* Calendar */ = {

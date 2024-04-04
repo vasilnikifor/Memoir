@@ -63,25 +63,19 @@ extension CalendarDayViewCell: Configurable {
         acton = configuration.action
         button.setTitle(configuration.date.dateNumber, for: .normal)
         button.accessibilityLabel = configuration.date.dateLongRepresentation
-        button.layer.borderColor = UIColor.dPrimaryTint.cgColor
+        button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
         switch configuration.state {
         case .inactive:
             button.backgroundColor = .clear
             button.setTitleColor(.dSecondaryText, for: .normal)
-            button.isEnabled = false
-            button.isHidden = true
-            button.layer.borderWidth = .zero
+            button.layer.borderColor = UIColor.dSecondaryText.cgColor
         case .empty:
-            button.isHidden = false
             button.backgroundColor = .clear
             button.setTitleColor(.dPrimaryText, for: .normal)
-            button.isEnabled = true
-            button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
+            button.layer.borderColor = UIColor.dPrimaryTint.cgColor
         case let .filled(dayRate):
-            button.isHidden = false
             button.setTitleColor(.dReversedPrimaryText, for: .normal)
-            button.isEnabled = true
-            button.layer.borderWidth = configuration.isToday ? .xxxs : .zero
+            button.layer.borderColor = UIColor.dPrimaryTint.cgColor
             switch dayRate {
             case .bad:
                 button.backgroundColor = .dBadRateColor

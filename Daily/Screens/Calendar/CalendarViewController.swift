@@ -105,7 +105,7 @@ extension CalendarViewController: CalendarViewControllerProtocol {
         calendarModel: CalendarViewConfiguration,
         backgroundImage: UIImage?
     ) {
-        navigationItem.backButtonTitle = " "
+        navigationItem.backButtonTitle = .space
         calendarView.configure(with: calendarModel)
         backgroundImageView.image = backgroundImage
     }

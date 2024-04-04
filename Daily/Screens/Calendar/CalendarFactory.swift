@@ -48,33 +48,33 @@ final class CalendarFactory: CalendarFactoryProtocol {
         var processingDate = month.firstMonthCalendarDate.startOfDay
         let firstMonthDate = month.firstDayOfMonth.startOfDay
         let lastMonthDate = month.lastDayOfMonth.startOfDay
-        let lastCalendarDate = month.lastMonthCalendarDate.startOfDay
+        let monthDaysCount = 41
+        let lastCalendarDate = processingDate.addDays(monthDaysCount).startOfDay
         let todayDate = Date().startOfDay
-        let days = dayService.getDays(month: month)
+        let days = dayService.getDays(start: processingDate, end: lastCalendarDate)
 
         while processingDate <= lastCalendarDate {
-            if processingDate < firstMonthDate || processingDate > lastMonthDate {
-                calendarDays.append(
-                    CalendarDayViewConfiguration(
-                        date: processingDate,
-                        isToday: processingDate == todayDate,
-                        state: .inactive,
-                        action: nil
-                    )
-                )
+            let day = days.first(where: { $0.date?.startOfDay == processingDate })
+
+            let state: CalendarDayViewConfiguration.State = if processingDate < firstMonthDate || processingDate > lastMonthDate {
+                .inactive
+            } else if let day, !day.isEmpty {
+                .filled(dayRate: day.rate)
             } else {
-                let day = days.first(where: { $0.date?.startOfDay == processingDate })
-                calendarDays.append(
-                    CalendarDayViewConfiguration(
-                        date: processingDate,
-                        isToday: processingDate == todayDate,
-                        state: (day?.isEmpty ?? true) ? .empty : .filled(dayRate: day?.rate),
-                        action: { [processingDate, weak day, weak delegate] in
-                            delegate?.dateSelected(processingDate, day: day)
-                        }
-                    )
-                )
+                .empty
             }
+
+            calendarDays.append(
+                CalendarDayViewConfiguration(
+                    date: processingDate,
+                    isToday: processingDate == todayDate,
+                    state: state,
+                    action: { [processingDate, weak day, weak delegate] in
+                        delegate?.dateSelected(processingDate, day: day)
+                    }
+                )
+            )
+
             processingDate = processingDate.addDays(1)
         }
 

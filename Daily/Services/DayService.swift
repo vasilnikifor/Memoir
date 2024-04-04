@@ -3,6 +3,7 @@ import CoreData
 protocol DayServiceProtocol: AnyObject {
     func getDays(month: Date) -> [Day]
     func getDays(year: Date) -> [Day]
+    func getDays(start: Date, end: Date) -> [Day]
     func rateDay(of date: Date, rate: DayRate?)
     func getDay(date: Date) -> Day?
     func saveNote(date: Date, note: NoteRecord?, text: String) -> NoteRecord?
@@ -16,6 +17,23 @@ final class DayService: DayServiceProtocol {
 
     func getDays(year: Date) -> [Day] {
         return getDays(start: year.firstDayOfYear, end: year.lastDayOfYear)
+    }
+
+    func getDays(start: Date, end: Date) -> [Day] {
+        let request: NSFetchRequest<Day> = Day.fetchRequest()
+        let startOfTheMonthPredicate = NSPredicate(format: "date >= %@", start as CVarArg)
+        let endOfTheMonthPredicate = NSPredicate(format: "date <= %@", end as CVarArg)
+
+        request.predicate = NSCompoundPredicate(
+            andPredicateWithSubpredicates: [startOfTheMonthPredicate, endOfTheMonthPredicate]
+        )
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+
+        do {
+            return try DAOService.viewContext.fetch(request)
+        } catch {
+            return []
+        }
     }
 
     func rateDay(of date: Date, rate: DayRate?) {
@@ -88,23 +106,6 @@ final class DayService: DayServiceProtocol {
             day.date = date.startOfDay
             DAOService.saveContext()
             return day
-        }
-    }
-
-    private func getDays(start: Date, end: Date) -> [Day] {
-        let request: NSFetchRequest<Day> = Day.fetchRequest()
-        let startOfTheMonthPredicate = NSPredicate(format: "date >= %@", start as CVarArg)
-        let endOfTheMonthPredicate = NSPredicate(format: "date <= %@", end as CVarArg)
-
-        request.predicate = NSCompoundPredicate(
-            andPredicateWithSubpredicates: [startOfTheMonthPredicate, endOfTheMonthPredicate]
-        )
-        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-
-        do {
-            return try DAOService.viewContext.fetch(request)
-        } catch {
-            return []
         }
     }
 }
