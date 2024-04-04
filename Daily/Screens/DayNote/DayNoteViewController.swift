@@ -32,6 +32,8 @@ final class DayNoteViewController: UIViewController {
     lazy var textView: UITextView = {
         let flexibleSpaceBarItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let toolBar = UIToolbar()
+        toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
         toolBar.items = [flexibleSpaceBarItem, doneButton]
         toolBar.sizeToFit()
         let textView = UITextView()
